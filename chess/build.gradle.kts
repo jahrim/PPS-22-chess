@@ -43,7 +43,7 @@ val wartRemoverCompileOptions = WartRemover.configFile(file(".wartremover.conf")
 
 // Scala Compiler Options
 tasks.withType(ScalaCompile::class.java) {
-    scalaCompileOptions.additionalParameters = listOf("-Xtarget:8") + wartRemoverCompileOptions
+    scalaCompileOptions.additionalParameters = listOf("-Xtarget:8", "-indent", "-rewrite") + wartRemoverCompileOptions
 }
 
 val scaladocJar by tasks.registering(Jar::class) {
