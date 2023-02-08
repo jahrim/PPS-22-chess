@@ -8,14 +8,29 @@ package io.github.chess.model
 
 import io.github.chess.model.Team.{BLACK, WHITE}
 
+/** The trait representing the concept of a Chess Board. */
 trait ChessBoard:
 
+  /**
+   * Gives access to all the pieces that are present on the board.
+   * @return the map containing both white and black pieces of the board
+   */
   def pieces: Map[Position, Piece]
 
+  /**
+   * Gives all the available moves for a pieces placed in a specified position.
+   * @param position the position where the piece to be moved is placed
+   * @return all the available moves that could be performed by the piece
+   */
   def findMoves(position: Position): Set[Move]
 
+  /**
+   * Performs the move by a piece on the board.
+   * @param move The move to be executed
+   */
   def move(move: Move): Unit
 
+/** The implementation of the Chess Board. */
 case class ChessBoardImpl() extends ChessBoard:
   import scala.collection.immutable.HashMap
 

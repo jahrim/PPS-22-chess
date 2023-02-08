@@ -8,9 +8,19 @@ package io.github.chess.model
 
 import io.github.chess.model.Team.{BLACK, WHITE}
 
+/** Enumeration representing the Team concept of a chess game. */
 enum Team:
-  case WHITE, BLACK
 
+  /** Value representing the White team. */
+  case WHITE
+
+  /** Value representing the Black team */
+  case BLACK
+
+  /**
+   * Gives the opposite team of this.
+   * @return The team that is the opposite of this
+   */
   def oppositeTeam: Team = this match
     case WHITE => BLACK
     case BLACK => WHITE
