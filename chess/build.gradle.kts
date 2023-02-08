@@ -1,4 +1,5 @@
 import com.lordcodes.turtle.shellRun
+import javafx.JavaFX
 import wartremover.WartRemover
 import java.util.regex.Pattern
 
@@ -17,6 +18,8 @@ dependencies {
     implementation(libs.scala)
     implementation(libs.bundles.scalafmt)
     implementation(libs.vertx)
+    implementation(libs.scalafx)
+    libs.bundles.javafx.get().forEach { implementation("${it.module}:${it.version}:${JavaFX.getClassifier()}") }
     testImplementation(libs.scalatest)
     scalaCompilerPlugins(libs.wartremover)
 }

@@ -8,6 +8,7 @@ package io.github.chess
 
 import io.github.chess.controllers.ChessController
 import io.github.chess.services.ChessService
+import io.github.chess.viewcontroller.ScalaFXHelloWorld
 import io.vertx.core.Vertx
 
 /** The main application. */
@@ -15,3 +16,4 @@ import io.vertx.core.Vertx
   val vertx = Vertx.vertx()
   val service = ChessService(ChessController(vertx))
   vertx.deployVerticle(service)
+  ScalaFXHelloWorld.main(Array.empty)

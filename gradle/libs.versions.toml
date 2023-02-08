@@ -6,6 +6,8 @@ scalafmt-version = "3.7.1"
 wartremover-version = "3.0.9"
 kotlin-qa-version = "0.2.1"
 vertx-version = "4.3.7"
+scalafx-version = "16.0.0-R24"
+javafx-version = "16"
 # insert the versions of the dependencies here...
 
 [libraries]
@@ -15,10 +17,19 @@ scalafmt-cli = { module = "org.scalameta:scalafmt-cli_2.13", version.ref = "scal
 scalafmt-config = { module = "org.scalameta:scalafmt-config_2.13", version.ref = "scalafmt-version" }
 wartremover = { module = "org.wartremover:wartremover_3.2.2", version.ref = "wartremover-version" }
 vertx = { module = "io.vertx:vertx-core", version.ref = "vertx-version" }
+scalafx = { module = "org.scalafx:scalafx_3", version.ref = "scalafx-version" }
+javafx-base = { module = "org.openjfx:javafx-base", version.ref = "javafx-version" }
+javafx-controls = { module = "org.openjfx:javafx-controls", version.ref = "javafx-version" }
+javafx-fxml = { module = "org.openjfx:javafx-fxml", version.ref = "javafx-version" }
+javafx-graphics = { module = "org.openjfx:javafx-graphics", version.ref = "javafx-version" }
+javafx-media = { module = "org.openjfx:javafx-media", version.ref = "javafx-version" }
+javafx-swing = { module = "org.openjfx:javafx-swing", version.ref = "javafx-version" }
+javafx-web = { module = "org.openjfx:javafx-web", version.ref = "javafx-version" }
 # insert the dependencies here...
 
 [bundles]
 scalafmt = [ "scalafmt-cli", "scalafmt-config" ]
+javafx = [ "javafx-base", "javafx-controls", "javafx-fxml", "javafx-graphics", "javafx-media", "javafx-swing", "javafx-web" ]
 # insert groups of dependencies here...
 
 [plugins]
