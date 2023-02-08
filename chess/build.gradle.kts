@@ -21,7 +21,7 @@ dependencies {
 }
 
 project.version = shellRun {
-    git.gitCommand(listOf("describe", "--tags", "--always")) // TODO da rimuovere (provare con un tag)
+    git.gitCommand(listOf("describe", "--tags"))
 }
 
 application {
@@ -98,6 +98,13 @@ tasks {
 
     build {
         dependsOn(fatJar)
+    }
+
+    register("spec", JavaExec::class) {
+        dependsOn(testClasses)
+        mainClass.set("org.scalatest.tools.Runner")
+        setArgs(listOf("-R", "build/classes/scala/test", "-o"))
+        classpath = sourceSets.test.get().runtimeClasspath
     }
 }
 
