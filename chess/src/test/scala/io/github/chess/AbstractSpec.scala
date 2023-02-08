@@ -6,14 +6,8 @@
  */
 package io.github.chess
 
-import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-/** A template for writing tests with scala test. */
-class TemplateTest extends AnyFunSpec:
-  describe("This test") {
-    describe("when run") {
-      it("should never fail") {
-        assert(true)
-      }
-    }
-  }
+/** Base Spec for all the test suites. */
+abstract class AbstractSpec extends AnyFlatSpec with Matchers

@@ -6,5 +6,12 @@
  */
 package io.github.chess.model
 
+/** Represents every piece of the [[ChessBoard]]. */
 trait Piece:
+
+  /**
+   * Returns all the possibile positions that the piece can go to, considering only its own rules.
+   * @param position source [[Position]]
+   * @return a [[Set]] of [[Position]]
+   */
   def findMoves(position: Position): Set[Position]
