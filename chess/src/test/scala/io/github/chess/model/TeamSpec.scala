@@ -6,11 +6,10 @@
  */
 package io.github.chess.model
 
-import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should.Matchers
+import io.github.chess.AbstractSpec
 
-/** Test suit for the Team enumeration. */
-class TeamSpec extends AnyFlatSpec with Matchers:
+/** Test suit for the [[Team]] enumeration. */
+class TeamSpec extends AbstractSpec:
 
   private val WhiteTeam = Team.WHITE
   private val BlackTeam = Team.BLACK

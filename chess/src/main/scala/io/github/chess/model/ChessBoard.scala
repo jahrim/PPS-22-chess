@@ -42,7 +42,8 @@ object ChessBoard:
   private case class ChessBoardImpl() extends ChessBoard:
     import scala.collection.immutable.HashMap
 
-    private var whitePieces: Map[Position, Piece] = HashMap()
+    private var whitePieces: Map[Position, Piece] =
+      Map.empty + ((Position(File.A, Rank._2), Pawn()))
     private var blackPieces: Map[Position, Piece] = HashMap()
     private var currentlyPlayingTeam = Team.WHITE
 
