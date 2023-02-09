@@ -4,14 +4,11 @@
  *
  * Full license description available at: https://github.com/jahrim/PPS-22-chess/blob/master/LICENSE
  */
-package io.github.chess
+package io.github.chess.adapters
 
 import io.github.chess.controllers.ChessController
-import io.github.chess.services.ChessService
 import io.vertx.core.Vertx
 
-/** The main application. */
-@main def main() =
-  val vertx = Vertx.vertx()
-  val service = ChessService(ChessController(vertx))
-  vertx.deployVerticle(service)
+/** Helps the view communicate with the chess game. */
+class ChessAdapter(override val controller: ChessController, override val vertx: Vertx)
+    extends AbstractAdapter[ChessController]

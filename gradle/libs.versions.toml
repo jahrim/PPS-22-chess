@@ -5,6 +5,7 @@ spotless-version = "6.14.0"
 scalafmt-version = "3.7.1"
 wartremover-version = "3.0.9"
 kotlin-qa-version = "0.2.1"
+vertx-version = "4.3.7"
 # insert the versions of the dependencies here...
 
 [libraries]
@@ -13,6 +14,7 @@ scalatest = { module = "org.scalatest:scalatest_3", version.ref = "scalatest-ver
 scalafmt-cli = { module = "org.scalameta:scalafmt-cli_2.13", version.ref = "scalafmt-version" }
 scalafmt-config = { module = "org.scalameta:scalafmt-config_2.13", version.ref = "scalafmt-version" }
 wartremover = { module = "org.wartremover:wartremover_3.2.2", version.ref = "wartremover-version" }
+vertx = { module = "io.vertx:vertx-core", version.ref = "vertx-version" }
 # insert the dependencies here...
 
 [bundles]

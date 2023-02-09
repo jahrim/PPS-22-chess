@@ -16,6 +16,7 @@ repositories { mavenCentral() }
 dependencies {
     implementation(libs.scala)
     implementation(libs.bundles.scalafmt)
+    implementation(libs.vertx)
     testImplementation(libs.scalatest)
     scalaCompilerPlugins(libs.wartremover)
 }
@@ -25,7 +26,7 @@ project.version = shellRun {
 }
 
 application {
-    mainClass.set("io.github.chess.Main")
+    mainClass.set("io.github.chess.main")
 }
 
 // Code Style (aesthetic...)
@@ -91,7 +92,7 @@ tasks {
         dependsOn(configurations.compileClasspath)
         from(configurations.runtimeClasspath.get().map { zipTree(it) })
         manifest {
-            attributes["Main-Class"] = "io.github.chess.Main"
+            attributes["Main-Class"] = "io.github.chess.main"
         }
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     }

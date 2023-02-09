@@ -6,7 +6,9 @@
  */
 package io.github.chess.model
 
+import io.github.chess.events.EndTurnEvent
 import io.github.chess.model.Team.{BLACK, WHITE}
+import io.vertx.core.Vertx
 
 /** The trait representing the concept of a Chess Board. */
 trait ChessBoard:
@@ -37,9 +39,9 @@ object ChessBoard:
    * Creates a new Chess Board.
    * @return a new [[ChessBoard]]
    */
-  def apply(): ChessBoard = ChessBoardImpl()
+  def apply(vertx: Vertx): ChessBoard = ChessBoardImpl(vertx)
 
-  private case class ChessBoardImpl() extends ChessBoard:
+  private case class ChessBoardImpl(private val vertx: Vertx) extends ChessBoard:
     import scala.collection.immutable.HashMap
 
     private var whitePieces: Map[Position, Piece] =
@@ -67,9 +69,12 @@ object ChessBoard:
       case WHITE => this.whitePieces
       case BLACK => this.blackPieces
 
-    private def changePlayingTeam(): Unit = this.currentlyPlayingTeam =
-      this.currentlyPlayingTeam.oppositeTeam
+    private def changePlayingTeam(): Unit =
+      this.currentlyPlayingTeam = this.currentlyPlayingTeam.oppositeTeam
+      val endTurnEvent = EndTurnEvent(this.currentlyPlayingTeam)
+      vertx.eventBus().publish(endTurnEvent.address, endTurnEvent)
 
+    // TODO controllare se applicare la mossa, ovvero se sto muovendo un pezzo del mio team
     private def applyMove(move: Move): Map[Position, Piece] =
       val team = playingTeam
       val pieceToMove = team.get(move.from)

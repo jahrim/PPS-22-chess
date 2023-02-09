@@ -7,14 +7,16 @@
 package io.github.chess.model
 
 import io.github.chess.AbstractSpec
+import io.vertx.core.Vertx
 
 /** Test suit for the [[ChessBoard]]. */
+// TODO il set ritornato da findMoves deve avere tutte le from uguali
 class ChessBoardSpec extends AbstractSpec:
 
   val pawnPosition: Position = Position(File.A, Rank._2)
   val possibleDestination: Position = Position(File.A, Rank._3)
   val move: Move = Move(pawnPosition, possibleDestination)
-  val chessBoard: ChessBoard = ChessBoard()
+  val chessBoard: ChessBoard = ChessBoard(Vertx.vertx())
 
   "The chess board" should "have a pawn in the position a2" in {
     chessBoard.pieces.get(pawnPosition) should be(defined)
