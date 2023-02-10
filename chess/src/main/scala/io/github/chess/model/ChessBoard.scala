@@ -59,11 +59,12 @@ object ChessBoard:
         case None        => Set.empty
 
     override def move(move: Move): Unit =
-      val newTeam = this.applyMove(move)
-      this.currentlyPlayingTeam match
-        case WHITE => this.whitePieces = newTeam
-        case BLACK => this.blackPieces = newTeam
-      changePlayingTeam()
+      if findPiece(move.from).isDefined then
+        val newTeam = this.applyMove(move)
+        this.currentlyPlayingTeam match
+          case WHITE => this.whitePieces = newTeam
+          case BLACK => this.blackPieces = newTeam
+        changePlayingTeam()
 
     private def playingTeam: Map[Position, Piece] = this.currentlyPlayingTeam match
       case WHITE => this.whitePieces
@@ -74,10 +75,11 @@ object ChessBoard:
       val endTurnEvent = EndTurnEvent(this.currentlyPlayingTeam)
       vertx.eventBus().publish(endTurnEvent.address, endTurnEvent)
 
-    // TODO controllare se applicare la mossa, ovvero se sto muovendo un pezzo del mio team
+    private def findPiece(pos: Position): Option[Piece] = playingTeam.get(pos)
+
     private def applyMove(move: Move): Map[Position, Piece] =
       val team = playingTeam
-      val pieceToMove = team.get(move.from)
+      val pieceToMove = findPiece(move.from)
       pieceToMove match
         case Some(piece) => team - move.from + ((move.to, piece))
         case None        => team

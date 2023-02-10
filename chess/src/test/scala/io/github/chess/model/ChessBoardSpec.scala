@@ -10,24 +10,37 @@ import io.github.chess.AbstractSpec
 import io.vertx.core.Vertx
 
 /** Test suit for the [[ChessBoard]]. */
-// TODO il set ritornato da findMoves deve avere tutte le from uguali
 class ChessBoardSpec extends AbstractSpec:
 
-  val pawnPosition: Position = Position(File.A, Rank._2)
-  val possibleDestination: Position = Position(File.A, Rank._3)
-  val move: Move = Move(pawnPosition, possibleDestination)
+  val pawnInitialPosition: Position = Position(File.A, Rank._2)
+  val pawnNextPosition: Position = pawnInitialPosition.rankUp()
+  val firstMove: Move = Move(pawnInitialPosition, pawnNextPosition)
   val chessBoard: ChessBoard = ChessBoard(Vertx.vertx())
 
-  "The chess board" should "have a pawn in the position a2" in {
-    chessBoard.pieces.get(pawnPosition) should be(defined)
+  "The chess board" should "initially have a piece in the position a2" in {
+    chessBoard.pieces.get(pawnInitialPosition) should be(defined)
   }
 
   it should "let you move its pawn from a2 to a3" in {
-    chessBoard.findMoves(pawnPosition) should contain(move)
+    chessBoard.findMoves(pawnInitialPosition) should contain(firstMove)
   }
 
   it should "see the new position of the pawn, after its move" in {
-    chessBoard.move(move)
-    chessBoard.pieces.get(pawnPosition) shouldNot be(defined)
-    chessBoard.pieces.get(possibleDestination) should be(defined)
+    chessBoard.move(firstMove)
+    chessBoard.pieces.get(pawnInitialPosition) shouldNot be(defined)
+    chessBoard.pieces.get(pawnNextPosition) should be(defined)
+  }
+
+  it should "forbid the player from moving the pieces of the opposite team" in {
+    chessBoard.move(firstMove)
+    chessBoard.pieces.get(pawnNextPosition) should be(defined)
+    val thirdPosition = pawnNextPosition.rankUp()
+    val secondMove = Move(pawnNextPosition, thirdPosition)
+    chessBoard.move(secondMove)
+    chessBoard.pieces.get(pawnNextPosition) should be(defined)
+    chessBoard.pieces.get(thirdPosition) shouldNot be(defined)
+  }
+
+  "All the moves" should "be available from the same starting position" in {
+    all(chessBoard.findMoves(pawnInitialPosition)) should have(Symbol("from")(pawnInitialPosition))
   }
