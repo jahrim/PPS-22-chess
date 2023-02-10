@@ -22,6 +22,4 @@ class ChessService(private val chessController: ChessController) extends Abstrac
    * Returns the [[ChessAdapter]].
    * @return the [[ChessAdapter]]
    */
-  def chessAdapter: ChessAdapter = _chessAdapter match
-    case Some(value) => value
-    case None        => throw IllegalStateException()
+  def chessAdapter: Option[ChessAdapter] = _chessAdapter

@@ -16,6 +16,6 @@ La durata di questo Sprint è di due settimane, poiché include anche l'organizz
 e la configurazione del progetto, le quali non sono di diretto interesse dell'utente.
 La _Deadline_ di questo Sprint è stata fissata al 13/02/2023.
 
-<!--- TODO sezionare in capitoli -->
+[//]: # (TODO sezionare in capitoli)
 
 # Sprint Review/Retrospective
