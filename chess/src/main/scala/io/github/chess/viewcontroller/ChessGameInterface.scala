@@ -10,9 +10,15 @@ import io.github.chess.viewcontroller.components.pages.MainMenuPage
 import scalafx.Includes.*
 import scalafx.application.{JFXApp3, Platform}
 import scalafx.application.JFXApp3.PrimaryStage
+import scalafx.stage.Stage
 
 /** Graphical user interface of Chess Game. */
 object ChessGameInterface extends JFXApp3:
+
+  /** @return the primary stage of this application as a given instance. */
+  given mainStage: Stage = this.mainStageSupplier()
+  private val mainStageSupplier: () => Stage = () => this.stage
+
   /**
    * Launch the graphical user interface with the specified arguments.
    * @param args the specified arguments
@@ -21,7 +27,7 @@ object ChessGameInterface extends JFXApp3:
 
   override def start(): Unit =
     stageConfiguration()
-    MainMenuPage(this.stage)
+    MainMenuPage()
 
   override def stopApp(): Unit = System.exit(0)
 
