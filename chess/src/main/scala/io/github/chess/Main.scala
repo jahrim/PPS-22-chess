@@ -13,9 +13,11 @@ import io.github.chess.viewcontroller.ChessGameInterface
 import io.vertx.core.Vertx
 
 /** The main application. */
-@main def main() =
+@main def main(): Unit =
   Logger.info("Start", "Application started...")
   val vertx = Vertx.vertx()
   val service = ChessService(ChessController(vertx))
   vertx.deployVerticle(service)
-  ChessGameInterface.launch(Array.empty)
+  ChessGameInterface.launch(
+    /* TODO: insert a proxy/adapter for the chess engine service here */ Array.empty
+  )

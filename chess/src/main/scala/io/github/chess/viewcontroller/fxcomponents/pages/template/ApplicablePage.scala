@@ -4,11 +4,10 @@
  *
  * Full license description available at: https://github.com/jahrim/PPS-22-chess/blob/master/LICENSE
  */
-package io.github.chess.viewcontroller.components.pages.template
+package io.github.chess.viewcontroller.fxcomponents.pages.template
 
-import io.github.chess.viewcontroller.components.controllers.template.Controller
-import io.github.chess.viewcontroller.components.pages.template.Page
-import io.github.chess.viewcontroller.components.StageComponent
+import io.github.chess.viewcontroller.fxcomponents.pages.template.Page
+import io.github.chess.viewcontroller.fxcomponents.StageComponent
 import scalafx.stage.Stage
 
 /**
@@ -17,3 +16,5 @@ import scalafx.stage.Stage
  */
 trait ApplicablePage extends Page with StageComponent:
   this.stage.scene = this.getScene
+  this.stage.sizeToScene()
+  this.stage.centerOnScreen()

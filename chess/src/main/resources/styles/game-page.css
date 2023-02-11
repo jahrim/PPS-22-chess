@@ -1,0 +1,21 @@
+.chess-board-grid {
+    -fx-border-color: black;
+    -fx-border-width: 0 0 2 2;
+}
+
+.chess-board-cell-light {
+    -fx-border-color: black;
+    -fx-border-width: 2 2 0 0;
+    -fx-background-color: #F9D19D;
+}
+
+.chess-board-cell-dark {
+    -fx-border-color: black;
+    -fx-border-width: 2 2 0 0;
+    -fx-background-color: #D18C47;
+}
+
+.chess-board-border-text {
+    -fx-alignment: center;
+    -fx-border-color: black;
+}

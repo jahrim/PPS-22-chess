@@ -4,10 +4,10 @@
  *
  * Full license description available at: https://github.com/jahrim/PPS-22-chess/blob/master/LICENSE
  */
-package io.github.chess.viewcontroller.components.pages.template
+package io.github.chess.viewcontroller.fxcomponents.pages.template
 
-import io.github.chess.viewcontroller.components.controllers.template.Controller
-import io.github.chess.viewcontroller.components.pages.template.Page
+import io.github.chess.viewcontroller.fxcomponents.controllers.template.Controller
+import io.github.chess.viewcontroller.fxcomponents.pages.template.Page
 
 /**
  * A mixin that binds a page to a controller.

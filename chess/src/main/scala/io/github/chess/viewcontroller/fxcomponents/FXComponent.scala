@@ -4,7 +4,7 @@
  *
  * Full license description available at: https://github.com/jahrim/PPS-22-chess/blob/master/LICENSE
  */
-package io.github.chess.viewcontroller.components
+package io.github.chess.viewcontroller.fxcomponents
 
 /**
  * A component of the application, either logical or graphical.
@@ -13,3 +13,4 @@ package io.github.chess.viewcontroller.components
  */
 trait FXComponent:
   export scalafx.Includes.*
+  export io.github.chess.viewcontroller.fxutils.FXUtils.*

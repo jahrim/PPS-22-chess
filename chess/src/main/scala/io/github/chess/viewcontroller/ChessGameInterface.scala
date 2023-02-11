@@ -6,7 +6,7 @@
  */
 package io.github.chess.viewcontroller
 
-import io.github.chess.viewcontroller.components.pages.MainMenuPage
+import io.github.chess.viewcontroller.fxcomponents.pages.MainMenuPage
 import scalafx.Includes.*
 import scalafx.application.{JFXApp3, Platform}
 import scalafx.application.JFXApp3.PrimaryStage
@@ -35,5 +35,3 @@ object ChessGameInterface extends JFXApp3:
   private def stageConfiguration(): Unit =
     this.stage = new PrimaryStage():
       title = "Chess Game"
-      width = 640
-      height = 440

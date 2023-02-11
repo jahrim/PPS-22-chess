@@ -4,9 +4,9 @@
  *
  * Full license description available at: https://github.com/jahrim/PPS-22-chess/blob/master/LICENSE
  */
-package io.github.chess.viewcontroller.components.pages.template
+package io.github.chess.viewcontroller.fxcomponents.pages.template
 
-import io.github.chess.viewcontroller.components.FXComponent
+import io.github.chess.viewcontroller.fxcomponents.FXComponent
 import scalafx.scene.Scene
 
 /**

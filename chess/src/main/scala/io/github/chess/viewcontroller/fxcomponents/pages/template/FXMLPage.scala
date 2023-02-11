@@ -4,10 +4,10 @@
  *
  * Full license description available at: https://github.com/jahrim/PPS-22-chess/blob/master/LICENSE
  */
-package io.github.chess.viewcontroller.components.pages.template
+package io.github.chess.viewcontroller.fxcomponents.pages.template
 
-import io.github.chess.viewcontroller.components.controllers.template.FXMLController
-import io.github.chess.viewcontroller.components.pages.template.{Page, PageWithController}
+import io.github.chess.viewcontroller.fxcomponents.controllers.template.FXMLController
+import io.github.chess.viewcontroller.fxcomponents.pages.template.{Page, PageWithController}
 import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
 import scalafx.scene.Scene
