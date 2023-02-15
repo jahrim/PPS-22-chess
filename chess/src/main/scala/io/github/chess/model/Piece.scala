@@ -6,9 +6,15 @@
  */
 package io.github.chess.model
 
+import io.github.chess.model.rules.ChessRule
+
 /** Represents every piece of the [[ChessBoard]]. */
 trait Piece:
 
+  /** Returns the [[ChessRule]] able to give all the possible moves from a starting position. */
+  def rule: ChessRule
+
+  // TODO da rimuovere
   /**
    * Returns all the possibile positions that the piece can go to, considering only its own rules.
    * @param position source [[Position]]
