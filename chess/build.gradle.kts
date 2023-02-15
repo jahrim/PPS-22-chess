@@ -20,6 +20,7 @@ dependencies {
     implementation(libs.vertx)
     implementation(libs.scalafx)
     libs.bundles.javafx.get().forEach { implementation("${it.module}:${it.version}:${JavaFX.getClassifier()}") }
+    implementation(libs.tuprolog)
     testImplementation(libs.scalatest)
     scalaCompilerPlugins(libs.wartremover)
 }

@@ -8,6 +8,7 @@ kotlin-qa-version = "0.2.1"
 vertx-version = "4.3.7"
 scalafx-version = "16.0.0-R24"
 javafx-version = "16"
+tuprolog-version = "4.1.1"
 # insert the versions of the dependencies here...
 
 [libraries]
@@ -25,6 +26,7 @@ javafx-graphics = { module = "org.openjfx:javafx-graphics", version.ref = "javaf
 javafx-media = { module = "org.openjfx:javafx-media", version.ref = "javafx-version" }
 javafx-swing = { module = "org.openjfx:javafx-swing", version.ref = "javafx-version" }
 javafx-web = { module = "org.openjfx:javafx-web", version.ref = "javafx-version" }
+tuprolog = { module = "it.unibo.alice.tuprolog:2p-core", version.ref = "tuprolog-version" }
 # insert the dependencies here...
 
 [bundles]
