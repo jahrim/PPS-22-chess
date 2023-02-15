@@ -50,6 +50,16 @@ tasks.withType(ScalaCompile::class.java) {
     scalaCompileOptions.additionalParameters = listOf("-Xtarget:8", "-indent", "-rewrite") + wartRemoverCompileOptions
 }
 
+// Scala Test
+val scalaTest by tasks.registering(JavaExec::class) {
+    dependsOn(tasks.testClasses)
+    mainClass.set("org.scalatest.tools.Runner")
+    args("-R", "build/classes/scala/test build/classes/java/test", "-o")
+    classpath(sourceSets["test"].runtimeClasspath)
+}
+tasks.test.get().dependsOn(scalaTest)
+
+// Publication
 val scaladocJar by tasks.registering(Jar::class) {
     dependsOn(tasks.scaladoc)
     archiveClassifier.set("javadoc")
