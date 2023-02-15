@@ -5,6 +5,7 @@
  * Full license description available at: https://github.com/jahrim/PPS-22-chess/blob/master/LICENSE
  */
 package io.github.chess.model
+import io.github.chess.model.rules.ChessRule
 
 /** Represents the particular piece of the pawn. */
 trait Pawn extends Piece
@@ -19,6 +20,10 @@ object Pawn:
   def apply(): Pawn = SimplePawn()
 
   private case class SimplePawn() extends Pawn:
+
+    override val rule: ChessRule = ???
+
+    // TODO da rimuovere
     override def findMoves(position: Position): Set[Position] =
       List
         .iterate(0, 8)(_ + 1)
