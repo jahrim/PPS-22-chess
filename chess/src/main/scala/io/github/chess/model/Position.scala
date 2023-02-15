@@ -60,13 +60,13 @@ object Position:
    *         the chess board
    */
   given Conversion[Position, (Int, Int)] = position =>
-    (Rank.values.length - position.rank.ordinal - 1, position.file.ordinal)
+    (position.file.ordinal, position.rank.ordinal)
 
   /** Reverse of [[given_Conversion_Position_Int_Int]]. */
   given Conversion[(Int, Int), Position] = chessCoords =>
     Position(
       File.fromOrdinal(chessCoords._1),
-      Rank.fromOrdinal(Rank.values.length - chessCoords._2 - 1)
+      Rank.fromOrdinal(chessCoords._2)
     )
 
   /**
