@@ -32,4 +32,6 @@ object Move:
    */
   def apply(from: Position, to: Position): Move = SimpleMove(from, to)
 
-  private case class SimpleMove(override val from: Position, override val to: Position) extends Move
+  private case class SimpleMove(override val from: Position, override val to: Position)
+      extends Move:
+    override def toString: String = s"${this.from}${this.to}"

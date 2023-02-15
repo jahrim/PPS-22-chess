@@ -20,3 +20,25 @@ trait ChessGameStatus:
   // TODO: consider these
   // def gameConfiguration: GameConfiguration
   // def timeRemaining: Time
+
+/** Companion object of [[ChessGameStatus]]. */
+object ChessGameStatus:
+  /**
+   * @param chessBoard the chess board of the game
+   * @param history the history of the moves executed in the game
+   * @param initialTurn the team who is playing first
+   * @return a state
+   */
+  def apply(
+      chessBoard: ChessBoard,   //TODO: add default argument for standard chess board initial disposition
+      history: ChessGameHistory = ChessGameHistory(),
+      initialTurn: Team = Team.WHITE
+  ): ChessGameStatus =
+    BasicChessGameStatus(chessBoard, history, initialTurn)
+
+  /** Basic implementation of a [[ChessGameStatus]]. */
+  private case class BasicChessGameStatus(
+      chessBoard: ChessBoard,
+      history: ChessGameHistory,
+      currentTurn: Team
+  ) extends ChessGameStatus

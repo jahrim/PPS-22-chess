@@ -49,3 +49,5 @@ enum Rank:
   def down(): Rank = this match
     case first: Rank if first.ordinal == 0 => this
     case _                                 => Rank.fromOrdinal(this.ordinal - 1)
+
+  override def toString: String = (this.ordinal + 1).toString

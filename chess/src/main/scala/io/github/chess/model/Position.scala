@@ -86,3 +86,5 @@ object Position:
     override def fileForward(): Position = Position(file.forward(), rank)
 
     override def fileBackward(): Position = Position(file.backward(), rank)
+
+    override def toString: String = s"${this.file}${this.rank}"

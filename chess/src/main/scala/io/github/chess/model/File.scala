@@ -48,3 +48,5 @@ enum File:
   def backward(): File = this match
     case A => this
     case _ => File.fromOrdinal(this.ordinal - 1)
+
+  override def toString: String = ('a'.charValue() + this.ordinal).toChar.toString
