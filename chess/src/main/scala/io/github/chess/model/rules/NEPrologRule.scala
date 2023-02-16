@@ -7,4 +7,4 @@
 package io.github.chess.model.rules
 
 /** Class representing the prolog rule that finds all moves in the North-East direction. */
-case class NEPrologRule() extends PrologRule("ne_move") {}
+class NEPrologRule extends PrologRule("ne_move") with InsideBoardRule()
