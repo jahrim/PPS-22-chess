@@ -6,7 +6,7 @@
  */
 package io.github.chess.model.rules
 
-import io.github.chess.model.{Move, Position}
+import io.github.chess.model.{ChessGameStatus, Move, Position}
 
 /** Represents the chess rule that can find all the moves in diagonal directions, analyzing the status. */
 class DiagonalRule extends ChessRule:
@@ -15,18 +15,12 @@ class DiagonalRule extends ChessRule:
   private val northEastRule = NEPrologRule()
   private val southWestRule = SouthWestRule()
   private val southEastRule = SouthEastRule()
+  private val rules = Set(northWestRule, northEastRule, southEastRule, southWestRule)
 
-  override def findMoves(position: Position): Set[Move] =
-    reduceInsideBoard(northWestRule.findPositions(position), position) ++
-      reduceInsideBoard(northEastRule.findPositions(position), position) ++
-      reduceInsideBoard(southWestRule.findPositions(position), position) ++
-      reduceInsideBoard(southEastRule.findPositions(position), position)
-
-  private def reduceInsideBoard(
-      infiniteDirectionPositions: LazyList[(Int, Int)],
-      position: Position
-  ): Set[Move] =
-    infiniteDirectionPositions
-      .takeWhile((x, y) => x >= 0 && x <= 7 && y >= 0 && y <= 7)
-      .map(Move(position, _))
-      .toSet
+  override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
+    rules.flatMap(
+      _.findPositions(position)
+        .takeWhile((x, y) => !status.chessBoard.pieces.contains((x, y)))
+        .map(Move(position, _))
+        .toSet
+    )
