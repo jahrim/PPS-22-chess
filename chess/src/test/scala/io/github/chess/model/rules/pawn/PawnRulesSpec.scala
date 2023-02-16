@@ -24,8 +24,8 @@ class PawnRulesSpec extends AbstractSpec:
     all(moves) should have(Symbol("to")(pawnNextPosition))
   }
 
-  "Double move rule" should """let move the pawn only to the rank two steps ahead of the pawn's current position, "
-    without changing its file""" in {
+  "Double move rule" should "let move the pawn only to the rank two steps ahead of the pawn's current position, " +
+    "without changing its file" in {
     val moves = doubleStepRule.findMoves(pawnInitialPosition)
     moves should have size 1
     all(moves) should have(Symbol("to")(pawnDoubleStepPosition))
