@@ -7,19 +7,21 @@
 package io.github.chess.model.rules
 
 import io.github.chess.AbstractSpec
-import io.github.chess.model.Position
+import io.github.chess.model.{ChessBoard, ChessGameStatus, Position}
+import io.vertx.core.Vertx
 
 /** Test suite for [[Bishop]]. */
 class BishopRuleSpec extends AbstractSpec:
 
-  private val initialPosition: Position = (1, 1)
-  private val northWestPositions: Set[Position] = Set((0, 2))
+  private val initialPosition: Position = (2, 3)
+  private val northWestPositions: Set[Position] = Set((1, 4), (0, 5))
   private val northEastPositions: Set[Position] =
-    Set((2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7))
-  private val southWestPositions: Set[Position] = Set((0, 0))
-  private val southEastPositions: Set[Position] = Set((2, 0))
+    Set((3, 4), (4, 5), (5, 6), (6, 7))
+  private val southWestPositions: Set[Position] = Set((1, 2))
+  private val southEastPositions: Set[Position] = Set((3, 2), (4, 1), (5, 0))
   private val diagonalRule = DiagonalRule()
-  private val moves = diagonalRule.findMoves(initialPosition).map(_.to)
+  private val chessGameStatus = ChessGameStatus(ChessBoard(Vertx.vertx()))
+  private val moves = diagonalRule.findMoves(initialPosition, chessGameStatus).map(_.to)
 
   "The diagonal rule" should "let move the bishop in all the north west positions" in {
     moves should contain allElementsOf northWestPositions

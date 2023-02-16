@@ -6,8 +6,8 @@
  */
 package io.github.chess.model.rules
 
-import io.github.chess.model.{Move, Position}
+import io.github.chess.model.{ChessGameStatus, Move, Position}
 
 trait ChessRule:
 
-  def findMoves(position: Position): Set[Move]
+  def findMoves(position: Position, status: ChessGameStatus): Set[Move]
