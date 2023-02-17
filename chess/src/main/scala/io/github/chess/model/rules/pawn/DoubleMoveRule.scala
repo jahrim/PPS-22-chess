@@ -6,13 +6,7 @@
  */
 package io.github.chess.model.rules.pawn
 
-import io.github.chess.model.{Move, Position}
-import io.github.chess.model.rules.ChessRule
+import io.github.chess.model.rules.PresenceRule
 
-/** Implementation of the Pawn rule that makes it move two steps forward as the first move. */
-//TODO Check that it's actually its first move.
-class DoubleMoveRule extends ChessRule:
-
-  override def findMoves(position: Position): Set[Move] = Set(
-    Move(position, position.rankUp().rankUp())
-  )
+/** Implementation of the rule that makes move a piece two positions forward in the column, if there is no other piece there. */
+class DoubleMoveRule extends TwoStepRule with PresenceRule
