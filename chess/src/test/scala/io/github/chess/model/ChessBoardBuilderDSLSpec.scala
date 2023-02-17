@@ -7,9 +7,10 @@
 package io.github.chess.model
 
 import io.github.chess.util.option.OptionExtension.anyToOptionOfAny
-import io.github.chess.model.{ChessBoardBuilder, ChessBoard}
+import io.github.chess.model.{ChessBoard, ChessBoardBuilder}
 import io.github.chess.model.ChessBoardBuilder.*
 import io.github.chess.AbstractSpec
+import io.github.chess.model.pieces.Pawn
 
 /** Test suit for the [[ChessBoardBuilder]]. */
 class ChessBoardBuilderDSLSpec extends AbstractSpec:

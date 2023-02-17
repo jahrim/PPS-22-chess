@@ -8,6 +8,7 @@ package io.github.chess.model
 
 import io.github.chess.util.option.OptionExtension.given
 import io.github.chess.model.ChessBoard
+import io.github.chess.model.pieces.{Pawn, Piece}
 import io.github.chess.util.exception.Require
 
 import scala.annotation.targetName

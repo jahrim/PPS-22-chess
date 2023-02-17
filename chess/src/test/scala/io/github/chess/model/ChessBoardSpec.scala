@@ -10,6 +10,7 @@ import io.github.chess.util.option.OptionExtension.anyToOptionOfAny
 import io.github.chess.model.ChessBoard
 import io.github.chess.model.ChessBoard.*
 import io.github.chess.AbstractSpec
+import io.github.chess.model.pieces.{Pawn, Piece}
 
 /** Test suit for the [[ChessBoard]]. */
 class ChessBoardSpec extends AbstractSpec:

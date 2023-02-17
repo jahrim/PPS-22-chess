@@ -7,7 +7,8 @@
 package io.github.chess.ports
 
 import io.github.chess.events.Event
-import io.github.chess.model.{ChessGameStatus, Move, Position}
+import io.github.chess.model.moves.Move
+import io.github.chess.model.{ChessGameStatus, Position}
 import io.vertx.core.eventbus.Message
 import io.vertx.core.{Future, Handler}
 

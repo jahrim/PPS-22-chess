@@ -6,20 +6,29 @@
  */
 package io.github.chess.model
 
-import io.github.chess.AbstractSpec
+import io.github.chess.{AbstractSpec, model}
 import io.github.chess.model.ChessGameHistory
-import io.github.chess.model.Pawn
 import io.github.chess.model.Position
 import io.github.chess.model.Position.given
+import io.github.chess.model.moves.Move
+import io.github.chess.model.pieces.{Pawn, Piece}
 
 /** Test suite for the [[ChessGameHistory]]. */
 class ChessGameHistorySpec extends AbstractSpec:
   private val piece: Piece = Pawn()
   private val moves: Seq[Move] =
-    Seq(Move((0, 0), (0, 1)), Move((0, 1), (0, 2)), Move((0, 2), (0, 3)))
+    Seq(
+      model.moves.Move((0, 0), (0, 1)),
+      model.moves.Move((0, 1), (0, 2)),
+      model.moves.Move((0, 2), (0, 3))
+    )
   private val otherPiece: Piece = Pawn()
   private val otherMoves: Seq[Move] =
-    Seq(Move((4, 0), (4, 1)), Move((4, 1), (4, 2)), Move((4, 2), (4, 3)))
+    Seq(
+      model.moves.Move((4, 0), (4, 1)),
+      model.moves.Move((4, 1), (4, 2)),
+      model.moves.Move((4, 2), (4, 3))
+    )
 
   "The history of moves in a chess game" should "be initially empty" in {
     val gameHistory: ChessGameHistory = ChessGameHistory()

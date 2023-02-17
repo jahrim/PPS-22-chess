@@ -9,6 +9,7 @@ package io.github.chess.model
 import io.github.chess.util.option.OptionExtension.anyToOptionOfAny
 import io.github.chess.ports.ChessPort
 import io.github.chess.events.Event
+import io.github.chess.model.moves.Move
 import io.vertx.core.eventbus.Message
 import io.vertx.core.{Future, Handler, Vertx}
 

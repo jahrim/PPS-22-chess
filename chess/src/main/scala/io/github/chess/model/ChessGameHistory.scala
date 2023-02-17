@@ -6,6 +6,9 @@
  */
 package io.github.chess.model
 
+import io.github.chess.model.moves.Move
+import io.github.chess.model.pieces.Piece
+
 /** The history of the moves executed in a chess game. */
 trait ChessGameHistory:
   /**

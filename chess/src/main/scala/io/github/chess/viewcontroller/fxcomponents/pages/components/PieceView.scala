@@ -7,7 +7,8 @@
 package io.github.chess.viewcontroller.fxcomponents.pages.components
 
 import io.github.chess.model.Team.WHITE
-import io.github.chess.model.{Piece, Pawn, Team}
+import io.github.chess.model.pieces.{Pawn, Piece}
+import io.github.chess.model.Team
 import io.github.chess.viewcontroller.fxcomponents.pages.components.PieceView
 import io.github.chess.viewcontroller.configuration.InterfaceConfiguration.Images
 import scalafx.scene.image.Image

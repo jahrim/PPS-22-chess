@@ -10,6 +10,7 @@ import io.github.chess.util.option.OptionExtension.anyToOptionOfAny
 import io.github.chess.model.{ChessBoard, ChessBoardBuilder}
 import io.github.chess.model.ChessBoardBuilder.*
 import io.github.chess.AbstractSpec
+import io.github.chess.model.pieces.{Pawn, Piece}
 
 import java.lang.IllegalStateException
 

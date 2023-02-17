@@ -6,7 +6,9 @@
  */
 package io.github.chess.viewcontroller.fxcomponents.controllers
 
-import io.github.chess.model.{ChessBoard, Move, Piece, Position}
+import io.github.chess.model.moves.Move
+import io.github.chess.model.pieces.Piece
+import io.github.chess.model.{ChessBoard, Position, moves}
 import io.github.chess.util.stateful.StatefulSystem
 import io.github.chess.viewcontroller.{ChessApplicationComponent, ChessApplicationContext}
 import io.github.chess.viewcontroller.fxutils.FXUtils.*
