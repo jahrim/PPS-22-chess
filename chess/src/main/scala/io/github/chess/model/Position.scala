@@ -70,6 +70,23 @@ object Position:
     )
 
   /**
+   * Finds all the horizontal positions between 2 specific positions.
+   * @param p1 position 1
+   * @param p2 position 2
+   * @return [[Seq]] of all the horizontal position between them
+   */
+  def findHorizontalBetween(p1: Position, p2: Position): Seq[Position] =
+    if p1.rank == p2.rank then
+      val (bigger, smaller) =
+        if (p1.file.ordinal > p2.file.ordinal)
+          (p1.file.ordinal, p2.file.ordinal)
+        else
+          (p2.file.ordinal, p1.file.ordinal)
+      for (value <- (smaller + 1) until bigger)
+        yield Position(File.fromOrdinal(value), p1.rank)
+    else Seq.empty
+
+  /**
    * Creates a position, using its file and its rank.
    * @param file [[File]] of the position
    * @param rank [[Rank]] of the position

@@ -9,14 +9,14 @@ package io.github.chess.model.rules
 import io.github.chess.model.{ChessGameStatus, Move, Position}
 import io.github.chess.util.Combinator
 
-/** Represents the chess rule that can find all the moves executing an L direction movement. */
-class LRule extends ChessRule:
+/** Represents the chess rule that can find the moves in all the directions stepped by one. */
+class KingMovementRule extends ChessRule:
 
-  private final val values = Set(-1, 1, -2, 2)
+  private final val values = Set(0, -1, 1)
 
   override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
     Combinator
-      .generatePositions(values, (x, y) => x.abs != y.abs, position)
+      .generatePositions(values, (x, y) => !(x == 0 && y == 0), position)
       .filter((x, y) => x >= 0 && x <= 7 && y >= 0 && y <= 7)
       .filter((x, y) => !status.chessBoard.pieces.contains((x, y)))
       .map(Move(position, _))
