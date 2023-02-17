@@ -14,9 +14,9 @@ import io.github.chess.model.pieces.{Pawn, Piece}
 
 /** Test suit for the [[ChessBoard]]. */
 class ChessBoardSpec extends AbstractSpec:
-  val piece: Piece = Pawn()
+  val piece: Piece = Pawn(Team.WHITE)
   val position: Position = Position(File.A, Rank._1)
-  val otherPiece: Piece = Pawn()
+  val otherPiece: Piece = Pawn(Team.BLACK)
   val otherPosition: Position = Position(File.A, Rank._8)
 
   "A chess board" should s"have ${ChessBoard.NumberOfPositions} possible positions" in {

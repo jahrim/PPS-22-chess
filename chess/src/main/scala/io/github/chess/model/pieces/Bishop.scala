@@ -7,23 +7,9 @@
 package io.github.chess.model.pieces
 
 import io.github.chess.model.rules.chess.{ChessRule, DiagonalRule}
-import io.github.chess.model.Position
+import io.github.chess.model.Team
 
 /** Represents the particular piece of the bishop. */
-trait Bishop extends Piece
+case class Bishop(override val team: Team) extends Piece(team):
 
-/** Factory for [[Bishop]] instances. */
-object Bishop:
-
-  /**
-   * Creates a new bishop.
-   * @return a new [[Bishop]]
-   */
-  def apply(): Bishop = SimpleBishop()
-
-  private case class SimpleBishop() extends Bishop:
-
-    override val rule: ChessRule = DiagonalRule()
-
-    // TODO da rimuovere
-    override def findMoves(position: Position): Set[Position] = ???
+  override val rule: ChessRule = DiagonalRule()

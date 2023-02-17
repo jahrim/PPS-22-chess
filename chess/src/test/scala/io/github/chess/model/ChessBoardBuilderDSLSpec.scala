@@ -31,10 +31,10 @@ class ChessBoardBuilderDSLSpec extends AbstractSpec:
       .foreach {
         case (position, piece) if Set(Rank._8, Rank._7)(position.rank) =>
           piece shouldBe defined
-          piece.foreach(_ shouldEqual Pawn( /*TODO black*/ ))
+          piece.foreach(_ shouldEqual Pawn(Team.BLACK))
         case (position, piece) if Set(Rank._1, Rank._2)(position.rank) =>
           piece shouldBe defined
-          piece.foreach(_ shouldEqual Pawn( /*TODO white*/ ))
+          piece.foreach(_ shouldEqual Pawn(Team.WHITE))
         case (_, piece) => piece shouldNot be(defined)
       }
   }

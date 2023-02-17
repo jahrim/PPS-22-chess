@@ -31,7 +31,7 @@ class ChessBoardBuilderSpec extends AbstractSpec:
         .nextRow()
         .setNextCell(None)
         .setNextCell(None)
-        .setNextCell(whitePawn)
+        .setNextCell(blackPawn)
     chessBoardBuilder.build shouldEqual ChessBoard {
       P | P | * | p | * | * | * | *
       * | * | p | * | * | * | * | *
@@ -71,7 +71,7 @@ class ChessBoardBuilderSpec extends AbstractSpec:
   }
 
   /** @return a new white pawn */
-  private def whitePawn: Piece = Pawn( /*TODO white*/ )
+  private def whitePawn: Piece = Pawn(Team.WHITE)
 
   /** @return a new black pawn */
-  private def blackPawn: Piece = Pawn( /*TODO black*/ )
+  private def blackPawn: Piece = Pawn(Team.BLACK)

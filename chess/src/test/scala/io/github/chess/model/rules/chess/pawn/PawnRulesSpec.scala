@@ -9,7 +9,7 @@ package io.github.chess.model.rules.chess.pawn
 import io.github.chess.AbstractSpec
 import io.github.chess.model.pieces.Pawn
 import io.github.chess.model.rules.chess.pawn.DoubleMoveRule
-import io.github.chess.model.{ChessBoard, ChessGameStatus, Position}
+import io.github.chess.model.{ChessBoard, ChessGameStatus, Position, Team}
 
 /** Test suit for all Pawn movement rules. */
 class PawnRulesSpec extends AbstractSpec:
@@ -19,7 +19,7 @@ class PawnRulesSpec extends AbstractSpec:
   val pawnDoubleStepPosition: Position = (0, 3)
   val doubleStepRule: DoubleMoveRule = DoubleMoveRule()
   private val chessBoard: ChessBoard = ChessBoard.empty
-  chessBoard.setPiece((0, 1), Pawn())
+  chessBoard.setPiece((0, 1), Pawn(Team.WHITE))
   private val status = ChessGameStatus(chessBoard)
 
   "The Forward rule" should "let move the pawn only to the following rank, without changing its file" in {

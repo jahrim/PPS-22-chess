@@ -18,6 +18,6 @@ class PawnCaptureRule extends ChessRule:
     (status.currentTurn match
       case Team.WHITE => WhitePawnCaptureRule()
       case Team.BLACK => BlackPawnCaptureRule()
-    ).findPositions(position).map(moves.Move(position, _)).toSet
+    ).findPositions(position).map(Move(position, _)).toSet
 
-    // Add check that there is an adversary piece in the destination position
+    // TODO Add check that there is an adversary piece in the destination position

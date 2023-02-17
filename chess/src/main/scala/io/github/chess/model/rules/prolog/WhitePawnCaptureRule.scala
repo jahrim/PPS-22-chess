@@ -9,4 +9,4 @@ package io.github.chess.model.rules.prolog
 import io.github.chess.model.rules.prolog.PrologRule
 
 /** Class representing the prolog rule that finds all capture moves of a white pawn. */
-class WhitePawnCaptureRule extends PrologRule("white_pawn_capture")
+class WhitePawnCaptureRule extends PrologRule("white_pawn_capture") with InsideBoardRule()

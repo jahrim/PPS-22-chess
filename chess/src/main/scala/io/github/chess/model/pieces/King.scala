@@ -6,5 +6,10 @@
  */
 package io.github.chess.model.pieces
 
+import io.github.chess.model.Team
+import io.github.chess.model.rules.chess.ChessRule
+
 /** Represents the particular piece of the king. */
-trait King extends Piece
+case class King(override val team: Team) extends Piece(team):
+
+  override val rule: ChessRule = ???

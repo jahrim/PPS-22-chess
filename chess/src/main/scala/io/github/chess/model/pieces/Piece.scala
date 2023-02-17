@@ -7,18 +7,10 @@
 package io.github.chess.model.pieces
 
 import io.github.chess.model.rules.chess.ChessRule
-import io.github.chess.model.{ChessBoard, Position}
+import io.github.chess.model.{ChessBoard, Team}
 
 /** Represents every piece of the [[ChessBoard]]. */
-trait Piece:
+trait Piece(val team: Team):
 
   /** Returns the [[ChessRule]] able to give all the possible moves from a starting position. */
   def rule: ChessRule
-
-  // TODO da rimuovere
-  /**
-   * Returns all the possibile positions that the piece can go to, considering only its own rules.
-   * @param position source [[Position]]
-   * @return a [[Set]] of [[Position]]
-   */
-  def findMoves(position: Position): Set[Position]

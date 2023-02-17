@@ -90,41 +90,41 @@ object ChessBoardBuilder:
   object DSL:
     // TODO: white pieces
     /** A white pawn. */
-    def P(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn()
+    def P(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.WHITE)
 
     /** A white knight. */
-    def N(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn()
+    def N(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.WHITE)
 
     /** A white bishop. */
-    def B(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn()
+    def B(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.WHITE)
 
     /** A white rook. */
-    def R(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn()
+    def R(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.WHITE)
 
     /** A white queen. */
-    def Q(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn()
+    def Q(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.WHITE)
 
     /** A white king. */
-    def K(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn()
+    def K(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.WHITE)
 
     // TODO: black pieces
     /** A black pawn. */
-    def p(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn()
+    def p(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.BLACK)
 
     /** A black knight. */
-    def n(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn()
+    def n(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.BLACK)
 
     /** A black bishop. */
-    def b(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn()
+    def b(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.BLACK)
 
     /** A black rook. */
-    def r(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn()
+    def r(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.BLACK)
 
     /** A black queen. */
-    def q(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn()
+    def q(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.BLACK)
 
     /** A black king. */
-    def k(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn()
+    def k(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.BLACK)
 
     /** An empty cell in the chess board. */
     @targetName("emptyCell")

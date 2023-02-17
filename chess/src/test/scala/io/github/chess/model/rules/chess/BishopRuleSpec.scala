@@ -8,7 +8,7 @@ package io.github.chess.model.rules.chess
 
 import io.github.chess.AbstractSpec
 import io.github.chess.model.pieces.Pawn
-import io.github.chess.model.{ChessBoard, ChessGameStatus, Position}
+import io.github.chess.model.{ChessBoard, ChessGameStatus, Position, Team}
 
 /** Test suite for [[Bishop]]. */
 class BishopRuleSpec extends AbstractSpec:
@@ -21,7 +21,7 @@ class BishopRuleSpec extends AbstractSpec:
   private val southEastPositions: Set[Position] = Set((3, 2), (4, 1), (5, 0))
   private val diagonalRule = DiagonalRule()
   private val chessBoard: ChessBoard = ChessBoard.empty
-  chessBoard.setPiece((0, 1), Pawn())
+  chessBoard.setPiece((0, 1), Pawn(Team.WHITE))
   private val chessGameStatus = ChessGameStatus(chessBoard)
   private val moves = diagonalRule.findMoves(initialPosition, chessGameStatus).map(_.to)
 

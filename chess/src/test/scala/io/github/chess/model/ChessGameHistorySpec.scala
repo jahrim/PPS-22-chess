@@ -15,14 +15,14 @@ import io.github.chess.model.pieces.{Pawn, Piece}
 
 /** Test suite for the [[ChessGameHistory]]. */
 class ChessGameHistorySpec extends AbstractSpec:
-  private val piece: Piece = Pawn()
+  private val piece: Piece = Pawn(Team.WHITE)
   private val moves: Seq[Move] =
     Seq(
       model.moves.Move((0, 0), (0, 1)),
       model.moves.Move((0, 1), (0, 2)),
       model.moves.Move((0, 2), (0, 3))
     )
-  private val otherPiece: Piece = Pawn()
+  private val otherPiece: Piece = Pawn(Team.WHITE)
   private val otherMoves: Seq[Move] =
     Seq(
       model.moves.Move((4, 0), (4, 1)),
