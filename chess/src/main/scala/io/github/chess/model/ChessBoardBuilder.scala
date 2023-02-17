@@ -133,8 +133,11 @@ object ChessBoardBuilder:
     @targetName("nextRow")
     def **(using b: ChessBoardBuilder): ChessBoardBuilder = **()
 
-    /** Skip the next cells of the row, making them empty. */
-    @targetName("nextRow")
+    /**
+     * Skip the next cells of the row. Can be repeated multiple times.
+     * @param repeats the number of rows to skip, including this row
+     */
+    @targetName("nextRowRepeated")
     def **(repeats: Int = 1)(using b: ChessBoardBuilder): ChessBoardBuilder = b - repeats
 
     extension (self: ChessBoardBuilder)
