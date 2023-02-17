@@ -8,12 +8,13 @@ package io.github.chess.viewcontroller.fxcomponents.controllers
 
 import io.github.chess.model.{ChessBoard, Move, Piece, Position}
 import io.github.chess.util.stateful.StatefulSystem
+import io.github.chess.viewcontroller.{ChessApplicationComponent, ChessApplicationContext}
 import io.github.chess.viewcontroller.fxutils.FXUtils.*
 import io.github.chess.viewcontroller.fxcomponents.controllers.template.Controller
 import io.github.chess.viewcontroller.fxcomponents.controllers.ChessBoardController.State
 import io.github.chess.viewcontroller.fxcomponents.controllers.ChessBoardController.State.*
 import io.github.chess.viewcontroller.fxcomponents.pages.components.{CellView, PieceView}
-import io.vertx.core.Vertx
+import io.vertx.core.Future
 import javafx.scene.input.MouseEvent
 import javafx.scene.layout.GridPane
 import javafx.scene.layout.Pane
@@ -28,22 +29,41 @@ import scalafx.stage.Stage
  */
 case class ChessBoardController private (
     private val cells: Map[Position, CellView]
-)(using override protected val stage: Stage)
-    extends Controller
-    with StatefulSystem(State.NoneSelected):
-  // TODO: temporary. Instead of the chessboard, here there should be the chess engine api
-  private val chessBoard: ChessBoard = ChessBoard(Vertx.vertx())
+)(override protected val stage: Stage)(using
+    override protected val context: ChessApplicationContext
+) extends Controller
+    with StatefulSystem(State.NoneSelected)
+    with ChessApplicationComponent:
+  private var chessBoardBelief: Map[Position, Piece] = Map.empty
   this.cells.values.foreach(cell => cell.setOnMouseClicked { onCellClicked(_, cell) })
-  Platform.runLater { repaint(this.chessBoard.pieces) }
+  repaint()
+
+  /** Retrieves the state of the chess engine service and shows it. */
+  def repaint(): Unit =
+    this.context.chessEngineProxy.getState.onSuccess { state =>
+      this.repaint(state.chessBoard.pieces)
+    }
 
   /**
    * Shows the specified state of the chess board.
-   * @param pieces the specified state of the chess board
+   * @param chessBoard the specified state of the chess board
    */
-  def repaint(pieces: Map[Position, Piece]): Unit =
-    // TODO: retrieve the team of the pieces somehow from the model
-    pieces.foreach { (position, piece) =>
-      this.cells.get(position).foreach { _.setPiece(PieceView(piece)) }
+  def repaint(chessBoard: Map[Position, Piece]): Unit =
+    Platform.runLater {
+      // TODO: retrieve the team of the pieces somehow from the model
+      this.clearPieces()
+      this.chessBoardBelief = chessBoard
+      this.chessBoardBelief.foreach { (position, piece) =>
+        this.cells.get(position).foreach { _.setPiece(PieceView(piece)) }
+      }
+    }
+
+  /** Removes all pieces from the chess board view. */
+  private def clearPieces(): Unit =
+    ChessBoard.Positions.foreach { position =>
+      this.cells.get(position).foreach {
+        _.removePiece()
+      }
     }
 
   /**
@@ -57,34 +77,33 @@ case class ChessBoardController private (
       case PieceSelected(selectedCell, availableMoves) =>
         availableMoves.get(clickedCell.position) match
           case Some(selectedMove) =>
-            // TODO: temporary. Piece removal will be handled by the repaint through the subscription to the state changes
-            selectedCell.removePiece()
-            this.chessBoard.move(selectedMove)
+            this.context.chessEngineProxy.applyMove(selectedMove)
             enter(NoneSelected)
           case None => this.selectCell(clickedCell)
     // TODO: temporary. Repaint will be called in the subscription to the state changes
-    Platform.runLater { repaint(this.chessBoard.pieces) }
+    repaint()
 
   /**
    * Select the specified cell, checking if any piece was selected.
    * @param cell the specified cell
    */
   private def selectCell(cell: CellView): Unit =
-    this.chessBoard.pieces.get(cell.position).map(_ => cell) match
+    this.chessBoardBelief.get(cell.position).map(_ => cell) match
       case Some(selectedCell) =>
-        enter(PieceSelected(selectedCell, getAvailableMoves(selectedCell)))
+        getAvailableMoves(selectedCell).onSuccess { availableMoves =>
+          enter(PieceSelected(selectedCell, availableMoves))
+        }
       case None =>
         enter(NoneSelected)
 
   /**
    * @param selectedCell the specified cell
-   * @return the available moves of the piece in the specified cell
+   * @return a future containing the available moves of the piece in the specified cell
    */
-  private def getAvailableMoves(selectedCell: CellView): Map[Position, Move] =
-    this.chessBoard
+  private def getAvailableMoves(selectedCell: CellView): Future[Map[Position, Move]] =
+    this.context.chessEngineProxy
       .findMoves(selectedCell.position)
-      .map(position => position -> Move(selectedCell.position, position)) // TODO use ChessPort APIs
-      .toMap[Position, Move]
+      .map(moves => moves.map(move => move.to -> move).toMap[Position, Move])
 
   override protected def enterBehavior(state: State): Unit = state match
     case NoneSelected =>
@@ -119,10 +138,12 @@ object ChessBoardController:
    * @return a new chess board controller
    * @note the specified grid pane should be 8 by 8 and each cell should contain a [[javafx.scene.layout.Pane]].
    */
-  def fromGridPane(grid: GridPane)(using stage: Stage): ChessBoardController =
+  def fromGridPane(
+      grid: GridPane
+  )(stage: Stage)(using context: ChessApplicationContext): ChessBoardController =
     ChessBoardController(
       grid.cells
         .collect { case cell: GridCell[Pane] => CellView(cell); }
         .map { c => c.position -> c }
         .toMap[Position, CellView]
-    )(using stage)
+    )(stage)(using context)

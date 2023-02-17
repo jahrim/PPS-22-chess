@@ -7,11 +7,9 @@
 package io.github.chess.viewcontroller.fxcomponents.pages.components
 
 import io.github.chess.model.Position
-import io.github.chess.model.Position.given
 import io.github.chess.util.number.NumberExtension.*
 import io.github.chess.viewcontroller.configuration.InterfaceConfiguration.{Colors, Images}
 import io.github.chess.viewcontroller.fxcomponents.pages.components.CellView.Layer
-import io.github.chess.viewcontroller.fxcomponents.controllers.template.Controller
 import io.github.chess.viewcontroller.fxcomponents.pages.components.CellView.{
   MOVE_EFFECT_RESCALING,
   PIECE_RESCALING
@@ -27,10 +25,8 @@ import scalafx.stage.Stage
 /**
  * Handles the view of a cell of the chess board view.
  * @param cell     the cell of the chess board view
- * @param stage    the stage where the application is displayed
  */
-case class CellView(cell: GridCell[Pane])(using override protected val stage: Stage)
-    extends Controller:
+case class CellView(cell: GridCell[Pane]):
   export cell.content.setOnMouseClicked
 
   private var layers: Map[Layer, ImageView] = Map()

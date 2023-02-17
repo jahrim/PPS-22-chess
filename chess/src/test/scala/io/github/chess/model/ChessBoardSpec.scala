@@ -6,42 +6,71 @@
  */
 package io.github.chess.model
 
+import io.github.chess.util.option.OptionExtension.anyToOptionOfAny
+import io.github.chess.model.ChessBoard
+import io.github.chess.model.ChessBoard.*
 import io.github.chess.AbstractSpec
-import io.vertx.core.Vertx
 
 /** Test suit for the [[ChessBoard]]. */
 class ChessBoardSpec extends AbstractSpec:
+  val piece: Piece = Pawn()
+  val position: Position = Position(File.A, Rank._1)
+  val otherPiece: Piece = Pawn()
+  val otherPosition: Position = Position(File.A, Rank._8)
 
-  val pawnInitialPosition: Position = Position(File.A, Rank._2)
-  val pawnNextPosition: Position = pawnInitialPosition.rankUp()
-  val firstMove: Move = Move(pawnInitialPosition, pawnNextPosition)
-  val chessBoard: ChessBoard = ChessBoard(Vertx.vertx())
-
-  "The chess board" should "initially have a piece in the position a2" in {
-    chessBoard.pieces.get(pawnInitialPosition) should be(defined)
+  "A chess board" should s"have ${ChessBoard.NumberOfPositions} possible positions" in {
+    ChessBoard.Positions.size shouldEqual ChessBoard.NumberOfPositions
   }
 
-  it should "let you move its pawn from a2 to a3" in {
-    chessBoard.findMoves(pawnInitialPosition) should contain(pawnNextPosition)
+  it should s"have a total of ${ChessBoard.Size} columns (files)" in {
+    ChessBoard.Positions.groupBy(_.rank).foreach(_._2.size shouldEqual ChessBoard.Size)
   }
 
-  it should "see the new position of the pawn, after its move" in {
-    chessBoard.move(firstMove)
-    chessBoard.pieces.get(pawnInitialPosition) shouldNot be(defined)
-    chessBoard.pieces.get(pawnNextPosition) should be(defined)
+  it should s"have a total of ${ChessBoard.Size} rows (ranks)" in {
+    ChessBoard.Positions.groupBy(_.file).foreach(_._2.size shouldEqual ChessBoard.Size)
   }
 
-  // TODO refactor
-//  it should "forbid the player from moving the pieces of the opposite team" in {
-//    chessBoard.move(firstMove)
-//    chessBoard.pieces.get(pawnNextPosition) should be(defined)
-//    val thirdPosition = pawnNextPosition.rankUp()
-//    val secondMove = Move(pawnNextPosition, thirdPosition)
-//    chessBoard.move(secondMove)
-//    chessBoard.pieces.get(pawnNextPosition) should be(defined)
-//    chessBoard.pieces.get(thirdPosition) shouldNot be(defined)
-//  }
+  "An empty chess board" should "initially contain no pieces" in {
+    ChessBoard.empty.pieces shouldBe empty
+  }
 
-  "All the moves" should "be available from the same starting position" in {
-    all(chessBoard.findMoves(pawnInitialPosition)) should have(Symbol("from")(pawnInitialPosition))
+  it should "allow to place a piece on it" in {
+    val chessBoard: ChessBoard = ChessBoard.empty
+    chessBoard.setPiece(position, piece)
+    chessBoard.pieces(position) should be theSameInstanceAs piece
+  }
+
+  it should "allow to place more pieces on it" in {
+    val chessBoard: ChessBoard = ChessBoard.empty
+    chessBoard.setPiece(position, piece)
+    chessBoard.setPiece(otherPosition, otherPiece)
+    chessBoard.pieces(position) should be theSameInstanceAs piece
+    chessBoard.pieces(otherPosition) should be theSameInstanceAs otherPiece
+  }
+
+  it should "allow to replace a piece already present on it" in {
+    val chessBoard: ChessBoard = ChessBoard.empty
+    chessBoard.setPiece(position, piece)
+    chessBoard.update(position -> otherPiece)
+    chessBoard.pieces(position) should be theSameInstanceAs otherPiece
+  }
+
+  it should "allow to remove a piece already present on it" in {
+    val chessBoard: ChessBoard = ChessBoard.empty
+    chessBoard.setPiece(position, piece)
+    chessBoard.removePiece(position)
+    chessBoard.pieces.get(position) shouldNot be(defined)
+  }
+
+  "A chess board at the beginning of a chess game" should "abide to the standard configuration for the chess pieces" in {
+    ChessBoard.standard shouldEqual ChessBoard {
+      r | n | b | q | k | b | n | r
+      p | p | p | p | p | p | p | p
+      * | * | * | * | * | * | * | *
+      * | * | * | * | * | * | * | *
+      * | * | * | * | * | * | * | *
+      * | * | * | * | * | * | * | *
+      P | P | P | P | P | P | P | P
+      R | N | B | Q | K | B | N | R
+    }
   }

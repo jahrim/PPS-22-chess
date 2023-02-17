@@ -6,6 +6,7 @@
  */
 package io.github.chess.viewcontroller.fxutils
 
+import io.github.chess.model.{File, Rank, Position}
 import javafx.scene.Node
 import scalafx.Includes.*
 import scalafx.geometry.Insets
@@ -15,6 +16,14 @@ import scalafx.scene.paint.Color
 
 /** Utility class for ScalaFX. */
 object FXUtils:
+
+  /**
+   * @return a position in the chess board, given a pair of coordinates considering the
+   *         view reference system.
+   */
+  given convertViewReferenceSystemToPosition: Conversion[(Int, Int), Position] = (x, y) =>
+    Position(File.fromOrdinal(x), Rank.fromOrdinal(Rank.values.length - y - 1))
+
   /**
    * Change the color of the specified region to the specified color.
    * @param region the specified region

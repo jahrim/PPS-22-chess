@@ -4,10 +4,12 @@
  *
  * Full license description available at: https://github.com/jahrim/PPS-22-chess/blob/master/LICENSE
  */
-package io.github.chess.adapters
+package io.github.chess.viewcontroller
 
 import io.github.chess.ports.ChessPort
-import io.vertx.core.Vertx
+import scalafx.stage.Stage
 
-/** Helps the view communicate with the chess game. */
-class ChessAdapter(override val port: ChessPort) extends AbstractAdapter[ChessPort]
+/** Component of this chess application, either logical or graphical. */
+trait ChessApplicationComponent:
+  /** @return the context of this application */
+  protected def context: ChessApplicationContext

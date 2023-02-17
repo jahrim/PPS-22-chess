@@ -23,25 +23,25 @@ class ChessGameHistorySpec extends AbstractSpec:
 
   "The history of moves in a chess game" should "be initially empty" in {
     val gameHistory: ChessGameHistory = ChessGameHistory()
-    gameHistory.all should be(empty)
+    gameHistory.all shouldBe empty
   }
 
   it should "remember the moves after they have been saved in it" in {
     val gameHistory: ChessGameHistory = ChessGameHistory()
     moves.foreach { move => gameHistory.save(piece, move) }
-    gameHistory.all should be(moves)
+    gameHistory.all shouldEqual moves
   }
 
   it should "remember the moves of different pieces after they have been saved in it" in {
     val gameHistory: ChessGameHistory = ChessGameHistory()
     moves.foreach { move => gameHistory.save(piece, move) }
     otherMoves.foreach { move => gameHistory.save(otherPiece, move) }
-    gameHistory.all should be(moves :++ otherMoves)
+    gameHistory.all shouldEqual moves :++ otherMoves
   }
 
   it should "allow to query the moves of a specific piece after they have been saved in it" in {
     val gameHistory: ChessGameHistory = ChessGameHistory()
     moves.foreach { move => gameHistory.save(piece, move) }
     otherMoves.foreach { move => gameHistory.save(otherPiece, move) }
-    gameHistory.ofPiece(otherPiece) should be(otherMoves)
+    gameHistory.ofPiece(otherPiece) shouldEqual otherMoves
   }

@@ -6,7 +6,8 @@
  */
 package io.github.chess.viewcontroller.fxcomponents.controllers
 
-import io.github.chess.viewcontroller.ChessGameInterface.given
+import io.github.chess.viewcontroller.ChessApplication.given
+import io.github.chess.viewcontroller.{ChessApplicationComponent, ChessApplicationContext}
 import io.github.chess.viewcontroller.fxcomponents.controllers.ChessBoardController
 import io.github.chess.viewcontroller.fxcomponents.controllers.template.FXMLController
 import io.github.chess.viewcontroller.fxcomponents.pages.MainMenuPage
@@ -20,7 +21,10 @@ import java.util.ResourceBundle
  * Controller of the game page of the application.
  * @param stage the stage where the application is displayed.
  */
-class GamePageController()(using override protected val stage: Stage) extends FXMLController:
+class GamePageController(override protected val stage: Stage)(using
+    override protected val context: ChessApplicationContext
+) extends FXMLController
+    with ChessApplicationComponent:
   @FXML @SuppressWarnings(Array("org.wartremover.warts.Null"))
   private var surrenderButton: Button = _
   @FXML @SuppressWarnings(Array("org.wartremover.warts.Null"))
@@ -33,8 +37,8 @@ class GamePageController()(using override protected val stage: Stage) extends FX
   private var lastMoveText: TextField = _
 
   override def initialize(url: URL, resourceBundle: ResourceBundle): Unit =
-    val chessBoardController = ChessBoardController.fromGridPane(this.chessBoardGridPane)
-    this.surrenderButton.onMouseClicked = _ => MainMenuPage()
+    val chessBoardController = ChessBoardController.fromGridPane(this.chessBoardGridPane)(stage)
+    this.surrenderButton.onMouseClicked = _ => MainMenuPage(stage)
 
     // TODO: get access to the proxy for the chess engine service (as a given constructor parameter?)
     // TODO: subscribe to game state changes, calling the repaint of the chess board controller

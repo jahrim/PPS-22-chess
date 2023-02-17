@@ -6,13 +6,11 @@
  */
 package io.github.chess.adapters
 
-import io.vertx.core.Vertx
+/**
+ * Represents an adapter that allows to interact with a specific port of a service,
+ * exposing the port through a specific technology (i.e. HTTP, MQTT...).
+ */
+trait Adapter[Port]:
 
-/** Represents an adapter to help view communicate with the logic. */
-trait AbstractAdapter[Port]:
-
-  /**
-   * Returns the port (controller) of the adapter
-   * @return the port (controller)
-   */
-  def port: Port
+  /** @return the port exposed by this adapter */
+  protected def port: Port

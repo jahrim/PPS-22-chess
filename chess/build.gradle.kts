@@ -34,12 +34,13 @@ application {
 
 // Code Style (aesthetic...)
 spotless {
+    isEnforceCheck = false
     scala {
         scalafmt(libs.versions.scalafmt.version.get()).configFile(".scalafmt.conf")
         licenseHeaderFile(file("../LICENSE-HEADER"), "package ")
     }
-    // always apply formatting when building the project
-    tasks.spotlessCheck.get().dependsOn(tasks.spotlessApply)
+    // always apply formatting before building, running or testing the project
+    tasks.compileScala.get().dependsOn(tasks.spotlessApply)
 }
 
 // Code Linting (error prevention...)
@@ -47,7 +48,14 @@ val wartRemoverCompileOptions = WartRemover.configFile(file(".wartremover.conf")
 
 // Scala Compiler Options
 tasks.withType(ScalaCompile::class.java) {
-    scalaCompileOptions.additionalParameters = listOf("-Xtarget:8", "-indent", "-rewrite") + wartRemoverCompileOptions
+    scalaCompileOptions.additionalParameters =
+        listOf(
+            "-Xtarget:8",
+            "-indent",
+            "-rewrite",
+            "-feature",
+            "-language:implicitConversions"
+        ) + wartRemoverCompileOptions
 }
 
 // Scala Test
