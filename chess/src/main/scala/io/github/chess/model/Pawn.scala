@@ -6,6 +6,7 @@
  */
 package io.github.chess.model
 import io.github.chess.model.rules.ChessRule
+import io.github.chess.model.rules.pawn.PawnRule
 
 /** Represents the particular piece of the pawn. */
 trait Pawn extends Piece
@@ -21,7 +22,7 @@ object Pawn:
 
   private case class SimplePawn() extends Pawn:
 
-    override val rule: ChessRule = ???
+    override val rule: ChessRule = PawnRule()
 
     // TODO da rimuovere
     override def findMoves(position: Position): Set[Position] =

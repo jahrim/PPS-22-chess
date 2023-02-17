@@ -30,7 +30,7 @@ object ChessGameStatus:
    * @return a state
    */
   def apply(
-      chessBoard: ChessBoard,   //TODO: add default argument for standard chess board initial disposition
+      chessBoard: ChessBoard, // TODO: add default argument for standard chess board initial disposition
       history: ChessGameHistory = ChessGameHistory(),
       initialTurn: Team = Team.WHITE
   ): ChessGameStatus =

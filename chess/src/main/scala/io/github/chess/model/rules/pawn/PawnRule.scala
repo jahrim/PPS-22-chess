@@ -13,4 +13,5 @@ import io.github.chess.model.rules.ChessRule
 case class PawnRule() extends ChessRule:
 
   override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
-    PawnMovementRule().findMoves(position, status)
+    PawnMovementRule().findMoves(position, status) ++
+      PawnCaptureRule().findMoves(position, status)
