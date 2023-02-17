@@ -6,10 +6,7 @@
  */
 package io.github.chess.model.rules.pawn
 
-import io.github.chess.model.{Move, Position}
-import io.github.chess.model.rules.ChessRule
+import io.github.chess.model.rules.PresenceRule
 
-/** Implementation of the Pawn rule that makes it move one step forward. */
-class ForwardOneRule extends ChessRule:
-
-  override def findMoves(position: Position): Set[Move] = Set(Move(position, position.rankUp()))
+/** Implementation of the rule that makes move a piece one step forward in the column, if there is no other piece there. */
+class ForwardOneRule extends SingleStepRule with PresenceRule
