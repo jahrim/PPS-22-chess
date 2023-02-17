@@ -6,6 +6,7 @@
  */
 package io.github.chess.viewcontroller.fxcomponents.pages.template
 
+import io.github.chess.util.option.OptionExtension.getOrThrow
 import io.github.chess.viewcontroller.fxcomponents.controllers.template.FXMLController
 import io.github.chess.viewcontroller.fxcomponents.pages.template.{Page, PageWithController}
 import javafx.fxml.FXMLLoader
@@ -53,8 +54,8 @@ object FXMLPage:
    * @return an url corresponding to the fxml resource identified by the specified path
    */
   private def fxmlURLfromPath(localPath: String): URL =
-    Option(this.getClass.getResource(s"/$localPath.fxml")).getOrElse {
-      throw IllegalArgumentException(
+    Option(this.getClass.getResource(s"/$localPath.fxml")).getOrThrow {
+      IllegalArgumentException(
         "Could not load the specified resource. Try with a different path."
       )
     }

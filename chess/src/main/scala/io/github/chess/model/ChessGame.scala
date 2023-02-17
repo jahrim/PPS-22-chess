@@ -17,7 +17,7 @@ import io.vertx.core.{Future, Handler, Vertx}
  * @param vertx the vertx where this game will be deployed
  */
 class ChessGame(private val vertx: Vertx) extends ChessPort:
-  private val state: ChessGameStatus = ChessGameStatus(ChessBoard.standard)
+  private val state: ChessGameStatus = ChessGameStatus()
 
   override def getState: Future[ChessGameStatus] =
     Future.succeededFuture(this.state)
