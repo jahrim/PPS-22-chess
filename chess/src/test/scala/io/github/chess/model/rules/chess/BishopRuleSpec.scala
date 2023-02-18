@@ -8,6 +8,7 @@ package io.github.chess.model.rules.chess
 
 import io.github.chess.AbstractSpec
 import io.github.chess.model.pieces.Pawn
+import io.github.chess.model.rules.chess.bishop.DiagonalRule
 import io.github.chess.model.{ChessBoard, ChessGameStatus, Position, Team}
 
 /** Test suite for [[Bishop]]. */

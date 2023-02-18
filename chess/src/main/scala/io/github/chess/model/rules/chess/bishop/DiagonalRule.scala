@@ -4,9 +4,10 @@
  *
  * Full license description available at: https://github.com/jahrim/PPS-22-chess/blob/master/LICENSE
  */
-package io.github.chess.model.rules.chess
+package io.github.chess.model.rules.chess.bishop
 
 import io.github.chess.model.moves.Move
+import io.github.chess.model.rules.chess.ChessRule
 import io.github.chess.model.rules.prolog.{NEPrologRule, NWPrologRule, SouthEastRule, SouthWestRule}
 import io.github.chess.model.{ChessGameStatus, Position, moves}
 

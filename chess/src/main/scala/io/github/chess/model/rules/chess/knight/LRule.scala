@@ -4,9 +4,10 @@
  *
  * Full license description available at: https://github.com/jahrim/PPS-22-chess/blob/master/LICENSE
  */
-package io.github.chess.model.rules.chess
+package io.github.chess.model.rules.chess.knight
 
 import io.github.chess.model.moves.Move
+import io.github.chess.model.rules.chess.ChessRule
 import io.github.chess.model.{ChessGameStatus, Position, moves}
 import io.github.chess.util.Combinator
 
@@ -19,5 +20,4 @@ class LRule extends ChessRule:
     Combinator
       .generatePositions(values, (x, y) => x.abs != y.abs, position)
       .filter((x, y) => x >= 0 && x <= 7 && y >= 0 && y <= 7)
-      .filter((x, y) => !status.chessBoard.pieces.contains((x, y)))
       .map(moves.Move(position, _))

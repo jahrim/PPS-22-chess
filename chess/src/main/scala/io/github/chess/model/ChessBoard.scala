@@ -53,6 +53,13 @@ trait ChessBoard:
       case (position, _)           => removePiece(position)
     }
 
+  /**
+   * Moves a piece if present in from position to a target position.
+   * @param from starting [[Position]]
+   * @param to target [[Position]]
+   */
+  def movePiece(from: Position, to: Position): Unit
+
 /** Companion object of [[ChessBoard]]. */
 object ChessBoard:
   export io.github.chess.model.ChessBoardBuilder.*
@@ -102,3 +109,10 @@ object ChessBoard:
     override def setPiece(position: Position, piece: Piece): Unit =
       this._pieces += position -> piece
     override def removePiece(position: Position): Unit = this._pieces -= position
+
+    override def movePiece(from: Position, to: Position): Unit =
+      this._pieces.get(from) match
+        case Some(value) =>
+          removePiece(from)
+          setPiece(to, value)
+        case None =>

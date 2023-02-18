@@ -6,10 +6,11 @@
  */
 package io.github.chess.model.pieces
 
-import io.github.chess.model.rules.chess.{ChessRule, DiagonalRule}
+import io.github.chess.model.rules.chess.ChessRule
 import io.github.chess.model.Team
+import io.github.chess.model.rules.chess.bishop.BishopRule
 
 /** Represents the particular piece of the bishop. */
 case class Bishop(override val team: Team) extends Piece(team):
 
-  override val rule: ChessRule = DiagonalRule()
+  override val rule: ChessRule = BishopRule()

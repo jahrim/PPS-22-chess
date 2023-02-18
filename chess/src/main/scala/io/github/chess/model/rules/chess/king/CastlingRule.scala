@@ -4,12 +4,15 @@
  *
  * Full license description available at: https://github.com/jahrim/PPS-22-chess/blob/master/LICENSE
  */
-package io.github.chess.model.rules.chess
+package io.github.chess.model.rules.chess.king
 
+import io.github.chess.model.Position
 import io.github.chess.model.Team.{BLACK, WHITE}
-import io.github.chess.model.{moves, *}
-import io.github.chess.model.moves.Move
+import io.github.chess.model.moves.CastlingMove
 import io.github.chess.model.pieces.{King, Piece}
+import io.github.chess.model.rules.chess.ChessRule
+import io.github.chess.model.moves.Move
+import io.github.chess.model.*
 
 /**
  * Represents the chess rule that can find the two possible moves involving the [[King]] and the [[Rook]]:
@@ -22,16 +25,29 @@ class CastlingRule extends ChessRule:
     var set: Set[Move] = Set.empty
     val currentTeam = status.currentTurn
     val kingPosition = this.kingPosition(currentTeam)
-    if position == kingPosition && isKing(position, status) then
+    if position == kingPosition && isKing(position, status)
+    then
+      val rank = rankFromTeam(currentTeam)
+
       val leftRookPosition = this.leftRookPosition(currentTeam)
-      val leftRook = status.chessBoard.pieces(leftRookPosition)
-      if checkFirstMoveAndNoOtherPieceBetween(leftRookPosition, leftRook, status, kingPosition)
-      then set = set + moves.Move(position, Position(File.C, rankFromTeam(currentTeam)))
+      if checkFirstMoveAndNoOtherPieceBetween(leftRookPosition, status, kingPosition)
+      then
+        set = set + CastlingMove(
+          position,
+          Position(File.C, rank),
+          leftRookPosition,
+          Position(File.D, rank)
+        )
 
       val rightRookPosition = this.rightRookPosition(currentTeam)
-      val rightRook = status.chessBoard.pieces(rightRookPosition)
-      if checkFirstMoveAndNoOtherPieceBetween(rightRookPosition, rightRook, status, kingPosition)
-      then set = set + moves.Move(position, Position(File.G, rankFromTeam(currentTeam)))
+      if checkFirstMoveAndNoOtherPieceBetween(rightRookPosition, status, kingPosition)
+      then
+        set = set + CastlingMove(
+          position,
+          Position(File.G, rank),
+          rightRookPosition,
+          Position(File.F, rank)
+        )
     set
 
   private def kingPosition(team: Team): Position = team match
@@ -47,13 +63,15 @@ class CastlingRule extends ChessRule:
     case BLACK => Position(File.H, Rank._8)
 
   private def isKing(position: Position, status: ChessGameStatus) =
-    status.chessBoard.pieces(position) match
-      case _: King => true
-      case _       => false
+    status.chessBoard.pieces.get(position) match
+      case Some(_: King) => true
+      case _             => false
 
   private def isRook(position: Position, status: ChessGameStatus) =
-    status.chessBoard.pieces(position) match
-      case _ => true
+    status.chessBoard.pieces.get(position) match
+//      case Some(_: Rook) => true
+      case Some(_: Piece) => true
+      case _              => false
 
   private def rankFromTeam(team: Team): Rank = team match
     case WHITE => Rank._1
@@ -61,10 +79,13 @@ class CastlingRule extends ChessRule:
 
   private def checkFirstMoveAndNoOtherPieceBetween(
       position: Position,
-      piece: Piece,
       status: ChessGameStatus,
       kingPosition: Position
   ): Boolean =
-    isRook(position, status) && status.history.ofPiece(piece).isEmpty && Position
-      .findHorizontalBetween(kingPosition, position)
-      .forall(!status.chessBoard.pieces.contains(_))
+    val piece = status.chessBoard.pieces.get(position)
+    piece match
+      case Some(value) =>
+        isRook(position, status) && status.history.ofPiece(value).isEmpty && Position
+          .findHorizontalBetween(kingPosition, position)
+          .forall(!status.chessBoard.pieces.contains(_))
+      case None => false

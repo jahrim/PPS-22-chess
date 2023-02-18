@@ -6,7 +6,7 @@
  */
 package io.github.chess.viewcontroller.fxcomponents.pages.components
 
-import io.github.chess.model.Position
+import io.github.chess.model.{Position, Rank}
 import io.github.chess.util.number.NumberExtension.*
 import io.github.chess.viewcontroller.configuration.InterfaceConfiguration.{Colors, Images}
 import io.github.chess.viewcontroller.fxcomponents.pages.components.CellView.Layer
@@ -32,7 +32,7 @@ case class CellView(cell: GridCell[Pane]):
   private var layers: Map[Layer, ImageView] = Map()
 
   /** @return the position of this cell in the chess board. */
-  def position: Position = (cell.x, cell.y)
+  def position: Position = (cell.x, Rank.values.length - 1 - cell.y) // TODO refactor?
 
   /**
    * Add the specified piece to the content of this cell.

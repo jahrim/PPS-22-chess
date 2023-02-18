@@ -8,7 +8,7 @@ package io.github.chess.model
 
 import io.github.chess.util.option.OptionExtension.given
 import io.github.chess.model.ChessBoard
-import io.github.chess.model.pieces.{Pawn, Piece}
+import io.github.chess.model.pieces.{Bishop, King, Knight, Pawn, Piece}
 import io.github.chess.util.exception.Require
 
 import scala.annotation.targetName
@@ -93,10 +93,10 @@ object ChessBoardBuilder:
     def P(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.WHITE)
 
     /** A white knight. */
-    def N(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.WHITE)
+    def N(using b: ChessBoardBuilder): ChessBoardBuilder = b + Knight(Team.WHITE)
 
     /** A white bishop. */
-    def B(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.WHITE)
+    def B(using b: ChessBoardBuilder): ChessBoardBuilder = b + Bishop(Team.WHITE)
 
     /** A white rook. */
     def R(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.WHITE)
@@ -105,17 +105,17 @@ object ChessBoardBuilder:
     def Q(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.WHITE)
 
     /** A white king. */
-    def K(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.WHITE)
+    def K(using b: ChessBoardBuilder): ChessBoardBuilder = b + King(Team.WHITE)
 
     // TODO: black pieces
     /** A black pawn. */
     def p(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.BLACK)
 
     /** A black knight. */
-    def n(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.BLACK)
+    def n(using b: ChessBoardBuilder): ChessBoardBuilder = b + Knight(Team.BLACK)
 
     /** A black bishop. */
-    def b(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.BLACK)
+    def b(using b: ChessBoardBuilder): ChessBoardBuilder = b + Bishop(Team.BLACK)
 
     /** A black rook. */
     def r(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.BLACK)
@@ -124,7 +124,7 @@ object ChessBoardBuilder:
     def q(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.BLACK)
 
     /** A black king. */
-    def k(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.BLACK)
+    def k(using b: ChessBoardBuilder): ChessBoardBuilder = b + King(Team.BLACK)
 
     /** An empty cell in the chess board. */
     @targetName("emptyCell")

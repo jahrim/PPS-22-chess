@@ -9,7 +9,7 @@ package io.github.chess.model
 import io.github.chess.util.option.OptionExtension.anyToOptionOfAny
 import io.github.chess.ports.ChessPort
 import io.github.chess.events.Event
-import io.github.chess.model.moves.Move
+import io.github.chess.model.moves.{CastlingMove, Move}
 import io.vertx.core.eventbus.Message
 import io.vertx.core.{Future, Handler, Vertx}
 
@@ -25,21 +25,19 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
 
   override def findMoves(position: Position): Future[Set[Move]] =
     Future.succeededFuture(
-      // TODO: replace this placeholder set of moves by using movement rules...
-      ChessBoard.Positions.filter(_ != position).map(to => Move(position, to)).toSet
+      this.state.chessBoard.pieces(position).rule.findMoves(position, this.state)
     )
 
   override def applyMove(move: Move): Future[Unit] =
     Future.succeededFuture(
       move match
+        case castlingMove: CastlingMove =>
+          this.state.chessBoard.movePiece(castlingMove.from, castlingMove.to)
+          this.state.chessBoard
+            .movePiece(castlingMove.rookFromPosition, castlingMove.rookToPosition)
         // TODO: add other move types before this clause (i.e. CaptureMove, PromotionMove...)
         case m: Move =>
-          this.state.chessBoard.pieces.get(m.from).foreach { movingPiece =>
-            this.state.chessBoard.update(
-              m.from -> None,
-              m.to -> movingPiece
-            )
-          }
+          this.state.chessBoard.movePiece(m.from, m.to)
     )
 
   override def subscribe[T <: Event](address: String, handler: Handler[Message[T]]): Future[Unit] =

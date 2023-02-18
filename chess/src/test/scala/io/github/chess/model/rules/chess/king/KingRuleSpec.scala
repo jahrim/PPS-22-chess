@@ -4,7 +4,7 @@
  *
  * Full license description available at: https://github.com/jahrim/PPS-22-chess/blob/master/LICENSE
  */
-package io.github.chess.model.rules.chess
+package io.github.chess.model.rules.chess.king
 
 import io.github.chess.AbstractSpec
 import io.github.chess.model.pieces.Pawn

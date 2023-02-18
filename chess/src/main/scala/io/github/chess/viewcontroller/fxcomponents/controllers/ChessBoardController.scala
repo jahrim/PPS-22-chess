@@ -52,11 +52,10 @@ case class ChessBoardController private (
    */
   def repaint(chessBoard: Map[Position, Piece]): Unit =
     Platform.runLater {
-      // TODO: retrieve the team of the pieces somehow from the model
       this.clearPieces()
       this.chessBoardBelief = chessBoard
       this.chessBoardBelief.foreach { (position, piece) =>
-        this.cells.get(position).foreach { _.setPiece(PieceView(piece)) }
+        this.cells.get(position).foreach { _.setPiece(PieceView(piece, piece.team)) }
       }
     }
 
