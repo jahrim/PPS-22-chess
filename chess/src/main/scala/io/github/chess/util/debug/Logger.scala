@@ -21,7 +21,7 @@ object Logger:
   type Category = String
 
   /** The content of a message. */
-  type Message = Object
+  type Message = Any
 
   /**
    * Prints the specified message without any tags or categories.
