@@ -58,7 +58,12 @@ trait ChessBoard:
    * @param from starting [[Position]]
    * @param to target [[Position]]
    */
-  def movePiece(from: Position, to: Position): Unit
+  def movePiece(from: Position, to: Position): Unit =
+    this.pieces.get(from) match
+      case Some(value) =>
+        removePiece(from)
+        setPiece(to, value)
+      case None =>
 
 /** Companion object of [[ChessBoard]]. */
 object ChessBoard:
@@ -102,6 +107,12 @@ object ChessBoard:
     R | N | B | Q | K | B | N | R
   }
 
+  /**
+   * @param pieces a map from positions to pieces in the chess board
+   * @return a chess board with the specified pieces at the specified positions
+   */
+  def fromMap(pieces: Map[Position, Piece]): ChessBoard = BasicChessBoard(pieces)
+
   /** Basic implementation of a chess board. */
   private case class BasicChessBoard(private var _pieces: Map[Position, Piece] = Map.empty)
       extends ChessBoard:
@@ -109,10 +120,3 @@ object ChessBoard:
     override def setPiece(position: Position, piece: Piece): Unit =
       this._pieces += position -> piece
     override def removePiece(position: Position): Unit = this._pieces -= position
-
-    override def movePiece(from: Position, to: Position): Unit =
-      this._pieces.get(from) match
-        case Some(value) =>
-          removePiece(from)
-          setPiece(to, value)
-        case None =>

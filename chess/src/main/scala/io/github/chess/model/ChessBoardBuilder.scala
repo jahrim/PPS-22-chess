@@ -6,9 +6,10 @@
  */
 package io.github.chess.model
 
+import io.github.chess.util.general.GivenExtension.within
 import io.github.chess.util.option.OptionExtension.given
 import io.github.chess.model.ChessBoard
-import io.github.chess.model.pieces.{Bishop, King, Knight, Pawn, Piece}
+import io.github.chess.model.pieces.{Bishop, King, Knight, Pawn, Piece, Queen, Rook}
 import io.github.chess.util.exception.Require
 
 import scala.annotation.targetName
@@ -83,12 +84,10 @@ object ChessBoardBuilder:
    * @return a builder configured with the specified configuration
    */
   def configure(configuration: ChessBoardBuilder ?=> ChessBoardBuilder): ChessBoardBuilder =
-    given newBuilder: ChessBoardBuilder = ChessBoardBuilder()
-    configuration
+    within(ChessBoardBuilder()) { configuration }
 
   /** A DSL definition for a [[ChessBoardBuilder]]. */
   object DSL:
-    // TODO: white pieces
     /** A white pawn. */
     def P(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.WHITE)
 
@@ -99,15 +98,14 @@ object ChessBoardBuilder:
     def B(using b: ChessBoardBuilder): ChessBoardBuilder = b + Bishop(Team.WHITE)
 
     /** A white rook. */
-    def R(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.WHITE)
+    def R(using b: ChessBoardBuilder): ChessBoardBuilder = b + Rook(Team.WHITE)
 
     /** A white queen. */
-    def Q(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.WHITE)
+    def Q(using b: ChessBoardBuilder): ChessBoardBuilder = b + Queen(Team.WHITE)
 
     /** A white king. */
     def K(using b: ChessBoardBuilder): ChessBoardBuilder = b + King(Team.WHITE)
 
-    // TODO: black pieces
     /** A black pawn. */
     def p(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.BLACK)
 
@@ -118,10 +116,10 @@ object ChessBoardBuilder:
     def b(using b: ChessBoardBuilder): ChessBoardBuilder = b + Bishop(Team.BLACK)
 
     /** A black rook. */
-    def r(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.BLACK)
+    def r(using b: ChessBoardBuilder): ChessBoardBuilder = b + Rook(Team.BLACK)
 
     /** A black queen. */
-    def q(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.BLACK)
+    def q(using b: ChessBoardBuilder): ChessBoardBuilder = b + Queen(Team.BLACK)
 
     /** A black king. */
     def k(using b: ChessBoardBuilder): ChessBoardBuilder = b + King(Team.BLACK)
