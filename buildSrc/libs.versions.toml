@@ -1,5 +1,5 @@
 [versions]
-kotlin-version = "1.8.0"
+kotlin-version = "1.8.10"
 kotlin-qa-version = "0.2.1"
 kotlin-serialization-version = "1.8.0"
 kotlinx-version = "1.5.0-RC"
