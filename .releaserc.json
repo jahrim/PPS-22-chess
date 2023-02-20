@@ -6,7 +6,7 @@
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
     [ "@semantic-release/git", {
-      "message": "chore(release): ${nextRelease.version}"
+      "message": "semantic-release-bot(release): ${nextRelease.version}"
     }],
     [ "@semantic-release/github" , {
       "assets": [
