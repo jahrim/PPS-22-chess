@@ -14,11 +14,12 @@ import org.scalatest.flatspec.AnyFlatSpec
 /** Test suite for [[Pawn]]. */
 class PawnSpec extends AbstractSpec:
 
+  private val position = Position(File.A, Rank._2)
   private val pawn = Pawn(Team.WHITE)
   private val chessBoard: ChessBoard = ChessBoard.empty
   private val chessGameStatus = ChessGameStatus(chessBoard)
+  chessBoard.setPiece(position, pawn)
 
-  "A Pawn" should "always give a set of positions not empty, regardless of the chess board" in {
-    val position = Position(File.A, Rank._1)
+  "A Pawn" should "always give a set of positions not empty, within an empty board" in {
     pawn.rule.findMoves(position, chessGameStatus) shouldNot be(empty)
   }

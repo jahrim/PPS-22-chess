@@ -14,11 +14,14 @@ import io.github.chess.model.{ChessGameStatus, Position, Team, moves}
 class SingleStepRule extends ChessRule:
 
   override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
-    Set(
-      moves.Move(
-        position,
-        status.currentTurn match
-          case Team.WHITE => position.rankUp()
-          case Team.BLACK => position.rankDown()
-      )
-    )
+    status.chessBoard.pieces.get(position) match
+      case Some(piece) =>
+        Set(
+          Move(
+            position,
+            piece.team match
+              case Team.WHITE => position.rankUp()
+              case Team.BLACK => position.rankDown()
+          )
+        )
+      case None => Set.empty

@@ -6,22 +6,19 @@
  */
 package io.github.chess.model.rules.chess.pawn
 
-import io.github.chess.model.moves.{DoubleMove, Move}
-import io.github.chess.model.rules.chess.ChessRule
+import io.github.chess.model.moves.Move
+import io.github.chess.model.rules.chess.{ChessRule, RuleShorthands}
+import io.github.chess.model.rules.prolog.{BlackPawnCaptureRule, WhitePawnCaptureRule}
 import io.github.chess.model.{ChessGameStatus, Position, Team, moves}
 
-/** Implementation of a chess rule that makes move a piece two positions forward in the column. */
-class TwoStepRule extends ChessRule:
+/** Finds all moves with which a pawn can capture an adversary piece. */
+class PawnCaptureMoves extends ChessRule with RuleShorthands:
 
   override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
     status.chessBoard.pieces.get(position) match
       case Some(piece) =>
-        Set(
-          DoubleMove(
-            position,
-            piece.team match
-              case Team.WHITE => position.rankUp().rankUp()
-              case Team.BLACK => position.rankDown().rankDown()
-          )
-        )
+        (piece.team match
+          case Team.WHITE => WhitePawnCaptureRule()
+          case Team.BLACK => BlackPawnCaptureRule()
+        ).findPositions(position).map(Move(position, _)).toSet
       case None => Set.empty

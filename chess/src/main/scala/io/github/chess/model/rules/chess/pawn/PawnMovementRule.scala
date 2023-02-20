@@ -20,8 +20,10 @@ class PawnMovementRule extends ChessRule:
     else firstStep
 
   private def isFirstMove(position: Position, status: ChessGameStatus): Boolean =
-    // TODO do not depend by current turn
-    position.rank == (status.currentTurn match
-      case Team.WHITE => Rank._2
-      case Team.BLACK => Rank._7
+    position.rank == (status.chessBoard.pieces.get(position) match
+      case Some(piece) =>
+        piece.team match
+          case Team.WHITE => Rank._2
+          case Team.BLACK => Rank._7
+      case None => false
     )

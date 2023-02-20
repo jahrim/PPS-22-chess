@@ -6,18 +6,7 @@
  */
 package io.github.chess.model.rules.chess.pawn
 
-import io.github.chess.model.moves.Move
-import io.github.chess.model.rules.chess.ChessRule
-import io.github.chess.model.rules.prolog.{BlackPawnCaptureRule, WhitePawnCaptureRule}
-import io.github.chess.model.{ChessGameStatus, Position, Team, moves}
+import io.github.chess.model.rules.chess.BaseCaptureRule
 
-/** Finds all moves with which a pawn can capture an adversary piece. */
-class PawnCaptureRule extends ChessRule:
-
-  override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
-    (status.currentTurn match
-      case Team.WHITE => WhitePawnCaptureRule()
-      case Team.BLACK => BlackPawnCaptureRule()
-    ).findPositions(position).map(Move(position, _)).toSet
-
-    // TODO Add check that there is an adversary piece in the destination position
+/** The rule that analyzes Pawn specific capture rules to say if it can perform them or not. */
+class PawnCaptureRule extends PawnCaptureMoves with BaseCaptureRule
