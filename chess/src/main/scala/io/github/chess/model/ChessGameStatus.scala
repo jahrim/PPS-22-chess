@@ -22,8 +22,11 @@ trait ChessGameStatus:
   /** @return the configuration of the game */
   def gameConfiguration: GameConfiguration
 
+  /** Changes the currently playing team from White to Black and viceversa */
+  def changeTeam(): Unit
+
   // TODO: consider this
-  // def timeRemaining: Time
+  //  def timeRemaining: Time
 
 /** Companion object of [[ChessGameStatus]]. */
 object ChessGameStatus:
@@ -46,6 +49,8 @@ object ChessGameStatus:
   private case class BasicChessGameStatus(
       chessBoard: ChessBoard,
       history: ChessGameHistory,
-      currentTurn: Team,
+      var currentTurn: Team,
       gameConfiguration: GameConfiguration
-  ) extends ChessGameStatus
+  ) extends ChessGameStatus:
+
+    override def changeTeam(): Unit = currentTurn = currentTurn.oppositeTeam

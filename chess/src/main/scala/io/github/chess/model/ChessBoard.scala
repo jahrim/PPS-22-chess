@@ -77,6 +77,7 @@ trait ChessBoard:
       case Some(value) =>
         removePiece(from)
         setPiece(to, value)
+
       case None =>
 
 /** Companion object of [[ChessBoard]]. */
