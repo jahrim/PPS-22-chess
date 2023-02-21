@@ -7,8 +7,35 @@
 package io.github.chess.model
 
 import io.github.chess.AbstractSpec
+import io.github.chess.model.moves.Move
+import io.vertx.core.{Future, Handler, Vertx}
 
-class ChessGameSpec extends AbstractSpec
+class ChessGameSpec extends AbstractSpec:
+
+  val blackPawnPosition: Position = (0, 6)
+  val whitePawnPosition: Position = (0, 1)
+  val whitePawnMove: Move = Move(whitePawnPosition, (0, 3))
+  val chessGame: ChessGame = ChessGame(Vertx.vertx())
+
+  "The Chess Game" should "let the white player move a pawn of their team in the beginning of a standard game" in {
+    chessGame.getState.onSuccess(state => state.currentTurn should be(Team.WHITE))
+    chessGame.findMoves(whitePawnPosition).onSuccess(movesSet => movesSet shouldNot be(empty))
+  }
+
+  it should "forbid the initial player from moving a pawn of the black team" in {
+    chessGame.findMoves(blackPawnPosition).onSuccess(movesSet => movesSet should be(empty))
+  }
+
+  it should "change the turn after a move" in {
+    chessGame
+      .applyMove(whitePawnMove)
+      .onSuccess(_ =>
+        chessGame.getState.onSuccess(state => state.currentTurn should be(Team.BLACK))
+        chessGame
+          .findMoves(blackPawnPosition)
+          .onSuccess(movesSet => movesSet shouldNot be(empty))
+      )
+  }
 
 /* TODO consider these tests
  "The chess board" should "initially have a piece in the position a2" in {

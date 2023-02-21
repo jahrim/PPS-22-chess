@@ -27,7 +27,7 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
 
   override def findMoves(position: Position): Future[Set[Move]] =
     Future.succeededFuture(
-      findPiece(position) match
+      findPieceOfCurrentTeam(position) match
         case Some(piece) => piece.rule.findMoves(position, this.state)
         case None        => Set.empty
     )
@@ -50,7 +50,7 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
   override def subscribe[T <: Event](address: String, handler: Handler[Message[T]]): Future[Unit] =
     Future.succeededFuture(vertx.eventBus().consumer(address, handler))
 
-  private def findPiece(pos: Position): Option[Piece] = playingTeam.get(pos)
+  private def findPieceOfCurrentTeam(pos: Position): Option[Piece] = playingTeam.get(pos)
 
   private def playingTeam: Map[Position, Piece] = this.state.currentTurn match
     case Team.WHITE => this.state.chessBoard.whitePieces
