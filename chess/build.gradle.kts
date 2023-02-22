@@ -19,7 +19,11 @@ dependencies {
     implementation(libs.bundles.scalafmt)
     implementation(libs.vertx)
     implementation(libs.scalafx)
-    libs.bundles.javafx.get().forEach { implementation("${it.module}:${it.version}:${JavaFX.getClassifier()}") }
+    libs.bundles.javafx.get().forEach {
+        val fxArtifact = "${it.module}:${it.version}"
+        implementation("$fxArtifact:${JavaFX.getSpecificClassifier()}")
+        JavaFX.getClassifiers().forEach { runtimeOnly("$fxArtifact:$it") } // Multiplatform Jar
+    }
     implementation(libs.tuprolog)
     testImplementation(libs.scalatest)
     scalaCompilerPlugins(libs.wartremover)

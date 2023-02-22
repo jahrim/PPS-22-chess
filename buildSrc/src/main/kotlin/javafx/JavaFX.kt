@@ -13,6 +13,9 @@ object JavaFX {
         OSType.Windows to "win",
     )
 
-    /** @return the classifier for javafx artifacts. */
-    fun getClassifier(): String = classifiers.getValue(OS.getType())
+    /** @return all the possible classifiers for javafx artifacts. */
+    fun getClassifiers(): Collection<String> = classifiers.values
+
+    /** @return the classifier for javafx artifacts for this operative system. */
+    fun getSpecificClassifier(): String = classifiers.getValue(OS.getType())
 }
