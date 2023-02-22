@@ -9,7 +9,6 @@ package io.github.chess.model.pieces
 import io.github.chess.AbstractSpec
 import io.github.chess.model.pieces.Pawn
 import io.github.chess.model.{ChessBoard, ChessGameStatus, File, Position, Rank, Team}
-import org.scalatest.flatspec.AnyFlatSpec
 
 /** Test suite for [[Pawn]]. */
 class PawnSpec extends AbstractSpec:

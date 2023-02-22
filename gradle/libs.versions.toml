@@ -1,6 +1,7 @@
 [versions]
 scala-version = "3.2.2"
 scalatest-version = "3.2.15"
+scalatestplus-version = "3.2.15.0"
 spotless-version = "6.15.0"
 scalafmt-version = "3.7.1"
 wartremover-version = "3.0.9"
@@ -14,6 +15,7 @@ tuprolog-version = "4.1.1"
 [libraries]
 scala = { module = "org.scala-lang:scala3-library_3", version.ref = "scala-version" }
 scalatest = { module = "org.scalatest:scalatest_3", version.ref = "scalatest-version" }
+scalatestplusjunit = { module = "org.scalatestplus:junit-4-13_3", version.ref = "scalatestplus-version" }
 scalafmt-cli = { module = "org.scalameta:scalafmt-cli_2.13", version.ref = "scalafmt-version" }
 scalafmt-config = { module = "org.scalameta:scalafmt-config_2.13", version.ref = "scalafmt-version" }
 wartremover = { module = "org.wartremover:wartremover_3.2.2", version.ref = "wartremover-version" }

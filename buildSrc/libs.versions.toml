@@ -6,6 +6,8 @@ kotlinx-version = "1.5.0-RC"
 kotlin-hocon-serialization-version = "1.4.10"
 typesafe-config-version = "1.4.2"
 turtle-version = "0.8.0"
+scoverage-plugin-version = "2.0.7"
+commons-io-version = "2.6"
 # insert the versions of the dependencies here...
 
 [libraries]
@@ -13,10 +15,14 @@ kotlinx = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version
 kotlin-hocon-serialization = { module = "com.github.uharaqo.kotlin-hocon-mapper:kotlin-hocon-mapper", version.ref = "kotlin-hocon-serialization-version" }
 typesafe-config = { module = "com.typesafe:config", version.ref = "typesafe-config-version" }
 turtle = { module = "com.lordcodes.turtle:turtle", version.ref = "turtle-version" }
+scoverage-plugin = { module = "org.scoverage:scalac-scoverage-plugin_2.13.8", version.ref = "scoverage-plugin-version"}
+scoverage-reporter = { module = "org.scoverage:scalac-scoverage-reporter_2.13", version.ref = "scoverage-plugin-version"}
+commonsio = { module = "commons-io:commons-io", version.ref = "commons-io-version" }
 # insert the dependencies here...
 
 [bundles]
 kotlin-serialization-bundle = [ "kotlinx", "kotlin-hocon-serialization", "typesafe-config" ]
+scoverage = [ "scoverage-plugin", "scoverage-reporter" ]
 # insert groups of dependencies here...
 
 [plugins]

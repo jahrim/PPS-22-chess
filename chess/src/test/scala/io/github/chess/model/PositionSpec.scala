@@ -7,7 +7,6 @@
 package io.github.chess.model
 
 import io.github.chess.AbstractSpec
-import org.scalatest.flatspec.AnyFlatSpec
 
 /** Test suite for [[Position]]. */
 class PositionSpec extends AbstractSpec:

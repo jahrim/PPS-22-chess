@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.kotlin.qa)
     `maven-publish`
     signing
+    id("org.scoverage")
 }
 
 repositories { mavenCentral() }
@@ -26,7 +27,9 @@ dependencies {
     }
     implementation(libs.tuprolog)
     testImplementation(libs.scalatest)
+    testImplementation(libs.scalatestplusjunit)
     scalaCompilerPlugins(libs.wartremover)
+    scoverage(libs.scala)
 }
 
 project.version = shellRun {
@@ -62,15 +65,6 @@ tasks.withType(ScalaCompile::class.java) {
             "-language:implicitConversions"
         ) + wartRemoverCompileOptions
 }
-
-// Scala Test
-val scalaTest by tasks.registering(JavaExec::class) {
-    dependsOn(tasks.testClasses)
-    mainClass.set("org.scalatest.tools.Runner")
-    args("-R", "build/classes/scala/test build/classes/java/test", "-o")
-    classpath(sourceSets["test"].runtimeClasspath)
-}
-tasks.test.get().dependsOn(scalaTest)
 
 // Publication
 val scaladocJar by tasks.registering(Jar::class) {
@@ -127,12 +121,6 @@ tasks {
         dependsOn(fatJar)
     }
 
-    register("spec", JavaExec::class) {
-        dependsOn(testClasses)
-        mainClass.set("org.scalatest.tools.Runner")
-        setArgs(listOf("-R", "build/classes/scala/test", "-o"))
-        classpath = sourceSets.test.get().runtimeClasspath
-    }
 }
 
 val publicationName = "ChessGame"
