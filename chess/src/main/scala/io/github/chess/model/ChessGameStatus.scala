@@ -6,6 +6,8 @@
  */
 package io.github.chess.model
 
+import io.github.chess.model.configuration.GameConfiguration
+
 /** The state of a chess game. */
 trait ChessGameStatus:
   /** @return the chess board of this chess game */
@@ -17,8 +19,10 @@ trait ChessGameStatus:
   /** @return the team who is currently playing */
   def currentTurn: Team
 
-  // TODO: consider these
-  // def gameConfiguration: GameConfiguration
+  /** @return the configuration of the game */
+  def gameConfiguration: GameConfiguration
+
+  // TODO: consider this
   // def timeRemaining: Time
 
 /** Companion object of [[ChessGameStatus]]. */
@@ -27,18 +31,21 @@ object ChessGameStatus:
    * @param chessBoard the chess board of the game
    * @param history the history of the moves executed in the game
    * @param initialTurn the team who is playing first
+   * @param gameConfiguration configuration of the game
    * @return a state
    */
   def apply(
       chessBoard: ChessBoard = ChessBoard.standard,
       history: ChessGameHistory = ChessGameHistory(),
-      initialTurn: Team = Team.WHITE
+      initialTurn: Team = Team.WHITE,
+      gameConfiguration: GameConfiguration = GameConfiguration.default
   ): ChessGameStatus =
-    BasicChessGameStatus(chessBoard, history, initialTurn)
+    BasicChessGameStatus(chessBoard, history, initialTurn, gameConfiguration)
 
   /** Basic implementation of a [[ChessGameStatus]]. */
   private case class BasicChessGameStatus(
       chessBoard: ChessBoard,
       history: ChessGameHistory,
-      currentTurn: Team
+      currentTurn: Team,
+      gameConfiguration: GameConfiguration
   ) extends ChessGameStatus

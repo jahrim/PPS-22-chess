@@ -6,11 +6,14 @@
  */
 package io.github.chess.viewcontroller.fxcomponents.controllers
 
+import io.github.chess.model.configuration.{GameConfiguration, GameMode, Player, TimeConstraint}
+import io.github.chess.model.Team
 import io.github.chess.viewcontroller.ChessApplication.given
 import io.github.chess.viewcontroller.{ChessApplicationComponent, ChessApplicationContext}
 import io.github.chess.viewcontroller.fxcomponents.controllers.template.FXMLController
 import io.github.chess.viewcontroller.fxcomponents.pages.{GamePage, MainMenuPage}
-import javafx.scene.control.Button
+import javafx.collections.{FXCollections, ObservableList}
+import javafx.scene.control.{Button, ChoiceBox, Spinner, SpinnerValueFactory, TextField}
 import scalafx.stage.Stage
 import java.net.URL
 import java.util.ResourceBundle
@@ -27,7 +30,44 @@ class GameConfigurationPageController(override protected val stage: Stage)(using
   private var startGameButton: Button = _
   @FXML @SuppressWarnings(Array("org.wartremover.warts.Null"))
   private var backButton: Button = _
+  @FXML @SuppressWarnings(Array("org.wartremover.warts.Null"))
+  private var timeConstraint: ChoiceBox[TimeConstraint] = _
+  @FXML @SuppressWarnings(Array("org.wartremover.warts.Null"))
+  private var time: Spinner[Integer] = _
+  @FXML @SuppressWarnings(Array("org.wartremover.warts.Null"))
+  private var gameMode: ChoiceBox[GameMode] = _
+  @FXML @SuppressWarnings(Array("org.wartremover.warts.Null"))
+  private var whitePlayer: TextField = _
+  @FXML @SuppressWarnings(Array("org.wartremover.warts.Null"))
+  private var blackPlayer: TextField = _
 
   override def initialize(url: URL, resourceBundle: ResourceBundle): Unit =
-    this.startGameButton.onMouseClicked = _ => GamePage(stage)
     this.backButton.onMouseClicked = _ => MainMenuPage(stage)
+
+    this.stage.setResizable(false)
+    this.timeConstraint.setItems(FXCollections.observableArrayList(TimeConstraint.values*))
+    this.timeConstraint.setValue(TimeConstraint.NoLimit)
+    this.timeConstraint.onAction = _ =>
+      this.time.setDisable(this.timeConstraint.getValue == TimeConstraint.NoLimit)
+    this.time.setDisable(true)
+    this.time.setValueFactory(
+      SpinnerValueFactory.IntegerSpinnerValueFactory(
+        TimeConstraint.MinMoveLimit,
+        TimeConstraint.MaxMoveLimit,
+        TimeConstraint.MoveLimit.minutes
+      )
+    )
+
+    this.gameMode.setItems(FXCollections.observableArrayList(GameMode.PVP))
+    this.gameMode.setValue(GameMode.PVP)
+    this.startGameButton.onMouseClicked = _ =>
+      val timeConstraint = this.timeConstraint.getValue
+      timeConstraint.minutes = this.time.getValue
+      val gameConfiguration = GameConfiguration(
+        timeConstraint,
+        this.gameMode.getValue,
+        Player(this.whitePlayer.getText, Team.WHITE),
+        Player(this.blackPlayer.getText, Team.BLACK)
+      )
+      // TODO pass game configuration
+      GamePage(stage)
