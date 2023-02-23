@@ -6,7 +6,7 @@
  */
 package io.github.chess.model.rules.chess.pawn
 
-import io.github.chess.model.moves.Move
+import io.github.chess.model.moves.{CaptureMove, Move}
 import io.github.chess.model.rules.chess.{ChessRule, RuleShorthands}
 import io.github.chess.model.rules.prolog.{BlackPawnCaptureRule, WhitePawnCaptureRule}
 import io.github.chess.model.{ChessGameStatus, Position, Team, moves}
@@ -18,13 +18,18 @@ class PawnCaptureMoves extends ChessRule with RuleShorthands:
   private val blackPawnCaptureRule: BlackPawnCaptureRule = PawnCaptureMoves.blackCaptureRule
 
   override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
-    // TODO return the set of CaptureMoves instead of simple Moves
     status.chessBoard.pieces.get(position) match
       case Some(piece) =>
         (piece.team match
           case Team.WHITE => whitePawnCaptureRule
           case Team.BLACK => blackPawnCaptureRule
-        ).findPositions(position).map(Move(position, _)).toSet
+        ).findPositions(position)
+          .map(toPosition => {
+            status.chessBoard.pieces.get(toPosition) match
+              case Some(capturedPiece) => CaptureMove(position, toPosition, capturedPiece)
+              case None                => Move(position, toPosition)
+          })
+          .toSet
       case None => Set.empty
 
 /**
