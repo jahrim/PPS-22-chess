@@ -13,4 +13,9 @@ import io.github.chess.model.Team
 /** Represents the particular piece of the pawn. */
 case class Pawn(override val team: Team) extends Piece(team):
 
-  override val rule: ChessRule = PawnRule()
+  override def rule: ChessRule = Pawn.pawnRule
+
+/** Object for Pawn that creates and stores a single [[PawnRule]] that all other Pawns will use. */
+object Pawn:
+
+  private final val pawnRule = PawnRule()

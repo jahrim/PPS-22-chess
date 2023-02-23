@@ -13,10 +13,13 @@ import io.github.chess.model.moves.Move
 /** Set of Pawn movement rules. */
 class PawnMovementRule extends ChessRule:
 
+  private val forwardOneRule: ForwardOneRule = ForwardOneRule()
+  private val doubleMoveRule: DoubleMoveRule = DoubleMoveRule()
+
   override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
-    val firstStep = ForwardOneRule().findMoves(position, status)
+    val firstStep = forwardOneRule.findMoves(position, status)
     if firstStep.nonEmpty && isFirstMove(position, status) then
-      firstStep ++ DoubleMoveRule().findMoves(position, status)
+      firstStep ++ doubleMoveRule.findMoves(position, status)
     else firstStep
 
   private def isFirstMove(position: Position, status: ChessGameStatus): Boolean =

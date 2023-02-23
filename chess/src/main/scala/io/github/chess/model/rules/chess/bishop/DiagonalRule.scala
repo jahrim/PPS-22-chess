@@ -14,11 +14,21 @@ import io.github.chess.model.{ChessGameStatus, Position, moves}
 /** Represents the chess rule that can find all the moves in diagonal directions, analyzing the status. */
 class DiagonalRule extends ChessRule with DirectionalRule:
 
-  private val northWestRule = NWPrologRule()
-  private val northEastRule = NEPrologRule()
-  private val southWestRule = SouthWestRule()
-  private val southEastRule = SouthEastRule()
+  private val northWestRule = DiagonalRule.nwPrologRule
+  private val northEastRule = DiagonalRule.nePrologRule
+  private val southWestRule = DiagonalRule.swPrologRule
+  private val southEastRule = DiagonalRule.sePrologRule
   private val rules = Set(northWestRule, northEastRule, southEastRule, southWestRule)
 
   override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
     this.rules.flatMap { analyseDirection(position, status, _) }
+
+/**
+ * Object for the Diagonal Rule that creates and stores a single instance of the prolog engine
+ *  for each of its directions.
+ */
+object DiagonalRule:
+  private val nwPrologRule = NWPrologRule()
+  private val nePrologRule = NEPrologRule()
+  private val swPrologRule = SouthWestRule()
+  private val sePrologRule = SouthEastRule()

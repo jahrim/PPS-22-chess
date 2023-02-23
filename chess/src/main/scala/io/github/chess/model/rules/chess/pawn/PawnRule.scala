@@ -14,6 +14,9 @@ import io.github.chess.model.{ChessGameStatus, Position}
 /** Implementation of the [[ChessRule]] that applies the rules of the [[Pawn]]. */
 case class PawnRule() extends ChessRule:
 
+  private val pawnMovementRule: PawnMovementRule = PawnMovementRule()
+  private val pawnCaptureRule: PawnCaptureRule = PawnCaptureRule()
+
   override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
-    PawnMovementRule().findMoves(position, status) ++
-      PawnCaptureRule().findMoves(position, status)
+    pawnMovementRule.findMoves(position, status) ++
+      pawnCaptureRule.findMoves(position, status)
