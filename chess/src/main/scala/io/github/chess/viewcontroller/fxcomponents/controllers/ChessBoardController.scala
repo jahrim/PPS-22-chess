@@ -81,6 +81,7 @@ case class ChessBoardController private (
             this.context.chessEngineProxy.applyMove(selectedMove)
             enter(NoneSelected)
           case None => this.selectCell(clickedCell)
+        if clickedCell.position == selectedCell.position then enter(NoneSelected)
     // TODO: temporary. Repaint will be called in the subscription to the state changes
     repaint()
 
