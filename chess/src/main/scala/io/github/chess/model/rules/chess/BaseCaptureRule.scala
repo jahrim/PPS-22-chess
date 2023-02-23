@@ -18,9 +18,6 @@ trait BaseCaptureRule extends ChessRule:
       .findMoves(position, status)
       .filter(move =>
         status.chessBoard.pieces.get(position) match
-          case Some(piece) =>
-            piece.team match
-              case Team.WHITE => status.chessBoard.blackPieces.contains(move.to)
-              case Team.BLACK => status.chessBoard.whitePieces.contains(move.to)
-          case None => false
+          case Some(piece) => status.chessBoard.pieces(piece.team.oppositeTeam).contains(move.to)
+          case None        => false
       )

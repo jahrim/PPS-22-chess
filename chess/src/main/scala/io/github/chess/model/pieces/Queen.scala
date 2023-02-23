@@ -11,7 +11,7 @@ import io.github.chess.model.rules.chess.ChessRule
 import io.github.chess.model.rules.chess.queen.QueenRule
 
 /** Represents the particular piece of the queen. */
-case class Queen(override val team: Team) extends Piece(team):
+case class Queen(override val team: Team) extends Piece:
 
   override def rule: ChessRule = Queen.queenRule
 

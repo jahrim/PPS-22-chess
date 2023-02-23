@@ -116,9 +116,8 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
 
   private def findPieceOfCurrentTeam(pos: Position): Option[Piece] = playingTeam.get(pos)
 
-  private def playingTeam: Map[Position, Piece] = this.state.currentTurn match
-    case Team.WHITE => this.state.chessBoard.whitePieces
-    case Team.BLACK => this.state.chessBoard.blackPieces
+  private def playingTeam: Map[Position, Piece] =
+    this.state.chessBoard.pieces(this.state.currentTurn)
 
   private def publishPieceMovedEvent(lastMove: Move): Unit =
     vertx

@@ -28,8 +28,7 @@ type FXMLSpecification = URL | String
 abstract class FXMLPage[C <: FXMLController](
     override protected val controller: C,
     private val fxmlSpecification: FXMLSpecification
-) extends Page
-    with PageWithController(controller):
+) extends PageWithController[C]:
   private val fxmlLoader: FXMLLoader = FXMLPage.createFXMLLoader(this.fxmlSpecification)
   this.fxmlLoader.setController(this.controller)
 

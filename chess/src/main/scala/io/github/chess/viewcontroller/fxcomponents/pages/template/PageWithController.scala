@@ -13,4 +13,7 @@ import io.github.chess.viewcontroller.fxcomponents.pages.template.Page
  * A mixin that binds a page to a controller.
  * @tparam C the type of the controller of this page
  */
-trait PageWithController[C <: Controller](protected val controller: C) extends Page
+trait PageWithController[C <: Controller] extends Page:
+
+  /** @return the controller of this page. */
+  protected def controller: C

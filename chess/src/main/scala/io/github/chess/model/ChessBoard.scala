@@ -22,18 +22,11 @@ trait ChessBoard:
   def pieces: Map[Position, Piece]
 
   /**
-   * Gives access to all the white [[Piece]]s that are present on the board.
-   *
-   * @return the map containing only white [[Piece]]s of the board
+   * Gives access to all the [[Piece]]s of the specified team that are present on the board.
+   * @param team the specified team
+   * @return the map containing only the [[Piece]]s of the board of the specified team
    */
-  def whitePieces: Map[Position, Piece] = pieces.filter(_._2.team == Team.WHITE)
-
-  /**
-   * Gives access to all the black [[Piece]]s that are present on the board.
-   *
-   * @return the map containing only black [[Piece]]s of the board
-   */
-  def blackPieces: Map[Position, Piece] = pieces.filter(_._2.team == Team.BLACK)
+  def pieces(team: Team): Map[Position, Piece] = pieces.filter(_._2.team == team)
 
   /**
    * Updates the chess board assigning the specified piece to the specified position.
