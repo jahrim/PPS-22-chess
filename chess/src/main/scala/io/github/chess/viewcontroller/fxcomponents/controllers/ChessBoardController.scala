@@ -38,8 +38,11 @@ case class ChessBoardController private (
     with ChessApplicationComponent:
   private var chessBoardBelief: Map[Position, Piece] = Map.empty
   this.cells.values.foreach(cell => cell.setOnMouseClicked { onCellClicked(_, cell) })
-  repaint()
 
+  // TODO Given that GamePageController must retrieve all data from the model,
+  //  it might be that this method could be removed.
+  //  In alternative it can be made that ChessGameController is in charge of retrieving all the pieces from the board,
+  //  this would mean that it could be better to merge the two methods instead.
   /** Retrieves the state of the chess engine service and shows it. */
   def repaint(): Unit =
     this.context.chessEngineProxy.getState.onSuccess { state =>

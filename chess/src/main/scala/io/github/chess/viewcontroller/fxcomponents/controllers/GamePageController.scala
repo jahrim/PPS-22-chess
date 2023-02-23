@@ -7,7 +7,7 @@
 package io.github.chess.viewcontroller.fxcomponents.controllers
 
 import io.github.chess.events.PieceMovedEvent
-import io.github.chess.viewcontroller.ChessApplication.given
+import io.github.chess.viewcontroller.ChessApplication.{start, given}
 import io.github.chess.viewcontroller.{ChessApplicationComponent, ChessApplicationContext}
 import io.github.chess.viewcontroller.fxcomponents.controllers.ChessBoardController
 import io.github.chess.viewcontroller.fxcomponents.controllers.template.FXMLController
@@ -45,10 +45,15 @@ class GamePageController(override protected val stage: Stage)(using
   override def initialize(url: URL, resourceBundle: ResourceBundle): Unit =
     chessBoardController = ChessBoardController.fromGridPane(this.chessBoardGridPane)(stage)
     this.surrenderButton.onMouseClicked = _ => MainMenuPage(stage)
-    // TODO get the game status and set the state values in the beginning
-    context.chessEngineProxy.subscribe[PieceMovedEvent](
-      PieceMovedEvent.address(),
-      onPieceMoved
+    initView()
+    context.chessEngineProxy.subscribe(PieceMovedEvent.address(), onPieceMoved)
+
+  private def initView(): Unit =
+    context.chessEngineProxy.getState.onSuccess(status =>
+      chessBoardController.repaint(status.chessBoard.pieces)
+      currentTurnText.setText(status.currentTurn.toString)
+      timeRemainingText.setText("-:-:-")
+      lastMoveText.setText("N/A")
     )
 
   private def onPieceMoved(message: Message[PieceMovedEvent]): Unit =
