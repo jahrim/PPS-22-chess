@@ -10,7 +10,7 @@ import io.github.chess.util.option.OptionExtension.anyToOptionOfAny
 import io.github.chess.ports.ChessPort
 import io.github.chess.events.{Event, PieceMovedEvent}
 import io.github.chess.model.Team
-import io.github.chess.model.moves.{CastlingMove, Move}
+import io.github.chess.model.moves.{CastlingMove, EnPassantMove, Move}
 import io.github.chess.model.pieces.Piece
 import io.vertx.core.eventbus.Message
 import io.vertx.core.{Future, Handler, Vertx}
@@ -38,11 +38,13 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
         state.chessBoard.movePiece(move.from, move.to)
         move match
           case castlingMove: CastlingMove =>
-            this.state.chessBoard
+            state.chessBoard
               .movePiece(castlingMove.rookFromPosition, castlingMove.rookToPosition)
+          case enPassantMove: EnPassantMove =>
+            state.chessBoard.removePiece(enPassantMove.capturedPiecePosition)
           // TODO: add other move types before this clause (i.e. CaptureMove, PromotionMove...)
           case _ =>
-        state.chessBoard.pieces.get(move.from) match
+        state.chessBoard.pieces.get(move.to) match
           case Some(piece) => state.history.save(piece, move)
           case None        =>
 

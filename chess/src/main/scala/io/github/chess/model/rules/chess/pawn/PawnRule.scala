@@ -16,7 +16,9 @@ case class PawnRule() extends ChessRule:
 
   private val pawnMovementRule: PawnMovementRule = PawnMovementRule()
   private val pawnCaptureRule: PawnCaptureRule = PawnCaptureRule()
+  private val enPassantRule: EnPassantRule = EnPassantRule()
 
   override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
     pawnMovementRule.findMoves(position, status) ++
-      pawnCaptureRule.findMoves(position, status)
+      pawnCaptureRule.findMoves(position, status) ++
+      enPassantRule.findMoves(position, status)

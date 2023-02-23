@@ -9,7 +9,14 @@ package io.github.chess.model.moves
 import io.github.chess.model.Position
 
 /** Represents the moving of a pawn by two steps forward. */
-trait DoubleMove extends Move
+trait DoubleMove extends Move:
+
+  /**
+   * Gives the position skipped while performing this move.
+   *
+   * @return position between the starting position and arrival
+   */
+  def middlePosition: Position
 
 /** Factory for [[DoubleMove]] instances. */
 object DoubleMove:
@@ -26,4 +33,9 @@ object DoubleMove:
   private case class PawnDoubleMove(
       override val from: Position,
       override val to: Position
-  ) extends DoubleMove
+  ) extends DoubleMove:
+
+    override val middlePosition: Position =
+      if from._2 > to._2
+      then from.rankDown()
+      else from.rankUp()
