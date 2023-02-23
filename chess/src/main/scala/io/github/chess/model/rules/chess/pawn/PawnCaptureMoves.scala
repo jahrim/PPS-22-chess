@@ -18,6 +18,7 @@ class PawnCaptureMoves extends ChessRule with RuleShorthands:
   private val blackPawnCaptureRule: BlackPawnCaptureRule = PawnCaptureMoves.blackCaptureRule
 
   override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
+    // TODO return the set of CaptureMoves instead of simple Moves
     status.chessBoard.pieces.get(position) match
       case Some(piece) =>
         (piece.team match

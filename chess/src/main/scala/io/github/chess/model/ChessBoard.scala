@@ -6,7 +6,7 @@
  */
 package io.github.chess.model
 
-import io.github.chess.events.EndTurnEvent
+import io.github.chess.events.PieceMovedEvent
 import io.github.chess.model.ChessBoardBuilder.DSL.*
 import io.github.chess.model.Team.{BLACK, WHITE}
 import io.github.chess.model.moves.Move

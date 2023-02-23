@@ -82,8 +82,6 @@ case class ChessBoardController private (
             enter(NoneSelected)
           case None => this.selectCell(clickedCell)
         if clickedCell.position == selectedCell.position then enter(NoneSelected)
-    // TODO: temporary. Repaint will be called in the subscription to the state changes
-    repaint()
 
   /**
    * Select the specified cell, checking if any piece was selected.

@@ -8,7 +8,7 @@ package io.github.chess.model
 
 import io.github.chess.util.option.OptionExtension.anyToOptionOfAny
 import io.github.chess.ports.ChessPort
-import io.github.chess.events.Event
+import io.github.chess.events.{Event, PieceMovedEvent}
 import io.github.chess.model.Team
 import io.github.chess.model.moves.{CastlingMove, Move}
 import io.github.chess.model.pieces.Piece
@@ -35,15 +35,19 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
   override def applyMove(move: Move): Future[Unit] =
     Future.succeededFuture(
       {
+        state.chessBoard.movePiece(move.from, move.to)
         move match
           case castlingMove: CastlingMove =>
-            this.state.chessBoard.movePiece(castlingMove.from, castlingMove.to)
             this.state.chessBoard
               .movePiece(castlingMove.rookFromPosition, castlingMove.rookToPosition)
           // TODO: add other move types before this clause (i.e. CaptureMove, PromotionMove...)
-          case m: Move =>
-            this.state.chessBoard.movePiece(m.from, m.to)
-        this.state.changeTeam()
+          case _ =>
+        state.chessBoard.pieces.get(move.from) match
+          case Some(piece) => state.history.save(piece, move)
+          case None        =>
+
+        state.changeTeam()
+        publishPieceMovedEvent(move)
       }
     )
 
@@ -55,3 +59,18 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
   private def playingTeam: Map[Position, Piece] = this.state.currentTurn match
     case Team.WHITE => this.state.chessBoard.whitePieces
     case Team.BLACK => this.state.chessBoard.blackPieces
+
+  private def publishPieceMovedEvent(lastMove: Move): Unit =
+    vertx
+      .eventBus()
+      .publish(
+        PieceMovedEvent.address(),
+        createPieceMovedEvent(lastMove)
+      )
+
+  private def createPieceMovedEvent(lastMove: Move): PieceMovedEvent =
+    PieceMovedEvent(
+      state.currentTurn,
+      state.chessBoard.pieces,
+      lastMove
+    )
