@@ -205,7 +205,7 @@ sonarqube.properties {
     property("sonar.projectKey", "${organization}_${rootProject.name}")
     property("sonar.projectDescription", "Project for PPS.")
     property("sonar.projectVersion", project.version.toString())
-    property("sonar.login", System.getenv()["SONARCLOUD_TOKEN"].toString())
+    System.getenv()["SONARCLOUD_TOKEN"]?.let { property("sonar.login", it) }
     property("sonar.scm.provider", "git")
     property("sonar.verbose", "true")
     property("sonar.links.homepage", githubUrl)
