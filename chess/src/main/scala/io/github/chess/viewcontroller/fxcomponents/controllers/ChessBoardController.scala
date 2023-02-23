@@ -6,7 +6,7 @@
  */
 package io.github.chess.viewcontroller.fxcomponents.controllers
 
-import io.github.chess.model.moves.Move
+import io.github.chess.model.moves.{CaptureMove, CastlingMove, DoubleMove, Move}
 import io.github.chess.model.pieces.Piece
 import io.github.chess.model.{ChessBoard, Position, moves}
 import io.github.chess.util.stateful.StatefulSystem
@@ -110,13 +110,21 @@ case class ChessBoardController private (
     case NoneSelected =>
     case PieceSelected(selectedCell, availableMoves) =>
       selectedCell.emphasize()
-      availableMoves.keys.foreach { this.cells.get(_).foreach(_.setMoveAvailableEffect()) }
+      availableMoves.foreach((position, move) =>
+        move match
+          case _: CaptureMove => this.cells.get(position).foreach(_.emphasizeCapture())
+          case _              => this.cells.get(position).foreach(_.setMoveAvailableEffect())
+      )
 
   override protected def exitBehavior(state: State): Unit = state match
     case NoneSelected =>
     case PieceSelected(selectedCell, availableMoves) =>
       selectedCell.deemphasize()
-      availableMoves.keys.foreach { this.cells.get(_).foreach(_.removeMoveAvailableEffect()) }
+      availableMoves.foreach((position, move) =>
+        move match
+          case _: CaptureMove => this.cells.get(position).foreach(_.deemphasize())
+          case _              => this.cells.get(position).foreach(_.removeMoveAvailableEffect())
+      )
 
 /** Companion object of [[ChessBoardController]]. */
 object ChessBoardController:

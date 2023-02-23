@@ -71,6 +71,9 @@ case class CellView(cell: GridCell[Pane]):
   /** Add an highlighting effect to this cell. */
   def emphasize(): Unit = FXUtils.changeColor(this.cell.content, Colors.SelectedCell)
 
+  /** Add an highlighting effect of capture to this cell. */
+  def emphasizeCapture(): Unit = FXUtils.changeColor(this.cell.content, Colors.CapturingCell)
+
   /** Remove the highlighting effect from this cell. */
   def deemphasize(): Unit = FXUtils.changeColor(this.cell.content, this.defaultColor)
 
