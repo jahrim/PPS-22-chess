@@ -7,18 +7,19 @@
 package io.github.chess.events
 
 import io.github.chess.events.Event
+import io.github.chess.model.configuration.Player
 import io.github.chess.model.moves.Move
 import io.github.chess.model.pieces.Piece
-import io.github.chess.model.{Position, Team}
+import io.github.chess.model.Position
 
 /** Represents the event in which a piece was moved on the board. */
 trait PieceMovedEvent extends Event:
 
   /**
-   * The team that should be playing next.
-   * @return the team that should be playing next
+   * The player that should be playing next.
+   * @return the player that should be playing next
    */
-  def currentTurn: Team
+  def currentPlayer: Player
 
   /**
    * The disposition of the board after the move was performed.
@@ -37,17 +38,17 @@ object PieceMovedEvent:
 
   /**
    * Creates an instance of the Piece Moved Event.
-   * @param currentTurn the team that should be playing next
+   * @param currentPlayer the player that should be playing next
    * @param boardDisposition current disposition of the board
    * @param lastMove last move that was performed on the board
    * @return The event containing all the changes applied due to the move
    */
   def apply(
-      currentTurn: Team,
+      currentPlayer: Player,
       boardDisposition: Map[Position, Piece],
       lastMove: Move
   ): PieceMovedEvent =
-    PieceMovedEventImpl(currentTurn, boardDisposition, lastMove)
+    PieceMovedEventImpl(currentPlayer, boardDisposition, lastMove)
 
   /**
    * Address on which this event will be communicated.
@@ -56,7 +57,7 @@ object PieceMovedEvent:
   def address(): String = PieceMovedEvent.getClass.toString
 
   private case class PieceMovedEventImpl(
-      override val currentTurn: Team,
+      override val currentPlayer: Player,
       override val boardDisposition: Map[Position, Piece],
       override val lastMove: Move
   ) extends PieceMovedEvent

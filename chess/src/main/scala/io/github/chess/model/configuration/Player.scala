@@ -18,7 +18,7 @@ case class Player(name: String, team: Team)
 object Player:
 
   /** Creates a no name white player. */
-  def noNameWhitePlayer: Player = Player("", Team.WHITE)
+  def noNameWhitePlayer: Player = Player("whitePlayer", Team.WHITE)
 
   /** Creates a no name black player. */
-  def noNameBlackPlayer: Player = Player("", Team.BLACK)
+  def noNameBlackPlayer: Player = Player("blackPlayer", Team.BLACK)

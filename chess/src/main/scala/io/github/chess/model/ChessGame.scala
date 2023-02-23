@@ -8,10 +8,12 @@ package io.github.chess.model
 
 import io.github.chess.util.option.OptionExtension.anyToOptionOfAny
 import io.github.chess.ports.ChessPort
-import io.github.chess.events.{Event, PieceMovedEvent}
-import io.github.chess.model.Team
+import io.github.chess.events.{Event, PieceMovedEvent, TimeEndedEvent, TimePassedEvent}
+import io.github.chess.model.Team.{BLACK, WHITE}
+import io.github.chess.model.configuration.{GameConfiguration, Player, TimeConstraint}
 import io.github.chess.model.moves.{CastlingMove, EnPassantMove, Move}
 import io.github.chess.model.pieces.Piece
+import io.github.chess.util.general.Timer
 import io.vertx.core.eventbus.Message
 import io.vertx.core.{Future, Handler, Vertx}
 
@@ -20,10 +22,31 @@ import io.vertx.core.{Future, Handler, Vertx}
  * @param vertx the vertx where this game will be deployed
  */
 class ChessGame(private val vertx: Vertx) extends ChessPort:
-  private val state: ChessGameStatus = ChessGameStatus()
+  @SuppressWarnings(Array("org.wartremover.warts.Null"))
+  private var state: ChessGameStatus = _
+  @SuppressWarnings(Array("org.wartremover.warts.Null"))
+  private var timer: Timer = _
 
   override def getState: Future[ChessGameStatus] =
     Future.succeededFuture(this.state)
+
+  override def startGame(gameConfiguration: GameConfiguration): Future[Unit] =
+    Future.succeededFuture({
+      this.state = ChessGameStatus(gameConfiguration = gameConfiguration)
+      gameConfiguration.timeConstraint match
+        case TimeConstraint.NoLimit =>
+        case TimeConstraint.MoveLimit =>
+          this.timer = Timer(
+            gameConfiguration.timeConstraint.minutes,
+            () =>
+              this.publishTimePassedEvent()
+              if this.timer.ended
+              then
+                this.timer.stop()
+                this.publishTimeEndedEvent()
+          )
+          this.timer.start()
+    })
 
   override def findMoves(position: Position): Future[Set[Move]] =
     Future.succeededFuture(
@@ -50,6 +73,8 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
 
         state.changeTeam()
         publishPieceMovedEvent(move)
+        if this.state.gameConfiguration.timeConstraint == TimeConstraint.MoveLimit then
+          this.timer.restart()
       }
     )
 
@@ -72,7 +97,21 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
 
   private def createPieceMovedEvent(lastMove: Move): PieceMovedEvent =
     PieceMovedEvent(
-      state.currentTurn,
+      this.currentPlayer,
       state.chessBoard.pieces,
       lastMove
     )
+
+  private def publishTimePassedEvent(): Unit =
+    this.vertx
+      .eventBus()
+      .publish(TimePassedEvent.address(), TimePassedEvent(this.timer.timeRemaining))
+
+  private def publishTimeEndedEvent(): Unit =
+    this.vertx
+      .eventBus()
+      .publish(TimeEndedEvent.address(), TimeEndedEvent(this.currentPlayer))
+
+  private def currentPlayer: Player = this.state.currentTurn match
+    case WHITE => this.state.gameConfiguration.whitePlayer
+    case BLACK => this.state.gameConfiguration.blackPlayer

@@ -6,7 +6,7 @@
  */
 package io.github.chess.viewcontroller.fxcomponents.controllers
 
-import io.github.chess.events.PieceMovedEvent
+import io.github.chess.events.{PieceMovedEvent, TimeEndedEvent, TimePassedEvent}
 import io.github.chess.viewcontroller.ChessApplication.{start, given}
 import io.github.chess.viewcontroller.{ChessApplicationComponent, ChessApplicationContext}
 import io.github.chess.viewcontroller.fxcomponents.controllers.ChessBoardController
@@ -47,11 +47,15 @@ class GamePageController(override protected val stage: Stage)(using
     this.surrenderButton.onMouseClicked = _ => MainMenuPage(stage)
     initView()
     context.chessEngineProxy.subscribe(PieceMovedEvent.address(), onPieceMoved)
+    context.chessEngineProxy.subscribe(TimePassedEvent.address(), onTimePassed)
+    context.chessEngineProxy.subscribe(TimeEndedEvent.address(), onTimeEnded)
 
   private def initView(): Unit =
     context.chessEngineProxy.getState.onSuccess(status =>
       chessBoardController.repaint(status.chessBoard.pieces)
-      currentTurnText.setText(status.currentTurn.toString)
+      currentTurnText.setText(
+        s"${status.gameConfiguration.whitePlayer.name} -> ${status.currentTurn.toString}"
+      )
       timeRemainingText.setText("-:-:-")
       lastMoveText.setText("N/A")
     )
@@ -59,10 +63,20 @@ class GamePageController(override protected val stage: Stage)(using
   private def onPieceMoved(message: Message[PieceMovedEvent]): Unit =
     Platform.runLater(() =>
       val event: PieceMovedEvent = message.body()
-      currentTurnText.setText(event.currentTurn.toString)
+      currentTurnText.setText(s"${event.currentPlayer.name} -> ${event.currentPlayer.team}")
       lastMoveText.setText(s"${event.lastMove.from} -> ${event.lastMove.to}")
       chessBoardController.repaint(event.boardDisposition)
     )
+
+  private def onTimePassed(message: Message[TimePassedEvent]): Unit =
+    Platform.runLater(() =>
+      val timeRemaining = message.body().timeRemaining
+      this.timeRemainingText.setText(
+        s"${timeRemaining.toMinutes}m:${timeRemaining.toSeconds % 60}s"
+      )
+    )
+
+  private def onTimeEnded(message: Message[TimeEndedEvent]): Unit = ???
 
 // TODO: get access to the proxy for the chess engine service (as a given constructor parameter?)
 // TODO: handle surrender logic

@@ -7,6 +7,7 @@
 package io.github.chess.ports
 
 import io.github.chess.events.Event
+import io.github.chess.model.configuration.GameConfiguration
 import io.github.chess.model.moves.Move
 import io.github.chess.model.{ChessGameStatus, Position}
 import io.vertx.core.eventbus.Message
@@ -15,15 +16,18 @@ import io.vertx.core.{Future, Handler}
 /** Represents the contract of a chess engine service. */
 trait ChessPort:
 
-  // TODO inserire gameConfiguration parameter e pensare a cosa ritornare
-  // (discutere se la view crea subito il modello e cambia la gameConfiguration con i vari input dell'utente)
-  // def createGame(gc: GameConfiguration): ChessGameStatus
-
   // TODO inserire player parameter
   // def surrender(p: Player): Unit = ???
 
   /** @return a future containing the state of the game of chess */
   def getState: Future[ChessGameStatus]
+
+  /**
+   * Starts the game, using from its [[GameConfiguration]].
+   * @param gameConfiguration its [[GameConfiguration]]
+   * @return a future completed when the game is started
+   */
+  def startGame(gameConfiguration: GameConfiguration): Future[Unit]
 
   /**
    * @param position the specified position

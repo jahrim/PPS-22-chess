@@ -66,8 +66,12 @@ class GameConfigurationPageController(override protected val stage: Stage)(using
       val gameConfiguration = GameConfiguration(
         timeConstraint,
         this.gameMode.getValue,
-        Player(this.whitePlayer.getText, Team.WHITE),
-        Player(this.blackPlayer.getText, Team.BLACK)
+        if this.whitePlayer.getText.equals("")
+        then Player.noNameWhitePlayer
+        else Player(this.whitePlayer.getText, Team.WHITE),
+        if this.blackPlayer.getText.equals("")
+        then Player.noNameBlackPlayer
+        else Player(this.blackPlayer.getText, Team.BLACK)
       )
-      // TODO pass game configuration
+      context.chessEngineProxy.startGame(gameConfiguration)
       GamePage(stage)
