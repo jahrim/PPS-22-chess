@@ -80,14 +80,22 @@ case class ChessBoardController private (
    */
   private def onCellClicked(event: MouseEvent, clickedCell: CellView): Unit =
     this.getState match
-      case NoneSelected => this.selectCell(clickedCell)
+      case NoneSelected =>
+        this.context.chessEngineProxy.getState.onComplete {
+          case Success(value) =>
+            this.chessBoardBelief.get(clickedCell.position) match
+              case Some(piece) if piece.team == value.currentTurn =>
+                Platform.runLater { this.selectCell(clickedCell) }
+              case _ =>
+          case _ =>
+        }
       case PieceSelected(selectedCell, availableMoves) =>
         availableMoves.get(clickedCell.position) match
           case Some(selectedMove) =>
             this.context.chessEngineProxy.applyMove(selectedMove)
             enter(NoneSelected)
-          case None => this.selectCell(clickedCell)
-        if clickedCell.position == selectedCell.position then enter(NoneSelected)
+          case None if clickedCell.position == selectedCell.position => enter(NoneSelected)
+          case _                                                     => this.selectCell(clickedCell)
 
   /**
    * Select the specified cell, checking if any piece was selected.
