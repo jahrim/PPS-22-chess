@@ -11,7 +11,8 @@ import io.github.chess.model.configuration.GameConfiguration
 import io.github.chess.model.moves.Move
 import io.github.chess.model.{ChessGameStatus, Position}
 import io.vertx.core.eventbus.Message
-import io.vertx.core.{Future, Handler}
+import io.vertx.core.Handler
+import scala.concurrent.Future
 
 /** Represents the contract of a chess engine service. */
 trait ChessPort:

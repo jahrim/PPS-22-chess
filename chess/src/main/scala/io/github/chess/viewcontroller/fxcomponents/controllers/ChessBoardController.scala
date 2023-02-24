@@ -16,13 +16,15 @@ import io.github.chess.viewcontroller.fxcomponents.controllers.template.Controll
 import io.github.chess.viewcontroller.fxcomponents.controllers.ChessBoardController.State
 import io.github.chess.viewcontroller.fxcomponents.controllers.ChessBoardController.State.*
 import io.github.chess.viewcontroller.fxcomponents.pages.components.{CellView, PieceView}
-import io.vertx.core.Future
 import javafx.scene.input.MouseEvent
 import javafx.scene.layout.GridPane
 import javafx.scene.layout.Pane
 import scalafx.Includes.*
 import scalafx.application.Platform
 import scalafx.stage.Stage
+import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.util.{Success, Failure}
 
 /**
  * Controller of the chess board view.
@@ -45,8 +47,9 @@ case class ChessBoardController private (
   //  this would mean that it could be better to merge the two methods instead.
   /** Retrieves the state of the chess engine service and shows it. */
   def repaint(): Unit =
-    this.context.chessEngineProxy.getState.onSuccess { state =>
-      this.repaint(state.chessBoard.pieces)
+    this.context.chessEngineProxy.getState.onComplete {
+      case Success(state)     => this.repaint(state.chessBoard.pieces)
+      case Failure(exception) => throw exception
     }
 
   /**
@@ -93,8 +96,10 @@ case class ChessBoardController private (
   private def selectCell(cell: CellView): Unit =
     this.chessBoardBelief.get(cell.position).map(_ => cell) match
       case Some(selectedCell) =>
-        getAvailableMoves(selectedCell).onSuccess { availableMoves =>
-          enter(PieceSelected(selectedCell, availableMoves))
+        getAvailableMoves(selectedCell).onComplete {
+          case Success(availableMoves) =>
+            Platform.runLater { enter(PieceSelected(selectedCell, availableMoves)) }
+          case Failure(exception) => throw exception
         }
       case None =>
         enter(NoneSelected)

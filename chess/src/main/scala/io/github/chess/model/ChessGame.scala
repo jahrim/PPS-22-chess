@@ -13,9 +13,13 @@ import io.github.chess.model.Team.{BLACK, WHITE}
 import io.github.chess.model.configuration.{GameConfiguration, Player, TimeConstraint}
 import io.github.chess.model.moves.{CastlingMove, EnPassantMove, Move}
 import io.github.chess.model.pieces.Piece
+import io.github.chess.util.exception.GameNotInitializedException
 import io.github.chess.util.general.Timer
 import io.vertx.core.eventbus.Message
-import io.vertx.core.{Future, Handler, Vertx}
+import io.vertx.core.{Handler, Vertx}
+
+import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
  * A game of chess.
@@ -28,10 +32,12 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
   private var timer: Timer = _
 
   override def getState: Future[ChessGameStatus] =
-    Future.succeededFuture(this.state)
+    if this.state.isDefined
+    then Future { this.state }
+    else Future.failed(GameNotInitializedException())
 
   override def startGame(gameConfiguration: GameConfiguration): Future[Unit] =
-    Future.succeededFuture({
+    Future {
       this.state = ChessGameStatus(gameConfiguration = gameConfiguration)
       gameConfiguration.timeConstraint match
         case TimeConstraint.NoLimit =>
@@ -46,40 +52,38 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
                 this.publishTimeEndedEvent()
           )
           this.timer.start()
-    })
+    }
 
   override def findMoves(position: Position): Future[Set[Move]] =
-    Future.succeededFuture(
+    Future {
       findPieceOfCurrentTeam(position) match
         case Some(piece) => piece.rule.findMoves(position, this.state)
         case None        => Set.empty
-    )
+    }
 
   override def applyMove(move: Move): Future[Unit] =
-    Future.succeededFuture(
-      {
-        state.chessBoard.movePiece(move.from, move.to)
-        move match
-          case castlingMove: CastlingMove =>
-            state.chessBoard
-              .movePiece(castlingMove.rookFromPosition, castlingMove.rookToPosition)
-          case enPassantMove: EnPassantMove =>
-            state.chessBoard.removePiece(enPassantMove.capturedPiecePosition)
-          // TODO: add other move types before this clause (i.e. CaptureMove, PromotionMove...)
-          case _ =>
-        state.chessBoard.pieces.get(move.to) match
-          case Some(piece) => state.history.save(piece, move)
-          case None        =>
+    Future {
+      state.chessBoard.movePiece(move.from, move.to)
+      move match
+        case castlingMove: CastlingMove =>
+          state.chessBoard
+            .movePiece(castlingMove.rookFromPosition, castlingMove.rookToPosition)
+        case enPassantMove: EnPassantMove =>
+          state.chessBoard.removePiece(enPassantMove.capturedPiecePosition)
+        // TODO: add other move types before this clause (i.e. CaptureMove, PromotionMove...)
+        case _ =>
+      state.chessBoard.pieces.get(move.to) match
+        case Some(piece) => state.history.save(piece, move)
+        case None        =>
 
-        state.changeTeam()
-        publishPieceMovedEvent(move)
-        if this.state.gameConfiguration.timeConstraint == TimeConstraint.MoveLimit then
-          this.timer.restart()
-      }
-    )
+      state.changeTeam()
+      publishPieceMovedEvent(move)
+      if this.state.gameConfiguration.timeConstraint == TimeConstraint.MoveLimit then
+        this.timer.restart()
+    }
 
   override def subscribe[T <: Event](address: String, handler: Handler[Message[T]]): Future[Unit] =
-    Future.succeededFuture(vertx.eventBus().consumer(address, handler))
+    Future { vertx.eventBus().consumer(address, handler) }
 
   private def findPieceOfCurrentTeam(pos: Position): Option[Piece] = playingTeam.get(pos)
 

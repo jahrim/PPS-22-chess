@@ -15,6 +15,9 @@ import io.github.chess.viewcontroller.fxcomponents.pages.MainMenuPage
 import io.vertx.core.eventbus.Message
 import javafx.scene.control.{Button, TextField}
 import javafx.scene.layout.GridPane
+
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.util.{Failure, Success}
 import scalafx.application.Platform
 import scalafx.stage.Stage
 
@@ -51,14 +54,18 @@ class GamePageController(override protected val stage: Stage)(using
     context.chessEngineProxy.subscribe(TimeEndedEvent.address(), onTimeEnded)
 
   private def initView(): Unit =
-    context.chessEngineProxy.getState.onSuccess(status =>
-      chessBoardController.repaint(status.chessBoard.pieces)
-      currentTurnText.setText(
-        s"${status.gameConfiguration.whitePlayer.name} -> ${status.currentTurn.toString}"
-      )
-      timeRemainingText.setText("-:-:-")
-      lastMoveText.setText("N/A")
-    )
+    context.chessEngineProxy.getState.onComplete {
+      case Success(status) =>
+        Platform.runLater {
+          chessBoardController.repaint(status.chessBoard.pieces)
+          currentTurnText.setText(
+            s"${status.gameConfiguration.whitePlayer.name} -> ${status.currentTurn.toString}"
+          )
+          timeRemainingText.setText("-:-:-")
+          lastMoveText.setText("N/A")
+        }
+      case Failure(exception) => throw exception
+    }
 
   private def onPieceMoved(message: Message[PieceMovedEvent]): Unit =
     Platform.runLater(() =>

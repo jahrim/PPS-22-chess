@@ -4,7 +4,7 @@
  *
  * Full license description available at: https://github.com/jahrim/PPS-22-chess/blob/master/LICENSE
  */
-package io.github.chess.util
+package io.github.chess.util.general
 
 import io.github.chess.model.Position
 

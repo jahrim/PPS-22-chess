@@ -7,8 +7,11 @@
 package io.github.chess.model
 
 import io.github.chess.AbstractSpec
+import io.github.chess.model.configuration.GameConfiguration
 import io.github.chess.model.moves.Move
-import io.vertx.core.{Future, Handler, Vertx}
+import io.vertx.core.Vertx
+import scala.concurrent.Await
+import scala.concurrent.duration.{Duration, SECONDS}
 
 class ChessGameSpec extends AbstractSpec:
 
@@ -16,25 +19,22 @@ class ChessGameSpec extends AbstractSpec:
   val whitePawnPosition: Position = (0, 1)
   val whitePawnMove: Move = Move(whitePawnPosition, (0, 3))
   val chessGame: ChessGame = ChessGame(Vertx.vertx())
+  chessGame.startGame(GameConfiguration.default)
+  val maxDuration: Duration = Duration(5, SECONDS)
 
   "The Chess Game" should "let the white player move a pawn of their team in the beginning of a standard game" in {
-    chessGame.getState.onSuccess(state => state.currentTurn should be(Team.WHITE))
-    chessGame.findMoves(whitePawnPosition).onSuccess(movesSet => movesSet shouldNot be(empty))
+    Await.result(chessGame.getState, maxDuration).currentTurn should be(Team.WHITE)
+    Await.result(chessGame.findMoves(whitePawnPosition), maxDuration) shouldNot be(empty)
   }
 
   it should "forbid the initial player from moving a pawn of the black team" in {
-    chessGame.findMoves(blackPawnPosition).onSuccess(movesSet => movesSet should be(empty))
+    Await.result(chessGame.findMoves(blackPawnPosition), maxDuration) should be(empty)
   }
 
   it should "change the turn after a move" in {
-    chessGame
-      .applyMove(whitePawnMove)
-      .onSuccess(_ =>
-        chessGame.getState.onSuccess(state => state.currentTurn should be(Team.BLACK))
-        chessGame
-          .findMoves(blackPawnPosition)
-          .onSuccess(movesSet => movesSet shouldNot be(empty))
-      )
+    Await.result(chessGame.applyMove(whitePawnMove), maxDuration)
+    Await.result(chessGame.getState, maxDuration).currentTurn should be(Team.BLACK)
+    Await.result(chessGame.findMoves(blackPawnPosition), maxDuration) shouldNot be(empty)
   }
 
 /* TODO consider these tests

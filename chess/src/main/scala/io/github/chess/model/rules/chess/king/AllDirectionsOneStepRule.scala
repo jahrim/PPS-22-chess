@@ -9,7 +9,7 @@ package io.github.chess.model.rules.chess.king
 import io.github.chess.model.moves.Move
 import io.github.chess.model.rules.chess.ChessRule
 import io.github.chess.model.{ChessGameStatus, Position, moves}
-import io.github.chess.util.Combinator
+import io.github.chess.util.general.Combinator
 
 /** Represents the chess rule that can find the moves in all the directions stepped by one. */
 class AllDirectionsOneStepRule extends ChessRule:

@@ -14,7 +14,10 @@ import io.github.chess.viewcontroller.fxcomponents.controllers.template.FXMLCont
 import io.github.chess.viewcontroller.fxcomponents.pages.{GamePage, MainMenuPage}
 import javafx.collections.{FXCollections, ObservableList}
 import javafx.scene.control.{Button, ChoiceBox, Spinner, SpinnerValueFactory, TextField}
+import scalafx.application.Platform
 import scalafx.stage.Stage
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.util.{Success, Failure}
 import java.net.URL
 import java.util.ResourceBundle
 
@@ -73,5 +76,9 @@ class GameConfigurationPageController(override protected val stage: Stage)(using
         then Player.noNameBlackPlayer
         else Player(this.blackPlayer.getText, Team.BLACK)
       )
-      context.chessEngineProxy.startGame(gameConfiguration)
-      GamePage(stage)
+      context.chessEngineProxy
+        .startGame(gameConfiguration)
+        .onComplete {
+          case Success(_)         => Platform.runLater { GamePage(stage) }
+          case Failure(exception) => throw exception
+        }

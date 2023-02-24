@@ -7,7 +7,8 @@
 package io.github.chess.util.general
 
 import java.util.concurrent.{Executors, ScheduledExecutorService, TimeUnit}
-import scala.concurrent.duration.{Duration, MINUTES, SECONDS}
+import scala.concurrent.duration.Duration
+import scala.concurrent.duration.DurationInt
 
 /** Represents a countdown timer that decrement the time remaining and executes every N seconds. */
 trait Timer:
@@ -58,8 +59,8 @@ object Timer:
   ) extends Timer:
 
     private var executor: ScheduledExecutorService = Executors.newSingleThreadScheduledExecutor()
-    private var _timeRemaining = Duration(startingMinutes, MINUTES)
-    private final val Decrement = Duration(decrement, SECONDS)
+    private var _timeRemaining = startingMinutes.minutes
+    private final val Decrement = decrement.seconds
 
     override def start(): Unit =
       this.executor.scheduleAtFixedRate(
@@ -77,7 +78,7 @@ object Timer:
     override def reset(): Unit =
       this.stop()
       this.executor = Executors.newSingleThreadScheduledExecutor()
-      this._timeRemaining = Duration(startingMinutes, MINUTES)
+      this._timeRemaining = startingMinutes.minutes
 
     override def ended: Boolean = this._timeRemaining == Duration.Zero
 
