@@ -6,14 +6,15 @@
  */
 package io.github.chess.viewcontroller.fxcomponents.controllers
 
-import io.github.chess.events.{PieceMovedEvent, TimeEndedEvent, TimePassedEvent}
+import io.github.chess.events.{PieceMovedEvent, PromotingPawnEvent, TimeEndedEvent, TimePassedEvent}
+import io.github.chess.model.PromotionPiece
 import io.github.chess.viewcontroller.ChessApplication.{start, given}
 import io.github.chess.viewcontroller.{ChessApplicationComponent, ChessApplicationContext}
 import io.github.chess.viewcontroller.fxcomponents.controllers.ChessBoardController
 import io.github.chess.viewcontroller.fxcomponents.controllers.template.FXMLController
 import io.github.chess.viewcontroller.fxcomponents.pages.MainMenuPage
 import io.vertx.core.eventbus.Message
-import javafx.scene.control.{Button, TextField}
+import javafx.scene.control.{Button, ChoiceDialog, TextField}
 import javafx.scene.layout.GridPane
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -52,6 +53,7 @@ class GamePageController(override protected val stage: Stage)(using
     context.chessEngineProxy.subscribe(PieceMovedEvent.address(), onPieceMoved)
     context.chessEngineProxy.subscribe(TimePassedEvent.address(), onTimePassed)
     context.chessEngineProxy.subscribe(TimeEndedEvent.address(), onTimeEnded)
+    context.chessEngineProxy.subscribe(PromotingPawnEvent.address(), onPromotingPawn)
 
   private def initView(): Unit =
     context.chessEngineProxy.getState.onComplete {
@@ -84,6 +86,21 @@ class GamePageController(override protected val stage: Stage)(using
     )
 
   private def onTimeEnded(message: Message[TimeEndedEvent]): Unit = ???
+
+  private def onPromotingPawn(message: Message[PromotingPawnEvent]): Unit =
+    Platform.runLater {
+      val values = message.body().promotionPieces
+      values.headOption match
+        case Some(default) =>
+          val dialog: ChoiceDialog[PromotionPiece[_]] = ChoiceDialog(default, values*)
+          dialog.showAndWait().ifPresent { piece =>
+            context.chessEngineProxy.promote(message.body().pawnPosition, piece).onComplete {
+              case Success(_)         => this.chessBoardController.repaint()
+              case Failure(exception) => throw exception
+            }
+          } // TODO add orElse to ifPresent
+        case None =>
+    }
 
 // TODO: get access to the proxy for the chess engine service (as a given constructor parameter?)
 // TODO: handle surrender logic

@@ -9,9 +9,11 @@ package io.github.chess.ports
 import io.github.chess.events.Event
 import io.github.chess.model.configuration.GameConfiguration
 import io.github.chess.model.moves.Move
-import io.github.chess.model.{ChessGameStatus, Position}
+import io.github.chess.model.pieces.Piece
+import io.github.chess.model.{ChessGameStatus, Position, PromotionPiece}
 import io.vertx.core.eventbus.Message
 import io.vertx.core.Handler
+
 import scala.concurrent.Future
 
 /** Represents the contract of a chess engine service. */
@@ -43,6 +45,15 @@ trait ChessPort:
    * @return a future that completes when the move has been applied
    */
   def applyMove(move: Move): Future[Unit]
+
+  /**
+   * Promotes a pawn to another piece.
+   * @param pawnPosition position of the pawn to promote
+   * @param promotingPiece piece to promote the pawn
+   * @return a future that completes when the promotion has been applied
+   */
+  // TODO refactor to return piece, so not repainting all board but single cell
+  def promote[P <: Piece](pawnPosition: Position, promotingPiece: PromotionPiece[P]): Future[Unit]
 
   // TODO: reason about changing it to subscribe[T <: Event](handler: (Event) => Unit)
   /**

@@ -8,11 +8,17 @@ package io.github.chess.model
 
 import io.github.chess.util.option.OptionExtension.anyToOptionOfAny
 import io.github.chess.ports.ChessPort
-import io.github.chess.events.{Event, PieceMovedEvent, TimeEndedEvent, TimePassedEvent}
+import io.github.chess.events.{
+  Event,
+  PieceMovedEvent,
+  PromotingPawnEvent,
+  TimeEndedEvent,
+  TimePassedEvent
+}
 import io.github.chess.model.Team.{BLACK, WHITE}
 import io.github.chess.model.configuration.{GameConfiguration, Player, TimeConstraint}
 import io.github.chess.model.moves.{CastlingMove, EnPassantMove, Move}
-import io.github.chess.model.pieces.Piece
+import io.github.chess.model.pieces.{Pawn, Piece}
 import io.github.chess.util.exception.GameNotInitializedException
 import io.github.chess.util.general.Timer
 import io.vertx.core.eventbus.Message
@@ -76,10 +82,33 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
         case Some(piece) => state.history.save(piece, move)
         case None        =>
 
-      state.changeTeam()
+      this.findPieceOfCurrentTeam(move.to) match
+        case Some(_: Pawn) if move.to.rank == enemyBaseRank() =>
+          if this.state.gameConfiguration.timeConstraint == TimeConstraint.MoveLimit then
+            this.timer.stop()
+          this.publishPromotingPawnEvent(move.to)
+        case _ =>
+          this.switchTurn()
+
       publishPieceMovedEvent(move)
-      if this.state.gameConfiguration.timeConstraint == TimeConstraint.MoveLimit then
-        this.timer.restart()
+    }
+
+  override def promote[P <: Piece](
+      pawnPosition: Position,
+      promotingPiece: PromotionPiece[P]
+  ): Future[Unit] =
+    Future {
+      this.findPieceOfCurrentTeam(pawnPosition) match
+        case Some(_: Pawn) =>
+          this.state.chessBoard.setPiece(
+            pawnPosition,
+            promotingPiece.pieceClass
+              .getConstructor(classOf[Team])
+              .newInstance(this.state.currentTurn)
+          )
+          this.switchTurn()
+          this.state.history.all.lastOption.foreach { publishPieceMovedEvent }
+        case _ =>
     }
 
   override def subscribe[T <: Event](address: String, handler: Handler[Message[T]]): Future[Unit] =
@@ -119,3 +148,21 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
   private def currentPlayer: Player = this.state.currentTurn match
     case WHITE => this.state.gameConfiguration.whitePlayer
     case BLACK => this.state.gameConfiguration.blackPlayer
+
+  private def publishPromotingPawnEvent(pawnPosition: Position): Unit =
+    this.vertx
+      .eventBus()
+      .publish(
+        PromotingPawnEvent.address(),
+        PromotingPawnEvent(pawnPosition, PromotionPiece.values)
+      )
+
+  private def switchTurn(): Unit =
+    this.state.changeTeam()
+    if this.state.gameConfiguration.timeConstraint == TimeConstraint.MoveLimit then
+      this.timer.restart()
+
+  private def enemyBaseRank(): Rank =
+    this.state.currentTurn match
+      case WHITE => Rank._8
+      case BLACK => Rank._1
