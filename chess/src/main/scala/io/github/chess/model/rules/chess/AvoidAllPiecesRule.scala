@@ -10,7 +10,7 @@ import io.github.chess.model.moves.Move
 import io.github.chess.model.{ChessGameStatus, Position}
 
 /** Chess rule mixin that checks the presence of a piece in the destination position after finding it. */
-trait PresenceRule extends ChessRule:
+trait AvoidAllPiecesRule extends ChessRule:
 
   abstract override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
     super.findMoves(position, status).filter(move => !status.chessBoard.pieces.contains(move.to))

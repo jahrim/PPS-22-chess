@@ -6,7 +6,7 @@
  */
 package io.github.chess.model.rules.chess.king
 
-import io.github.chess.model.rules.chess.PresenceRule
+import io.github.chess.model.rules.chess.AvoidAlliesRule
 
 /** Represent the movement rule for the [[King]]. */
-class KingMovementRule extends AllDirectionsOneStepRule with PresenceRule
+class KingMovementRule extends AllDirectionsOneStepRule with AvoidAlliesRule

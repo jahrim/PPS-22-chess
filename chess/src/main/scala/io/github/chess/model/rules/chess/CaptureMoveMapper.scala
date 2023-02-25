@@ -10,8 +10,8 @@ import io.github.chess.model.{ChessGameStatus, Position}
 import io.github.chess.model.moves.{CaptureMove, Move}
 
 /**
- *  Mixin for [[ChessRule]]s, that checks whether there are some [[Move]]s that imply 
- *  the capture of a piece (without looking if it's an ally or adversary piece) 
+ *  Mixin for [[ChessRule]]s, that checks whether there are some [[Move]]s that imply
+ *  the capture of a piece (without looking if it's an ally or adversary piece)
  *  and maps them into [[CaptureMove]]s
  */
 trait CaptureMoveMapper extends ChessRule:

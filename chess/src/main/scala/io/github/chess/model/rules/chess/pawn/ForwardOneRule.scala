@@ -6,7 +6,7 @@
  */
 package io.github.chess.model.rules.chess.pawn
 
-import io.github.chess.model.rules.chess.PresenceRule
+import io.github.chess.model.rules.chess.AvoidAllPiecesRule
 
 /** Implementation of the rule that makes move a piece one step forward in the column, if there is no other piece there. */
-class ForwardOneRule extends SingleStepRule with PresenceRule
+class ForwardOneRule extends SingleStepRule with AvoidAllPiecesRule

@@ -6,7 +6,7 @@
  */
 package io.github.chess.model.rules.chess.knight
 
-import io.github.chess.model.rules.chess.PresenceRule
+import io.github.chess.model.rules.chess.AvoidAlliesRule
 
 /** Represent the movement rule for the [[Knight]]. */
-class KnightRule extends LRule with PresenceRule
+class KnightRule extends LRule with AvoidAlliesRule

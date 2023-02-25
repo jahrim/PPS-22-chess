@@ -7,7 +7,7 @@
 package io.github.chess.model.rules.chess.king
 
 import io.github.chess.AbstractSpec
-import io.github.chess.model.pieces.Pawn
+import io.github.chess.model.pieces.{King, Pawn}
 import io.github.chess.model.{ChessBoard, ChessGameStatus, Position, Team}
 
 /** Test suite for [[King]]. */
@@ -19,6 +19,7 @@ class KingRuleSpec extends AbstractSpec:
   private val rule = KingMovementRule()
   private val chessBoard: ChessBoard = ChessBoard.empty
   chessBoard.setPiece((0, 1), Pawn(Team.WHITE))
+  chessBoard.setPiece(initialPosition, King(Team.WHITE))
   private val chessGameStatus = ChessGameStatus(chessBoard)
   private val moves = rule.findMoves(initialPosition, chessGameStatus).map(_.to)
 

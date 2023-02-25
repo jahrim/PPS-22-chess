@@ -7,7 +7,7 @@
 package io.github.chess.model.rules.chess
 
 import io.github.chess.AbstractSpec
-import io.github.chess.model.pieces.Pawn
+import io.github.chess.model.pieces.{Knight, Pawn}
 import io.github.chess.model.rules.chess.knight.KnightRule
 import io.github.chess.model.{ChessBoard, ChessGameStatus, Position, Team}
 
@@ -19,6 +19,7 @@ class KnightRuleSpec extends AbstractSpec:
   private val lRule = KnightRule()
   private val chessBoard: ChessBoard = ChessBoard.empty
   chessBoard.setPiece((0, 1), Pawn(Team.WHITE))
+  chessBoard.setPiece(initialPosition, Knight(Team.WHITE))
   private val chessGameStatus = ChessGameStatus(chessBoard)
   private val moves = lRule.findMoves(initialPosition, chessGameStatus).map(_.to)
 

@@ -9,7 +9,7 @@ import io.github.chess.model.{ChessGameStatus, Position}
 import io.github.chess.model.moves.{CaptureMove, Move}
 
 /**
- * Mixin for [[ChessRule]]s, that removes from the set of [[Move]]s those that would capture an ally piece 
+ * Mixin for [[ChessRule]]s, that removes from the set of [[Move]]s those that would capture an ally piece
  * (removes "friendly fire").
  */
 trait AvoidAlliesRule extends CaptureMoveMapper:
