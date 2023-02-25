@@ -21,7 +21,7 @@ class DiagonalRule extends ChessRule with DirectionalRule:
   private val rules = Set(northWestRule, northEastRule, southEastRule, southWestRule)
 
   override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
-    this.rules.flatMap { analyseDirection(position, status, _) }
+    this.rules.flatMap { limitDirection(position, status, _) }
 
 /**
  * Object for the Diagonal Rule that creates and stores a single instance of the prolog engine

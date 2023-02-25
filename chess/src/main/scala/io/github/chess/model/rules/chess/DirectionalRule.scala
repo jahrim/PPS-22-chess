@@ -9,6 +9,7 @@ package io.github.chess.model.rules.chess
 import io.github.chess.model.{ChessGameStatus, Position}
 import io.github.chess.model.moves.{CaptureMove, Move}
 import io.github.chess.model.pieces.Piece
+import io.github.chess.model.Position.given
 import io.github.chess.model.rules.prolog.PrologRule
 import io.github.chess.util.general.GivenExtension.within
 
@@ -43,11 +44,27 @@ trait DirectionalRule extends RuleShorthands:
         moves.toSet
       }
     }
-    // TODO: search for a better solution that considers captures like the one above,
-    //       but much cleaner like the one below?
-    // rules.flatMap(
-    //  _.findPositions(position)
-    //    .takeWhile((x, y) => !status.chessBoard.pieces.contains((x, y)))
-    //    .map(moves.Move(position, _))
-    //    .toSet
-    // )
+
+  /**
+   * Analyzes the specified direction and removes all the moves that cannot be performed due to an obstacle.
+   * The move that end up on an occupied cell is kept.
+   *
+   * @param currentPosition the current position
+   * @param status          the current state of the game
+   * @param direction       the specified direction
+   * @return the set of the moves found, without the moves that would end up behind an obstacle,
+   *         if there is one in the path
+   */
+  protected def limitDirection(
+      currentPosition: Position,
+      status: ChessGameStatus,
+      direction: PrologRule
+  ): Set[Move] =
+    within(status) {
+      val positions: LazyList[Position] =
+        direction.findPositions(currentPosition).map[Position](pos => pos)
+
+      (positions.takeWhile(!occupied(_)) ++ positions.dropWhile(!occupied(_)).take(1))
+        .map(Move(currentPosition, _))
+        .toSet
+    }

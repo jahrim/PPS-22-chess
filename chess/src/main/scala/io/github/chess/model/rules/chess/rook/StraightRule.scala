@@ -8,14 +8,9 @@ package io.github.chess.model.rules.chess.rook
 
 import io.github.chess.util.general.GivenExtension.within
 import io.github.chess.model.moves.Move
+import io.github.chess.model.rules.chess.ChessRule.*
 import io.github.chess.model.rules.chess.{ChessRule, DirectionalRule}
 import io.github.chess.model.rules.chess.ChessRule.*
-import io.github.chess.model.rules.chess.rook.StraightRule.{
-  ePrologRule,
-  nPrologRule,
-  sPrologRule,
-  wPrologRule
-}
 import io.github.chess.model.rules.prolog.{
   EPrologRule,
   NPrologRule,
@@ -35,7 +30,7 @@ class StraightRule extends ChessRule with DirectionalRule:
       StraightRule.ePrologRule
     )
   override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
-    this.rules.flatMap { analyseDirection(position, status, _) }
+    this.rules.flatMap { limitDirection(position, status, _) }
 
 /**
  * Object for the Straight Rule that creates and stores a single instance of the prolog engine
