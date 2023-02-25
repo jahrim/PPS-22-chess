@@ -161,7 +161,7 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
       )
 
   private def switchTurn(): Unit =
-    this.state.changeTeam()
+    this.state = this.state.changeTeam()
     if this.state.gameConfiguration.timeConstraint == TimeConstraint.MoveLimit then
       this.timer.restart()
 
