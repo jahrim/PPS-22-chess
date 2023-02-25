@@ -24,7 +24,7 @@ object CaptureMove:
    * @param capturedPiece the piece that was captured with this move.
    * @return a new [[CaptureMove]]
    */
-  def apply(from: Position, to: Position, capturedPiece: Piece): Move =
+  def apply(from: Position, to: Position, capturedPiece: Piece): CaptureMove =
     BasicCaptureMove(from, to, capturedPiece)
 
   /** Basic implementation of [[CaptureMove]]. */
