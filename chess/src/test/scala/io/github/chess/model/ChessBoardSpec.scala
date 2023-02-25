@@ -36,31 +36,31 @@ class ChessBoardSpec extends AbstractSpec:
   }
 
   it should "allow to place a piece on it" in {
-    val chessBoard: ChessBoard = ChessBoard.empty
-    chessBoard.setPiece(position, piece)
-    chessBoard.pieces(position) should be theSameInstanceAs piece
+    ChessBoard.empty.setPiece(position, piece).pieces(position) should be theSameInstanceAs piece
   }
 
   it should "allow to place more pieces on it" in {
-    val chessBoard: ChessBoard = ChessBoard.empty
-    chessBoard.setPiece(position, piece)
-    chessBoard.setPiece(otherPosition, otherPiece)
+    val chessBoard: ChessBoard =
+      ChessBoard.empty
+        .setPiece(position, piece)
+        .setPiece(otherPosition, otherPiece)
     chessBoard.pieces(position) should be theSameInstanceAs piece
     chessBoard.pieces(otherPosition) should be theSameInstanceAs otherPiece
   }
 
   it should "allow to replace a piece already present on it" in {
-    val chessBoard: ChessBoard = ChessBoard.empty
-    chessBoard.setPiece(position, piece)
-    chessBoard.update(position -> otherPiece)
-    chessBoard.pieces(position) should be theSameInstanceAs otherPiece
+    ChessBoard.empty
+      .setPiece(position, piece)
+      .update(position -> otherPiece)
+      .pieces(position) should be theSameInstanceAs otherPiece
   }
 
   it should "allow to remove a piece already present on it" in {
-    val chessBoard: ChessBoard = ChessBoard.empty
-    chessBoard.setPiece(position, piece)
-    chessBoard.removePiece(position)
-    chessBoard.pieces.get(position) shouldNot be(defined)
+    ChessBoard.empty
+      .setPiece(position, piece)
+      .removePiece(position)
+      .pieces
+      .get(position) shouldNot be(defined)
   }
 
   "A chess board at the beginning of a chess game" should "abide to the standard configuration for the chess pieces" in {

@@ -16,7 +16,7 @@ import scala.annotation.targetName
 
 /** Builder of a chess board. */
 class ChessBoardBuilder:
-  private val chessBoard: ChessBoard = ChessBoard.empty
+  private var chessBoard: ChessBoard = ChessBoard.empty
   private var indexOfNextCell = ChessBoardBuilder.MinIndex
 
   /**
@@ -33,7 +33,7 @@ class ChessBoardBuilder:
       this.indexOfNextCell <= ChessBoardBuilder.MaxIndex,
       s"Tried to set the ${this.indexOfNextCell + 1}th position out of ${ChessBoard.NumberOfPositions} positions. "
     )
-    this.chessBoard.update(this.nextPosition -> piece)
+    this.chessBoard = this.chessBoard.update(this.nextPosition -> piece)
     this.indexOfNextCell += 1
     this
 

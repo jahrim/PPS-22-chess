@@ -69,18 +69,20 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
 
   override def applyMove(move: Move): Future[Unit] =
     Future {
-      state.chessBoard.movePiece(move.from, move.to)
-      move match
-        case castlingMove: CastlingMove =>
-          state.chessBoard
-            .movePiece(castlingMove.rookFromPosition, castlingMove.rookToPosition)
-        case enPassantMove: EnPassantMove =>
-          state.chessBoard.removePiece(enPassantMove.capturedPiecePosition)
-        // TODO: add other move types before this clause (i.e. CaptureMove, PromotionMove...)
-        case _ =>
-      state.chessBoard.pieces.get(move.to) match
-        case Some(piece) => state.history.save(piece, move)
-        case None        =>
+      this.state = this.state.updateChessBoard {
+        val chessBoard = this.state.chessBoard.movePiece(move.from, move.to)
+        move match
+          case castlingMove: CastlingMove =>
+            chessBoard.movePiece(castlingMove.rookFromPosition, castlingMove.rookToPosition)
+          case enPassantMove: EnPassantMove =>
+            chessBoard.removePiece(enPassantMove.capturedPiecePosition)
+          case _ => chessBoard
+      }
+      this.state = this.state.updateHistory {
+        this.state.chessBoard.pieces.get(move.to) match
+          case Some(piece) => this.state.history.save(piece, move)
+          case None        => this.state.history
+      }
 
       this.findPieceOfCurrentTeam(move.to) match
         case Some(_: Pawn) if move.to.rank == enemyBaseRank() =>
@@ -100,12 +102,14 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
     Future {
       this.findPieceOfCurrentTeam(pawnPosition) match
         case Some(_: Pawn) =>
-          this.state.chessBoard.setPiece(
-            pawnPosition,
-            promotingPiece.pieceClass
-              .getConstructor(classOf[Team])
-              .newInstance(this.state.currentTurn)
-          )
+          this.state = this.state.updateChessBoard {
+            this.state.chessBoard.setPiece(
+              pawnPosition,
+              promotingPiece.pieceClass
+                .getConstructor(classOf[Team])
+                .newInstance(this.state.currentTurn)
+            )
+          }
           this.switchTurn()
           this.state.history.all.lastOption.foreach { publishPieceMovedEvent }
         case _ =>

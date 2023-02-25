@@ -17,9 +17,10 @@ class KingRuleSpec extends AbstractSpec:
   private val exactPositions: Set[Position] =
     Set((0, 2), (0, 3), (1, 1), (1, 3), (2, 1), (2, 2), (2, 3))
   private val rule = KingMovementRule()
-  private val chessBoard: ChessBoard = ChessBoard.empty
-  chessBoard.setPiece((0, 1), Pawn(Team.WHITE))
-  chessBoard.setPiece(initialPosition, King(Team.WHITE))
+  private val chessBoard: ChessBoard =
+    ChessBoard.empty
+      .setPiece((0, 1), Pawn(Team.WHITE))
+      .setPiece(initialPosition, King(Team.WHITE))
   private val chessGameStatus = ChessGameStatus(chessBoard)
   private val moves = rule.findMoves(initialPosition, chessGameStatus).map(_.to)
 

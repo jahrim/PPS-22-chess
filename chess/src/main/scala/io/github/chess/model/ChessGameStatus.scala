@@ -22,8 +22,32 @@ trait ChessGameStatus:
   /** @return the configuration of the game */
   def gameConfiguration: GameConfiguration
 
-  /** Changes the currently playing team from White to Black and viceversa */
-  def changeTeam(): Unit
+  /**
+   * Updates the chess board of this chess game status with the specified chess board.
+   * @param newChessBoard the specified chess board
+   * @return a new updated chess game status
+   */
+  def updateChessBoard(newChessBoard: ChessBoard): ChessGameStatus
+
+  /**
+   * Updates the history of this chess game status with the specified history.
+   * @param newHistory the specified history
+   * @return a new updated chess game status
+   */
+  def updateHistory(newHistory: ChessGameHistory): ChessGameStatus
+
+  /**
+   * Updates the game configuration of this chess game status with the specified game configuration.
+   * @param newGameConfiguration the specified game configuration
+   * @return a new updated chess game status
+   */
+  def updateGameConfiguration(newGameConfiguration: GameConfiguration): ChessGameStatus
+
+  /**
+   * Updates the currently playing team from White to Black and viceversa
+   * @return a new updated chess game status
+   */
+  def changeTeam(): ChessGameStatus
 
   // TODO: consider this
   //  def timeRemaining: Time
@@ -49,8 +73,14 @@ object ChessGameStatus:
   private case class BasicChessGameStatus(
       chessBoard: ChessBoard,
       history: ChessGameHistory,
-      var currentTurn: Team,
+      currentTurn: Team,
       gameConfiguration: GameConfiguration
   ) extends ChessGameStatus:
-
-    override def changeTeam(): Unit = currentTurn = currentTurn.oppositeTeam
+    override def updateChessBoard(newChessBoard: ChessBoard): ChessGameStatus =
+      BasicChessGameStatus(newChessBoard, history, currentTurn, gameConfiguration)
+    override def updateHistory(newHistory: ChessGameHistory): ChessGameStatus =
+      BasicChessGameStatus(chessBoard, newHistory, currentTurn, gameConfiguration)
+    override def updateGameConfiguration(newGameConfiguration: GameConfiguration): ChessGameStatus =
+      BasicChessGameStatus(chessBoard, history, currentTurn, newGameConfiguration)
+    override def changeTeam(): ChessGameStatus =
+      BasicChessGameStatus(chessBoard, history, currentTurn.oppositeTeam, gameConfiguration)

@@ -16,9 +16,8 @@ class PawnSpec extends AbstractSpec:
 
   private val position = Position(File.A, Rank._2)
   private val pawn = Pawn(Team.WHITE)
-  private val chessBoard: ChessBoard = ChessBoard.empty
+  private val chessBoard: ChessBoard = ChessBoard.empty.setPiece(position, pawn)
   private val chessGameStatus = ChessGameStatus(chessBoard)
-  chessBoard.setPiece(position, pawn)
 
   "A Pawn" should "always give a set of positions not empty, within an empty board" in {
     pawn.rule.findMoves(position, chessGameStatus) shouldNot be(empty)

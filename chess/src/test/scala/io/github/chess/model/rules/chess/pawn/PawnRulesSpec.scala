@@ -18,8 +18,7 @@ class PawnRulesSpec extends AbstractSpec:
   val pawnNextPosition: Position = (0, 2)
   val pawnDoubleStepPosition: Position = (0, 3)
   val doubleStepRule: DoubleMoveRule = DoubleMoveRule()
-  private val chessBoard: ChessBoard = ChessBoard.empty
-  chessBoard.setPiece((0, 1), Pawn(Team.WHITE))
+  private val chessBoard: ChessBoard = ChessBoard.empty.setPiece((0, 1), Pawn(Team.WHITE))
   private val status = ChessGameStatus(chessBoard)
 
   "The Forward rule" should "let move the pawn only to the following rank, without changing its file" in {

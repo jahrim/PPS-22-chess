@@ -28,9 +28,17 @@ trait ChessGameHistory:
    * Saves the specified move executed by the specified piece in this history.
    * @param p the piece executing the move
    * @param m the move executed
-   * @return this
+   * @return a new updated chess game history
    */
-  def save(p: Piece, m: Move): Unit
+  def save(p: Piece, m: Move): ChessGameHistory
+
+  /**
+   * Saves the specified moves executed by the specified pieces in this history.
+   * @param moves the specified moves executed by the specified pieces
+   * @return a new updated chess game history
+   */
+  def saveAll(moves: Iterable[(Piece, Move)]): ChessGameHistory =
+    moves.foldLeft(this) { (history, move) => history.save(move._1, move._2) }
 
 /** Companion object of [[ChessGameHistory]]. */
 object ChessGameHistory:
@@ -38,10 +46,12 @@ object ChessGameHistory:
   def apply(): ChessGameHistory = BasicChessGameHistory()
 
   /** Basic implementation of a [[ChessGameHistory]]. */
-  private case class BasicChessGameHistory() extends ChessGameHistory:
-    private var moves: List[(Piece, Move)] = List.empty
+  private case class BasicChessGameHistory(
+      private val moves: List[(Piece, Move)] = List.empty
+  ) extends ChessGameHistory:
     override def all: Seq[Move] = this.moves.map(_._2)
 
     override def ofPiece(p: Piece): Seq[Move] = this.moves.filter(p eq _._1).map(_._2)
 
-    override def save(p: Piece, m: Move): Unit = this.moves :+= (p, m)
+    override def save(p: Piece, m: Move): ChessGameHistory =
+      BasicChessGameHistory(this.moves :+ (p, m))

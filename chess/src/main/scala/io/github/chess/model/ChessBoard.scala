@@ -32,19 +32,22 @@ trait ChessBoard:
    * Updates the chess board assigning the specified piece to the specified position.
    * @param position the specified position
    * @param piece the specified piece
+   * @return a new updated chess board
    */
-  def setPiece(position: Position, piece: Piece): Unit
+  def setPiece(position: Position, piece: Piece): ChessBoard
 
   /**
    * Updates the chess board removing the piece at the specified position.
    * @param position the specified position
+   * @return a new updated chess board
    */
-  def removePiece(position: Position): Unit
+  def removePiece(position: Position): ChessBoard
 
   /**
    * Updates the chess board applying the specified updates.
    * @param updates a list of updates, each mapping a certain position to a new piece,
    *                or an empty optional if the piece has to be removed from that position
+   * @return a new updated chess board
    * @example
    * {{{
    *   chessBoard.update(
@@ -54,24 +57,23 @@ trait ChessBoard:
    *   )
    * }}}
    */
-  def update(updates: (Position, Option[Piece])*): Unit =
-    updates.foreach {
-      case (position, Some(piece)) => setPiece(position, piece)
-      case (position, _)           => removePiece(position)
+  def update(updates: (Position, Option[Piece])*): ChessBoard =
+    updates.foldLeft(this) {
+      case (chessBoard, (position, Some(piece))) => chessBoard.setPiece(position, piece)
+      case (chessBoard, (position, _))           => chessBoard.removePiece(position)
     }
 
   /**
    * Moves a piece if present in from position to a target position.
    * @param from starting [[Position]]
    * @param to target [[Position]]
+   * @return a new updated chess board
    */
-  def movePiece(from: Position, to: Position): Unit =
+  def movePiece(from: Position, to: Position): ChessBoard =
     this.pieces.get(from) match
       case Some(value) =>
-        removePiece(from)
-        setPiece(to, value)
-
-      case None =>
+        this.removePiece(from).setPiece(to, value)
+      case None => this
 
 /** Companion object of [[ChessBoard]]. */
 object ChessBoard:
@@ -122,9 +124,12 @@ object ChessBoard:
   def fromMap(pieces: Map[Position, Piece]): ChessBoard = BasicChessBoard(pieces)
 
   /** Basic implementation of a chess board. */
-  private case class BasicChessBoard(private var _pieces: Map[Position, Piece] = Map.empty)
+  private case class BasicChessBoard(private val _pieces: Map[Position, Piece] = Map.empty)
       extends ChessBoard:
     override def pieces: Map[Position, Piece] = this._pieces
-    override def setPiece(position: Position, piece: Piece): Unit =
-      this._pieces += position -> piece
-    override def removePiece(position: Position): Unit = this._pieces -= position
+
+    override def setPiece(position: Position, piece: Piece): ChessBoard =
+      BasicChessBoard(this._pieces + (position -> piece))
+
+    override def removePiece(position: Position): ChessBoard =
+      BasicChessBoard(this._pieces - position)
