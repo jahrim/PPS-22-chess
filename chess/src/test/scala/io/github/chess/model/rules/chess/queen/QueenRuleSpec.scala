@@ -10,11 +10,12 @@ import io.github.chess.AbstractSpec
 import io.github.chess.model.pieces.{Piece, Queen}
 import io.github.chess.model.rules.chess.queen.QueenRule
 import io.github.chess.model.ChessBoard.*
+import io.github.chess.model.rules.AbstractRuleSpec
 import io.github.chess.model.{ChessBoard, ChessGameStatus, File, Position, Rank, Team}
 import io.github.chess.util.debug.Logger
 
 /** Test suite for [[Queen]]. */
-class QueenRuleSpec extends AbstractSpec:
+class QueenRuleSpec extends AbstractRuleSpec:
   val queenRule: QueenRule = QueenRule()
   val queenPosition: Position = Position(File.E, Rank._5)
 
@@ -29,15 +30,15 @@ class QueenRuleSpec extends AbstractSpec:
       * | * | * | * | * | * | * | *
       * | * | * | * | * | * | * | *
     })
-    this.getChessBoardFromMoves(chessGameStatus) shouldEqual ChessBoard {
-      * | Q | * | * | Q | * | * | Q
-      * | * | Q | * | Q | * | Q | *
-      * | * | * | Q | Q | Q | * | *
-      Q | Q | Q | Q | * | Q | Q | Q
-      * | * | * | Q | Q | Q | * | *
-      * | * | Q | * | Q | * | Q | *
-      * | Q | * | * | Q | * | * | Q
-      Q | * | * | * | Q | * | * | *
+    getChessBoardFromMoves(queenRule, queenPosition, chessGameStatus) shouldEqual ChessBoard {
+      * | X | * | * | X | * | * | X
+      * | * | X | * | X | * | X | *
+      * | * | * | X | X | X | * | *
+      X | X | X | X | * | X | X | X
+      * | * | * | X | X | X | * | *
+      * | * | X | * | X | * | X | *
+      * | X | * | * | X | * | * | X
+      X | * | * | * | X | * | * | *
     }
   }
 
@@ -52,14 +53,14 @@ class QueenRuleSpec extends AbstractSpec:
       * | * | * | * | R | * | * | *
       * | * | * | * | * | * | * | *
     })
-    this.getChessBoardFromMoves(chessGameStatus) shouldEqual ChessBoard {
-      * | * | * | * | Q | * | * | *
-      * | * | * | * | Q | * | * | *
-      * | * | * | Q | Q | * | * | *
-      * | * | Q | Q | * | Q | Q | Q
-      * | * | * | * | Q | Q | * | *
-      * | * | * | * | Q | * | Q | *
-      * | * | * | * | * | * | * | Q
+    getChessBoardFromMoves(queenRule, queenPosition, chessGameStatus) shouldEqual ChessBoard {
+      * | * | * | * | X | * | * | *
+      * | * | * | * | X | * | * | *
+      * | * | * | X | X | * | * | *
+      * | * | X | X | * | X | X | X
+      * | * | * | * | X | X | * | *
+      * | * | * | * | X | * | X | *
+      * | * | * | * | * | * | * | X
       * | * | * | * | * | * | * | *
     }
   }
@@ -75,26 +76,14 @@ class QueenRuleSpec extends AbstractSpec:
       * | * | * | * | * | * | * | *
       * | * | * | * | p | * | * | *
     })
-    this.getChessBoardFromMoves(chessGameStatus) shouldEqual ChessBoard {
-      * | Q | * | * | * | * | * | Q
-      * | * | Q | * | Q | * | Q | *
-      * | * | * | Q | Q | Q | * | *
-      * | * | * | Q | * | Q | * | *
-      * | * | * | Q | Q | Q | * | *
-      * | * | * | * | Q | * | Q | *
-      * | * | * | * | Q | * | * | Q
-      * | * | * | * | Q | * | * | *
+    getChessBoardFromMoves(queenRule, queenPosition, chessGameStatus) shouldEqual ChessBoard {
+      * | X | * | * | * | * | * | X
+      * | * | X | * | X | * | X | *
+      * | * | * | X | X | X | * | *
+      * | * | * | X | * | X | * | *
+      * | * | * | X | X | X | * | *
+      * | * | * | * | X | * | X | *
+      * | * | * | * | X | * | * | X
+      * | * | * | * | X | * | * | *
     }
   }
-
-  /**
-   * @param chessGameStatus the state of the game required for evaluating the moves available to the queen
-   * @return a chess board where each positions that is reachable by the queen is marked with a white queen piece
-   */
-  private def getChessBoardFromMoves(chessGameStatus: ChessGameStatus): ChessBoard =
-    ChessBoard.fromMap {
-      queenRule
-        .findMoves(queenPosition, chessGameStatus)
-        .map { move => move.to -> Queen(Team.WHITE) }
-        .toMap[Position, Piece]
-    }

@@ -38,3 +38,5 @@ object InterfaceConfiguration:
       val AvailableMove: Image = Image("/images/effects/available-move.png")
     object Icons:
       val GameIcon: Image = Image("/images/icons/game-icon.png")
+    object Utility:
+      val ImageNotFound: Image = Image("/images/utility/image-not-found.png")

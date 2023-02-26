@@ -28,7 +28,7 @@ object PieceView:
       case _: Rook   => (Images.Pieces.WhiteRook, Images.Pieces.BlackRook)
       case _: Queen  => (Images.Pieces.WhiteQueen, Images.Pieces.BlackQueen)
       case _: King   => (Images.Pieces.WhiteKing, Images.Pieces.BlackKing)
-      case _ => throw IllegalArgumentException("Unknown images for the specified chess piece.")
+      case _         => (Images.Utility.ImageNotFound, Images.Utility.ImageNotFound)
     PieceView(if (team == WHITE) unboundImage._1 else unboundImage._2)
 
 /**

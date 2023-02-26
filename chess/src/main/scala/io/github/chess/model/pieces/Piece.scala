@@ -6,8 +6,9 @@
  */
 package io.github.chess.model.pieces
 
+import io.github.chess.model.moves.Move
 import io.github.chess.model.rules.chess.ChessRule
-import io.github.chess.model.{ChessBoard, Team}
+import io.github.chess.model.{ChessBoard, ChessGameStatus, Position, Team}
 
 /** Represents every piece of the [[ChessBoard]]. */
 trait Piece:
@@ -17,3 +18,15 @@ trait Piece:
 
   /** Returns the [[ChessRule]] able to give all the possible moves from a starting position. */
   def rule: ChessRule
+
+/** Companion object of [[Piece]]. */
+object Piece:
+  /**
+   * @param team the specified team
+   * @return a placeholder of a [[Piece]] of the specified team
+   */
+  def apply(team: Team = Team.WHITE): Piece = PiecePlaceholder(team)
+
+  /** A placeholder of a [[Piece]]. */
+  private case class PiecePlaceholder(override val team: Team) extends Piece:
+    override def rule: ChessRule = (_: Position, _: ChessGameStatus) => Set.empty[Move]

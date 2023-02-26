@@ -8,12 +8,13 @@ package io.github.chess.model.rules.chess.rook
 
 import io.github.chess.AbstractSpec
 import io.github.chess.model.ChessBoard.*
-import io.github.chess.model.{ChessBoard, ChessGameStatus, Position, File, Rank, Team}
+import io.github.chess.model.{ChessBoard, ChessGameStatus, File, Position, Rank, Team}
 import io.github.chess.model.pieces.{Piece, Rook}
+import io.github.chess.model.rules.AbstractRuleSpec
 import io.github.chess.model.rules.chess.rook.RookRule
 
 /** Test suite for [[Rook]]. */
-class RookRuleSpec extends AbstractSpec:
+class RookRuleSpec extends AbstractRuleSpec:
   val rookRule: RookRule = RookRule()
   val rookPosition: Position = Position(File.E, Rank._5)
 
@@ -28,15 +29,15 @@ class RookRuleSpec extends AbstractSpec:
       * | * | * | * | * | * | * | *
       * | * | * | * | * | * | * | *
     })
-    this.getChessBoardFromMoves(chessGameStatus) shouldEqual ChessBoard {
-      * | * | * | * | R | * | * | *
-      * | * | * | * | R | * | * | *
-      * | * | * | * | R | * | * | *
-      R | R | R | R | * | R | R | R
-      * | * | * | * | R | * | * | *
-      * | * | * | * | R | * | * | *
-      * | * | * | * | R | * | * | *
-      * | * | * | * | R | * | * | *
+    getChessBoardFromMoves(rookRule, rookPosition, chessGameStatus) shouldEqual ChessBoard {
+      * | * | * | * | X | * | * | *
+      * | * | * | * | X | * | * | *
+      * | * | * | * | X | * | * | *
+      X | X | X | X | * | X | X | X
+      * | * | * | * | X | * | * | *
+      * | * | * | * | X | * | * | *
+      * | * | * | * | X | * | * | *
+      * | * | * | * | X | * | * | *
     }
   }
 
@@ -51,13 +52,13 @@ class RookRuleSpec extends AbstractSpec:
       * | * | * | * | N | * | * | *
       * | * | * | * | * | * | * | *
     })
-    this.getChessBoardFromMoves(chessGameStatus) shouldEqual ChessBoard {
+    getChessBoardFromMoves(rookRule, rookPosition, chessGameStatus) shouldEqual ChessBoard {
       * | * | * | * | * | * | * | *
       * | * | * | * | * | * | * | *
-      * | * | * | * | R | * | * | *
-      * | * | * | R | * | R | R | R
-      * | * | * | * | R | * | * | *
-      * | * | * | * | R | * | * | *
+      * | * | * | * | X | * | * | *
+      * | * | * | X | * | X | X | X
+      * | * | * | * | X | * | * | *
+      * | * | * | * | X | * | * | *
       * | * | * | * | * | * | * | *
       * | * | * | * | * | * | * | *
     }
@@ -74,26 +75,14 @@ class RookRuleSpec extends AbstractSpec:
       * | * | * | * | * | * | * | *
       * | * | * | * | p | * | * | *
     })
-    this.getChessBoardFromMoves(chessGameStatus) shouldEqual ChessBoard {
+    getChessBoardFromMoves(rookRule, rookPosition, chessGameStatus) shouldEqual ChessBoard {
       * | * | * | * | * | * | * | *
-      * | * | * | * | R | * | * | *
-      * | * | * | * | R | * | * | *
-      R | R | R | R | * | R | * | *
-      * | * | * | * | R | * | * | *
-      * | * | * | * | R | * | * | *
-      * | * | * | * | R | * | * | *
-      * | * | * | * | R | * | * | *
+      * | * | * | * | X | * | * | *
+      * | * | * | * | X | * | * | *
+      X | X | X | X | * | X | * | *
+      * | * | * | * | X | * | * | *
+      * | * | * | * | X | * | * | *
+      * | * | * | * | X | * | * | *
+      * | * | * | * | X | * | * | *
     }
   }
-
-  /**
-   * @param chessGameStatus the state of the game required for evaluating the moves available to the queen
-   * @return a chess board where each positions that is reachable by the queen is marked with a rook piece
-   */
-  private def getChessBoardFromMoves(chessGameStatus: ChessGameStatus): ChessBoard =
-    ChessBoard.fromMap {
-      this.rookRule
-        .findMoves(this.rookPosition, chessGameStatus)
-        .map { move => move.to -> Rook(Team.WHITE) }
-        .toMap[Position, Piece]
-    }

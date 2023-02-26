@@ -88,6 +88,9 @@ object ChessBoardBuilder:
 
   /** A DSL definition for a [[ChessBoardBuilder]]. */
   object DSL:
+    /** A white piece placeholder. */
+    def X(using b: ChessBoardBuilder): ChessBoardBuilder = b + Piece(Team.WHITE)
+
     /** A white pawn. */
     def P(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.WHITE)
 
@@ -105,6 +108,9 @@ object ChessBoardBuilder:
 
     /** A white king. */
     def K(using b: ChessBoardBuilder): ChessBoardBuilder = b + King(Team.WHITE)
+
+    /** A black piece placeholder. */
+    def x(using b: ChessBoardBuilder): ChessBoardBuilder = b + Piece(Team.BLACK)
 
     /** A black pawn. */
     def p(using b: ChessBoardBuilder): ChessBoardBuilder = b + Pawn(Team.BLACK)
