@@ -15,17 +15,18 @@ import io.github.chess.events.{
   TimeEndedEvent,
   TimePassedEvent
 }
+import io.github.chess.events.Event.addressOf
 import io.github.chess.model.Team.{BLACK, WHITE}
 import io.github.chess.model.configuration.{GameConfiguration, Player, TimeConstraint}
 import io.github.chess.model.moves.{CastlingMove, EnPassantMove, Move}
 import io.github.chess.model.pieces.{Pawn, Piece}
 import io.github.chess.util.exception.GameNotInitializedException
 import io.github.chess.util.general.Timer
-import io.vertx.core.eventbus.Message
-import io.vertx.core.{Handler, Vertx}
+import io.vertx.core.Vertx
 
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.reflect.ClassTag
 
 /**
  * A game of chess.
@@ -115,50 +116,32 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
         case _ =>
     }
 
-  override def subscribe[T <: Event](address: String, handler: Handler[Message[T]]): Future[Unit] =
-    Future { vertx.eventBus().consumer(address, handler) }
+  override def subscribe[T <: Event: ClassTag](handler: T => Unit): Future[Unit] =
+    Future { vertx.eventBus().consumer[T](addressOf[T], message => handler(message.body)) }
+
+  private def publish[T <: Event: ClassTag](event: T): Unit =
+    vertx.eventBus().publish(addressOf[T], event)
+
+  private def publishPieceMovedEvent(lastMove: Move): Unit =
+    this.publish(PieceMovedEvent(this.currentPlayer, state.chessBoard.pieces, lastMove))
+
+  private def publishTimePassedEvent(): Unit =
+    this.publish(TimePassedEvent(this.timer.timeRemaining))
+
+  private def publishTimeEndedEvent(): Unit =
+    this.publish(TimeEndedEvent(this.currentPlayer))
+
+  private def publishPromotingPawnEvent(pawnPosition: Position): Unit =
+    this.publish(PromotingPawnEvent(pawnPosition, PromotionPiece.values))
 
   private def findPieceOfCurrentTeam(pos: Position): Option[Piece] = playingTeam.get(pos)
 
   private def playingTeam: Map[Position, Piece] =
     this.state.chessBoard.pieces(this.state.currentTurn)
 
-  private def publishPieceMovedEvent(lastMove: Move): Unit =
-    vertx
-      .eventBus()
-      .publish(
-        PieceMovedEvent.address(),
-        createPieceMovedEvent(lastMove)
-      )
-
-  private def createPieceMovedEvent(lastMove: Move): PieceMovedEvent =
-    PieceMovedEvent(
-      this.currentPlayer,
-      state.chessBoard.pieces,
-      lastMove
-    )
-
-  private def publishTimePassedEvent(): Unit =
-    this.vertx
-      .eventBus()
-      .publish(TimePassedEvent.address(), TimePassedEvent(this.timer.timeRemaining))
-
-  private def publishTimeEndedEvent(): Unit =
-    this.vertx
-      .eventBus()
-      .publish(TimeEndedEvent.address(), TimeEndedEvent(this.currentPlayer))
-
   private def currentPlayer: Player = this.state.currentTurn match
     case WHITE => this.state.gameConfiguration.whitePlayer
     case BLACK => this.state.gameConfiguration.blackPlayer
-
-  private def publishPromotingPawnEvent(pawnPosition: Position): Unit =
-    this.vertx
-      .eventBus()
-      .publish(
-        PromotingPawnEvent.address(),
-        PromotingPawnEvent(pawnPosition, PromotionPiece.values)
-      )
 
   private def switchTurn(): Unit =
     this.state = this.state.changeTeam()

@@ -15,6 +15,7 @@ import io.vertx.core.eventbus.Message
 import io.vertx.core.Handler
 
 import scala.concurrent.Future
+import scala.reflect.ClassTag
 
 /** Represents the contract of a chess engine service. */
 trait ChessPort:
@@ -55,12 +56,10 @@ trait ChessPort:
   // TODO refactor to return piece, so not repainting all board but single cell
   def promote[P <: Piece](pawnPosition: Position, promotingPiece: PromotionPiece[P]): Future[Unit]
 
-  // TODO: reason about changing it to subscribe[T <: Event](handler: (Event) => Unit)
   /**
    * Subscribes an handler to a particular event.
-   * @param address address to subscribe on
    * @param handler [[Handler]] to inform when the event is published
    * @tparam T type parameter of the event extending superclass [[Event]]
    * @return a future that completes when the subscription has been registered
    */
-  def subscribe[T <: Event](address: String, handler: Handler[Message[T]]): Future[Unit]
+  def subscribe[T <: Event: ClassTag](handler: T => Unit): Future[Unit]

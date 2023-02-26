@@ -6,5 +6,15 @@
  */
 package io.github.chess.events
 
+import scala.reflect.{ClassTag, classTag}
+
 /** Represents every event happened in the model. */
 trait Event
+
+/** Companion object of [[Event]]. */
+object Event:
+  /**
+   * @tparam T the specified type of events
+   * @return the address of the specified type of events
+   */
+  def addressOf[T <: Event: ClassTag]: String = classTag[T].runtimeClass.getName

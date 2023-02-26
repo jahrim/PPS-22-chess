@@ -50,10 +50,10 @@ class GamePageController(override protected val stage: Stage)(using
     chessBoardController = ChessBoardController.fromGridPane(this.chessBoardGridPane)(stage)
     this.surrenderButton.onMouseClicked = _ => MainMenuPage(stage)
     initView()
-    context.chessEngineProxy.subscribe(PieceMovedEvent.address(), onPieceMoved)
-    context.chessEngineProxy.subscribe(TimePassedEvent.address(), onTimePassed)
-    context.chessEngineProxy.subscribe(TimeEndedEvent.address(), onTimeEnded)
-    context.chessEngineProxy.subscribe(PromotingPawnEvent.address(), onPromotingPawn)
+    context.chessEngineProxy.subscribe[PieceMovedEvent](onPieceMoved)
+    context.chessEngineProxy.subscribe[TimePassedEvent](onTimePassed)
+    context.chessEngineProxy.subscribe[TimeEndedEvent](onTimeEnded)
+    context.chessEngineProxy.subscribe[PromotingPawnEvent](onPromotingPawn)
 
   private def initView(): Unit =
     context.chessEngineProxy.getState.onComplete {
@@ -69,32 +69,31 @@ class GamePageController(override protected val stage: Stage)(using
       case Failure(exception) => throw exception
     }
 
-  private def onPieceMoved(message: Message[PieceMovedEvent]): Unit =
+  private def onPieceMoved(event: PieceMovedEvent): Unit =
     Platform.runLater(() =>
-      val event: PieceMovedEvent = message.body()
       currentTurnText.setText(s"${event.currentPlayer.name} -> ${event.currentPlayer.team}")
       lastMoveText.setText(s"${event.lastMove.from} -> ${event.lastMove.to}")
       chessBoardController.repaint(event.boardDisposition)
     )
 
-  private def onTimePassed(message: Message[TimePassedEvent]): Unit =
+  private def onTimePassed(event: TimePassedEvent): Unit =
     Platform.runLater(() =>
-      val timeRemaining = message.body().timeRemaining
+      val timeRemaining = event.timeRemaining
       this.timeRemainingText.setText(
         s"${timeRemaining.toMinutes}m:${timeRemaining.toSeconds % 60}s"
       )
     )
 
-  private def onTimeEnded(message: Message[TimeEndedEvent]): Unit = ???
+  private def onTimeEnded(event: TimeEndedEvent): Unit = ???
 
-  private def onPromotingPawn(message: Message[PromotingPawnEvent]): Unit =
+  private def onPromotingPawn(event: PromotingPawnEvent): Unit =
     Platform.runLater {
-      val values = message.body().promotionPieces
+      val values = event.promotionPieces
       values.headOption match
         case Some(default) =>
           val dialog: ChoiceDialog[PromotionPiece[_]] = ChoiceDialog(default, values*)
           dialog.showAndWait().ifPresent { piece =>
-            context.chessEngineProxy.promote(message.body().pawnPosition, piece).onComplete {
+            context.chessEngineProxy.promote(event.pawnPosition, piece).onComplete {
               case Success(_)         => this.chessBoardController.repaint()
               case Failure(exception) => throw exception
             }

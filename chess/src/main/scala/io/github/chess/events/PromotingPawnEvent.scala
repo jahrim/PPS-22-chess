@@ -35,13 +35,6 @@ object PromotingPawnEvent:
   def apply(pawnPosition: Position, promotionPieces: Array[PromotionPiece[_]]): PromotingPawnEvent =
     PromotingPawnEventImpl(pawnPosition, promotionPieces)
 
-  /**
-   * Address on which this event will be communicated.
-   *
-   * @return the string representing the address on which this event is published
-   */
-  def address(): String = PromotingPawnEvent.getClass.toString
-
   private case class PromotingPawnEventImpl(
       override val pawnPosition: Position,
       override val promotionPieces: Array[PromotionPiece[_]]

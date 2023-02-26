@@ -24,11 +24,4 @@ object TimeEndedEvent:
    */
   def apply(loserPlayer: Player): TimeEndedEvent = TimeEndedEventImpl(loserPlayer)
 
-  /**
-   * Address on which this event will be communicated.
-   *
-   * @return the string representing the address on which this event is published
-   */
-  def address(): String = TimeEndedEvent.getClass.toString
-
   private case class TimeEndedEventImpl(override val loserPlayer: Player) extends TimeEndedEvent

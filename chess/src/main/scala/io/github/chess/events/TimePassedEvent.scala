@@ -24,12 +24,5 @@ object TimePassedEvent:
    */
   def apply(timeRemaining: Duration): TimePassedEvent = TimePassedEventImpl(timeRemaining)
 
-  /**
-   * Address on which this event will be communicated.
-   *
-   * @return the string representing the address on which this event is published
-   */
-  def address(): String = TimePassedEvent.getClass.toString
-
   private case class TimePassedEventImpl(override val timeRemaining: Duration)
       extends TimePassedEvent

@@ -50,12 +50,6 @@ object PieceMovedEvent:
   ): PieceMovedEvent =
     PieceMovedEventImpl(currentPlayer, boardDisposition, lastMove)
 
-  /**
-   * Address on which this event will be communicated.
-   * @return the string representing the address on which this event is published
-   */
-  def address(): String = PieceMovedEvent.getClass.toString
-
   private case class PieceMovedEventImpl(
       override val currentPlayer: Player,
       override val boardDisposition: Map[Position, Piece],
