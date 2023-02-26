@@ -30,3 +30,20 @@ trait RuleShorthands:
    */
   protected def pieceAt(p: Position)(using status: ChessGameStatus): Option[Piece] =
     status.chessBoard.pieces.get(p)
+
+  /**
+   * @param p the specified position
+   * @param status the specified state of the game as a given
+   * @return true if the piece at the specified position belongs to the team currently playing,
+   *         false otherwise
+   */
+  protected def isPieceOfCurrentTurn(p: Position)(using status: ChessGameStatus): Boolean =
+    pieceAt(p).exists(piece => piece.team == status.currentTurn)
+
+  /**
+   * @param p      the specified position
+   * @param status the specified state of the game as a given
+   * @return true if the piece at the specified position has never moved before, false otherwise
+   */
+  protected def isFirstMovementOf(p: Position)(using status: ChessGameStatus): Boolean =
+    pieceAt(p).exists(piece => status.history.ofPiece(piece).isEmpty)
