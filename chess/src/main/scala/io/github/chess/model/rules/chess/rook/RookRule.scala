@@ -6,9 +6,8 @@
  */
 package io.github.chess.model.rules.chess.rook
 
-import io.github.chess.model.moves.Move
-import io.github.chess.model.rules.chess.AvoidAlliesRule
-import io.github.chess.model.{ChessGameStatus, Position}
+import io.github.chess.model.rules.chess.rook.StraightRule
+import io.github.chess.model.rules.chess.{AvoidAlliesRule, AvoidSelfCheckRule}
 
 /** Represent the movement rule for the [[Rook]]. */
-class RookRule extends StraightRule with AvoidAlliesRule
+class RookRule extends StraightRule with AvoidAlliesRule with AvoidSelfCheckRule

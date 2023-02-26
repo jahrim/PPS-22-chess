@@ -6,17 +6,13 @@
  */
 package io.github.chess.model.rules.chess.queen
 
-import io.github.chess.AbstractSpec
-import io.github.chess.model.pieces.{Piece, Queen}
-import io.github.chess.model.rules.chess.queen.QueenRule
+import io.github.chess.model.rules.AbstractChessRuleSpec
+import io.github.chess.model.pieces.Queen
 import io.github.chess.model.ChessBoard.*
-import io.github.chess.model.rules.AbstractRuleSpec
-import io.github.chess.model.{ChessBoard, ChessGameStatus, File, Position, Rank, Team}
-import io.github.chess.util.debug.Logger
+import io.github.chess.model.{ChessBoard, ChessGameStatus, File, Position, Rank}
 
 /** Test suite for [[Queen]]. */
-class QueenRuleSpec extends AbstractRuleSpec:
-  val queenRule: QueenRule = QueenRule()
+class QueenRuleSpec extends AbstractChessRuleSpec:
   val queenPosition: Position = Position(File.E, Rank._5)
 
   "The queen" should "move in all possible directions" in {
@@ -30,7 +26,7 @@ class QueenRuleSpec extends AbstractRuleSpec:
       * | * | * | * | * | * | * | *
       * | * | * | * | * | * | * | *
     })
-    getChessBoardFromMoves(queenRule, queenPosition, chessGameStatus) shouldEqual ChessBoard {
+    getChessBoardFromMoves(queenPosition, chessGameStatus) shouldEqual ChessBoard {
       * | X | * | * | X | * | * | X
       * | * | X | * | X | * | X | *
       * | * | * | X | X | X | * | *
@@ -53,7 +49,7 @@ class QueenRuleSpec extends AbstractRuleSpec:
       * | * | * | * | R | * | * | *
       * | * | * | * | * | * | * | *
     })
-    getChessBoardFromMoves(queenRule, queenPosition, chessGameStatus) shouldEqual ChessBoard {
+    getChessBoardFromMoves(queenPosition, chessGameStatus) shouldEqual ChessBoard {
       * | * | * | * | X | * | * | *
       * | * | * | * | X | * | * | *
       * | * | * | X | X | * | * | *
@@ -68,7 +64,7 @@ class QueenRuleSpec extends AbstractRuleSpec:
   it should "be able to capture pieces of the opposite team" in {
     val chessGameStatus: ChessGameStatus = ChessGameStatus(ChessBoard {
       * | p | * | * | * | * | * | *
-      * | * | * | * | p | * | * | *
+      * | * | p | * | p | * | * | *
       * | * | * | * | * | * | * | *
       * | * | K | * | Q | p | * | *
       * | * | * | * | * | * | * | *
@@ -76,8 +72,8 @@ class QueenRuleSpec extends AbstractRuleSpec:
       * | * | * | * | * | * | * | *
       * | * | * | * | p | * | * | *
     })
-    getChessBoardFromMoves(queenRule, queenPosition, chessGameStatus) shouldEqual ChessBoard {
-      * | X | * | * | * | * | * | X
+    getChessBoardFromMoves(queenPosition, chessGameStatus) shouldEqual ChessBoard {
+      * | * | * | * | * | * | * | X
       * | * | X | * | X | * | X | *
       * | * | * | X | X | X | * | *
       * | * | * | X | * | X | * | *

@@ -6,65 +6,49 @@
  */
 package io.github.chess.model.rules.chess
 
-import io.github.chess.model.{ChessGameStatus, Position}
-import io.github.chess.model.moves.{CaptureMove, Move}
-import io.github.chess.model.pieces.Piece
-import io.github.chess.model.Position.given
-import io.github.chess.model.rules.prolog.PrologRule
 import io.github.chess.util.general.GivenExtension.within
+import io.github.chess.model.{ChessGameStatus, Position}
+import io.github.chess.model.Position.given
+import io.github.chess.model.moves.Move
+import io.github.chess.model.rules.prolog.PrologRule
+import ChessRule.*
 
 /** A rule that performs an analysis towards a certain direction. */
-trait DirectionalRule extends RuleShorthands:
-  /**
-   * Analyzes the specified direction from the current position in the current state of the game.
-   *
-   * @param currentPosition the current position
-   * @param status          the current state of the game
-   * @param direction       the specified direction
-   * @return a set of all the possible moves from the current position
-   */
-  protected def analyseDirection(
-      currentPosition: Position,
-      status: ChessGameStatus,
-      direction: PrologRule
-  ): Set[Move] =
-    within(status) {
-      within(currentPosition) {
-        val (freePositions, obstructedPositions) =
-          direction.findPositions(currentPosition).span(!occupied(_, _))
-        var moves = freePositions.map(Move(currentPosition, _))
-        obstructedPositions.headOption foreach { obstructingPosition =>
-          pieceAt(obstructingPosition) foreach { obstructingPiece =>
-            pieceAt(currentPosition) foreach { currentPiece =>
-              if currentPiece.team != obstructingPiece.team then
-                moves = moves :+ CaptureMove(currentPosition, obstructingPosition, obstructingPiece)
-            }
-          }
-        }
-        moves.toSet
-      }
-    }
+trait DirectionalRule extends ChessRule with RuleShorthands:
+  export DirectionalRule.*
+  export DirectionalRule.given
+
+  override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
+    this.directions.flatMap { limitDirection(position, status, _) }
+
+  /** @return all the possible directions of the rule */
+  def directions: Set[Direction]
 
   /**
    * Analyzes the specified direction and removes all the moves that cannot be performed due to an obstacle.
    * The move that end up on an occupied cell is kept.
    *
-   * @param currentPosition the current position
+   * @param startingPosition the starting position
    * @param status          the current state of the game
    * @param direction       the specified direction
    * @return the set of the moves found, without the moves that would end up behind an obstacle,
    *         if there is one in the path
    */
-  protected def limitDirection(
-      currentPosition: Position,
+  private def limitDirection(
+      startingPosition: Position,
       status: ChessGameStatus,
-      direction: PrologRule
+      direction: Direction
   ): Set[Move] =
     within(status) {
-      val positions: LazyList[Position] =
-        direction.findPositions(currentPosition).map[Position](pos => pos)
-
-      (positions.takeWhile(!occupied(_)) ++ positions.dropWhile(!occupied(_)).take(1))
-        .map(Move(currentPosition, _))
-        .toSet
+      val (availablePositions, obstructedPositions) = direction(startingPosition).span(!occupied(_))
+      (availablePositions ++ obstructedPositions.take(1)).map(Move(startingPosition, _)).toSet
     }
+
+/** Companion object of [[DirectionalRule]]. */
+object DirectionalRule:
+  /** A direction is a function that takes a position and returns an ordered sequence of positions. */
+  type Direction = Position => Seq[Position]
+
+  /** Conversion from a prolog rule to a direction. */
+  given prologRuleToDirection: Conversion[PrologRule, Direction] =
+    rule => position => rule.findPositions(position).map(coordsToPosition)

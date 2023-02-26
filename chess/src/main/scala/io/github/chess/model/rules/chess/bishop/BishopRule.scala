@@ -6,9 +6,7 @@
  */
 package io.github.chess.model.rules.chess.bishop
 
-import io.github.chess.model.moves.Move
-import io.github.chess.model.{ChessGameStatus, Position}
-import io.github.chess.model.rules.chess.AvoidAlliesRule
+import io.github.chess.model.rules.chess.{AvoidAlliesRule, AvoidSelfCheckRule}
 
 /** Represent the movement rule for the [[Bishop]]. */
-class BishopRule extends DiagonalRule with AvoidAlliesRule
+class BishopRule extends DiagonalRule with AvoidAlliesRule with AvoidSelfCheckRule

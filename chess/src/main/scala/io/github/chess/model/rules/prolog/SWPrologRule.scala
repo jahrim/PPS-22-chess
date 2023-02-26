@@ -9,4 +9,4 @@ package io.github.chess.model.rules.prolog
 import io.github.chess.model.PrologEngine
 
 /** Represents the prolog rule to find all the coordinates in the south west direction from a starting position. */
-class SouthWestRule extends PrologRule("south_west") with InsideBoardRule()
+class SWPrologRule extends PrologRule("sw_move") with InsideBoardRule()

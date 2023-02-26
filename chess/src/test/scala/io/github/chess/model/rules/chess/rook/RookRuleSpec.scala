@@ -6,16 +6,13 @@
  */
 package io.github.chess.model.rules.chess.rook
 
-import io.github.chess.AbstractSpec
 import io.github.chess.model.ChessBoard.*
-import io.github.chess.model.{ChessBoard, ChessGameStatus, File, Position, Rank, Team}
-import io.github.chess.model.pieces.{Piece, Rook}
-import io.github.chess.model.rules.AbstractRuleSpec
-import io.github.chess.model.rules.chess.rook.RookRule
+import io.github.chess.model.{ChessBoard, ChessGameStatus, File, Position, Rank}
+import io.github.chess.model.pieces.Rook
+import io.github.chess.model.rules.AbstractChessRuleSpec
 
 /** Test suite for [[Rook]]. */
-class RookRuleSpec extends AbstractRuleSpec:
-  val rookRule: RookRule = RookRule()
+class RookRuleSpec extends AbstractChessRuleSpec:
   val rookPosition: Position = Position(File.E, Rank._5)
 
   "The rook" should "move in all straight directions" in {
@@ -29,7 +26,7 @@ class RookRuleSpec extends AbstractRuleSpec:
       * | * | * | * | * | * | * | *
       * | * | * | * | * | * | * | *
     })
-    getChessBoardFromMoves(rookRule, rookPosition, chessGameStatus) shouldEqual ChessBoard {
+    getChessBoardFromMoves(rookPosition, chessGameStatus) shouldEqual ChessBoard {
       * | * | * | * | X | * | * | *
       * | * | * | * | X | * | * | *
       * | * | * | * | X | * | * | *
@@ -52,7 +49,7 @@ class RookRuleSpec extends AbstractRuleSpec:
       * | * | * | * | N | * | * | *
       * | * | * | * | * | * | * | *
     })
-    getChessBoardFromMoves(rookRule, rookPosition, chessGameStatus) shouldEqual ChessBoard {
+    getChessBoardFromMoves(rookPosition, chessGameStatus) shouldEqual ChessBoard {
       * | * | * | * | * | * | * | *
       * | * | * | * | * | * | * | *
       * | * | * | * | X | * | * | *
@@ -75,7 +72,7 @@ class RookRuleSpec extends AbstractRuleSpec:
       * | * | * | * | * | * | * | *
       * | * | * | * | p | * | * | *
     })
-    getChessBoardFromMoves(rookRule, rookPosition, chessGameStatus) shouldEqual ChessBoard {
+    getChessBoardFromMoves(rookPosition, chessGameStatus) shouldEqual ChessBoard {
       * | * | * | * | * | * | * | *
       * | * | * | * | X | * | * | *
       * | * | * | * | X | * | * | *

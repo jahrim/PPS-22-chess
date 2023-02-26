@@ -10,44 +10,46 @@ import io.github.chess.model.Position
 import io.github.chess.model.Team.{BLACK, WHITE}
 import io.github.chess.model.moves.CastlingMove
 import io.github.chess.model.pieces.{King, Piece}
-import io.github.chess.model.rules.chess.ChessRule
+import io.github.chess.model.rules.chess.{ChessRule, RuleShorthands}
 import io.github.chess.model.moves.Move
-import io.github.chess.model.*
+import io.github.chess.model.{ChessGameStatus, Team, Rank, File}
 
 /**
  * Represents the chess rule that can find the two possible moves involving the [[King]] and the [[Rook]]:
  * available only if they are on their starting positions and no other piece is present between them.
  */
-class CastlingRule extends ChessRule:
+class CastlingRule extends ChessRule with RuleShorthands:
 
   // TODO refactor thank to team in piece
   override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
     var set: Set[Move] = Set.empty
-    val currentTeam = status.currentTurn
-    val kingPosition = this.kingPosition(currentTeam)
-    if position == kingPosition && isKing(position, status)
-    then
-      val rank = rankFromTeam(currentTeam)
-
-      val leftRookPosition = this.leftRookPosition(currentTeam)
-      if checkFirstMoveAndNoOtherPieceBetween(leftRookPosition, status, kingPosition)
+    if isFirstMovementOf(position)(using status) then
+      val currentTeam = status.currentTurn
+      val kingPosition = this.kingPosition(currentTeam)
+      if position == kingPosition && isKing(position, status)
       then
-        set = set + CastlingMove(
-          position,
-          Position(File.C, rank),
-          leftRookPosition,
-          Position(File.D, rank)
-        )
+        val rank = rankFromTeam(currentTeam)
 
-      val rightRookPosition = this.rightRookPosition(currentTeam)
-      if checkFirstMoveAndNoOtherPieceBetween(rightRookPosition, status, kingPosition)
-      then
-        set = set + CastlingMove(
-          position,
-          Position(File.G, rank),
-          rightRookPosition,
-          Position(File.F, rank)
-        )
+        val leftRookPosition = this.leftRookPosition(currentTeam)
+        if checkFirstMoveAndNoOtherPieceBetween(leftRookPosition, status, kingPosition)
+        then
+          set = set + CastlingMove(
+            position,
+            Position(File.C, rank),
+            leftRookPosition,
+            Position(File.D, rank)
+          )
+
+        val rightRookPosition = this.rightRookPosition(currentTeam)
+        if checkFirstMoveAndNoOtherPieceBetween(rightRookPosition, status, kingPosition)
+        then
+          set = set + CastlingMove(
+            position,
+            Position(File.G, rank),
+            rightRookPosition,
+            Position(File.F, rank)
+          )
+    end if
     set
 
   private def kingPosition(team: Team): Position = team match

@@ -6,29 +6,14 @@
  */
 package io.github.chess.model.rules.chess.bishop
 
-import io.github.chess.model.moves.Move
-import io.github.chess.model.rules.chess.{ChessRule, DirectionalRule}
-import io.github.chess.model.rules.prolog.{NEPrologRule, NWPrologRule, SouthEastRule, SouthWestRule}
-import io.github.chess.model.{ChessGameStatus, Position, moves}
+import io.github.chess.model.rules.chess.DirectionalRule
+import io.github.chess.model.rules.prolog.{NEPrologRule, NWPrologRule, SEPrologRule, SWPrologRule}
+import DiagonalRule.*
 
 /** Represents the chess rule that can find all the moves in diagonal directions, analyzing the status. */
-class DiagonalRule extends ChessRule with DirectionalRule:
+class DiagonalRule extends DirectionalRule:
+  override def directions: Set[Direction] = rules.map(prologRuleToDirection)
 
-  private val northWestRule = DiagonalRule.nwPrologRule
-  private val northEastRule = DiagonalRule.nePrologRule
-  private val southWestRule = DiagonalRule.swPrologRule
-  private val southEastRule = DiagonalRule.sePrologRule
-  private val rules = Set(northWestRule, northEastRule, southEastRule, southWestRule)
-
-  override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
-    this.rules.flatMap { limitDirection(position, status, _) }
-
-/**
- * Object for the Diagonal Rule that creates and stores a single instance of the prolog engine
- *  for each of its directions.
- */
+/** Companion object of [[DiagonalRule]]. */
 object DiagonalRule:
-  private val nwPrologRule = NWPrologRule()
-  private val nePrologRule = NEPrologRule()
-  private val swPrologRule = SouthWestRule()
-  private val sePrologRule = SouthEastRule()
+  private val rules = Set(NEPrologRule(), SEPrologRule(), SWPrologRule(), NWPrologRule())

@@ -9,14 +9,11 @@ package io.github.chess.model.rules.chess.pawn
 import io.github.chess.model.moves.{CaptureMove, Move}
 import io.github.chess.model.rules.chess.{ChessRule, RuleShorthands}
 import io.github.chess.model.rules.prolog.{BlackPawnCaptureRule, WhitePawnCaptureRule}
-import io.github.chess.model.{ChessGameStatus, Position, Team, moves}
+import io.github.chess.model.{ChessGameStatus, Position, Team}
+import PawnCaptureMoves.*
 
 /** Finds all moves with which a pawn can capture an adversary piece. */
 class PawnCaptureMoves extends ChessRule with RuleShorthands:
-
-  private val whitePawnCaptureRule: WhitePawnCaptureRule = PawnCaptureMoves.whiteCaptureRule
-  private val blackPawnCaptureRule: BlackPawnCaptureRule = PawnCaptureMoves.blackCaptureRule
-
   override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
     status.chessBoard.pieces.get(position) match
       case Some(piece) =>
@@ -37,5 +34,5 @@ class PawnCaptureMoves extends ChessRule with RuleShorthands:
  *  for the two versions of the rule (white and black).
  */
 object PawnCaptureMoves:
-  private val whiteCaptureRule = WhitePawnCaptureRule()
-  private val blackCaptureRule = BlackPawnCaptureRule()
+  private val whitePawnCaptureRule = WhitePawnCaptureRule()
+  private val blackPawnCaptureRule = BlackPawnCaptureRule()

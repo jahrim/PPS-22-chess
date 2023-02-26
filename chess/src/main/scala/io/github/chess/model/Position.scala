@@ -59,11 +59,11 @@ object Position:
    * @return a pair of integer coordinates representing this position in
    *         the chess board
    */
-  given Conversion[Position, (Int, Int)] = position =>
+  given positionToCoords: Conversion[Position, (Int, Int)] = position =>
     (position.file.ordinal, position.rank.ordinal)
 
   /** Reverse of [[given_Conversion_Position_Int_Int]]. */
-  given Conversion[(Int, Int), Position] = chessCoords =>
+  given coordsToPosition: Conversion[(Int, Int), Position] = chessCoords =>
     Position(
       File.fromOrdinal(chessCoords._1),
       Rank.fromOrdinal(chessCoords._2)

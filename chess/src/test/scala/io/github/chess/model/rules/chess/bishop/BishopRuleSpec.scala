@@ -4,7 +4,7 @@
  *
  * Full license description available at: https://github.com/jahrim/PPS-22-chess/blob/master/LICENSE
  */
-package io.github.chess.model.rules.chess
+package io.github.chess.model.rules.chess.bishop
 
 import io.github.chess.AbstractSpec
 import io.github.chess.model.pieces.Pawn
@@ -21,8 +21,7 @@ class BishopRuleSpec extends AbstractSpec:
   private val southWestPositions: Set[Position] = Set((1, 2))
   private val southEastPositions: Set[Position] = Set((3, 2), (4, 1), (5, 0))
   private val diagonalRule = DiagonalRule()
-  private val chessBoard: ChessBoard = ChessBoard.empty
-  chessBoard.setPiece((0, 1), Pawn(Team.WHITE))
+  private val chessBoard: ChessBoard = ChessBoard.empty.setPiece((0, 1), Pawn(Team.WHITE))
   private val chessGameStatus = ChessGameStatus(chessBoard)
   private val moves = diagonalRule.findMoves(initialPosition, chessGameStatus).map(_.to)
 

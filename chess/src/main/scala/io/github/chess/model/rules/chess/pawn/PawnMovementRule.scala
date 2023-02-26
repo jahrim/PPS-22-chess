@@ -6,27 +6,20 @@
  */
 package io.github.chess.model.rules.chess.pawn
 
-import io.github.chess.model.rules.chess.ChessRule
-import io.github.chess.model.*
+import io.github.chess.model.{Position, ChessGameStatus}
+import io.github.chess.model.rules.chess.{ChessRule, RuleShorthands}
 import io.github.chess.model.moves.Move
+import PawnMovementRule.*
 
 /** Set of Pawn movement rules. */
-class PawnMovementRule extends ChessRule:
-
-  private val forwardOneRule: ForwardOneRule = ForwardOneRule()
-  private val doubleMoveRule: DoubleMoveRule = DoubleMoveRule()
-
+class PawnMovementRule extends ChessRule with RuleShorthands:
   override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
     val firstStep = forwardOneRule.findMoves(position, status)
-    if firstStep.nonEmpty && isFirstMove(position, status) then
+    if firstStep.nonEmpty && isFirstMovementOf(position)(using status) then
       firstStep ++ doubleMoveRule.findMoves(position, status)
     else firstStep
 
-  private def isFirstMove(position: Position, status: ChessGameStatus): Boolean =
-    position.rank == (status.chessBoard.pieces.get(position) match
-      case Some(piece) =>
-        piece.team match
-          case Team.WHITE => Rank._2
-          case Team.BLACK => Rank._7
-      case None => false
-    )
+/** Companion object of [[PawnMovementRule]]. */
+object PawnMovementRule:
+  private val forwardOneRule: ForwardOneRule = ForwardOneRule()
+  private val doubleMoveRule: DoubleMoveRule = DoubleMoveRule()

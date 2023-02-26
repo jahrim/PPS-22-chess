@@ -6,38 +6,14 @@
  */
 package io.github.chess.model.rules.chess.rook
 
-import io.github.chess.util.general.GivenExtension.within
-import io.github.chess.model.moves.Move
-import io.github.chess.model.rules.chess.ChessRule.*
-import io.github.chess.model.rules.chess.{ChessRule, DirectionalRule}
-import io.github.chess.model.rules.chess.ChessRule.*
-import io.github.chess.model.rules.prolog.{
-  EPrologRule,
-  NPrologRule,
-  PrologRule,
-  SPrologRule,
-  WPrologRule
-}
-import io.github.chess.model.{ChessGameStatus, Position, moves}
+import io.github.chess.model.rules.chess.DirectionalRule
+import io.github.chess.model.rules.prolog.{EPrologRule, NPrologRule, SPrologRule, WPrologRule}
+import StraightRule.*
 
 /** Represents the chess rule that can find all the moves in straight directions, analyzing the status. */
-class StraightRule extends ChessRule with DirectionalRule:
-  private val rules: Set[PrologRule] =
-    Set(
-      StraightRule.nPrologRule,
-      StraightRule.wPrologRule,
-      StraightRule.sPrologRule,
-      StraightRule.ePrologRule
-    )
-  override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
-    this.rules.flatMap { limitDirection(position, status, _) }
+class StraightRule extends DirectionalRule:
+  override def directions: Set[Direction] = rules.map(prologRuleToDirection)
 
-/**
- * Object for the Straight Rule that creates and stores a single instance of the prolog engine
- *  for each of its directions.
- */
+/** Companion object of [[StraightRule]]. */
 object StraightRule:
-  private val nPrologRule = NPrologRule()
-  private val wPrologRule = WPrologRule()
-  private val sPrologRule = SPrologRule()
-  private val ePrologRule = EPrologRule()
+  private val rules = Set(NPrologRule(), EPrologRule(), SPrologRule(), WPrologRule())

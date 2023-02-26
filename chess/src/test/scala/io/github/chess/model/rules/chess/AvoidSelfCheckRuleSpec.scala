@@ -10,10 +10,10 @@ import io.github.chess.model.{ChessBoard, ChessGameStatus, Position, Team}
 import io.github.chess.model.ChessBoard.*
 import io.github.chess.AbstractSpec
 import io.github.chess.model.pieces.Pawn
-import io.github.chess.model.rules.AbstractRuleSpec
+import io.github.chess.model.rules.AbstractChessRuleSpec
 
 /** Test suit for the [[ChessBoardBuilder]]. */
-class AvoidSelfCheckRuleSpec extends AbstractRuleSpec:
+class AvoidSelfCheckRuleSpec extends AbstractChessRuleSpec:
 
   val pawnPosition: Position = (1, 6)
   "The avoid self check mixin" should "forbid the pawn to make moves that would put or keep the current player in check" in {

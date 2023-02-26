@@ -6,9 +6,8 @@
  */
 package io.github.chess.model.rules.chess.queen
 
-import io.github.chess.model.moves.Move
-import io.github.chess.model.rules.chess.AvoidAlliesRule
-import io.github.chess.model.{ChessGameStatus, Position}
+import io.github.chess.model.rules.chess.queen.AllDirectionsRule
+import io.github.chess.model.rules.chess.{AvoidAlliesRule, AvoidSelfCheckRule}
 
 /** Represent the movement rule for the [[Queen]]. */
-class QueenRule extends AllDirectionsRule with AvoidAlliesRule
+class QueenRule extends AllDirectionsRule with AvoidAlliesRule with AvoidSelfCheckRule

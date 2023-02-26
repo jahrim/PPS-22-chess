@@ -6,19 +6,8 @@
  */
 package io.github.chess.model.rules.chess.pawn
 
-import io.github.chess.model.moves.Move
-import io.github.chess.model.pieces.Pawn
-import io.github.chess.model.rules.chess.ChessRule
-import io.github.chess.model.{ChessGameStatus, Position}
+import io.github.chess.model.rules.chess.pawn.PawnRuleCollection
+import io.github.chess.model.rules.chess.AvoidSelfCheckRule
 
 /** Implementation of the [[ChessRule]] that applies the rules of the [[Pawn]]. */
-case class PawnRule() extends ChessRule:
-
-  private val pawnMovementRule: PawnMovementRule = PawnMovementRule()
-  private val pawnCaptureRule: PawnCaptureRule = PawnCaptureRule()
-  private val enPassantRule: EnPassantRule = EnPassantRule()
-
-  override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
-    pawnMovementRule.findMoves(position, status) ++
-      pawnCaptureRule.findMoves(position, status) ++
-      enPassantRule.findMoves(position, status)
+class PawnRule extends PawnRuleCollection with AvoidSelfCheckRule

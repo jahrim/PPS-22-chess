@@ -6,14 +6,15 @@
  */
 package io.github.chess.model.rules.chess.queen
 
-import io.github.chess.model.moves.Move
-import io.github.chess.model.rules.chess.ChessRule
+import io.github.chess.model.rules.chess.DirectionalRule
 import io.github.chess.model.rules.chess.bishop.DiagonalRule
 import io.github.chess.model.rules.chess.rook.StraightRule
-import io.github.chess.model.{ChessGameStatus, Position}
+import AllDirectionsRule.*
 
 /** Represents the chess rule that can find all the moves in every directions, analyzing the status. */
-class AllDirectionsRule extends ChessRule:
-  private val rules: Set[ChessRule] = Set(DiagonalRule(), StraightRule())
-  override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
-    this.rules.findMoves(position, status)
+class AllDirectionsRule extends DirectionalRule:
+  override def directions: Set[Direction] = rules.flatMap { _.directions }
+
+/** Companion object of [[AllDirectionsRule]]. */
+object AllDirectionsRule:
+  private val rules: Set[DirectionalRule] = Set(DiagonalRule(), StraightRule())
