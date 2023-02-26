@@ -7,7 +7,7 @@
 package io.github.chess.ports
 
 import io.github.chess.events.Event
-import io.github.chess.model.configuration.GameConfiguration
+import io.github.chess.model.configuration.{GameConfiguration, Player}
 import io.github.chess.model.moves.Move
 import io.github.chess.model.pieces.Piece
 import io.github.chess.model.{ChessGameStatus, Position, PromotionPiece}
@@ -19,10 +19,6 @@ import scala.reflect.ClassTag
 
 /** Represents the contract of a chess engine service. */
 trait ChessPort:
-
-  // TODO inserire player parameter
-  // def surrender(p: Player): Unit = ???
-
   /** @return a future containing the state of the game of chess */
   def getState: Future[ChessGameStatus]
 
@@ -57,9 +53,20 @@ trait ChessPort:
   def promote[P <: Piece](pawnPosition: Position, promotingPiece: PromotionPiece[P]): Future[Unit]
 
   /**
+   * Make the specified player surrender.
+   * @param p the specified player
+   * @return a future that completes when the player has effectively surrendered.
+   */
+  def surrender(p: Player): Future[Unit]
+
+  /**
    * Subscribes an handler to a particular event.
-   * @param handler [[Handler]] to inform when the event is published
+   * @param handler a consumer for the specified event
    * @tparam T type parameter of the event extending superclass [[Event]]
    * @return a future that completes when the subscription has been registered
    */
   def subscribe[T <: Event: ClassTag](handler: T => Unit): Future[Unit]
+
+  // todo allow unsubscribe to events
+  // def subscribe[T <: Event: ClassTag](handler: T => Unit): Future[Subscription]
+  // def unsubscribe(subscription: Subscription): Future[Unit]

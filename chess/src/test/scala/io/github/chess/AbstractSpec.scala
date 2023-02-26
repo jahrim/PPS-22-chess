@@ -6,8 +6,10 @@
  */
 package io.github.chess
 
+import io.github.chess.util.debug.Logger
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
 /** Base Spec for all the test suites. */
-abstract class AbstractSpec extends AnyFlatSpec with Matchers
+abstract class AbstractSpec extends AnyFlatSpec with Matchers:
+  Logger.hideLogs()

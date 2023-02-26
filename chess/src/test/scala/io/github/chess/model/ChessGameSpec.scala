@@ -19,8 +19,8 @@ class ChessGameSpec extends AbstractSpec:
   val whitePawnPosition: Position = (0, 1)
   val whitePawnMove: Move = Move(whitePawnPosition, (0, 3))
   val chessGame: ChessGame = ChessGame(Vertx.vertx())
-  chessGame.startGame(GameConfiguration.default)
   val maxDuration: Duration = Duration(5, SECONDS)
+  Await.result(chessGame.startGame(GameConfiguration.default), maxDuration)
 
   "The Chess Game" should "let the white player move a pawn of their team in the beginning of a standard game" in {
     Await.result(chessGame.getState, maxDuration).currentTurn should be(Team.WHITE)

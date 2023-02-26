@@ -12,10 +12,8 @@ import io.github.chess.model.rules.chess.rook.RookRule
 
 /** Represents the particular piece of the rook. */
 case class Rook(override val team: Team) extends Piece:
-
   override def rule: ChessRule = Rook.rookRule
 
 /** Object for Rook that creates and stores a single [[RookRule]] that all other Rooks will use. */
 object Rook:
-
   private final val rookRule = RookRule()

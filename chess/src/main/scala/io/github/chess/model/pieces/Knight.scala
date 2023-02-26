@@ -12,10 +12,8 @@ import io.github.chess.model.rules.chess.knight.KnightRule
 
 /** Represents the particular piece of the knight. */
 case class Knight(override val team: Team) extends Piece:
-
   override def rule: ChessRule = Knight.knightRule
 
 /** Object for Knight that creates and stores a single [[KnightRule]] that all other Knights will use. */
 object Knight:
-
   private final val knightRule = KnightRule()

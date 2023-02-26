@@ -11,8 +11,10 @@ import java.time.format.DateTimeFormatter
 
 /** A simple logger. */
 object Logger:
-  // Set this to false to ensure that no logs remains in the code (default: true)
+  // Set this to false to ensure that no logs remains in any reachable code (default: true)
   private val enabled: Boolean = true
+  // Set this to true to hide all logs (default: false)
+  private var hidden: Boolean = false
 
   /** The type of a message. */
   type Tag = String
@@ -23,11 +25,32 @@ object Logger:
   /** The content of a message. */
   type Message = Any
 
+  /** Show all logs. */
+  def showLogs(): Unit = this.hidden = false
+
+  /** Hide all logs. */
+  def hideLogs(): Unit = this.hidden = true
+
   /**
    * Prints the specified message without any tags or categories.
    * @param message the specified message
    */
   def put(message: Message): Unit = log("", "", message)
+
+  /**
+   * Logs the start and the end of the specified activity.
+   * @param tag the type of message
+   * @param category the topic of the message
+   * @param activityName the name of the specified activity
+   * @param activity the specified activity
+   * @tparam T the return type of the specified activity
+   * @return the result of the specified activity
+   */
+  def logActivity[T](tag: Tag, category: Category)(activityName: String)(activity: => T): T =
+    Logger.log(tag, category, s"$activityName : started")
+    val result = activity
+    Logger.log(tag, category, s"$activityName : ended")
+    result
 
   /**
    * Prints the specified message as an information.
@@ -65,7 +88,8 @@ object Logger:
    */
   protected def log(tag: Tag, category: Category, message: Message): Unit =
     require(enabled, "Cannot use logger when logging it's disabled.")
-    println(s"[${currentTime}][${currentActor}]: [$tag][$category] - ${message.toString}")
+    if !this.hidden then
+      println(s"[${currentTime}][${currentActor}]: [$tag][$category] - ${message.toString}")
 
   /** @return the current time formatted as a string */
   private def currentTime: String =

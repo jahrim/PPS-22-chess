@@ -10,7 +10,7 @@ import io.github.chess.events.PieceMovedEvent
 import io.github.chess.model.ChessBoardBuilder.DSL.*
 import io.github.chess.model.Team.{BLACK, WHITE}
 import io.github.chess.model.moves.Move
-import io.github.chess.model.pieces.{Pawn, Piece}
+import io.github.chess.model.pieces.{Bishop, King, Knight, Pawn, Piece, Queen, Rook}
 import io.vertx.core.Vertx
 
 /** The trait representing the concept of a Chess Board. */
@@ -88,8 +88,8 @@ object ChessBoard:
   /** All the possible positions in the chess board. */
   lazy val Positions: Iterable[Position] =
     for
-      i <- 0 until ChessBoard.Size
       j <- 0 until ChessBoard.Size
+      i <- 0 until ChessBoard.Size
     yield (i, j)
 
   /** Alias for [[ChessBoard.empty]]. */
@@ -133,3 +133,25 @@ object ChessBoard:
 
     override def removePiece(position: Position): ChessBoard =
       BasicChessBoard(this._pieces - position)
+
+    override def toString: String =
+      ChessBoard.Positions
+        .map(this.pieces.get(_))
+        .map(_.map(pieceToString).getOrElse("*"))
+        .grouped(ChessBoard.Size)
+        .toList
+        .reverse
+        .map(line => line.mkString(" | "))
+        .mkString("\n", "\n", "\n")
+
+    private def pieceToString(piece: Piece): String =
+      val unboundRepresentation: (String, String) =
+        piece match
+          case _: King   => ("K", "k")
+          case _: Queen  => ("Q", "q")
+          case _: Rook   => ("R", "r")
+          case _: Bishop => ("B", "b")
+          case _: Knight => ("N", "n")
+          case _: Pawn   => ("P", "p")
+          case _         => ("X", "x")
+      if piece.team == Team.WHITE then unboundRepresentation._1 else unboundRepresentation._2

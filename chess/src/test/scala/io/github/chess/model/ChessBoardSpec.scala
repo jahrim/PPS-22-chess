@@ -31,6 +31,20 @@ class ChessBoardSpec extends AbstractSpec:
     ChessBoard.Positions.groupBy(_.file).foreach(_._2.size shouldEqual ChessBoard.Size)
   }
 
+  it should s"have a pretty string representation" in {
+    ChessBoard.standard.toString shouldEqual (
+      "\n" +
+        "r | n | b | q | k | b | n | r\n" +
+        "p | p | p | p | p | p | p | p\n" +
+        "* | * | * | * | * | * | * | *\n" +
+        "* | * | * | * | * | * | * | *\n" +
+        "* | * | * | * | * | * | * | *\n" +
+        "* | * | * | * | * | * | * | *\n" +
+        "P | P | P | P | P | P | P | P\n" +
+        "R | N | B | Q | K | B | N | R\n"
+    )
+  }
+
   "An empty chess board" should "initially contain no pieces" in {
     ChessBoard.empty.pieces shouldBe empty
   }

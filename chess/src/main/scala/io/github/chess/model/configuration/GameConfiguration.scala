@@ -20,7 +20,12 @@ case class GameConfiguration(
     var gameMode: GameMode,
     var whitePlayer: Player,
     var blackPlayer: Player
-)
+):
+  /**
+   * @param team the specified team
+   * @return the player of the specified team
+   */
+  def player(team: Team): Player = if team == Team.WHITE then whitePlayer else blackPlayer
 
 object GameConfiguration:
 

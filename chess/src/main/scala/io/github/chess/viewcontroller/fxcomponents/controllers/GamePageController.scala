@@ -6,7 +6,8 @@
  */
 package io.github.chess.viewcontroller.fxcomponents.controllers
 
-import io.github.chess.events.{PieceMovedEvent, PromotingPawnEvent, TimeEndedEvent, TimePassedEvent}
+import io.github.chess.events.{GameOverEvent, PieceMovedEvent, PromotingPawnEvent, TimePassedEvent}
+import io.github.chess.model.configuration.Player
 import io.github.chess.model.PromotionPiece
 import io.github.chess.viewcontroller.ChessApplication.{start, given}
 import io.github.chess.viewcontroller.{ChessApplicationComponent, ChessApplicationContext}
@@ -19,6 +20,8 @@ import javafx.scene.layout.GridPane
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.util.{Failure, Success}
+import scalafx.scene.control.Alert
+import scalafx.scene.control.Alert.AlertType
 import scalafx.application.Platform
 import scalafx.stage.Stage
 
@@ -46,19 +49,23 @@ class GamePageController(override protected val stage: Stage)(using
   @FXML @SuppressWarnings(Array("org.wartremover.warts.Null"))
   private var chessBoardController: ChessBoardController = _
 
+  private var currentPlayerBelief: Option[Player] = Option.empty
+
   override def initialize(url: URL, resourceBundle: ResourceBundle): Unit =
     chessBoardController = ChessBoardController.fromGridPane(this.chessBoardGridPane)(stage)
-    this.surrenderButton.onMouseClicked = _ => MainMenuPage(stage)
+    this.surrenderButton.onMouseClicked = _ =>
+      this.currentPlayerBelief.foreach { this.context.chessEngineProxy.surrender(_) }
     initView()
     context.chessEngineProxy.subscribe[PieceMovedEvent](onPieceMoved)
     context.chessEngineProxy.subscribe[TimePassedEvent](onTimePassed)
-    context.chessEngineProxy.subscribe[TimeEndedEvent](onTimeEnded)
+    context.chessEngineProxy.subscribe[GameOverEvent](onGameOver)
     context.chessEngineProxy.subscribe[PromotingPawnEvent](onPromotingPawn)
 
   private def initView(): Unit =
     context.chessEngineProxy.getState.onComplete {
       case Success(status) =>
         Platform.runLater {
+          this.currentPlayerBelief = Some(status.gameConfiguration.player(status.currentTurn))
           chessBoardController.repaint(status.chessBoard.pieces)
           currentTurnText.setText(
             s"${status.gameConfiguration.whitePlayer.name} -> ${status.currentTurn.toString}"
@@ -71,6 +78,7 @@ class GamePageController(override protected val stage: Stage)(using
 
   private def onPieceMoved(event: PieceMovedEvent): Unit =
     Platform.runLater(() =>
+      this.currentPlayerBelief = Some(event.currentPlayer)
       currentTurnText.setText(s"${event.currentPlayer.name} -> ${event.currentPlayer.team}")
       lastMoveText.setText(s"${event.lastMove.from} -> ${event.lastMove.to}")
       chessBoardController.repaint(event.boardDisposition)
@@ -84,7 +92,19 @@ class GamePageController(override protected val stage: Stage)(using
       )
     )
 
-  private def onTimeEnded(event: TimeEndedEvent): Unit = ???
+  private def onGameOver(event: GameOverEvent): Unit =
+    Platform.runLater {
+      new Alert(AlertType.Information) {
+        title = "Game Over Dialog"
+        headerText = "Game Over!"
+        contentText = event.winner match
+          case Some(player) =>
+            s"Team ${player.team.toString.toLowerCase} wins! Congratulations ${player.name}!"
+          case None => "Stale mate..."
+      }.showAndWait()
+      // TODO: unsubscribe to events
+      MainMenuPage(stage)
+    }
 
   private def onPromotingPawn(event: PromotingPawnEvent): Unit =
     Platform.runLater {
