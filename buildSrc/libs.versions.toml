@@ -6,7 +6,7 @@ kotlinx-version = "1.5.0-RC"
 kotlin-hocon-serialization-version = "1.4.10"
 typesafe-config-version = "1.4.2"
 turtle-version = "0.8.0"
-scoverage-plugin-version = "2.0.7"
+scoverage-plugin-version = "2.0.8"
 commons-io-version = "2.6"
 # insert the versions of the dependencies here...
 

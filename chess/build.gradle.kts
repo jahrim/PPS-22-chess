@@ -212,5 +212,5 @@ sonarqube.properties {
     property("sonar.links.ci", "$githubUrl/actions")
     property("sonar.links.scm", githubUrl)
     property("sonar.links.issue", "$githubUrl/issues")
-    property("sonar.scala.coverage.reportPaths", "${project.buildDir}/reports/scoverage/cobertura.xml")
+    property("sonar.scala.coverage.reportPaths", "${project.buildDir}/reports/scoverage/scoverage.xml")
 }
