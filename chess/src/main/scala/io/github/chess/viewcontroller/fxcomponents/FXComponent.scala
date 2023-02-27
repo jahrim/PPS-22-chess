@@ -12,5 +12,5 @@ package io.github.chess.viewcontroller.fxcomponents
  *       JavaFX.
  */
 trait FXComponent:
-  export scalafx.Includes.*
+  export scalafx.scene.SceneIncludes.*
   export io.github.chess.viewcontroller.fxutils.FXUtils.*

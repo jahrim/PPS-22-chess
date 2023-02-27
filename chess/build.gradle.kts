@@ -16,12 +16,12 @@ repositories { mavenCentral() }
 
 dependencies {
     implementation(libs.scala)
-    implementation(libs.bundles.scalafmt)
+    compileOnly(libs.bundles.scalafmt)
     implementation(libs.vertx)
     implementation(libs.scalafx)
     libs.bundles.javafx.get().forEach {
         val fxArtifact = "${it.module}:${it.version}"
-        implementation("$fxArtifact:${JavaFX.getSpecificClassifier()}")
+        compileOnly("$fxArtifact:${JavaFX.getSpecificClassifier()}")
         JavaFX.getClassifiers().forEach { runtimeOnly("$fxArtifact:$it") } // Multiplatform Jar
     }
     implementation(libs.tuprolog)

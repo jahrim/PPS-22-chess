@@ -24,14 +24,12 @@ javafx-controls = { module = "org.openjfx:javafx-controls", version.ref = "javaf
 javafx-fxml = { module = "org.openjfx:javafx-fxml", version.ref = "javafx-version" }
 javafx-graphics = { module = "org.openjfx:javafx-graphics", version.ref = "javafx-version" }
 javafx-media = { module = "org.openjfx:javafx-media", version.ref = "javafx-version" }
-javafx-swing = { module = "org.openjfx:javafx-swing", version.ref = "javafx-version" }
-javafx-web = { module = "org.openjfx:javafx-web", version.ref = "javafx-version" }
 tuprolog = { module = "it.unibo.alice.tuprolog:2p-core", version.ref = "tuprolog-version" }
 # insert the dependencies here...
 
 [bundles]
 scalafmt = [ "scalafmt-cli", "scalafmt-config" ]
-javafx = [ "javafx-base", "javafx-controls", "javafx-fxml", "javafx-graphics", "javafx-media", "javafx-swing", "javafx-web" ]
+javafx = [ "javafx-base", "javafx-controls", "javafx-fxml", "javafx-graphics", "javafx-media" ]
 # insert groups of dependencies here...
 
 [plugins]
