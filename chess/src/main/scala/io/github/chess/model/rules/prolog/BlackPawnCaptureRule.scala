@@ -9,4 +9,4 @@ package io.github.chess.model.rules.prolog
 import io.github.chess.model.rules.prolog.PrologRule
 
 /** Class representing the prolog rule that finds all capture moves of a black pawn. */
-class BlackPawnCaptureRule extends PrologRule("black_pawn_capture") with InsideBoardRule()
+class BlackPawnCaptureRule extends PrologRule("black_pawn_capture") with InsideBoardFilterRule()
