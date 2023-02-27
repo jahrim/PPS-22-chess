@@ -8,7 +8,7 @@ package io.github.chess.model.rules.chess.pawn
 
 import io.github.chess.model.moves.Move
 import io.github.chess.model.rules.chess.ChessRule
-import io.github.chess.model.{ChessGameStatus, Position, Team, moves}
+import io.github.chess.model.{ChessGameStatus, Position, Rank, Team, moves}
 
 /** Implementation of a chess rule that makes move a piece one step forward in the column. */
 class SingleStepRule extends ChessRule:
@@ -16,12 +16,8 @@ class SingleStepRule extends ChessRule:
   override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
     status.chessBoard.pieces.get(position) match
       case Some(piece) =>
-        Set(
-          Move(
-            position,
-            piece.team match
-              case Team.WHITE => position.rankUp()
-              case Team.BLACK => position.rankDown()
-          )
-        )
+        piece.team match
+          case Team.WHITE if position.rank != Rank._8 => Set(Move(position, position.rankUp()))
+          case Team.BLACK if position.rank != Rank._1 => Set(Move(position, position.rankDown()))
+          case _                                      => Set.empty
       case None => Set.empty
