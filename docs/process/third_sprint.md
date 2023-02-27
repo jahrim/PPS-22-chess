@@ -15,8 +15,12 @@ La _Deadline_ di questo Sprint è stata fissata al 27/02/2023.
 
 # Sprint Review
 
-
+Il _Product Owner_ ha verificato che i requisiti di base dell'applicazione (utente, funzionali) siano soddisfatti 
+dal deliverable di questo Sprint.
 
 # Sprint Retrospective
 
+Durante questo Sprint, il Team è riuscito a stimare il carico di lavoro dei task in modo adeguato e ad assegnarli 
+anche in maniera molto bilanciata.
 
+Infatti, si è sfruttato il _pair programming_ per sviluppare una funzionalità molto complessa.
