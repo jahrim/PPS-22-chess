@@ -58,7 +58,6 @@ class GameConfigurationController(override protected val stage: Stage)(using
   override def initialize(url: URL, resourceBundle: ResourceBundle): Unit =
     this.backButton.onMouseClicked = _ => MainMenuPage(stage)
 
-    this.stage.setResizable(false)
     this.timeConstraint.setItems(FXCollections.observableArrayList(TimeConstraint.values*))
     this.timeConstraint.setValue(TimeConstraint.NoLimit)
     this.timeConstraint.onAction = _ =>

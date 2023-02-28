@@ -43,4 +43,5 @@ object ChessApplication extends JFXApp3:
   private def stageConfiguration(): Unit =
     this.stage = new PrimaryStage():
       title = "Chess Game"
+      resizable = false
     this.contextBuilder.setPrimaryStage(this.stage)
