@@ -58,14 +58,11 @@ class GameConfigurationPageController(override protected val stage: Stage)(using
     this.timeConstraint.setValue(TimeConstraint.NoLimit)
     this.timeConstraint.onAction = _ =>
       this.time.setDisable(this.timeConstraint.getValue == TimeConstraint.NoLimit)
-    this.time.setDisable(true)
-    this.time.setValueFactory(
-      SpinnerValueFactory.IntegerSpinnerValueFactory(
-        TimeConstraint.MinMoveLimit,
-        TimeConstraint.MaxMoveLimit,
-        TimeConstraint.MoveLimit.minutes
+      this.time.setValueFactory(
+        generateMinutesRangeFromTimeConstraint(this.timeConstraint.getValue)
       )
-    )
+      this.time.getValueFactory.setValue(this.timeConstraint.getValue.minutes)
+    this.time.setDisable(true)
 
     this.gameMode.setItems(FXCollections.observableArrayList(GameMode.PVP))
     this.gameMode.setValue(GameMode.PVP)
@@ -91,3 +88,16 @@ class GameConfigurationPageController(override protected val stage: Stage)(using
           case Success(_)         => Platform.runLater { GamePage(stage) }
           case Failure(exception) => throw exception
         }
+
+  private def generateMinutesRangeFromTimeConstraint(timeConstraint: TimeConstraint) =
+    val (min, max, default) = timeConstraint match
+      case TimeConstraint.NoLimit => (0, 0, 0)
+      case TimeConstraint.MoveLimit =>
+        (TimeConstraint.MinMoveLimit, TimeConstraint.MaxMoveLimit, TimeConstraint.MoveLimit.minutes)
+      case TimeConstraint.PlayerLimit =>
+        (
+          TimeConstraint.MinPlayerLimit,
+          TimeConstraint.MaxPlayerLimit,
+          TimeConstraint.PlayerLimit.minutes
+        )
+    SpinnerValueFactory.IntegerSpinnerValueFactory(min, max, default)

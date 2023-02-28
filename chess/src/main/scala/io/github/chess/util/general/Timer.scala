@@ -22,10 +22,13 @@ trait Timer:
   /** Stops the timer and reinitialize it. */
   def reset(): Unit
 
-  /** Restarts the timer, as resetting and starting it. */
+  /** Continues running the timer. */
+  def continue(): Unit
+
+  /** Restarts the timer, as resetting and continue running it. */
   def restart(): Unit =
     this.reset()
-    this.start()
+    this.continue()
 
   /**
    * Returns true if the timer has ended, false otherwise.
@@ -38,6 +41,12 @@ trait Timer:
    * @return the time remaining as a [[Duration]]
    */
   def timeRemaining: Duration
+
+  /**
+   * Sets the time remaining.
+   * @param timeInMinutes time remaining in minutes
+   */
+  def setTime(timeInMinutes: Int): Unit
 
 /** Factory for [[Timer]] instances. */
 object Timer:
@@ -59,7 +68,8 @@ object Timer:
   ) extends Timer:
 
     private var executor: ScheduledExecutorService = Executors.newSingleThreadScheduledExecutor()
-    private var _timeRemaining = startingMinutes.minutes
+    private var startingTime = startingMinutes.minutes
+    private var _timeRemaining = this.startingTime
     private final val Decrement = decrement.seconds
 
     override def start(): Unit =
@@ -75,13 +85,18 @@ object Timer:
 
     override def stop(): Unit = this.executor.shutdownNow()
 
-    override def reset(): Unit =
-      this.stop()
+    override def reset(): Unit = this._timeRemaining = this.startingTime
+
+    override def continue(): Unit =
       this.executor = Executors.newSingleThreadScheduledExecutor()
-      this._timeRemaining = startingMinutes.minutes
+      this.start()
 
     override def ended: Boolean = this._timeRemaining == Duration.Zero
 
     override def timeRemaining: Duration = this._timeRemaining
+
+    override def setTime(timeInMinutes: Int): Unit =
+      this.startingTime = timeInMinutes.minutes
+      this._timeRemaining = this.startingTime
 
     private def countdown(): Unit = this._timeRemaining = this._timeRemaining - Decrement

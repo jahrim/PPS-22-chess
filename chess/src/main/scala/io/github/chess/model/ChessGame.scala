@@ -38,8 +38,9 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
   // TODO: use options instead of null?
   @SuppressWarnings(Array("org.wartremover.warts.Null"))
   private var state: ChessGameStatus = _
-  @SuppressWarnings(Array("org.wartremover.warts.Null"))
-  private var timer: Timer = _
+  private val timerPerMove = initTimer(TimeConstraint.MoveLimit)
+  private val timerPerWhitePlayer = initTimer(TimeConstraint.PlayerLimit)
+  private val timerPerBlackPlayer = initTimer(TimeConstraint.PlayerLimit)
 
   subscribe[GameOverEvent] { _ => resetGame() }
 
@@ -56,21 +57,12 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
         gameConfiguration.timeConstraint match
           case TimeConstraint.NoLimit =>
           case TimeConstraint.MoveLimit =>
-            this.timer = Timer(
-              gameConfiguration.timeConstraint.minutes,
-              () =>
-                this.publishTimePassedEvent()
-                if this.timer.ended then
-                  this.timer.stop()
-                  this.publish(
-                    GameOverEvent(
-                      cause = GameOverCause.Timeout,
-                      winner =
-                        this.state.gameConfiguration.player(this.state.currentTurn.oppositeTeam)
-                    )
-                  )
-            )
-            this.timer.start()
+            this.timerPerMove.setTime(gameConfiguration.timeConstraint.minutes)
+            this.timerPerMove.start()
+          case TimeConstraint.PlayerLimit =>
+            this.timerPerWhitePlayer.setTime(gameConfiguration.timeConstraint.minutes)
+            this.timerPerBlackPlayer.setTime(gameConfiguration.timeConstraint.minutes)
+            this.timerPerWhitePlayer.start()
       }
     }
 
@@ -103,13 +95,14 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
             case None        => this.state.history
         }
 
+        analyzeTimeConstraint()
         this.findPieceOfCurrentTeam(move.to) match
           case Some(_: Pawn) if move.to.rank == enemyBaseRank() =>
             if this.state.gameConfiguration.timeConstraint == TimeConstraint.MoveLimit then
-              this.timer.stop()
+              this.timerPerMove.stop()
             this.publishPromotingPawnEvent(move.to)
           case _ =>
-            this.switchTurn()
+            this.state = this.state.changeTeam()
 
         publishPieceMovedEvent(move)
         analyzeBoard()
@@ -133,7 +126,8 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
                   .newInstance(this.state.currentTurn)
               )
             }
-            this.switchTurn()
+            analyzeTimeConstraint()
+            this.state = this.state.changeTeam()
             this.state.history.all.lastOption.foreach { publishPieceMovedEvent }
             analyzeBoard()
           case _ =>
@@ -168,8 +162,8 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
   private def publishPieceMovedEvent(lastMove: Move): Unit =
     this.publish(PieceMovedEvent(this.currentPlayer, state.chessBoard.pieces, lastMove))
 
-  private def publishTimePassedEvent(): Unit =
-    this.publish(TimePassedEvent(this.timer.timeRemaining))
+  private def publishTimePassedEvent(timer: Timer): Unit =
+    this.publish(TimePassedEvent(timer.timeRemaining))
 
   private def publishPromotingPawnEvent(pawnPosition: Position): Unit =
     this.publish(PromotingPawnEvent(pawnPosition, PromotionPiece.values))
@@ -182,11 +176,6 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
   private def currentPlayer: Player = this.state.currentTurn match
     case WHITE => this.state.gameConfiguration.whitePlayer
     case BLACK => this.state.gameConfiguration.blackPlayer
-
-  private def switchTurn(): Unit =
-    this.state = this.state.changeTeam()
-    if this.state.gameConfiguration.timeConstraint == TimeConstraint.MoveLimit then
-      this.timer.restart()
 
   private def enemyBaseRank(): Rank =
     this.state.currentTurn match
@@ -210,9 +199,10 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
   @SuppressWarnings(Array("org.wartremover.warts.Null"))
   private def resetGame(): Unit =
     logActivity("Game reset") {
-      if this.timer.isDefined then this.timer.stop()
+      this.timerPerMove.stop()
+      this.timerPerWhitePlayer.stop()
+      this.timerPerBlackPlayer.stop()
       this.state = null
-      this.timer = null
     }
 
   private def requireInitialization(): Unit =
@@ -220,3 +210,36 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
 
   private def logActivity[T](activityName: String)(activity: => T): T =
     Logger.logActivity("INFO", "engine")(activityName)(activity)
+
+  private def analyzeTimeConstraint(): Unit =
+    this.state.gameConfiguration.timeConstraint match
+      case TimeConstraint.NoLimit   =>
+      case TimeConstraint.MoveLimit => this.timerPerMove.restart()
+      case TimeConstraint.PlayerLimit =>
+        val timer = this.state.currentTurn match
+          case WHITE => this.timerPerWhitePlayer
+          case BLACK => this.timerPerBlackPlayer
+        timer.stop()
+        timer.opposite.continue()
+
+  private def initTimer(timeConstraint: TimeConstraint): Timer =
+    lazy val timer: Timer = Timer(
+      timeConstraint.minutes,
+      () =>
+        this.publishTimePassedEvent(timer)
+        if timer.ended then
+          timer.stop()
+          if timer != this.timerPerMove then timer.opposite.stop()
+          this.publish(
+            GameOverEvent(
+              cause = GameOverCause.Timeout,
+              winner = this.state.gameConfiguration.player(this.state.currentTurn.oppositeTeam)
+            )
+          )
+    )
+    timer
+
+  extension (self: Timer)
+    private def opposite: Timer = self match
+      case this.timerPerWhitePlayer => this.timerPerBlackPlayer
+      case this.timerPerBlackPlayer => this.timerPerWhitePlayer
