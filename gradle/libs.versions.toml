@@ -10,6 +10,7 @@ vertx-version = "4.3.7"
 scalafx-version = "16.0.0-R24"
 javafx-version = "16"
 tuprolog-version = "4.1.1"
+awaitility-version = "4.2.0"
 # insert the versions of the dependencies here...
 
 [libraries]
@@ -27,6 +28,7 @@ javafx-fxml = { module = "org.openjfx:javafx-fxml", version.ref = "javafx-versio
 javafx-graphics = { module = "org.openjfx:javafx-graphics", version.ref = "javafx-version" }
 javafx-media = { module = "org.openjfx:javafx-media", version.ref = "javafx-version" }
 tuprolog = { module = "it.unibo.alice.tuprolog:2p-core", version.ref = "tuprolog-version" }
+awaitility = { module = "org.awaitility:awaitility-scala", version.ref = "awaitility-version" }
 # insert the dependencies here...
 
 [bundles]

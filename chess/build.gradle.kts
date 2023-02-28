@@ -29,6 +29,7 @@ dependencies {
     implementation(libs.tuprolog)
     testImplementation(libs.scalatest)
     testImplementation(libs.scalatestplusjunit)
+    testImplementation(libs.awaitility)
     scalaCompilerPlugins(libs.wartremover)
     scoverage(libs.scala)
 }
