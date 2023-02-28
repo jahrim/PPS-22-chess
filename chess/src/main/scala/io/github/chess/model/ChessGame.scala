@@ -229,7 +229,6 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
         this.publishTimePassedEvent(timer)
         if timer.ended then
           timer.stop()
-          if timer != this.timerPerMove then timer.opposite.stop()
           this.publish(
             GameOverEvent(
               cause = GameOverCause.Timeout,
