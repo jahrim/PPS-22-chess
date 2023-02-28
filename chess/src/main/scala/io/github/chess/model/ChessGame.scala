@@ -26,6 +26,7 @@ import io.github.chess.util.exception.{GameNotInitializedException, Require}
 import io.github.chess.util.general.Timer
 import io.vertx.core.Vertx
 
+import java.util.concurrent.TimeUnit
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.reflect.ClassTag
@@ -57,12 +58,14 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
         gameConfiguration.timeConstraint match
           case TimeConstraint.NoLimit =>
           case TimeConstraint.MoveLimit =>
-            this.timerPerMove.setTime(gameConfiguration.timeConstraint.minutes)
-            this.timerPerMove.start()
+            this.timerPerMove.setTime(gameConfiguration.timeConstraint.minutes, TimeUnit.MINUTES)
+            this.timerPerMove.restart()
           case TimeConstraint.PlayerLimit =>
-            this.timerPerWhitePlayer.setTime(gameConfiguration.timeConstraint.minutes)
-            this.timerPerBlackPlayer.setTime(gameConfiguration.timeConstraint.minutes)
-            this.timerPerWhitePlayer.start()
+            this.timerPerWhitePlayer
+              .setTime(gameConfiguration.timeConstraint.minutes, TimeUnit.MINUTES)
+            this.timerPerBlackPlayer
+              .setTime(gameConfiguration.timeConstraint.minutes, TimeUnit.MINUTES)
+            this.timerPerWhitePlayer.restart()
       }
     }
 
@@ -95,14 +98,16 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
             case None        => this.state.history
         }
 
-        analyzeTimeConstraint()
-        this.findPieceOfCurrentTeam(move.to) match
-          case Some(_: Pawn) if move.to.rank == enemyBaseRank() =>
-            if this.state.gameConfiguration.timeConstraint == TimeConstraint.MoveLimit then
-              this.timerPerMove.stop()
-            this.publishPromotingPawnEvent(move.to)
-          case _ =>
-            this.state = this.state.changeTeam()
+        if isPromotion(move.to)
+        then
+          if this.state.gameConfiguration.timeConstraint == TimeConstraint.MoveLimit then
+            this.timerPerMove.stop()
+          this.publishPromotingPawnEvent(move.to)
+        else
+          analyzeTimeConstraint()
+          if this.state.gameConfiguration.timeConstraint == TimeConstraint.MoveLimit then
+            this.timerPerMove.restart()
+          this.state = this.state.changeTeam()
 
         publishPieceMovedEvent(move)
         analyzeBoard()
@@ -116,21 +121,22 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
     Future {
       logActivity("Pawn promotion") {
         requireInitialization()
-        this.findPieceOfCurrentTeam(pawnPosition) match
-          case Some(_: Pawn) =>
-            this.state = this.state.updateChessBoard {
-              this.state.chessBoard.setPiece(
-                pawnPosition,
-                promotingPiece.pieceClass
-                  .getConstructor(classOf[Team])
-                  .newInstance(this.state.currentTurn)
-              )
-            }
-            analyzeTimeConstraint()
-            this.state = this.state.changeTeam()
-            this.state.history.all.lastOption.foreach { publishPieceMovedEvent }
-            analyzeBoard()
-          case _ =>
+        if isPawn(pawnPosition)
+        then
+          this.state = this.state.updateChessBoard {
+            this.state.chessBoard.setPiece(
+              pawnPosition,
+              promotingPiece.pieceClass
+                .getConstructor(classOf[Team])
+                .newInstance(this.state.currentTurn)
+            )
+          }
+          analyzeTimeConstraint()
+          if this.state.gameConfiguration.timeConstraint == TimeConstraint.MoveLimit then
+            this.timerPerMove.restart()
+          this.state = this.state.changeTeam()
+          this.state.history.all.lastOption.foreach { publishPieceMovedEvent }
+          analyzeBoard()
       }
     }
 
@@ -211,10 +217,18 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
   private def logActivity[T](activityName: String)(activity: => T): T =
     Logger.logActivity("INFO", "engine")(activityName)(activity)
 
+  private def isPawn(position: Position) =
+    this.findPieceOfCurrentTeam(position) match
+      case Some(_: Pawn) => true
+      case _             => false
+
+  private def isPromotion(position: Position): Boolean =
+    isPawn(position) && position.rank == enemyBaseRank()
+
   private def analyzeTimeConstraint(): Unit =
     this.state.gameConfiguration.timeConstraint match
       case TimeConstraint.NoLimit   =>
-      case TimeConstraint.MoveLimit => this.timerPerMove.restart()
+      case TimeConstraint.MoveLimit =>
       case TimeConstraint.PlayerLimit =>
         val timer = this.state.currentTurn match
           case WHITE => this.timerPerWhitePlayer
@@ -224,7 +238,6 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
 
   private def initTimer(timeConstraint: TimeConstraint): Timer =
     lazy val timer: Timer = Timer(
-      timeConstraint.minutes,
       () =>
         this.publishTimePassedEvent(timer)
         if timer.ended then
@@ -235,6 +248,9 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
               winner = this.state.gameConfiguration.player(this.state.currentTurn.oppositeTeam)
             )
           )
+      ,
+      timeConstraint.minutes,
+      TimeUnit.MINUTES
     )
     timer
 

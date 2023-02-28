@@ -19,14 +19,15 @@ trait Timer:
   /** Stops the timer definitely. */
   def stop(): Unit
 
-  /** Stops the timer and reinitialize it. */
+  /** Reset the timer with the initial time. */
   def reset(): Unit
 
   /** Continues running the timer. */
   def continue(): Unit
 
-  /** Restarts the timer, as resetting and continue running it. */
+  /** Restarts the timer, as stopping, resetting and continue running it. */
   def restart(): Unit =
+    this.stop()
     this.reset()
     this.continue()
 
@@ -37,6 +38,12 @@ trait Timer:
   def ended: Boolean
 
   /**
+   * Returns true if the timer is stopped, false otherwise.
+   * @return true if the timer is stopped, false otherwise
+   */
+  def stopped: Boolean
+
+  /**
    * Returns the time remaining as a [[Duration]].
    * @return the time remaining as a [[Duration]]
    */
@@ -44,39 +51,45 @@ trait Timer:
 
   /**
    * Sets the time remaining.
-   * @param timeInMinutes time remaining in minutes
+   * @param value time remaining value
+   * @param timeUnit [[TimeUnit]] of the value
    */
-  def setTime(timeInMinutes: Int): Unit
+  def setTime(value: Int, timeUnit: TimeUnit): Unit
 
 /** Factory for [[Timer]] instances. */
 object Timer:
 
   /**
    * Creates a new [[Timer]].
-   * @param startingMinutes starting time in minutes
    * @param runnable runnable to run every execution
+   * @param startingTime starting time value
+   * @param timeUnit [[TimeUnit]] of the value
    * @param decrement seconds to decrement the starting time
    * @return a new fresh [[Timer]]
    */
-  def apply(startingMinutes: Int, runnable: () => Unit, decrement: Int = 1): Timer =
-    TimerImpl(startingMinutes, decrement, runnable)
+  def apply(
+      runnable: () => Unit,
+      startingTime: Int,
+      timeUnit: TimeUnit,
+      decrement: Int = 1
+  ): Timer =
+    TimerImpl(runnable, Duration(startingTime, timeUnit), decrement)
 
   private case class TimerImpl(
-      private val startingMinutes: Int,
-      private val decrement: Int,
-      private val runnable: () => Unit
+      private val runnable: () => Unit,
+      private var startingTime: Duration,
+      private val decrement: Int
   ) extends Timer:
 
     private var executor: ScheduledExecutorService = Executors.newSingleThreadScheduledExecutor()
-    private var startingTime = startingMinutes.minutes
     private var _timeRemaining = this.startingTime
     private final val Decrement = decrement.seconds
 
     override def start(): Unit =
       this.executor.scheduleAtFixedRate(
         () =>
-          countdown()
           runnable()
+          countdown()
         ,
         0,
         decrement,
@@ -85,7 +98,7 @@ object Timer:
 
     override def stop(): Unit = this.executor.shutdownNow()
 
-    override def reset(): Unit = this._timeRemaining = this.startingTime
+    override def reset(): Unit = if this.stopped then this._timeRemaining = this.startingTime
 
     override def continue(): Unit =
       this.executor = Executors.newSingleThreadScheduledExecutor()
@@ -93,10 +106,12 @@ object Timer:
 
     override def ended: Boolean = this._timeRemaining == Duration.Zero
 
+    override def stopped: Boolean = this.executor.isShutdown
+
     override def timeRemaining: Duration = this._timeRemaining
 
-    override def setTime(timeInMinutes: Int): Unit =
-      this.startingTime = timeInMinutes.minutes
+    override def setTime(value: Int, timeUnit: TimeUnit): Unit =
+      this.startingTime = Duration(value, timeUnit)
       this._timeRemaining = this.startingTime
 
     private def countdown(): Unit = this._timeRemaining = this._timeRemaining - Decrement
