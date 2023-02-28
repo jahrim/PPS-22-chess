@@ -15,7 +15,7 @@ import io.github.chess.viewcontroller.fxcomponents.controllers.ChessBoardControl
 import io.github.chess.viewcontroller.fxcomponents.controllers.template.FXMLController
 import io.github.chess.viewcontroller.fxcomponents.pages.MainMenuPage
 import io.vertx.core.eventbus.Message
-import javafx.scene.control.{Button, ChoiceDialog, TextField}
+import javafx.scene.control.{Button, ChoiceDialog, TextField, ButtonType}
 import javafx.scene.layout.GridPane
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -112,6 +112,10 @@ class GamePageController(override protected val stage: Stage)(using
       values.headOption match
         case Some(default) =>
           val dialog: ChoiceDialog[PromotionPiece[_]] = ChoiceDialog(default, values*)
+          dialog.getDialogPane.getButtonTypes.removeIf(_ == ButtonType.CANCEL)
+          dialog.getDialogPane.getScene.getWindow match
+            case stage: javafx.stage.Stage => stage.setOnCloseRequest(_.consume())
+            case _                         =>
           dialog.showAndWait().ifPresent { piece =>
             context.chessEngineProxy.promote(event.pawnPosition, piece).onComplete {
               case Success(_)         => this.chessBoardController.repaint()
