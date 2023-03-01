@@ -8,14 +8,14 @@ package io.github.chess.viewcontroller.fxcomponents.controllers
 
 import io.github.chess.events.{GameOverEvent, PieceMovedEvent, PromotingPawnEvent, TimePassedEvent}
 import io.github.chess.model.configuration.Player
-import io.github.chess.model.PromotionPiece
+import io.github.chess.model.{GameOverCause, PromotionPiece}
 import io.github.chess.viewcontroller.ChessApplication.{start, given}
 import io.github.chess.viewcontroller.{ChessApplicationComponent, ChessApplicationContext}
 import io.github.chess.viewcontroller.fxcomponents.controllers.ChessBoardController
 import io.github.chess.viewcontroller.fxcomponents.controllers.template.FXMLController
 import io.github.chess.viewcontroller.fxcomponents.pages.MainMenuPage
 import io.vertx.core.eventbus.Message
-import javafx.scene.control.{Button, ChoiceDialog, TextField, ButtonType}
+import javafx.scene.control.{Button, ButtonType, ChoiceDialog, TextField}
 import javafx.scene.layout.GridPane
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -95,12 +95,12 @@ class GamePageController(override protected val stage: Stage)(using
   private def onGameOver(event: GameOverEvent): Unit =
     Platform.runLater {
       new Alert(AlertType.Information) {
-        title = "Game Over Dialog"
-        headerText = "Game Over!"
+        title = "Game Over!"
+        headerText = event.cause.toString
         contentText = event.winner match
           case Some(player) =>
-            s"Team ${player.team.toString.toLowerCase} wins! Congratulations ${player.name}!"
-          case None => "Stale mate..."
+            s"${player.team.toString.toLowerCase.capitalize} team wins! Congratulations ${player.name}!"
+          case None => "Game ended in a tie. Stale mate!"
       }.showAndWait()
       // TODO: unsubscribe to events
       MainMenuPage(stage)
