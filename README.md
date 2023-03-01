@@ -23,11 +23,11 @@ System documentation is available at [GitHub Pages](https://jahrim.github.io/PPS
 
 ### Code Quality:
 
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=jahrim_PPS-22-chess&metric=bugs)](https://sonarcloud.io/summary/new_code?id=jahrim_PPS-22-chess)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=jahrim_PPS-22-chess&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=jahrim_PPS-22-chess)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=jahrim_PPS-22-chess&metric=coverage)](https://sonarcloud.io/summary/new_code?id=jahrim_PPS-22-chess)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=jahrim_PPS-22-chess&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=jahrim_PPS-22-chess)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=jahrim_PPS-22-chess&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=jahrim_PPS-22-chess)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=jahrim_PPS-22-chess&metric=bugs)](https://sonarcloud.io/summary/overall?id=jahrim_PPS-22-chess)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=jahrim_PPS-22-chess&metric=duplicated_lines_density)](https://sonarcloud.io/summary/overall?id=jahrim_PPS-22-chess)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=jahrim_PPS-22-chess&metric=coverage)](https://sonarcloud.io/summary/overall?id=jahrim_PPS-22-chess)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=jahrim_PPS-22-chess&metric=code_smells)](https://sonarcloud.io/summary/overall?id=jahrim_PPS-22-chess)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=jahrim_PPS-22-chess&metric=sqale_index)](https://sonarcloud.io/summary/overall?id=jahrim_PPS-22-chess)
 
 ## License
 
