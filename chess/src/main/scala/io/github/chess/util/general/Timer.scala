@@ -86,15 +86,20 @@ object Timer:
     private final val Decrement = decrement.seconds
 
     override def start(): Unit =
-      this.executor.scheduleAtFixedRate(
-        () =>
-          runnable()
-          countdown()
-        ,
-        0,
-        decrement,
-        TimeUnit.SECONDS
-      )
+      if this.stopped then
+        throw IllegalStateException(
+          "Can not start after being stopped. You can call @continue or @restart."
+        )
+      else
+        this.executor.scheduleAtFixedRate(
+          () =>
+            runnable()
+            countdown()
+          ,
+          0,
+          decrement,
+          TimeUnit.SECONDS
+        )
 
     override def stop(): Unit = this.executor.shutdownNow()
 
