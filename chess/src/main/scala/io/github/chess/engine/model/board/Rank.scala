@@ -6,6 +6,8 @@
  */
 package io.github.chess.engine.model.board
 
+import io.github.chess.util.exception.OutsideBoardException
+
 /** Represents a row of the [[ChessBoard]]. */
 enum Rank:
 
@@ -38,16 +40,15 @@ enum Rank:
    * @return the new rank
    */
   def up(): Rank = this match
-    case last: Rank if last.ordinal == Rank.values.length - 1 =>
-      this // TODO dove controllare i limiti della scacchiera
-    case _ => Rank.fromOrdinal(this.ordinal + 1)
+    case last: Rank if last.ordinal == Rank.values.length - 1 => throw OutsideBoardException()
+    case _                                                    => Rank.fromOrdinal(this.ordinal + 1)
 
   /**
    * Returns the rank downed by one.
    * @return the new rank
    */
   def down(): Rank = this match
-    case first: Rank if first.ordinal == 0 => this
+    case first: Rank if first.ordinal == 0 => throw OutsideBoardException()
     case _                                 => Rank.fromOrdinal(this.ordinal - 1)
 
   override def toString: String = (this.ordinal + 1).toString

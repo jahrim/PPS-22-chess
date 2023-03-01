@@ -6,6 +6,8 @@
  */
 package io.github.chess.engine.model.board
 
+import io.github.chess.util.exception.OutsideBoardException
+
 /** Represents a column of the [[ChessBoard]]. */
 enum File:
 
@@ -38,7 +40,7 @@ enum File:
    * @return the new file
    */
   def forward(): File = this match
-    case H => this // TODO dove controllare i limiti della scacchiera
+    case H => throw OutsideBoardException()
     case _ => File.fromOrdinal(this.ordinal + 1)
 
   /**
@@ -46,7 +48,7 @@ enum File:
    * @return the new file
    */
   def backward(): File = this match
-    case A => this
+    case A => throw OutsideBoardException()
     case _ => File.fromOrdinal(this.ordinal - 1)
 
   override def toString: String = ('a'.charValue() + this.ordinal).toChar.toString
