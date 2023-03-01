@@ -77,3 +77,14 @@ class TimerSpec extends AbstractSpec:
     timer.stop()
     an[IllegalStateException] should be thrownBy timer.start()
   }
+
+  "A fake timer" should "be already ended without starting" in {
+    val timer = Timer.fake
+    timer.ended shouldBe true
+    timer.timeRemaining shouldEqual Duration.ZERO.toScala
+  }
+
+  it should "not be started" in {
+    val timer = Timer.fake
+    an[IllegalStateException] should be thrownBy timer.start()
+  }

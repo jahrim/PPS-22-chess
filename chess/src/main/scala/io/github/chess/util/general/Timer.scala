@@ -96,6 +96,10 @@ object Timer:
         throw IllegalStateException(
           "Can not start after being stopped. You can call @continue or @restart."
         )
+      else if this._timeRemaining <= Duration.Zero then
+        throw IllegalStateException(
+          "Can not start if starting time is set to negative value."
+        )
       else
         this.executor.scheduleAtFixedRate(
           () =>
