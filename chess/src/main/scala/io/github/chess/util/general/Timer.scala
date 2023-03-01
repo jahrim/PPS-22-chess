@@ -75,6 +75,12 @@ object Timer:
   ): Timer =
     TimerImpl(runnable, Duration(startingTime, timeUnit), decrement)
 
+  /**
+   * Creates a fake timer useful as a placeholder that does nothing.
+   * @return a new [[Timer]]
+   */
+  def fake: Timer = apply(() => {}, 0, TimeUnit.SECONDS)
+
   private case class TimerImpl(
       private val runnable: () => Unit,
       private var startingTime: Duration,
