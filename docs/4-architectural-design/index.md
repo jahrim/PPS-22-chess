@@ -1,9 +1,4 @@
 # Design Architetturale
-- Major system components...
-  - Architectural patterns (MVC)...
-  - Interaction diagrams...
-  - State diagrams...
-- Major technologies...
 
 Per quanto riguarda il design architetturale del sistema si identificano due macro-componenti principali,
 i quali vengono suddivisi a loro volta in altri sotto-componenti:
@@ -45,6 +40,8 @@ sottoscriversi:
 - _PieceMovedEvent_: evento generato per avvisare l'utente che un pezzo è stato mosso e che è cambiato il giocatore 
   di turno.
 - _PromotingPawnEvent_: evento generato per avvisare l'utente che un pedone deve essere promosso.
+
+[//]: # (TODO aggiungere diagrammi)
 
 ## View
 
@@ -110,11 +107,12 @@ contenente ulteriori dettagli.
 ![Result Dialog](TODO)
 
 
-# Tecnologie
+## Scelte Tecnologiche
 
 Per la realizzazione del sistema, non saranno necessarie delle tecnologie specifiche, ma sicuramente
-sarà necessaria una tecnologia per l'interfaccia grafica e un sistema esecutivo che permetta all'engine di
-essere reattivo. (asincronicità / reattività ai messaggi)
+sarà necessaria una tecnologia per l'interfaccia grafica.
+Inoltre, allo scopo di rendere il progetto predisposto a una modalità distribuita, è necessario un'ulteriore tecnologia 
+che permetta all'engine di essere asincrono e reattivo.
 
 
 [Back to index](../index.md) |
