@@ -20,7 +20,7 @@ class TimerSpec extends AbstractSpec:
   private val time = Duration.ofSeconds(3)
   private var timer: Timer = initTimer()
 
-  private def initTimer() = Timer(() => {}, time.getSeconds.toInt, TimeUnit.SECONDS)
+  private def initTimer() = Timer(() => {}, () => {}, time.getSeconds.toInt, TimeUnit.SECONDS)
 
   before {
     timer = initTimer()

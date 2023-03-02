@@ -62,6 +62,7 @@ object Timer:
   /**
    * Creates a new [[Timer]].
    * @param runnable runnable to run every execution
+   * @param endedRunnable runnable to run when the timer has ended
    * @param startingTime starting time value
    * @param timeUnit [[TimeUnit]] of the value
    * @param decrement seconds to decrement the starting time
@@ -69,20 +70,22 @@ object Timer:
    */
   def apply(
       runnable: () => Unit,
+      endedRunnable: () => Unit,
       startingTime: Int,
       timeUnit: TimeUnit,
       decrement: Int = 1
   ): Timer =
-    TimerImpl(runnable, Duration(startingTime, timeUnit), decrement)
+    TimerImpl(runnable, endedRunnable, Duration(startingTime, timeUnit), decrement)
 
   /**
    * Creates a fake timer useful as a placeholder that does nothing.
    * @return a new [[Timer]]
    */
-  def fake: Timer = apply(() => {}, 0, TimeUnit.SECONDS)
+  def fake: Timer = apply(() => {}, () => {}, 0, TimeUnit.SECONDS)
 
   private case class TimerImpl(
       private val runnable: () => Unit,
+      private val endedRunnable: () => Unit,
       private var startingTime: Duration,
       private val decrement: Int
   ) extends Timer:
@@ -105,6 +108,10 @@ object Timer:
           () =>
             runnable()
             countdown()
+            if this.ended
+            then
+              this.stop()
+              endedRunnable()
           ,
           0,
           decrement,

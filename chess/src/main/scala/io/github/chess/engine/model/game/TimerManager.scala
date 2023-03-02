@@ -93,12 +93,8 @@ object TimerManager:
 
     private def createTimer(runnable: => Unit, endedRunnable: => Unit): Timer =
       lazy val timer: Timer = Timer(
-        () =>
-          runnable
-          if timer.ended then
-            timer.stop()
-            endedRunnable
-        ,
+        () => runnable,
+        () => endedRunnable,
         this.timeConstraint.minutes,
         TimeUnit.MINUTES
       )
