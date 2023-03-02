@@ -15,14 +15,14 @@ object Combinator:
    * Generate a set of positions, starting from a specific [[Position]] and combining it with the values as [[File]] and [[Rank]]
    *
    * @param values values to combine
-   * @param condition condition used to filter the combinations
    * @param position starting [[Position]]
+   * @param condition condition used to filter the combinations, default to true
    * @return
    */
   def generatePositions(
       values: Set[Int],
-      condition: (Int, Int) => Boolean,
-      position: Position
+      position: Position,
+      condition: (Int, Int) => Boolean = (_, _) => true
   ): Set[(Int, Int)] =
     for (
       x <- values;

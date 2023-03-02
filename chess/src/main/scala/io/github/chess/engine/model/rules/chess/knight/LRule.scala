@@ -17,7 +17,7 @@ import io.github.chess.engine.model.rules.chess.ChessRule
 class LRule extends ChessRule:
   override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
     Combinator
-      .generatePositions(values, (x, y) => x.abs != y.abs, position)
+      .generatePositions(values, position, (x, y) => x.abs != y.abs)
       .filter((x, y) => x >= 0 && x <= 7 && y >= 0 && y <= 7)
       .map(Move(position, _))
 

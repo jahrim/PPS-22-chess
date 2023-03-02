@@ -17,7 +17,7 @@ import io.github.chess.engine.model.rules.chess.ChessRule
 class AllDirectionsOneStepRule extends ChessRule:
   override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
     Combinator
-      .generatePositions(values, (x, y) => !(x == 0 && y == 0), position)
+      .generatePositions(values, position, (x, y) => !(x == 0 && y == 0))
       .filter((x, y) => x >= 0 && x < ChessBoard.Size && y >= 0 && y < ChessBoard.Size)
       .map(Move(position, _))
 
