@@ -51,4 +51,4 @@ enum Rank:
     case first: Rank if first.ordinal == 0 => throw OutsideBoardException()
     case _                                 => Rank.fromOrdinal(this.ordinal - 1)
 
-  override def toString: String = (this.ordinal + 1).toString
+  override def toString: String = this.productPrefix.replace("_", "")

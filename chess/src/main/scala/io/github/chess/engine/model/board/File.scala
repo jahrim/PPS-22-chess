@@ -51,4 +51,4 @@ enum File:
     case A => throw OutsideBoardException()
     case _ => File.fromOrdinal(this.ordinal - 1)
 
-  override def toString: String = ('a'.charValue() + this.ordinal).toChar.toString
+  override def toString: String = this.productPrefix.toLowerCase
