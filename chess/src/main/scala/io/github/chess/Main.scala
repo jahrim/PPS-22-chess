@@ -6,12 +6,13 @@
  */
 package io.github.chess
 
-import io.github.chess.adapters.Adapter
-import io.github.chess.model.ChessGame
-import io.github.chess.ports.ChessPort
-import io.github.chess.services.ChessService
+import io.github.chess.application.ChessApplication
+import io.github.chess.application.proxy.ChessLocalProxy
+import io.github.chess.engine.adapters.Adapter
+import io.github.chess.engine.model.game.ChessGame
+import io.github.chess.engine.ports.ChessPort
+import io.github.chess.engine.services.ChessService
 import io.github.chess.util.debug.Logger
-import io.github.chess.viewcontroller.{ChessApplication, ChessLocalProxy}
 import io.vertx.core.{Future, Promise, Vertx}
 
 /** The main application. */

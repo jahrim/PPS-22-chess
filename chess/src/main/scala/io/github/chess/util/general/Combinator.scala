@@ -6,13 +6,14 @@
  */
 package io.github.chess.util.general
 
-import io.github.chess.model.Position
+import io.github.chess.engine.model.board.{File, Position, Rank}
 
 /** Combinator object providing combination generations. */
 object Combinator:
 
   /**
-   * Generate a set of positions, starting from a specific [[Position]] and combining it with the values as [[io.github.chess.model.File]] and [[io.github.chess.model.Rank]]
+   * Generate a set of positions, starting from a specific [[Position]] and combining it with the values as [[File]] and [[Rank]]
+   *
    * @param values values to combine
    * @param condition condition used to filter the combinations
    * @param position starting [[Position]]
