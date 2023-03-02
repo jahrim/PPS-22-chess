@@ -6,22 +6,19 @@
  */
 package io.github.chess.util.general
 
-import io.github.chess.engine.model.board.{File, Position, Rank}
-
 /** Combinator object providing combination generations. */
 object Combinator:
 
   /**
-   * Generate a set of positions, starting from a specific [[Position]] and combining it with the values as [[File]] and [[Rank]]
-   *
+   * Generate a set of positions, starting from a specific couple of coordinates and combining it with the values as X and Y.
    * @param values values to combine
-   * @param position starting [[Position]]
+   * @param position starting position as a couple of coordinates
    * @param condition condition used to filter the combinations, default to true
    * @return
    */
   def generatePositions(
       values: Set[Int],
-      position: Position,
+      position: (Int, Int),
       condition: (Int, Int) => Boolean = (_, _) => true
   ): Set[(Int, Int)] =
     for (
@@ -29,4 +26,4 @@ object Combinator:
       y <- values
       if condition(x, y)
     )
-      yield (position.file.ordinal + x, position.rank.ordinal + y)
+      yield (position._1 + x, position._2 + y)
