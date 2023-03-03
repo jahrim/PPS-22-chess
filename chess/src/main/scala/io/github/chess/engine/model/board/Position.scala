@@ -69,6 +69,12 @@ object Position:
       Rank.fromOrdinal(chessCoords._2)
     )
 
+  /** Ordering position by [[File]]. */
+  given orderingByFile: Ordering[Position] = Ordering.by(_.file.ordinal)
+
+  /** Ordering position by [[Rank]]. */
+  given orderingByRank: Ordering[Position] = Ordering.by(_.rank.ordinal)
+
   /**
    * Finds all the horizontal positions between 2 specific positions.
    * @param p1 position 1
@@ -77,11 +83,8 @@ object Position:
    */
   def findHorizontalBetween(p1: Position, p2: Position): Seq[Position] =
     if p1.rank == p2.rank then
-      val (bigger, smaller) =
-        if (p1.file.ordinal > p2.file.ordinal)
-          (p1.file.ordinal, p2.file.ordinal)
-        else
-          (p2.file.ordinal, p1.file.ordinal)
+      val bigger = orderingByFile.max(p1, p2).file.ordinal
+      val smaller = orderingByFile.min(p1, p2).file.ordinal
       for (value <- (smaller + 1) until bigger)
         yield Position(File.fromOrdinal(value), p1.rank)
     else Seq.empty
