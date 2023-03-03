@@ -93,6 +93,57 @@ object Position:
    * @return a new [[Position]]
    */
   def apply(file: File, rank: Rank): Position = SimplePosition(file, rank)
+
+  /**
+   * Returns the position associated to a rook executing the west castling move.
+   * @param rank [[Rank]] to use
+   * @return a new [[Position]]
+   */
+  def westCastlingRookPosition(rank: Rank): Position =
+    Position(File.D, rank)
+
+  /**
+   * Returns the position associated to a king executing the west castling move.
+   * @param rank [[Rank]] to use
+   * @return a new [[Position]]
+   */
+  def westCastlingKingPosition(rank: Rank): Position =
+    Position(File.C, rank)
+
+  /**
+   * Returns the position associated to a rook executing the east castling move.
+   * @param rank [[Rank]] to use
+   * @return a new [[Position]]
+   */
+  def eastCastlingRookPosition(rank: Rank): Position =
+    Position(File.F, rank)
+
+  /**
+   * Returns the position associated to a king executing the east castling move.
+   * @param rank [[Rank]] to use
+   * @return a new [[Position]]
+   */
+  def eastCastlingKingPosition(rank: Rank): Position =
+    Position(File.G, rank)
+
+  /** Constant of the white king position. */
+  final val whiteKingPosition: Position = Position(File.E, Rank._1)
+
+  /** Constant of the black king position. */
+  final val blackKingPosition: Position = Position(File.E, Rank._8)
+
+  /** Constant of the west white rook position. */
+  final val westWhiteRookPosition: Position = Position(File.A, Rank._1)
+
+  /** Constant of the west black rook position. */
+  final val westBlackRookPosition: Position = Position(File.A, Rank._8)
+
+  /** Constant of the east white rook position. */
+  final val eastWhiteRookPosition: Position = Position(File.H, Rank._1)
+
+  /** Constant of the east black rook position. */
+  final val eastBlackRookPosition: Position = Position(File.H, Rank._8)
+
   private case class SimplePosition(override val file: File, override val rank: Rank)
       extends Position:
 
