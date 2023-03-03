@@ -49,13 +49,6 @@ trait Timer:
    */
   def timeRemaining: Duration
 
-  /**
-   * Sets the time remaining.
-   * @param value time remaining value
-   * @param timeUnit [[TimeUnit]] of the value
-   */
-  def setTime(value: Int, timeUnit: TimeUnit): Unit
-
 /** Factory for [[Timer]] instances. */
 object Timer:
 
@@ -131,9 +124,5 @@ object Timer:
     override def stopped: Boolean = this.executor.isShutdown
 
     override def timeRemaining: Duration = this._timeRemaining
-
-    override def setTime(value: Int, timeUnit: TimeUnit): Unit =
-      this.startingTime = Duration(value, timeUnit)
-      this._timeRemaining = this.startingTime
 
     private def countdown(): Unit = this._timeRemaining = this._timeRemaining - Decrement

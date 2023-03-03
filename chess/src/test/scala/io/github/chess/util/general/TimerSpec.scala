@@ -78,6 +78,11 @@ class TimerSpec extends AbstractSpec:
     an[IllegalStateException] should be thrownBy timer.start()
   }
 
+  it should "be immutable as its time remaining not modifiable" in {
+    val timePlusOneSecond = timer.timeRemaining.plus(Duration.ofSeconds(1).toScala)
+    timer.timeRemaining should not equal timePlusOneSecond
+  }
+
   "A fake timer" should "be already ended without starting" in {
     val timer = Timer.fake
     timer.ended shouldBe true
