@@ -21,9 +21,8 @@ object Combinator:
       position: (Int, Int),
       condition: (Int, Int) => Boolean = (_, _) => true
   ): Set[(Int, Int)] =
-    for (
-      x <- values;
+    for {
+      x <- values
       y <- values
       if condition(x, y)
-    )
-      yield (position._1 + x, position._2 + y)
+    } yield (position._1 + x, position._2 + y)
