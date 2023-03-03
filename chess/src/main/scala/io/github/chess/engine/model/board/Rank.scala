@@ -40,15 +40,15 @@ enum Rank:
    * @return the new rank
    */
   def up(): Rank = this match
-    case last: Rank if last.ordinal == Rank.values.length - 1 => throw OutsideBoardException()
-    case _                                                    => Rank.fromOrdinal(this.ordinal + 1)
+    case Rank._8 => throw OutsideBoardException()
+    case _       => Rank.fromOrdinal(this.ordinal + 1)
 
   /**
    * Returns the rank downed by one.
    * @return the new rank
    */
   def down(): Rank = this match
-    case first: Rank if first.ordinal == 0 => throw OutsideBoardException()
-    case _                                 => Rank.fromOrdinal(this.ordinal - 1)
+    case Rank._1 => throw OutsideBoardException()
+    case _       => Rank.fromOrdinal(this.ordinal - 1)
 
   override def toString: String = this.productPrefix.replace("_", "")
