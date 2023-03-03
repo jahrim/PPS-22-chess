@@ -16,10 +16,10 @@ import io.github.chess.engine.model.game.Team
  * @param blackPlayer [[Player]] representing the black pieces
  */
 case class GameConfiguration(
-    var timeConstraint: TimeConstraint,
-    var gameMode: GameMode,
-    var whitePlayer: Player,
-    var blackPlayer: Player
+    timeConstraint: TimeConstraint,
+    gameMode: GameMode,
+    whitePlayer: Player,
+    blackPlayer: Player
 ):
   /**
    * @param team the specified team
