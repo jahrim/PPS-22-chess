@@ -32,7 +32,7 @@ import java.util.ResourceBundle
  * Controller of the game configuration page of the application.
  * @param stage the stage where the application is displayed.
  */
-class GameConfigurationPageController(override protected val stage: Stage)(using
+class GameConfigurationController(override protected val stage: Stage)(using
     override protected val context: ChessApplicationContext
 ) extends FXMLController
     with ChessApplicationComponent:
