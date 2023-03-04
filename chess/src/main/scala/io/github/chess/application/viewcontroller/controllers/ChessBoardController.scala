@@ -10,7 +10,6 @@ import io.github.chess.application.{ChessApplicationComponent, ChessApplicationC
 import io.github.chess.engine.model.board.{ChessBoard, Position}
 import io.github.chess.engine.model.moves.{CaptureMove, CastlingMove, DoubleMove, Move}
 import io.github.chess.engine.model.pieces.Piece
-import io.github.chess.model.moves
 import io.github.chess.util.stateful.StatefulSystem
 import io.github.chess.application.viewcontroller.fxutils.FXUtils.*
 import io.github.chess.application.viewcontroller.controllers.template.Controller

@@ -19,10 +19,8 @@ import io.github.chess.engine.model.moves.{CastlingMove, EnPassantMove, Move}
 import io.github.chess.engine.model.pieces.{Pawn, Piece, PromotionPiece}
 import io.github.chess.engine.ports.ChessPort
 import Event.addressOf
-import io.github.chess.events.*
 import ChessGameAnalyzer.*
 import Team.{BLACK, WHITE}
-import io.github.chess.model.*
 import io.github.chess.util.debug.Logger
 import io.github.chess.util.exception.{GameNotInitializedException, Require}
 import io.github.chess.util.option.OptionExtension.anyToOptionOfAny

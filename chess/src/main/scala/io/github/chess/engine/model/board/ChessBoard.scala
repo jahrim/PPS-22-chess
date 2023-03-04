@@ -12,7 +12,6 @@ import ChessBoardBuilder.DSL.*
 import io.github.chess.engine.events.PieceMovedEvent
 import io.github.chess.engine.model.game.Team
 import io.github.chess.engine.model.moves.Move
-import io.github.chess.model.pieces.*
 import io.vertx.core.Vertx
 
 /** The trait representing the concept of a Chess Board. */

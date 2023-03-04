@@ -10,7 +10,6 @@ import io.github.chess.AbstractSpec
 import io.github.chess.engine.model
 import io.github.chess.engine.model.board.{File, Position, Rank}
 import io.github.chess.engine.model.moves.Move
-import io.github.chess.model.moves
 
 /** Test suite for [[Move]]. */
 class MoveSpec extends AbstractSpec:

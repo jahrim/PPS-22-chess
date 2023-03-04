@@ -8,7 +8,6 @@ package io.github.chess.engine.model.board
 
 import io.github.chess.engine.model.game.Team
 import io.github.chess.engine.model.pieces.{Bishop, King, Knight, Pawn, Piece, Queen, Rook}
-import io.github.chess.model.pieces.*
 import io.github.chess.util.exception.Require
 import io.github.chess.util.general.GivenExtension.within
 import io.github.chess.util.option.OptionExtension.given

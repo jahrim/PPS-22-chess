@@ -10,7 +10,6 @@ import io.github.chess.engine.model.board.{Position, Rank}
 import io.github.chess.engine.model.game.{ChessGameStatus, Team}
 import io.github.chess.engine.model.moves.Move
 import io.github.chess.engine.model.rules.chess.ChessRule
-import io.github.chess.model.moves
 
 /** Implementation of a chess rule that makes move a piece one step forward in the column. */
 class SingleStepRule extends ChessRule:

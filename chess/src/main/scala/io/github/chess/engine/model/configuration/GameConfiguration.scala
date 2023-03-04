@@ -7,7 +7,6 @@
 package io.github.chess.engine.model.configuration
 
 import io.github.chess.engine.model.game.Team
-import io.github.chess.model.*
 
 /**
  * Represents the configuration of the game containing all needed settings.
