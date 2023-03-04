@@ -9,64 +9,85 @@ package io.github.chess.engine.model.rules.chess.pawn
 import io.github.chess.AbstractSpec
 import io.github.chess.engine.model.board.{ChessBoard, File, Position, Rank}
 import io.github.chess.engine.model.game.{ChessGameStatus, Team}
+import io.github.chess.engine.model.moves.{DoubleMove, EnPassantMove}
 import io.github.chess.engine.model.pieces.Pawn
 
-/** Test suit for all Pawn movement rules. */
-class PawnRulesSpec extends AbstractSpec:
+/** Test suit for all rules that a [[io.github.chess.model.pieces.Pawn]] should follow during a chess game. */
+class PawnRulesSpec extends AbstractPawnSpec:
 
-  private val chessBoard: ChessBoard = ChessBoard.empty.setPiece((0, 1), Pawn(Team.WHITE))
-  private val status = ChessGameStatus(chessBoard)
+  val pawnCentralPosition: Position = (4, 3)
 
-  "Single Step Rule" should "give an empty set if called on a pawned positioned on the adversary border" in {
-    val whitePawnPosition: Position = (4, 7)
-    chessBoard.setPiece(whitePawnPosition, Pawn(Team.WHITE))
-    SingleStepRule().findMoves(whitePawnPosition, status) should have size 0
-
-    val blackPawnPosition: Position = (4, 0)
-    chessBoard.setPiece(blackPawnPosition, Pawn(Team.BLACK))
-    SingleStepRule().findMoves(blackPawnPosition, status) should have size 0
+  "The pawn" should "be able to move one or two steps forward form the initial position" in {
+    val pawnInitialPosition: Position = (4, 1)
+    addPiece(pawnInitialPosition, whitePawn)
+    val moves = PawnRule().findMoves(pawnInitialPosition, status)
+    moves.map(_.to) should contain theSameElementsAs Set(
+      pawnInitialPosition.rankUp(),
+      pawnInitialPosition.rankUp().rankUp()
+    )
   }
 
-  "Two Step Rule" should "give an empty set if called on a pawned positioned on the adversary border" in {
-    val whitePawnPosition: Position = (4, 7)
-    chessBoard.setPiece(whitePawnPosition, Pawn(Team.WHITE))
-    TwoStepRule().findMoves(whitePawnPosition, status) should have size 0
-
-    val blackPawnPosition: Position = (4, 0)
-    chessBoard.setPiece(blackPawnPosition, Pawn(Team.BLACK))
-    TwoStepRule().findMoves(blackPawnPosition, status) should have size 0
+  it should "be able to move only one step forward if it's not its initial position" in {
+    addPiece(pawnCentralPosition, whitePawn)
+    val moves = PawnRule().findMoves(pawnCentralPosition, status)
+    moves.map(_.to) should contain theSameElementsAs Set(
+      pawnCentralPosition.rankUp()
+    )
   }
 
-  it should "give an empty set if called on a pawned positioned on the rank before the adversary border" in {
-    val whitePawnPosition: Position = (4, 6)
-    chessBoard.setPiece(whitePawnPosition, Pawn(Team.WHITE))
-    TwoStepRule().findMoves(whitePawnPosition, status) should have size 0
+  it should "be able to capture if there is an enemy on the adjacent diagonal position" in {
+    val blackPawnPosition: Position = (5, 4)
+    addPiece(pawnCentralPosition, whitePawn)
+    addPiece(blackPawnPosition, blackPawn)
 
-    val blackPawnPosition: Position = (4, 1)
-    chessBoard.setPiece(blackPawnPosition, Pawn(Team.BLACK))
-    TwoStepRule().findMoves(blackPawnPosition, status) should have size 0
+    val whiteMoves = PawnRule().findMoves(pawnCentralPosition, status)
+    whiteMoves should have size 2
+    whiteMoves.map(_.to) should contain(pawnCentralPosition.rankUp().fileForward())
+
+    val blackMoves = PawnRule().findMoves(blackPawnPosition, status)
+    blackMoves should have size 2
+    blackMoves.map(_.to) should contain(blackPawnPosition.rankDown().fileBackward())
   }
 
-  "The Forward rule" should "let move the pawn only to the following rank, without changing its file" in {
-    val pawnInitialPosition: Position = (0, 1)
-    val pawnNextPosition: Position = (0, 2)
-    val oneStepRule = ForwardOneRule()
-    val moves = oneStepRule.findMoves(pawnInitialPosition, status)
-    moves should have size 1
-    all(moves) should have(Symbol("to")(pawnNextPosition))
+  it should "be able to capture an enemy pawn with the En Passant move" in {
+    val whitePawnPosition: Position = (4, 4)
+
+    val blackPawnOnBoard = blackPawn
+    val blackPawnMove = DoubleMove((5, 6), (5, 4))
+
+    val capturingMove = EnPassantMove(whitePawnPosition, (5, 5), blackPawnMove.to, blackPawnOnBoard)
+
+    addPiece(whitePawnPosition, whitePawn)
+    addPiece(blackPawnMove.to, blackPawnOnBoard)
+
+    PawnRule().findMoves(whitePawnPosition, status) should not contain capturingMove
+
+    status = status.updateHistory(status.history.save(blackPawnOnBoard, blackPawnMove))
+
+    PawnRule().findMoves(whitePawnPosition, status) should contain(capturingMove)
   }
 
-  "Double move rule" should "let move the pawn only to the rank two steps ahead of the pawn's current position, " +
-    "without changing its file" in {
-      val pawnInitialPosition: Position = (0, 1)
-      val pawnDoubleStepPosition: Position = (0, 3)
-      val moves = DoubleMoveRule().findMoves(pawnInitialPosition, status)
-      moves should have size 1
-      all(moves) should have(Symbol("to")(pawnDoubleStepPosition))
-    }
+  it should "be unable to move forward if there is an enemy piece in the next cell" in {
+    val blackPawnPosition: Position = (4, 4)
+    addPiece(pawnCentralPosition, whitePawn)
+    addPiece(blackPawnPosition, blackPawn)
 
-// TODO add test to check that the double step works only on the first move of the pawn and not on the next ones.
-//  it should "give no moves if the pawn is not in its first position" in {
-//    val moves = doubleStepRule.findMoves(pawnNextPosition)
-//    moves should have size 0
-//  }
+    val whiteMoves = PawnRule().findMoves(pawnCentralPosition, status)
+    whiteMoves should have size 0
+
+    val blackMoves = PawnRule().findMoves(blackPawnPosition, status)
+    blackMoves should have size 0
+  }
+
+  it should "be unable to capture if there is an ally piece in the destination cell" in {
+    val capturingPositionWithEnemy: Position = (3, 4)
+    val capturingPositionWithAlly: Position = (5, 4)
+    addPiece(pawnCentralPosition, whitePawn)
+    addPiece(capturingPositionWithEnemy, blackPawn)
+    addPiece(capturingPositionWithAlly, whitePawn)
+
+    val move = PawnRule().findMoves(pawnCentralPosition, status)
+    move should have size 2
+    move.map(_.to) should contain(capturingPositionWithEnemy)
+    move.map(_.to) should not contain capturingPositionWithAlly
+  }
