@@ -75,20 +75,8 @@ class GameConfigurationController(override protected val stage: Stage)(using
       this.progressPane.setVisible(true)
       this.mainPane.setOpacity(0.5)
       this.mainPane.setDisable(true)
-      val timeConstraint = this.timeConstraint.getValue
-      timeConstraint.minutes = this.time.getValue
-      val gameConfiguration = GameConfiguration(
-        timeConstraint,
-        this.gameMode.getValue,
-        if this.whitePlayer.getText.equals("")
-        then Player.noNameWhitePlayer
-        else Player(this.whitePlayer.getText, Team.WHITE),
-        if this.blackPlayer.getText.equals("")
-        then Player.noNameBlackPlayer
-        else Player(this.blackPlayer.getText, Team.BLACK)
-      )
       context.chessEngineProxy
-        .startGame(gameConfiguration)
+        .startGame(createGameConfiguration())
         .onComplete {
           case Success(_)         => Platform.runLater { GamePage(stage) }
           case Failure(exception) => throw exception
@@ -106,3 +94,17 @@ class GameConfigurationController(override protected val stage: Stage)(using
           TimeConstraint.PlayerLimit.minutes
         )
     SpinnerValueFactory.IntegerSpinnerValueFactory(min, max, default)
+
+  private def createGameConfiguration(): GameConfiguration =
+    val timeConstraint = this.timeConstraint.getValue
+    timeConstraint.minutes = this.time.getValue
+    GameConfiguration(
+      timeConstraint,
+      this.gameMode.getValue,
+      if this.whitePlayer.getText.equals("")
+      then Player.noNameWhitePlayer
+      else Player(this.whitePlayer.getText, Team.WHITE),
+      if this.blackPlayer.getText.equals("")
+      then Player.noNameBlackPlayer
+      else Player(this.blackPlayer.getText, Team.BLACK)
+    )
