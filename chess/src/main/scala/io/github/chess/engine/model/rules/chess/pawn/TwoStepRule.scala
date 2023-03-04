@@ -18,9 +18,9 @@ class TwoStepRule extends ChessRule:
     status.chessBoard.pieces.get(position) match
       case Some(piece) =>
         piece.team match
-          case Team.WHITE if position.rank.ordinal <= Rank._7.ordinal =>
+          case Team.WHITE if position.rank.ordinal < Rank._7.ordinal =>
             Set(DoubleMove(position, position.rankUp().rankUp()))
-          case Team.BLACK if position.rank.ordinal >= Rank._2.ordinal =>
+          case Team.BLACK if position.rank.ordinal > Rank._2.ordinal =>
             Set(DoubleMove(position, position.rankDown().rankDown()))
           case _ => Set.empty
       case None => Set.empty
