@@ -7,7 +7,7 @@
 package io.github.chess.engine.model.game
 
 import io.github.chess.engine.model.configuration.TimeConstraint
-import io.github.chess.util.general.Timer
+import io.github.chess.util.general.timer.Timer
 
 import java.util.concurrent.TimeUnit
 

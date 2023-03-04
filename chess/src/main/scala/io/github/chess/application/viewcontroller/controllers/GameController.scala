@@ -93,9 +93,7 @@ class GameController(override protected val stage: Stage)(using
   private def onTimePassed(event: TimePassedEvent): Unit =
     Platform.runLater(() =>
       val timeRemaining = event.timeRemaining
-      this.timeRemainingText.setText(
-        s"${timeRemaining.toMinutes}m:${timeRemaining.toSeconds % 60}s"
-      )
+      this.timeRemainingText.setText(s"${timeRemaining.minutes}m:${timeRemaining.seconds}s")
     )
 
   private def onGameOver(event: GameOverEvent): Unit =

@@ -10,7 +10,7 @@ import io.github.chess.engine.model.board.Position
 import io.github.chess.engine.model.game.{ChessGameStatus, Team}
 import io.github.chess.engine.model.moves.{CastlingMove, Move}
 import io.github.chess.engine.model.game.Team.{BLACK, WHITE}
-import io.github.chess.engine.model.pieces.{King, Piece}
+import io.github.chess.engine.model.pieces.{King, Piece, Rook}
 import io.github.chess.engine.model.rules.chess.{ChessRule, RuleShorthands}
 
 /**

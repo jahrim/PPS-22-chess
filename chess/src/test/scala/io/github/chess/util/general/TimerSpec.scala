@@ -7,6 +7,7 @@
 package io.github.chess.util.general
 
 import io.github.chess.AbstractSpec
+import io.github.chess.util.general.timer.Timer
 import org.awaitility.Awaitility.*
 
 import java.time.Duration
@@ -76,11 +77,6 @@ class TimerSpec extends AbstractSpec:
     timer.start()
     timer.stop()
     an[IllegalStateException] should be thrownBy timer.start()
-  }
-
-  it should "be immutable as its time remaining not modifiable" in {
-    val timePlusOneSecond = timer.timeRemaining.plus(Duration.ofSeconds(1).toScala)
-    timer.timeRemaining should not equal timePlusOneSecond
   }
 
   "A fake timer" should "be already ended without starting" in {

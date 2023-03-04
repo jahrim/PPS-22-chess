@@ -6,23 +6,22 @@
  */
 package io.github.chess.engine.events
 
-import scala.concurrent.duration.{Duration, MINUTES}
+import io.github.chess.util.general.timer.Time
 
 /** Represents the event in which the time remaining has passed. */
 trait TimePassedEvent extends Event:
 
-  /** Returns the time remaining as a [[Duration]]. */
-  def timeRemaining: Duration
+  /** Returns the time remaining as a [[Time]]. */
+  def timeRemaining: Time
 
 /** Object helper for [[TimePassedEvent]]. */
 object TimePassedEvent:
 
   /**
    * Creates a new [[TimePassedEvent]], using its time remaining.
-   * @param timeRemaining time remaining as a [[Duration]]
+   * @param timeRemaining time remaining as a [[Time]]
    * @return a new fresh [[TimePassedEvent]]
    */
-  def apply(timeRemaining: Duration): TimePassedEvent = TimePassedEventImpl(timeRemaining)
+  def apply(timeRemaining: Time): TimePassedEvent = TimePassedEventImpl(timeRemaining)
 
-  private case class TimePassedEventImpl(override val timeRemaining: Duration)
-      extends TimePassedEvent
+  private case class TimePassedEventImpl(override val timeRemaining: Time) extends TimePassedEvent
