@@ -4,10 +4,10 @@
  *
  * Full license description available at: https://github.com/jahrim/PPS-22-chess/blob/master/LICENSE
  */
-package io.github.chess.engine.model.rules.chess.pawn
+package io.github.chess.model.rules.chess.pawn
 
-import io.github.chess.engine.model.game.Team
-import io.github.chess.engine.model.pieces.Pawn
+import io.github.chess.model.Team
+import io.github.chess.model.pieces.Pawn
 
 /** Test suit for the rule that finds the possible capture moves of a [[io.github.chess.model.pieces.Pawn]]. */
 class PawnCaptureMovesSpec extends AbstractPawnSpec:
@@ -30,7 +30,7 @@ class PawnCaptureMovesSpec extends AbstractPawnSpec:
           (pawnPosition.fileBackward().rankDown(), pawnPosition.fileForward().rankDown())
 
       val foundMoves = PawnCaptureMoves().findMoves(pawnPosition, status)
-      println(foundMoves)
+      foundMoves should not be empty
       foundMoves.map(_.to) should contain atLeastOneOf (
         capturingPositionLeft,
         capturingPositionRight

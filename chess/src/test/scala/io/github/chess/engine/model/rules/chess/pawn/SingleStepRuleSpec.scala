@@ -36,9 +36,9 @@ class SingleStepRuleSpec extends AbstractPawnSpec:
   it should "give an empty set if called on a pawn positioned on the adversary border" in {
     val whitePawnPosition: Position = (4, 7)
     addPiece(whitePawnPosition, whitePawn)
-    SingleStepRule().findMoves(whitePawnPosition, status) should have size 0
+    SingleStepRule().findMoves(whitePawnPosition, status) should be(empty)
 
     val blackPawnPosition: Position = (4, 0)
     addPiece(blackPawnPosition, blackPawn)
-    SingleStepRule().findMoves(blackPawnPosition, status) should have size 0
+    SingleStepRule().findMoves(blackPawnPosition, status) should be(empty)
   }

@@ -38,19 +38,19 @@ class TwoStepRuleSpec extends AbstractPawnSpec:
   it should "give an empty set if called on a pawn positioned on the adversary border" in {
     val whitePawnPosition: Position = (4, 7)
     addPiece(whitePawnPosition, whitePawn)
-    TwoStepRule().findMoves(whitePawnPosition, status) should have size 0
+    TwoStepRule().findMoves(whitePawnPosition, status) should be(empty)
 
     val blackPawnPosition: Position = (4, 0)
     addPiece(blackPawnPosition, blackPawn)
-    TwoStepRule().findMoves(blackPawnPosition, status) should have size 0
+    TwoStepRule().findMoves(blackPawnPosition, status) should be(empty)
   }
 
   it should "give an empty set if called on a pawn positioned on the rank before the adversary border" in {
     val whitePawnPosition: Position = (4, 6)
     addPiece(whitePawnPosition, whitePawn)
-    TwoStepRule().findMoves(whitePawnPosition, status) should have size 0
+    TwoStepRule().findMoves(whitePawnPosition, status) should be(empty)
 
     val blackPawnPosition: Position = (4, 1)
     addPiece(blackPawnPosition, blackPawn)
-    TwoStepRule().findMoves(blackPawnPosition, status) should have size 0
+    TwoStepRule().findMoves(blackPawnPosition, status) should be(empty)
   }

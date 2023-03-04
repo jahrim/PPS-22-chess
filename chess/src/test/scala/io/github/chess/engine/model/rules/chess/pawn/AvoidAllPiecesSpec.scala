@@ -33,4 +33,4 @@ class AvoidAllPiecesSpec extends AbstractPawnSpec:
         case Team.WHITE => pawnInitialPosition.rankUp()
         case Team.BLACK => pawnInitialPosition.rankDown()
       addPiece(nextPosition, pawn)
-      PawnMovementRule().findMoves(pawnInitialPosition, status) should have size 0
+      PawnMovementRule().findMoves(pawnInitialPosition, status) should be(empty)
