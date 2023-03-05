@@ -37,7 +37,7 @@ class KingRuleSpec extends AbstractChessRuleSpec:
     * | * | * | * | * | * | * | *
   }
 
-  "The king rule" should "allow the knight to move in all the directions stepped by one" in {
+  "The king rule" should "allow the king to move in all the directions stepped by one" in {
     val chessGameStatus = ChessGameStatus(chessBoardOnlyKing)
     getChessBoardFromMoves(kingPosition, chessGameStatus) shouldEqual chessBoardMovesOnlyKing
   }
