@@ -7,7 +7,7 @@
 package io.github.chess.engine.model.rules.chess
 
 import io.github.chess.engine.model.board.Position
-import io.github.chess.engine.model.game.{ChessGameStatus, Team}
+import io.github.chess.engine.model.game.ChessGameStatus
 import io.github.chess.engine.model.moves.{CaptureMove, Move}
 
 trait OnlyCaptureEnemies extends AvoidAlliesRule with RuleShorthands:
