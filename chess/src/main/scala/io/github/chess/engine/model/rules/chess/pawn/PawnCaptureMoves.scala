@@ -6,29 +6,32 @@
  */
 package io.github.chess.engine.model.rules.chess.pawn
 
-import PawnCaptureMoves.*
-import io.github.chess.engine.model.board.Position
-import io.github.chess.engine.model.game.{ChessGameStatus, Team}
+import io.github.chess.util.general.GivenExtension.within
 import io.github.chess.engine.model.moves.{CaptureMove, Move}
 import io.github.chess.engine.model.rules.chess.{ChessRule, RuleShorthands}
 import io.github.chess.engine.model.rules.prolog.{BlackPawnCaptureRule, WhitePawnCaptureRule}
+import io.github.chess.engine.model.board.Position
+import io.github.chess.engine.model.game.{ChessGameStatus, Team}
+import PawnCaptureMoves.*
 
 /** Finds all moves with which a pawn can capture an adversary piece. */
 class PawnCaptureMoves extends ChessRule with RuleShorthands:
   override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
-    status.chessBoard.pieces.get(position) match
-      case Some(piece) =>
-        (piece.team match
-          case Team.WHITE => whitePawnCaptureRule
-          case Team.BLACK => blackPawnCaptureRule
-        ).findPositions(position)
-          .map(toPosition =>
-            status.chessBoard.pieces.get(toPosition) match
-              case Some(capturedPiece) => CaptureMove(position, toPosition, capturedPiece)
-              case None                => Move(position, toPosition)
-          )
-          .toSet
-      case None => Set.empty
+    within(status) {
+      pieceAt(position) match
+        case Some(piece) =>
+          (piece.team match
+            case Team.WHITE => whitePawnCaptureRule
+            case Team.BLACK => blackPawnCaptureRule
+          ).findPositions(position)
+            .map(toPosition =>
+              pieceAt(toPosition) match
+                case Some(capturedPiece) => CaptureMove(position, toPosition, capturedPiece)
+                case None                => Move(position, toPosition)
+            )
+            .toSet
+        case None => Set.empty
+    }
 
 /**
  * Object for the Pawn Capture Moves Rule that creates and stores a single instance of the prolog engine

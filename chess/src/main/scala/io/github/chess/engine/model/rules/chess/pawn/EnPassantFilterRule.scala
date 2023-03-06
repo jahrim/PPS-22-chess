@@ -11,8 +11,9 @@ import io.github.chess.engine.model.game.{ChessGameStatus, Team}
 import io.github.chess.engine.model.moves.{DoubleMove, EnPassantMove, Move}
 import io.github.chess.engine.model.rules.chess.{ChessRule, RuleShorthands}
 
+
 /** Mixin that checks whether the "en passant" rule can be applied. */
-trait EnPassantFilterRule extends ChessRule:
+trait EnPassantFilterRule extends ChessRule with RuleShorthands:
 
   abstract override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
     status.history.all.lastOption match
@@ -21,7 +22,7 @@ trait EnPassantFilterRule extends ChessRule:
           .findMoves(position, status)
           .filter(move => move.to == doubleMove.middlePosition)
           .map(move =>
-            status.chessBoard.pieces.get(doubleMove.to) match
+            pieceAt(doubleMove.to)(using status) match
               case Some(capturedPiece) =>
                 EnPassantMove(move.from, move.to, doubleMove.to, capturedPiece)
               case None => move

@@ -7,6 +7,7 @@
 package io.github.chess.engine.model.rules.chess.pawn
 
 import PawnMovementRule.*
+import io.github.chess.util.general.GivenExtension.within
 import io.github.chess.engine.model.board.{Position, Rank}
 import io.github.chess.engine.model.game.{ChessGameStatus, Team}
 import io.github.chess.engine.model.moves.Move
@@ -22,11 +23,13 @@ class PawnMovementRule extends ChessRule with RuleShorthands:
     else firstStep
 
   private def isFirstMove(position: Position, status: ChessGameStatus): Boolean =
-    isFirstMovementOf(position)(using status) && (pieceAt(position)(using status) match
-      case Some(pawn: Pawn) if pawn.team == Team.WHITE => position.rank == Rank._2
-      case Some(pawn: Pawn) if pawn.team == Team.BLACK => position.rank == Rank._7
-      case _                                           => false
-    )
+    within(status) {
+      isFirstMovementOf(position) && (pieceAt(position) match
+        case Some(pawn: Pawn) if pawn.team == Team.WHITE => position.rank == Rank._2
+        case Some(pawn: Pawn) if pawn.team == Team.BLACK => position.rank == Rank._7
+        case _                                           => false
+      )
+    }
 
 /** Companion object of [[PawnMovementRule]]. */
 object PawnMovementRule:

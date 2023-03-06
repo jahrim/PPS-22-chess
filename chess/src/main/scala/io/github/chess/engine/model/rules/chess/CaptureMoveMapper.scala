@@ -15,13 +15,13 @@ import io.github.chess.engine.model.moves.{CaptureMove, Move}
  *  the capture of a piece (without looking if it's an ally or adversary piece)
  *  and maps them into [[CaptureMove]]s
  */
-trait CaptureMoveMapper extends ChessRule:
+trait CaptureMoveMapper extends ChessRule with RuleShorthands:
 
   abstract override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
     super
       .findMoves(position, status)
       .map(move =>
-        status.chessBoard.pieces.get(move.to) match
+        pieceAt(move.to)(using status) match
           case Some(piece) => CaptureMove(move.from, move.to, piece)
           case None        => move
       )

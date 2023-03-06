@@ -14,10 +14,10 @@ import io.github.chess.engine.model.moves.{CaptureMove, Move}
  * Mixin for [[ChessRule]]s, that removes from the set of [[Move]]s those that would capture an ally piece
  * (removes "friendly fire").
  */
-trait AvoidAlliesRule extends CaptureMoveMapper:
+trait AvoidAlliesRule extends CaptureMoveMapper with RuleShorthands:
 
   abstract override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
-    status.chessBoard.pieces.get(position) match
+    pieceAt(position)(using status) match
       case Some(piece) =>
         super
           .findMoves(position, status)
