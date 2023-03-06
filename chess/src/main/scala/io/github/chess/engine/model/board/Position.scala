@@ -81,7 +81,7 @@ object Position:
    * @param p2 position 2
    * @return [[Seq]] of all the horizontal position between them
    */
-  def findHorizontalBetween(p1: Position, p2: Position): Seq[Position] =
+  def horizontalPositionsBetween(p1: Position)(p2: Position): Seq[Position] =
     if p1.rank == p2.rank then
       val bigger = orderingByFile.max(p1, p2).file.ordinal
       val smaller = orderingByFile.min(p1, p2).file.ordinal

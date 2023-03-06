@@ -24,10 +24,12 @@ class CastlingRule extends ChessRule with RuleShorthands:
     val kingPosition = this.kingPosition(currentTeam)
     if position == kingPosition && isFirstMoveOf(classOf[King], position, status)
     then
+      val positionsBetweenKingAnd = Position.horizontalPositionsBetween(kingPosition)
+
       val westRookPosition = this.westRookPosition(currentTeam)
       val eastRookPosition = this.eastRookPosition(currentTeam)
-      createCastlingMove(westRookPosition, kingPosition, status) ++
-        createCastlingMove(eastRookPosition, kingPosition, status)
+      checkAndCreateMove(kingPosition, positionsBetweenKingAnd, westRookPosition, status) ++
+        checkAndCreateMove(kingPosition, positionsBetweenKingAnd, eastRookPosition, status)
     else Set.empty
 
   private def kingPosition(team: Team): Position = team match
@@ -53,14 +55,12 @@ class CastlingRule extends ChessRule with RuleShorthands:
       case _ => false
 
   private def canCastling(
+      betweenKingAnd: Position => Seq[Position],
       rookPosition: Position,
-      kingPosition: Position,
       status: ChessGameStatus
   ): Boolean =
     isFirstMoveOf(classOf[Rook], rookPosition, status) &&
-      Position
-        .findHorizontalBetween(kingPosition, rookPosition)
-        .forall(!status.chessBoard.pieces.contains(_))
+      betweenKingAnd(rookPosition).forall(!status.chessBoard.pieces.contains(_))
 
   private def castlingPositions(rookPosition: Position): (Position, Position) =
     rookPosition match
@@ -75,20 +75,21 @@ class CastlingRule extends ChessRule with RuleShorthands:
           Position.eastCastlingRookPosition(rookPosition.rank)
         )
 
-  private def createCastlingMove(
-      rookPosition: Position,
+  private def createCastlingMove(rookPosition: Position, kingPosition: Position): CastlingMove =
+    val (castlingKingPosition, castlingRookPosition) = castlingPositions(rookPosition)
+    CastlingMove(
+      kingPosition,
+      castlingKingPosition,
+      rookPosition,
+      castlingRookPosition
+    )
+
+  private def checkAndCreateMove(
       kingPosition: Position,
+      positionsBetweenKingAnd: Position => Seq[Position],
+      westRookPosition: Position,
       status: ChessGameStatus
-  ): Set[Move] =
-    if canCastling(rookPosition, kingPosition, status)
-    then
-      val (castlingKingPosition, castlingRookPosition) = castlingPositions(rookPosition)
-      Set(
-        CastlingMove(
-          kingPosition,
-          castlingKingPosition,
-          rookPosition,
-          castlingRookPosition
-        )
-      )
+  ): Set[CastlingMove] =
+    if canCastling(positionsBetweenKingAnd, westRookPosition, status)
+    then Set(createCastlingMove(westRookPosition, kingPosition))
     else Set.empty
