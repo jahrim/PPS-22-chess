@@ -15,12 +15,13 @@ import io.github.chess.engine.model.rules.chess.ChessRule
 
 /** Represents the chess rule that can find the moves in all the directions stepped by one. */
 class AllDirectionsOneStepRule extends ChessRule:
+
   override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
     Combinator
-      .generateCoordinates(values, position, (x, y) => !(x == 0 && y == 0))
+      .generateCoordinates(Values, position, (x, y) => !(x == 0 && y == 0))
       .filter((x, y) => x >= 0 && x < ChessBoard.Size && y >= 0 && y < ChessBoard.Size)
       .map(Move(position, _))
 
 /** Companion object of [[AllDirectionsOneStepRule]]. */
 object AllDirectionsOneStepRule:
-  private final val values = Set(0, -1, 1)
+  private final val Values = Set(0, -1, 1)

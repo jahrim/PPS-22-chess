@@ -15,12 +15,13 @@ import io.github.chess.engine.model.rules.chess.ChessRule
 
 /** Represents the chess rule that can find all the moves executing an L direction movement. */
 class LRule extends ChessRule:
+
   override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
     Combinator
-      .generateCoordinates(values, position, (x, y) => x.abs != y.abs)
+      .generateCoordinates(Values, position, (x, y) => x.abs != y.abs)
       .filter((x, y) => x >= 0 && x <= 7 && y >= 0 && y <= 7)
       .map(Move(position, _))
 
 /** Companion object of [[LRule]]. */
 object LRule:
-  private final val values = Set(-1, 1, -2, 2)
+  private final val Values = Set(-1, 1, -2, 2)
