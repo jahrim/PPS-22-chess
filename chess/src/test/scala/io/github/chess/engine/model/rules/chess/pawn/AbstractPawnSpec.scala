@@ -8,7 +8,6 @@ package io.github.chess.engine.model.rules.chess.pawn
 
 import io.github.chess.AbstractSpec
 import io.github.chess.engine.model.pieces.{Pawn, Piece}
-import io.github.chess.engine.model.*
 import io.github.chess.engine.model.board.{ChessBoard, File, Position, Rank}
 import io.github.chess.engine.model.game.ChessGameStatus
 import io.github.chess.engine.model.game.Team

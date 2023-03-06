@@ -6,11 +6,8 @@
  */
 package io.github.chess.engine.model.rules.chess.pawn
 
-import io.github.chess.AbstractSpec
-import io.github.chess.engine.model.board.{ChessBoard, File, Position, Rank}
-import io.github.chess.engine.model.game.{ChessGameStatus, Team}
+import io.github.chess.engine.model.board.Position
 import io.github.chess.engine.model.moves.{DoubleMove, EnPassantMove}
-import io.github.chess.engine.model.pieces.Pawn
 
 /** Test suit for all rules that a [[io.github.chess.model.pieces.Pawn]] should follow during a chess game. */
 class PawnRulesSpec extends AbstractPawnSpec:
