@@ -68,9 +68,8 @@ object timer:
      */
     def timeRemaining: Time
 
+  /** Factory for [[Timer]] instances. */
   object Timer:
-
-    /** Factory for [[Timer]] instances. */
 
     /**
      * Creates a new [[Timer]].

@@ -172,6 +172,15 @@ Il contratto di questa classe infatti, permette di effettuare funzionalità clas
 Per rendere il codice estendibile, si è cercato di rendere la classe più generica possibile; infatti non vi è alcuna
 dipendenza dal modello.
 
+Per permettere di fare ciò è necessario fare in modo che l'utente possa eseguire quello che vuole.
+Questo è possibile utilizzando il pattern _**strategy**_, definendo nel costruttore del _Timer_ parametri come 
+funzioni.
+Difatti come si osserva nella figura seguente, vengono definiti due parametri come funzioni che verranno utilizzate 
+per eseguire codice esterno rispettivamente, a ogni esecuzione e nel momento in cui il _Timer_ esaurisce il tempo 
+rimanente.
+
+![Higher order function](higher_order_function.png)
+
 ### TimerManager
 
 Poiché la logica di gestione del tempo è abbastanza complessa e lunga si è deciso di separarla concettualmente in 
