@@ -23,13 +23,7 @@ class PawnCaptureMoves extends ChessRule with RuleShorthands:
           (piece.team match
             case Team.WHITE => whitePawnCaptureRule
             case Team.BLACK => blackPawnCaptureRule
-          ).findPositions(position)
-            .map(toPosition =>
-              pieceAt(toPosition) match
-                case Some(capturedPiece) => CaptureMove(position, toPosition, capturedPiece)
-                case None                => Move(position, toPosition)
-            )
-            .toSet
+          ).findPositions(position).map(Move(position, _)).toSet
         case None => Set.empty
     }
 
