@@ -7,6 +7,7 @@
 package io.github.chess.application
 
 import io.github.chess.application.ChessApplicationContext.ChessApplicationContextBuilder
+import io.github.chess.application.viewcontroller.configuration.InterfaceConfiguration.Images
 import io.github.chess.application.viewcontroller.pages.MainMenuPage
 import io.github.chess.engine.ports.ChessPort
 import scalafx.application.JFXApp3
@@ -44,4 +45,5 @@ object ChessApplication extends JFXApp3:
     this.stage = new PrimaryStage():
       title = "Chess Game"
       resizable = false
+      icons.insert(0, Images.Icons.GameIcon)
     this.contextBuilder.setPrimaryStage(this.stage)
