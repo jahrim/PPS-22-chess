@@ -10,6 +10,10 @@ import io.github.chess.engine.model.board.Position
 import io.github.chess.engine.model.game.ChessGameStatus
 import io.github.chess.engine.model.moves.{CaptureMove, Move}
 
+/**
+ * Mixin for [[ChessRule]]s, that removes from the set of [[Move]]s all those that don't capture an adversary piece,
+ * so all the simple moves and moves that capture allies.
+ */
 trait OnlyCaptureEnemies extends AvoidAlliesRule with RuleShorthands:
 
   abstract override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
