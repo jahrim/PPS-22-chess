@@ -30,7 +30,7 @@ class PawnCaptureMovesSpec extends AbstractPawnSpec:
           (pawnPosition.fileBackward().rankDown(), pawnPosition.fileForward().rankDown())
 
       val foundMoves = PawnCaptureMoves().findMoves(pawnPosition, status)
-      foundMoves should not be empty
+      foundMoves shouldNot be(empty)
       foundMoves.map(_.to) should contain atLeastOneOf (
         capturingPositionLeft,
         capturingPositionRight

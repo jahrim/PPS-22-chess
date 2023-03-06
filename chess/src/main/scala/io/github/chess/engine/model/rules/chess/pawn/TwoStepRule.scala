@@ -17,10 +17,8 @@ class TwoStepRule extends ChessRule:
   override def findMoves(position: Position, status: ChessGameStatus): Set[Move] =
     status.chessBoard.pieces.get(position) match
       case Some(piece) =>
-        piece.team match
-          case Team.WHITE if position.rank.ordinal < Rank._7.ordinal =>
-            Set(DoubleMove(position, position.rankUp().rankUp()))
-          case Team.BLACK if position.rank.ordinal > Rank._2.ordinal =>
-            Set(DoubleMove(position, position.rankDown().rankDown()))
-          case _ => Set.empty
+        if (piece.team == Team.WHITE && position.rank.ordinal < Rank._7.ordinal) ||
+          (piece.team == Team.BLACK && position.rank.ordinal > Rank._2.ordinal)
+        then Set(DoubleMove(position, piece))
+        else Set.empty
       case None => Set.empty

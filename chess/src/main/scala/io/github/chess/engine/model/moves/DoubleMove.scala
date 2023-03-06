@@ -6,7 +6,8 @@
  */
 package io.github.chess.engine.model.moves
 
-import io.github.chess.engine.model.board.Position
+import io.github.chess.engine.model.board.{Position, Team}
+import io.github.chess.engine.model.pieces.Piece
 
 /** Represents the moving of a pawn by two steps forward. */
 trait DoubleMove extends Move:
@@ -24,11 +25,16 @@ object DoubleMove:
   /**
    * Creates a double move, using the two needed positions.
    *
-   * @param from source [[Position]]
-   * @param to   target [[Position]]
+   * @param from  source [[Position]]
+   * @param piece the piece on which the move will be applied
    * @return a new [[DoubleMove]]
    */
-  def apply(from: Position, to: Position): DoubleMove = PawnDoubleMove(from, to)
+  def apply(from: Position, piece: Piece): DoubleMove = PawnDoubleMove(
+    from,
+    piece.team match
+      case Team.WHITE => from.rankUp().rankUp()
+      case Team.BLACK => from.rankDown().rankDown()
+  )
 
   private case class PawnDoubleMove(
       override val from: Position,

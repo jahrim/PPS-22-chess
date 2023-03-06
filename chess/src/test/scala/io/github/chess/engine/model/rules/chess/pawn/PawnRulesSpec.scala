@@ -53,7 +53,7 @@ class PawnRulesSpec extends AbstractPawnSpec:
     val whitePawnPosition: Position = (4, 4)
 
     val blackPawnOnBoard = blackPawn
-    val blackPawnMove = DoubleMove((5, 6), (5, 4))
+    val blackPawnMove = DoubleMove((5, 6), blackPawnOnBoard)
 
     val notCapturingPosition: Position = (3, 5)
     val capturingMove = EnPassantMove(whitePawnPosition, (5, 5), blackPawnMove.to, blackPawnOnBoard)
