@@ -53,7 +53,7 @@
    <rowConstraints>
       <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
    </rowConstraints>
-   <GridPane fx:id="mainPane" prefHeight="400.0" prefWidth="600.0">
+   <GridPane fx:id="mainPane">
       <columnConstraints>
          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" percentWidth="25.0" />
          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" percentWidth="20.0" />

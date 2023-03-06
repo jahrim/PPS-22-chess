@@ -45,306 +45,296 @@
 <?import javafx.scene.text.Text?>
 
 <VBox prefHeight="738.0" prefWidth="978.0" stylesheets="@../styles/game-page.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
-  <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="735.0" prefWidth="1046.0" VBox.vgrow="ALWAYS">
-         <children>
-            <Text layoutX="338.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Page">
-                <font>
-                    <Font size="60.0" />
-                </font>
-            </Text>
-            <AnchorPane layoutX="38.0" layoutY="127.0" prefHeight="572.0" prefWidth="578.0">
-               <children>
-                  <GridPane fx:id="chessBoardGridPane" layoutX="39.0" layoutY="36.0" prefHeight="500.0" prefWidth="500.0" styleClass="chess-board-grid">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="1" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="2" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="3" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="4" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="5" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="6" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="7" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.rowIndex="1" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.rowIndex="2" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="7" GridPane.rowIndex="2" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.rowIndex="3" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="7" GridPane.rowIndex="3" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.rowIndex="4" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="6" GridPane.rowIndex="4" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="7" GridPane.rowIndex="4" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.rowIndex="5" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="6" GridPane.rowIndex="5" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="7" GridPane.rowIndex="5" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.rowIndex="6" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="4" GridPane.rowIndex="6" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="5" GridPane.rowIndex="6" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="6" GridPane.rowIndex="6" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="7" GridPane.rowIndex="6" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.rowIndex="7" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="4" GridPane.rowIndex="7" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="5" GridPane.rowIndex="7" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="6" GridPane.rowIndex="7" />
-                        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="7" GridPane.rowIndex="7" />
-                     </children>
-                  </GridPane>
-                  <Label layoutX="539.0" layoutY="37.0" lineSpacing="1.0" prefHeight="63.0" prefWidth="27.0" styleClass="chess-board-border-text" text="8">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="12.0" layoutY="38.0" lineSpacing="1.0" prefHeight="63.0" prefWidth="27.0" styleClass="chess-board-border-text" text="8">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="12.0" layoutY="99.0" lineSpacing="1.0" prefHeight="64.0" prefWidth="27.0" styleClass="chess-board-border-text" text="7">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="12.0" layoutY="163.0" lineSpacing="1.0" prefHeight="62.0" prefWidth="27.0" styleClass="chess-board-border-text" text="6">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="12.0" layoutY="225.0" lineSpacing="1.0" prefHeight="63.0" prefWidth="27.0" styleClass="chess-board-border-text" text="5">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="12.0" layoutY="286.0" lineSpacing="1.0" prefHeight="63.0" prefWidth="27.0" styleClass="chess-board-border-text" text="4">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="12.0" layoutY="349.0" lineSpacing="1.0" prefHeight="62.0" prefWidth="27.0" styleClass="chess-board-border-text" text="3">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="12.0" layoutY="411.0" lineSpacing="1.0" prefHeight="63.0" prefWidth="27.0" styleClass="chess-board-border-text" text="2">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="12.0" layoutY="472.0" lineSpacing="1.0" prefHeight="63.0" prefWidth="27.0" styleClass="chess-board-border-text" text="1">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="40.0" layoutY="7.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="A" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="539.0" layoutY="100.0" lineSpacing="1.0" prefHeight="63.0" prefWidth="27.0" styleClass="chess-board-border-text" text="7">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="539.0" layoutY="163.0" lineSpacing="1.0" prefHeight="62.0" prefWidth="27.0" styleClass="chess-board-border-text" text="6">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="539.0" layoutY="225.0" lineSpacing="1.0" prefHeight="63.0" prefWidth="27.0" styleClass="chess-board-border-text" text="5">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="539.0" layoutY="286.0" lineSpacing="1.0" prefHeight="63.0" prefWidth="27.0" styleClass="chess-board-border-text" text="4">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="539.0" layoutY="349.0" lineSpacing="1.0" prefHeight="62.0" prefWidth="27.0" styleClass="chess-board-border-text" text="3">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="539.0" layoutY="411.0" lineSpacing="1.0" prefHeight="62.0" prefWidth="27.0" styleClass="chess-board-border-text" text="2">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="539.0" layoutY="473.0" lineSpacing="1.0" prefHeight="62.0" prefWidth="27.0" styleClass="chess-board-border-text" text="1">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="102.0" layoutY="7.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="B" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="164.0" layoutY="7.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="C" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="226.0" layoutY="7.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="D" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="288.0" layoutY="7.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="E" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="350.0" layoutY="7.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="F" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="412.0" layoutY="7.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="63.0" styleClass="chess-board-border-text" text="G" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="475.0" layoutY="7.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="63.0" styleClass="chess-board-border-text" text="H" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="40.0" layoutY="536.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="A" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="102.0" layoutY="536.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="B" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="164.0" layoutY="536.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="C" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="226.0" layoutY="536.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="D" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="288.0" layoutY="536.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="E" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="350.0" layoutY="536.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="F" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="412.0" layoutY="536.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="63.0" styleClass="chess-board-border-text" text="G" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="475.0" layoutY="536.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="63.0" styleClass="chess-board-border-text" text="H" textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="644.0" layoutY="127.0" prefHeight="561.0" prefWidth="302.0">
-               <children>
-                  <Label layoutX="24.0" text="Current Turn:">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="currentTurnText" editable="false" focusTraversable="false" layoutX="24.0" layoutY="43.0" prefHeight="44.0" prefWidth="255.0" text="White/Black">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-                  <Label layoutX="24.0" layoutY="121.0" text="Time Remaining:">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="timeRemainingText" editable="false" focusTraversable="false" layoutX="24.0" layoutY="164.0" prefHeight="44.0" prefWidth="255.0" text="00:00:00.000">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-                  <Label layoutX="24.0" layoutY="240.0" text="Last Move:">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="lastMoveText" editable="false" focusTraversable="false" layoutX="24.0" layoutY="283.0" prefHeight="44.0" prefWidth="255.0" text="A0A1">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-                  <Button fx:id="surrenderButton" focusTraversable="false" layoutX="24.0" layoutY="505.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="255.0" text="Surrender">
-                      <font>
-                          <Font size="20.0" />
-                      </font>
-                  </Button>
-               </children>
-            </AnchorPane>
-         </children>
-    </AnchorPane>
-  </children>
+   <AnchorPane prefHeight="735.0" prefWidth="1046.0" VBox.vgrow="ALWAYS">
+      <Text layoutX="338.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Page">
+         <font>
+            <Font size="60.0" />
+         </font>
+      </Text>
+      <AnchorPane layoutX="38.0" layoutY="127.0" prefHeight="572.0" prefWidth="578.0">
+         <GridPane fx:id="chessBoardGridPane" layoutX="39.0" layoutY="36.0" prefHeight="500.0" prefWidth="500.0" styleClass="chess-board-grid">
+            <columnConstraints>
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="1" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="2" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="3" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="4" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="5" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="6" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="7" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.rowIndex="1" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.rowIndex="2" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.rowIndex="3" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.rowIndex="4" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.rowIndex="5" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="7" GridPane.rowIndex="5" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.rowIndex="6" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="7" GridPane.rowIndex="6" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.rowIndex="7" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-dark" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="chess-board-cell-light" GridPane.columnIndex="7" GridPane.rowIndex="7" />
+         </GridPane>
+         <Label layoutX="539.0" layoutY="37.0" lineSpacing="1.0" prefHeight="63.0" prefWidth="27.0" styleClass="chess-board-border-text" text="8">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="12.0" layoutY="38.0" lineSpacing="1.0" prefHeight="63.0" prefWidth="27.0" styleClass="chess-board-border-text" text="8">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="12.0" layoutY="99.0" lineSpacing="1.0" prefHeight="64.0" prefWidth="27.0" styleClass="chess-board-border-text" text="7">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="12.0" layoutY="163.0" lineSpacing="1.0" prefHeight="62.0" prefWidth="27.0" styleClass="chess-board-border-text" text="6">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="12.0" layoutY="225.0" lineSpacing="1.0" prefHeight="63.0" prefWidth="27.0" styleClass="chess-board-border-text" text="5">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="12.0" layoutY="286.0" lineSpacing="1.0" prefHeight="63.0" prefWidth="27.0" styleClass="chess-board-border-text" text="4">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="12.0" layoutY="349.0" lineSpacing="1.0" prefHeight="62.0" prefWidth="27.0" styleClass="chess-board-border-text" text="3">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="12.0" layoutY="411.0" lineSpacing="1.0" prefHeight="63.0" prefWidth="27.0" styleClass="chess-board-border-text" text="2">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="12.0" layoutY="472.0" lineSpacing="1.0" prefHeight="63.0" prefWidth="27.0" styleClass="chess-board-border-text" text="1">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="40.0" layoutY="7.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="A" textAlignment="CENTER">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="539.0" layoutY="100.0" lineSpacing="1.0" prefHeight="63.0" prefWidth="27.0" styleClass="chess-board-border-text" text="7">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="539.0" layoutY="163.0" lineSpacing="1.0" prefHeight="62.0" prefWidth="27.0" styleClass="chess-board-border-text" text="6">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="539.0" layoutY="225.0" lineSpacing="1.0" prefHeight="63.0" prefWidth="27.0" styleClass="chess-board-border-text" text="5">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="539.0" layoutY="286.0" lineSpacing="1.0" prefHeight="63.0" prefWidth="27.0" styleClass="chess-board-border-text" text="4">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="539.0" layoutY="349.0" lineSpacing="1.0" prefHeight="62.0" prefWidth="27.0" styleClass="chess-board-border-text" text="3">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="539.0" layoutY="411.0" lineSpacing="1.0" prefHeight="62.0" prefWidth="27.0" styleClass="chess-board-border-text" text="2">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="539.0" layoutY="473.0" lineSpacing="1.0" prefHeight="62.0" prefWidth="27.0" styleClass="chess-board-border-text" text="1">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="102.0" layoutY="7.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="B" textAlignment="CENTER">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="164.0" layoutY="7.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="C" textAlignment="CENTER">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="226.0" layoutY="7.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="D" textAlignment="CENTER">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="288.0" layoutY="7.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="E" textAlignment="CENTER">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="350.0" layoutY="7.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="F" textAlignment="CENTER">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="412.0" layoutY="7.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="63.0" styleClass="chess-board-border-text" text="G" textAlignment="CENTER">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="475.0" layoutY="7.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="63.0" styleClass="chess-board-border-text" text="H" textAlignment="CENTER">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="40.0" layoutY="536.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="A" textAlignment="CENTER">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="102.0" layoutY="536.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="B" textAlignment="CENTER">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="164.0" layoutY="536.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="C" textAlignment="CENTER">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="226.0" layoutY="536.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="D" textAlignment="CENTER">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="288.0" layoutY="536.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="E" textAlignment="CENTER">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="350.0" layoutY="536.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="62.0" styleClass="chess-board-border-text" text="F" textAlignment="CENTER">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="412.0" layoutY="536.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="63.0" styleClass="chess-board-border-text" text="G" textAlignment="CENTER">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="475.0" layoutY="536.0" lineSpacing="1.0" prefHeight="27.0" prefWidth="63.0" styleClass="chess-board-border-text" text="H" textAlignment="CENTER">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+      </AnchorPane>
+      <AnchorPane layoutX="644.0" layoutY="127.0" prefHeight="561.0" prefWidth="302.0">
+         <Label layoutX="24.0" text="Current Turn:">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Label>
+         <TextField fx:id="currentTurnText" editable="false" focusTraversable="false" layoutX="24.0" layoutY="43.0" prefHeight="44.0" prefWidth="255.0" text="White/Black">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </TextField>
+         <Label layoutX="24.0" layoutY="121.0" text="Time Remaining:">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Label>
+         <TextField fx:id="timeRemainingText" editable="false" focusTraversable="false" layoutX="24.0" layoutY="164.0" prefHeight="44.0" prefWidth="255.0" text="00:00:00.000">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </TextField>
+         <Label layoutX="24.0" layoutY="240.0" text="Last Move:">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Label>
+         <TextField fx:id="lastMoveText" editable="false" focusTraversable="false" layoutX="24.0" layoutY="283.0" prefHeight="44.0" prefWidth="255.0" text="A0A1">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </TextField>
+         <Button fx:id="surrenderButton" focusTraversable="false" layoutX="24.0" layoutY="505.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="255.0" text="Surrender">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+      </AnchorPane>
+   </AnchorPane>
 </VBox>
