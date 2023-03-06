@@ -15,11 +15,18 @@ object timer:
 
   opaque type Time = Duration
 
-  extension (time: Time)
-    def minutes: Long = time.toMinutes
-    def seconds: Long = time.toSeconds % 60
+  extension (self: Time)
 
-  /** Represents a countdown timer that decrement the time remaining and executes every N seconds. */
+    /** Returns the minutes of the time. */
+    def minutes: Long = self.toMinutes
+
+    /** Returns the seconds of the time */
+    def seconds: Long = self.toSeconds % 60
+
+  /**
+   * Represents a countdown timer that decrement the time remaining and
+   *  executes every N seconds.
+   */
   trait Timer:
 
     /** Starts the timer. */
