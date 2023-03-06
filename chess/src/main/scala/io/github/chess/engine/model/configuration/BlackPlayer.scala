@@ -8,17 +8,15 @@ package io.github.chess.engine.model.configuration
 
 import io.github.chess.engine.model.game.Team
 
-/** Represents a player of the chess game. */
-trait Player:
+/**
+ * Represents a Black [[Player]].
+ * @param name name of the player
+ */
+case class BlackPlayer(override val name: String) extends Player:
 
-  /**
-   * Returns the name of the player.
-   * @return the name of the player
-   */
-  def name: String
+  override val team: Team = Team.BLACK
 
-  /**
-   * Returns the [[Team]] of the player
-   * @return the [[Team]] of the player
-   */
-  def team: Team
+object BlackPlayer:
+
+  /** Creates a no name black player. */
+  def default: BlackPlayer = BlackPlayer("blackPlayer")

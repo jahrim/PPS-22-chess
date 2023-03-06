@@ -6,17 +6,13 @@
  */
 package io.github.chess.application.viewcontroller.controllers
 
-import io.github.chess.engine.model.configuration.{
-  GameConfiguration,
-  GameMode,
-  Player,
-  TimeConstraint
-}
+import io.github.chess.engine.model.configuration.{GameConfiguration, GameMode, TimeConstraint}
 import io.github.chess.engine.model.game.Team
 import io.github.chess.application.ChessApplication.given
 import io.github.chess.application.{ChessApplicationComponent, ChessApplicationContext}
 import io.github.chess.application.viewcontroller.controllers.template.FXMLController
 import io.github.chess.application.viewcontroller.pages.{GamePage, MainMenuPage}
+import io.github.chess.engine.model.configuration.{BlackPlayer, WhitePlayer}
 import javafx.collections.{FXCollections, ObservableList}
 import javafx.scene.control.{Button, ChoiceBox, Spinner, SpinnerValueFactory, TextField}
 import javafx.scene.layout.{AnchorPane, GridPane}
@@ -97,13 +93,12 @@ class GameConfigurationController(override protected val stage: Stage)(using
   private def createGameConfiguration(): GameConfiguration =
     val timeConstraint = this.timeConstraint.getValue
     timeConstraint.minutes = this.time.getValue
-    GameConfiguration(
-      timeConstraint,
-      this.gameMode.getValue,
+    val whitePlayer =
       if this.whitePlayer.getText.equals("")
-      then Player.noNameWhitePlayer
-      else Player(this.whitePlayer.getText, Team.WHITE),
+      then WhitePlayer.default
+      else WhitePlayer(this.whitePlayer.getText)
+    val blackPlayer =
       if this.blackPlayer.getText.equals("")
-      then Player.noNameBlackPlayer
-      else Player(this.blackPlayer.getText, Team.BLACK)
-    )
+      then BlackPlayer.default
+      else BlackPlayer(this.blackPlayer.getText)
+    GameConfiguration(timeConstraint, this.gameMode.getValue, whitePlayer, blackPlayer)

@@ -7,25 +7,28 @@
 package io.github.chess.engine.model.configuration
 
 import io.github.chess.engine.model.game.Team
+import io.github.chess.engine.model.game.Team.{BLACK, WHITE}
 
 /**
  * Represents the configuration of the game containing all needed settings.
  * @param timeConstraint [[TimeConstraint]] representing the time limit mode
  * @param gameMode [[GameMode]] chosen by the user
- * @param whitePlayer [[Player]] representing the white pieces
- * @param blackPlayer [[Player]] representing the black pieces
+ * @param whitePlayer [[WhitePlayer]] representing the white pieces
+ * @param blackPlayer [[BlackPlayer]] representing the black pieces
  */
 case class GameConfiguration(
     timeConstraint: TimeConstraint,
     gameMode: GameMode,
-    whitePlayer: Player,
-    blackPlayer: Player
+    whitePlayer: WhitePlayer,
+    blackPlayer: BlackPlayer
 ):
   /**
    * @param team the specified team
    * @return the player of the specified team
    */
-  def player(team: Team): Player = if team == Team.WHITE then whitePlayer else blackPlayer
+  def player(team: Team): Player = team match
+    case WHITE => whitePlayer
+    case BLACK => blackPlayer
 
 object GameConfiguration:
 
@@ -33,6 +36,6 @@ object GameConfiguration:
   def default: GameConfiguration = GameConfiguration(
     TimeConstraint.NoLimit,
     GameMode.PVP,
-    Player.noNameWhitePlayer,
-    Player.noNameBlackPlayer
+    WhitePlayer.default,
+    BlackPlayer.default
   )
