@@ -24,13 +24,16 @@ abstract class AbstractPawnSpec extends AbstractSpec:
       file <- File.values
       rank <- Rank.values.slice(1, 7)
     yield Position(file, rank)
+
   /** Contains all positions in which white pawns start a chess game. */
   protected val whitePawnInitialPositions: Array[Position] = File.values.map(Position(_, Rank._2))
+
   /** Contains all positions in which black pawns start a chess game. */
   protected val blackPawnInitialPositions: Array[Position] = File.values.map(Position(_, Rank._7))
 
   /** Contains the current board. */
   protected var board: ChessBoard = ChessBoard.empty
+
   /** Contains the current status of the game. */
   protected var status: ChessGameStatus = ChessGameStatus(board)
 
