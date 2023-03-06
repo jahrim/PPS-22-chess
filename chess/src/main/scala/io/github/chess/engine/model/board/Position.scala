@@ -52,11 +52,11 @@ trait Position:
 object Position:
 
   /**
-   * Convert this position into a pair of integer coordinates, considering
-   * the top-left corner of the chess board as (0,0) and the bottom-right
+   * Convert this position into a tuple of integer coordinates, considering
+   * the bottom-left corner of the chess board as (0,0) and the top-right
    * corner of the chess board as (7,7).
    *
-   * @return a pair of integer coordinates representing this position in
+   * @return a tuple of integer coordinates representing this position in
    *         the chess board
    */
   given positionToCoords: Conversion[Position, (Int, Int)] = position =>
