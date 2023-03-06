@@ -11,7 +11,6 @@ import io.github.chess.engine.model.game.{ChessGameStatus, Team}
 import io.github.chess.engine.model.moves.{DoubleMove, EnPassantMove, Move}
 import io.github.chess.engine.model.rules.chess.{ChessRule, RuleShorthands}
 
-
 /** Mixin that checks whether the "en passant" rule can be applied. */
 trait EnPassantFilterRule extends ChessRule with RuleShorthands:
 

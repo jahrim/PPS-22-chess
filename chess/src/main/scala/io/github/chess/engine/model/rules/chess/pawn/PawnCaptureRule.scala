@@ -6,7 +6,7 @@
  */
 package io.github.chess.engine.model.rules.chess.pawn
 
-import io.github.chess.model.rules.chess.OnlyCaptureEnemies
+import io.github.chess.engine.model.rules.chess.OnlyCaptureEnemies
 
 /** The rule that analyzes Pawn base capture rule to say if it can perform it or not. */
 class PawnCaptureRule extends PawnCaptureMoves with OnlyCaptureEnemies

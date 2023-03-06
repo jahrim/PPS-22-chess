@@ -6,7 +6,8 @@
  */
 package io.github.chess.engine.model.moves
 
-import io.github.chess.engine.model.board.{Position, Team}
+import io.github.chess.engine.model.board.Position
+import io.github.chess.engine.model.game.Team
 import io.github.chess.engine.model.pieces.Piece
 
 /** Represents the moving of a pawn by two steps forward. */
