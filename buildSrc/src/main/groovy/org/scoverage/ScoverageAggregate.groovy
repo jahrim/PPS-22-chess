@@ -35,7 +35,6 @@ class ScoverageAggregate extends DefaultTask {
     @Input
     final Property<String> sourceEncoding = project.objects.property(String)
 
-    // TODO - consider separate options for `report` and `aggregate` tasks
     @Input
     final Property<Boolean> coverageOutputCobertura = project.objects.property(Boolean)
     @Input
