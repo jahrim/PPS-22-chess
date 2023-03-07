@@ -61,8 +61,10 @@ case class ChessBoardController private (
    * @param entry entry containing the position and its associated piece
    */
   def paint(entry: (Position, Piece)): Unit =
-    this.chessBoardBelief = this.chessBoardBelief + entry
-    this.cells.get(entry._1).foreach { _.setPiece(PieceView(entry._2, entry._2.team)) }
+    Platform.runLater {
+      this.chessBoardBelief = this.chessBoardBelief + entry
+      this.cells.get(entry._1).foreach { _.setPiece(PieceView(entry._2, entry._2.team)) }
+    }
 
   /** Removes all pieces from the chess board view. */
   private def clearPieces(): Unit =
