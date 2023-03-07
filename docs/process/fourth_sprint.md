@@ -14,8 +14,11 @@ La _Deadline_ di questo Sprint è stata fissata al 07/03/2023.
 
 # Sprint Review
 
-
+Rispetto allo _Sprint Goal_ non è stata terminata la documentazione e inoltre, non sono stati risolti tutti i
+_task_ in sospeso rispetto al software.
+Infatti, alcuni _task_ sono stati sottostimati dal punto di vista di carico di lavoro nei tempi previsti.
 
 # Sprint Retrospective
 
-
+Per quanto riguarda il processo, questa settimana a causa di vari impegni personali la comunicazione tra i membri
+del gruppo non è stata ottimale.
