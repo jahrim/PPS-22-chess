@@ -75,6 +75,12 @@ class ChessGameSpec extends AbstractSpec:
     }
   }
 
+  it should "allow the player to unsubscribe from the game events" in {
+    noException should be thrownBy {
+      Await.result(notConfiguredGame.unsubscribe("fakeSubscriptionId"), maxDuration)
+    }
+  }
+
   "After starting, a standard chess game" should "be running" in {
     Await.result(configuredGame.getState, maxDuration) shouldBe a[Running]
   }
@@ -129,6 +135,12 @@ class ChessGameSpec extends AbstractSpec:
   it should "allow the player to subscribe to the game events" in {
     noException should be thrownBy {
       Await.result(configuredGame.subscribe[Event](_ => {}), maxDuration)
+    }
+  }
+
+  it should "allow the player to unsubscribe from the game events" in {
+    noException should be thrownBy {
+      Await.result(configuredGame.unsubscribe("fakeSubscriptionId"), maxDuration)
     }
   }
 

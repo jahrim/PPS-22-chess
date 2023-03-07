@@ -17,6 +17,7 @@ object Id:
    *               - 64: string identifiers contain alpha-numeric characters and symbols
    * @return a new randomly generated string identifier.
    * @note the uniqueness of the identifier is not guaranteed but highly probable.
-   *       The identifier is chosen randomly between 2&#94;64 possible identifiers.
+   *       The identifier is chosen randomly between 2&#94;63 possible identifiers.
    */
-  def apply(idBase: Int = 36): String = BigInt.long2bigInt(Random.nextLong()).toString(idBase)
+  def apply(idBase: Int = 36): String =
+    BigInt.long2bigInt(Random.nextLong(Long.MaxValue)).toString(idBase)

@@ -27,9 +27,11 @@ import ChessGame.given
 import ChessGame.*
 import ChessGameState.*
 import io.github.chess.util.scala.debug.Logger
+import io.github.chess.util.scala.id.Id
 import io.github.chess.util.scala.option.OptionExtension.given
 import io.github.chess.util.vertx.VerticleExecutor
 import io.vertx.core.Vertx
+import io.vertx.core.eventbus.MessageConsumer
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
@@ -43,6 +45,7 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
   private var state: ChessGameState = ChessGameState.NotConfigured()
   private val timerManager: TimerManager = TimerManager()
   private val verticleExecutor: VerticleExecutor = VerticleExecutor(this.vertx)
+  private var subscriptions: Map[String, MessageConsumer[_]] = Map.empty
 
   subscribe[GameOverEvent] { _ => resetGame() }
   subscribe[TurnChangedEvent] { _ => analyzeBoard() }
@@ -173,9 +176,25 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
       }
     }
 
-  override def subscribe[T <: Event: ClassTag](handler: T => Unit): Future[Unit] =
-    runOnVerticle(s"Subscription to ${addressOf[T]}") {
-      this.vertx.eventBus().consumer[T](addressOf[T], message => handler(message.body))
+  override def subscribe[T <: Event: ClassTag](handler: T => Unit): Future[String] =
+    val subscriptionId: String = Id()
+    runOnVerticle(s"Subscription to ${addressOf[T]} {#${subscriptionId}}") {
+      this.subscriptions +=
+        subscriptionId ->
+        this.vertx
+          .eventBus()
+          .consumer[T](addressOf[T], message => handler(message.body))
+      subscriptionId
+    }
+
+  override def unsubscribe(subscriptionIds: String*): Future[Unit] =
+    runOnVerticle(s"Cancelling subscriptions {#${subscriptionIds.mkString(",#")}}") {
+      subscriptionIds.foreach { subscriptionId =>
+        this.subscriptions.get(subscriptionId).foreach { consumer =>
+          consumer.unregister()
+          this.subscriptions -= subscriptionId
+        }
+      }
     }
 
   /**

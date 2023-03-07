@@ -64,10 +64,13 @@ trait ChessPort:
    * Subscribes an handler to a particular event.
    * @param handler a consumer for the specified event
    * @tparam T type parameter of the event extending superclass [[Event]]
-   * @return a future that completes when the subscription has been registered
+   * @return a future containing the id of the subscription
    */
-  def subscribe[T <: Event: ClassTag](handler: T => Unit): Future[Unit]
+  def subscribe[T <: Event: ClassTag](handler: T => Unit): Future[String]
 
-  // todo allow unsubscribe to events
-  // def subscribe[T <: Event: ClassTag](handler: T => Unit): Future[Subscription]
-  // def unsubscribe(subscription: Subscription): Future[Unit]
+  /**
+   * Cancel the specified subscriptions.
+   * @param subscriptionIds the ids of the specified subscriptions
+   * @return a future that completes when the cancellation has completed
+   */
+  def unsubscribe(subscriptionIds: String*): Future[Unit]

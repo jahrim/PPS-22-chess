@@ -56,17 +56,28 @@ class GameController(override protected val stage: Stage)(using
   @FXML @SuppressWarnings(Array("org.wartremover.warts.Null"))
   private var chessBoardController: ChessBoardController = _
 
+  private var subscriptions: Set[String] = Set.empty
   private var currentPlayerBelief: Option[Player] = Option.empty
 
   override def initialize(url: URL, resourceBundle: ResourceBundle): Unit =
-    chessBoardController = ChessBoardController.fromGridPane(this.chessBoardGridPane)(stage)
+    this.chessBoardController = ChessBoardController.fromGridPane(this.chessBoardGridPane)(stage)
     this.surrenderButton.onMouseClicked = _ =>
       this.currentPlayerBelief.foreach { this.context.chessEngineProxy.surrender(_) }
-    initView()
-    context.chessEngineProxy.subscribe[BoardChangedEvent](onPieceMoved)
-    context.chessEngineProxy.subscribe[TimePassedEvent](onTimePassed)
-    context.chessEngineProxy.subscribe[GameOverEvent](onGameOver)
-    context.chessEngineProxy.subscribe[PromotingPawnEvent](onPromotingPawn)
+    this.subscribeToEvents()
+    this.initView()
+
+  private def subscribeToEvents(): Unit =
+    Set(
+      context.chessEngineProxy.subscribe[BoardChangedEvent](onPieceMoved),
+      context.chessEngineProxy.subscribe[TimePassedEvent](onTimePassed),
+      context.chessEngineProxy.subscribe[GameOverEvent](onGameOver),
+      context.chessEngineProxy.subscribe[PromotingPawnEvent](onPromotingPawn)
+    ).foreach { future =>
+      future.onComplete {
+        case Success(subscriptionId) => this.subscriptions = this.subscriptions + subscriptionId
+        case Failure(exception)      => throw exception
+      }
+    }
 
   private def initView(): Unit =
     context.chessEngineProxy.getState.onComplete {
@@ -108,7 +119,7 @@ class GameController(override protected val stage: Stage)(using
             s"${player.team.toString.toLowerCase.capitalize} team wins! Congratulations ${player.name}!"
           case None => "Game ended in a tie. Stale mate!"
       }.showAndWait()
-      // TODO: unsubscribe to events
+      this.context.chessEngineProxy.unsubscribe(this.subscriptions.toArray*)
       MainMenuPage(stage)
     }
 
