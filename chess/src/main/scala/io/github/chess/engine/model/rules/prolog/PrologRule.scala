@@ -20,7 +20,7 @@ trait PrologRule(val theory: String):
     val coords: (Int, Int) = position
     val xString = "X"
     val yString = "Y"
-    val goal = s"${theory}(${coords._1}, ${coords._2}, $xString, $yString)"
+    val goal = s"$theory(${coords._1}, ${coords._2}, $xString, $yString)"
     engine
       .solveAll(goal, xString, yString)
       .map(term => {

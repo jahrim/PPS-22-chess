@@ -41,7 +41,7 @@ case class ChessBoardController private (
     with StatefulSystem(State.NoneSelected)
     with ChessApplicationComponent:
   private var chessBoardBelief: Map[Position, Piece] = Map.empty
-  this.cells.values.foreach(cell => cell.setOnMouseClicked { onCellClicked(_, cell) })
+  this.cells.values.foreach(cell => cell.setOnMouseClicked { _ => onCellClicked(cell) })
 
   /**
    * Shows the specified state of the chess board.
@@ -76,10 +76,9 @@ case class ChessBoardController private (
 
   /**
    * Called when a cell of the chess board is clicked.
-   * @param event the mouse event of the click
    * @param clickedCell the cell that was clicked
    */
-  private def onCellClicked(event: MouseEvent, clickedCell: CellView): Unit =
+  private def onCellClicked(clickedCell: CellView): Unit =
     this.getState match
       case NoneSelected =>
         this.performCheckedSelection(clickedCell)
