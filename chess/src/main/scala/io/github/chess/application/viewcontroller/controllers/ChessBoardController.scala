@@ -23,9 +23,10 @@ import javafx.scene.layout.Pane
 import scalafx.Includes.*
 import scalafx.application.Platform
 import scalafx.stage.Stage
+
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.util.{Success, Failure}
+import scala.util.{Failure, Success}
 
 /**
  * Controller of the chess board view.
@@ -42,18 +43,6 @@ case class ChessBoardController private (
   private var chessBoardBelief: Map[Position, Piece] = Map.empty
   this.cells.values.foreach(cell => cell.setOnMouseClicked { onCellClicked(_, cell) })
 
-  // TODO Given that GamePageController must retrieve all data from the model,
-  //  it might be that this method could be removed.
-  //  In alternative it can be made that ChessGameController is in charge of retrieving all the pieces from the board,
-  //  this would mean that it could be better to merge the two methods instead.
-  /** Retrieves the state of the chess engine service and shows it. */
-  def repaint(): Unit =
-    this.context.chessEngineProxy.getState.onComplete {
-      case Success(Running(state)) => this.repaint(state.chessBoard.pieces)
-      case Failure(exception)      => throw exception
-      case _                       =>
-    }
-
   /**
    * Shows the specified state of the chess board.
    * @param chessBoard the specified state of the chess board
@@ -66,6 +55,14 @@ case class ChessBoardController private (
         this.cells.get(position).foreach { _.setPiece(PieceView(piece, piece.team)) }
       }
     }
+
+  /**
+   * Paint only one cell.
+   * @param entry entry containing the position and its associated piece
+   */
+  def paint(entry: (Position, Piece)): Unit =
+    this.chessBoardBelief = this.chessBoardBelief + entry
+    this.cells.get(entry._1).foreach { _.setPiece(PieceView(entry._2, entry._2.team)) }
 
   /** Removes all pieces from the chess board view. */
   private def clearPieces(): Unit =

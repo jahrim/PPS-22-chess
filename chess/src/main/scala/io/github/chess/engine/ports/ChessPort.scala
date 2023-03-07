@@ -48,10 +48,9 @@ trait ChessPort:
    * Promotes a pawn to another piece.
    * @param pawnPosition position of the pawn to promote
    * @param promotingPiece piece to promote the pawn
-   * @return a future that completes when the promotion has been applied
+   * @return a future containing the new piece
    */
-  // TODO refactor to return piece, so not repainting all board but single cell
-  def promote[P <: Piece](pawnPosition: Position, promotingPiece: PromotionPiece[P]): Future[Unit]
+  def promote[P <: Piece](pawnPosition: Position, promotingPiece: PromotionPiece[P]): Future[P]
 
   /**
    * Make the specified player surrender.

@@ -11,7 +11,8 @@ import io.github.chess.engine.events.{
   CheckNotificationEvent,
   GameOverEvent,
   PromotingPawnEvent,
-  TimePassedEvent
+  TimePassedEvent,
+  TurnChangedEvent
 }
 import io.github.chess.engine.model.configuration.Player
 import io.github.chess.engine.model.game.ChessGameState.*
@@ -73,7 +74,8 @@ class GameController(override protected val stage: Stage)(using
       context.chessEngineProxy.subscribe[TimePassedEvent](onTimePassed),
       context.chessEngineProxy.subscribe[GameOverEvent](onGameOver),
       context.chessEngineProxy.subscribe[PromotingPawnEvent](onPromotingPawn),
-      context.chessEngineProxy.subscribe[CheckNotificationEvent](onCheckNotification)
+      context.chessEngineProxy.subscribe[CheckNotificationEvent](onCheckNotification),
+      context.chessEngineProxy.subscribe[TurnChangedEvent](onTurnChanged)
     ).foreach { future =>
       future.onComplete {
         case Success(subscriptionId) => this.subscriptions = this.subscriptions + subscriptionId
@@ -99,11 +101,15 @@ class GameController(override protected val stage: Stage)(using
 
   private def onPieceMoved(event: BoardChangedEvent): Unit =
     Platform.runLater(() =>
-      this.currentPlayerBelief = Some(event.currentPlayer)
-      currentTurnText.setText(s"${event.currentPlayer.name} -> ${event.currentPlayer.team}")
       lastMoveText.setText(s"${event.lastMove.from} -> ${event.lastMove.to}")
       chessBoardController.repaint(event.boardDisposition)
     )
+
+  private def onTurnChanged(event: TurnChangedEvent): Unit =
+    Platform.runLater {
+      this.currentPlayerBelief = Some(event.currentPlayer)
+      currentTurnText.setText(s"${event.currentPlayer.name} -> ${event.currentPlayer.team}")
+    }
 
   private def onTimePassed(event: TimePassedEvent): Unit =
     Platform.runLater(() =>
@@ -137,10 +143,10 @@ class GameController(override protected val stage: Stage)(using
             case _                         =>
           dialog.showAndWait().ifPresent { piece =>
             context.chessEngineProxy.promote(event.pawnPosition, piece).onComplete {
-              case Success(_)         => this.chessBoardController.repaint()
+              case Success(p)         => this.chessBoardController.paint((event.pawnPosition, p))
               case Failure(exception) => throw exception
             }
-          } // TODO add orElse to ifPresent
+          }
         case None =>
     }
 

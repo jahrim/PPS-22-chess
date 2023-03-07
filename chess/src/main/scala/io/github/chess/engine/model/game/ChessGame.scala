@@ -110,21 +110,19 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
   override def promote[P <: Piece](
       pawnPosition: Position,
       promotingPiece: PromotionPiece[P]
-  ): Future[Unit] =
+  ): Future[P] =
     runOnVerticle("Pawn promotion") {
       onlyIfAwaitingPromotion { status =>
+        val newPiece =
+          promotingPiece.pieceClass.getConstructor(classOf[Team]).newInstance(status.currentTurn)
         this.state = Running(
           status.updateChessBoard {
-            status.chessBoard.setPiece(
-              pawnPosition,
-              promotingPiece.pieceClass
-                .getConstructor(classOf[Team])
-                .newInstance(status.currentTurn)
-            )
+            status.chessBoard.setPiece(pawnPosition, newPiece)
           }
         )
         publishBoardChangedEvent()
         switchTurn()
+        newPiece
       }
     }
 
