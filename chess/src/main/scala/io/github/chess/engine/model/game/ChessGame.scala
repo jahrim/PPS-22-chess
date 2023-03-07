@@ -8,6 +8,7 @@ package io.github.chess.engine.model.game
 
 import io.github.chess.engine.events.{
   BoardChangedEvent,
+  CheckNotificationEvent,
   Event,
   GameOverEvent,
   PromotingPawnEvent,
@@ -163,6 +164,10 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
             )
           case Some(Stale) =>
             this.publish(GameOverEvent(GameOverCause.Stale))
+          case Some(Check) =>
+            this.publish(
+              CheckNotificationEvent(status.gameConfiguration.player(status.currentTurn))
+            )
           case _ =>
       }
     }
@@ -178,12 +183,12 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
 
   override def subscribe[T <: Event: ClassTag](handler: T => Unit): Future[String] =
     val subscriptionId: String = Id()
-    runOnVerticle(s"Subscription to ${addressOf[T]} {#${subscriptionId}}") {
+    runOnVerticle(s"Subscription to ${addressOf[T]} {#$subscriptionId}") {
       this.subscriptions +=
         subscriptionId ->
-        this.vertx
-          .eventBus()
-          .consumer[T](addressOf[T], message => handler(message.body))
+          this.vertx
+            .eventBus()
+            .consumer[T](addressOf[T], message => handler(message.body))
       subscriptionId
     }
 
@@ -243,7 +248,7 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
     }
 
   private def publishPromotingPawnEvent(pawnPosition: Position): Unit =
-    onlyIfConfigured { status =>
+    onlyIfConfigured { _ =>
       this.publish(PromotingPawnEvent(pawnPosition, PromotionPiece.values))
     }
 

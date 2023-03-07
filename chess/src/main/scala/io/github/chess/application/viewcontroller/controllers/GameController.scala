@@ -7,8 +7,9 @@
 package io.github.chess.application.viewcontroller.controllers
 
 import io.github.chess.engine.events.{
-  GameOverEvent,
   BoardChangedEvent,
+  CheckNotificationEvent,
+  GameOverEvent,
   PromotingPawnEvent,
   TimePassedEvent
 }
@@ -71,7 +72,8 @@ class GameController(override protected val stage: Stage)(using
       context.chessEngineProxy.subscribe[BoardChangedEvent](onPieceMoved),
       context.chessEngineProxy.subscribe[TimePassedEvent](onTimePassed),
       context.chessEngineProxy.subscribe[GameOverEvent](onGameOver),
-      context.chessEngineProxy.subscribe[PromotingPawnEvent](onPromotingPawn)
+      context.chessEngineProxy.subscribe[PromotingPawnEvent](onPromotingPawn),
+      context.chessEngineProxy.subscribe[CheckNotificationEvent](onCheckNotification)
     ).foreach { future =>
       future.onComplete {
         case Success(subscriptionId) => this.subscriptions = this.subscriptions + subscriptionId
@@ -140,4 +142,13 @@ class GameController(override protected val stage: Stage)(using
             }
           } // TODO add orElse to ifPresent
         case None =>
+    }
+
+  private def onCheckNotification(event: CheckNotificationEvent): Unit =
+    Platform.runLater {
+      new Alert(AlertType.Warning) {
+        title = "Check!"
+        headerText = "Check"
+        contentText = s"${event.playerUnderCheck.name} is under Check."
+      }.showAndWait()
     }
