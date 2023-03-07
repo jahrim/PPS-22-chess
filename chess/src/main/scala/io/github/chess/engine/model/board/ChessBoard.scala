@@ -9,10 +9,8 @@ package io.github.chess.engine.model.board
 import io.github.chess.engine.model.pieces.{Bishop, King, Knight, Pawn, Piece, Queen, Rook}
 import io.github.chess.engine.model.game.Team.{BLACK, WHITE}
 import ChessBoardBuilder.DSL.*
-import io.github.chess.engine.events.PieceMovedEvent
 import io.github.chess.engine.model.game.Team
 import io.github.chess.engine.model.moves.Move
-import io.vertx.core.Vertx
 
 /** The trait representing the concept of a Chess Board. */
 trait ChessBoard:

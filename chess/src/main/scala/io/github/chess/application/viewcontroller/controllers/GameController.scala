@@ -8,11 +8,12 @@ package io.github.chess.application.viewcontroller.controllers
 
 import io.github.chess.engine.events.{
   GameOverEvent,
-  PieceMovedEvent,
+  BoardChangedEvent,
   PromotingPawnEvent,
   TimePassedEvent
 }
 import io.github.chess.engine.model.configuration.Player
+import io.github.chess.engine.model.game.ChessGameState.*
 import io.github.chess.engine.model.game.GameOverCause
 import io.github.chess.engine.model.pieces.PromotionPiece
 import io.github.chess.application.ChessApplication.{start, given}
@@ -62,14 +63,14 @@ class GameController(override protected val stage: Stage)(using
     this.surrenderButton.onMouseClicked = _ =>
       this.currentPlayerBelief.foreach { this.context.chessEngineProxy.surrender(_) }
     initView()
-    context.chessEngineProxy.subscribe[PieceMovedEvent](onPieceMoved)
+    context.chessEngineProxy.subscribe[BoardChangedEvent](onPieceMoved)
     context.chessEngineProxy.subscribe[TimePassedEvent](onTimePassed)
     context.chessEngineProxy.subscribe[GameOverEvent](onGameOver)
     context.chessEngineProxy.subscribe[PromotingPawnEvent](onPromotingPawn)
 
   private def initView(): Unit =
     context.chessEngineProxy.getState.onComplete {
-      case Success(status) =>
+      case Success(Running(status)) =>
         Platform.runLater {
           this.currentPlayerBelief = Some(status.gameConfiguration.player(status.currentTurn))
           chessBoardController.repaint(status.chessBoard.pieces)
@@ -80,9 +81,10 @@ class GameController(override protected val stage: Stage)(using
           lastMoveText.setText("N/A")
         }
       case Failure(exception) => throw exception
+      case _                  =>
     }
 
-  private def onPieceMoved(event: PieceMovedEvent): Unit =
+  private def onPieceMoved(event: BoardChangedEvent): Unit =
     Platform.runLater(() =>
       this.currentPlayerBelief = Some(event.currentPlayer)
       currentTurnText.setText(s"${event.currentPlayer.name} -> ${event.currentPlayer.team}")
@@ -128,6 +130,3 @@ class GameController(override protected val stage: Stage)(using
           } // TODO add orElse to ifPresent
         case None =>
     }
-
-// TODO: get access to the proxy for the chess engine service (as a given constructor parameter?)
-// TODO: handle surrender logic

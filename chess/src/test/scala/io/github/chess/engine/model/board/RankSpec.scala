@@ -7,7 +7,7 @@
 package io.github.chess.engine.model.board
 
 import io.github.chess.AbstractSpec
-import io.github.chess.util.exception.OutsideBoardException
+import io.github.chess.engine.model.board.exceptions.OutsideBoardException
 
 /** Test suite for [[Rank]]. */
 class RankSpec extends AbstractSpec:

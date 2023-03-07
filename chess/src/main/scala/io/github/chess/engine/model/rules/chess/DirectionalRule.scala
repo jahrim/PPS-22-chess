@@ -6,7 +6,7 @@
  */
 package io.github.chess.engine.model.rules.chess
 
-import io.github.chess.util.general.GivenExtension.within
+import io.github.chess.util.scala.givens.GivenExtension.within
 import io.github.chess.engine.model.board.Position.given
 import ChessRule.*
 import io.github.chess.engine.model.board.Position

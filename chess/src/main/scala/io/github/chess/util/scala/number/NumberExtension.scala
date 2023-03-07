@@ -4,7 +4,7 @@
  *
  * Full license description available at: https://github.com/jahrim/PPS-22-chess/blob/master/LICENSE
  */
-package io.github.chess.util.number
+package io.github.chess.util.scala.number
 
 /** Extension for number classes. */
 object NumberExtension:

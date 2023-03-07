@@ -6,7 +6,7 @@
  */
 package io.github.chess.engine.model.board
 
-import io.github.chess.util.exception.OutsideBoardException
+import io.github.chess.engine.model.board.exceptions.OutsideBoardException
 
 /** Represents a row of the [[ChessBoard]]. */
 enum Rank:

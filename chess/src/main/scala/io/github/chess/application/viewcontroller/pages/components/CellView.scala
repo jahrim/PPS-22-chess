@@ -6,8 +6,8 @@
  */
 package io.github.chess.application.viewcontroller.pages.components
 
+import io.github.chess.util.scala.number.NumberExtension.sameParityAs
 import io.github.chess.engine.model.board.{Position, Rank}
-import io.github.chess.util.number.NumberExtension.*
 import io.github.chess.application.viewcontroller.configuration.InterfaceConfiguration.{
   Colors,
   Images

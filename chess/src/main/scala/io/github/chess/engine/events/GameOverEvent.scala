@@ -23,6 +23,12 @@ trait GameOverEvent extends Event:
 
 /** Companion object of [[GameOverEvent]]. */
 object GameOverEvent:
+  /**
+   * @param cause the cause of the game over
+   * @param winner an option containing the winner of the game, or
+   *               an empty option if the game has no winner
+   * @return a new game over event
+   */
   def apply(cause: GameOverCause, winner: Option[Player] = None): GameOverEvent =
     BasicGameOverEvent(cause, winner)
 

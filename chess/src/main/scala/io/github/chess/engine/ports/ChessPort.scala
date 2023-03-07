@@ -9,7 +9,7 @@ package io.github.chess.engine.ports
 import io.github.chess.engine.events.Event
 import io.github.chess.engine.model.board.Position
 import io.github.chess.engine.model.configuration.{GameConfiguration, Player}
-import io.github.chess.engine.model.game.ChessGameStatus
+import io.github.chess.engine.model.game.ChessGameState
 import io.github.chess.engine.model.moves.Move
 import io.github.chess.engine.model.pieces.{Piece, PromotionPiece}
 import io.vertx.core.eventbus.Message
@@ -21,7 +21,7 @@ import scala.reflect.ClassTag
 /** Represents the contract of a chess engine service. */
 trait ChessPort:
   /** @return a future containing the state of the game of chess */
-  def getState: Future[ChessGameStatus]
+  def getState: Future[ChessGameState]
 
   /**
    * Starts the game, using from its [[GameConfiguration]].

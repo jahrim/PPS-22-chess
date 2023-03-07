@@ -6,8 +6,8 @@
  */
 package io.github.chess.application
 
+import io.github.chess.util.scala.option.OptionExtension.getOrThrow
 import io.github.chess.engine.ports.ChessPort
-import io.github.chess.util.option.OptionExtension.getOrThrow
 import scalafx.stage.Stage
 
 /** The context of this application. */

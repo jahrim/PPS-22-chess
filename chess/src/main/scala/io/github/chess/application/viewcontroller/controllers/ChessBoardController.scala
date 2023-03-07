@@ -10,12 +10,13 @@ import io.github.chess.application.{ChessApplicationComponent, ChessApplicationC
 import io.github.chess.engine.model.board.{ChessBoard, Position}
 import io.github.chess.engine.model.moves.{CaptureMove, CastlingMove, DoubleMove, Move}
 import io.github.chess.engine.model.pieces.Piece
-import io.github.chess.util.stateful.StatefulSystem
+import io.github.chess.engine.model.game.ChessGameState.*
 import io.github.chess.application.viewcontroller.fxutils.FXUtils.*
 import io.github.chess.application.viewcontroller.controllers.template.Controller
 import io.github.chess.application.viewcontroller.controllers.ChessBoardController.State
 import io.github.chess.application.viewcontroller.controllers.ChessBoardController.State.*
 import io.github.chess.application.viewcontroller.pages.components.{CellView, PieceView}
+import io.github.chess.util.general.StatefulSystem
 import javafx.scene.input.MouseEvent
 import javafx.scene.layout.GridPane
 import javafx.scene.layout.Pane
@@ -48,8 +49,9 @@ case class ChessBoardController private (
   /** Retrieves the state of the chess engine service and shows it. */
   def repaint(): Unit =
     this.context.chessEngineProxy.getState.onComplete {
-      case Success(state)     => this.repaint(state.chessBoard.pieces)
-      case Failure(exception) => throw exception
+      case Success(Running(state)) => this.repaint(state.chessBoard.pieces)
+      case Failure(exception)      => throw exception
+      case _                       =>
     }
 
   /**
@@ -96,15 +98,15 @@ case class ChessBoardController private (
    * Performs the selection of a cell if it contains a piece of the playing team.
    * Deselects the selected one otherwise.
    *
-   * @param cell the specified cell
+   * @param clickedCell the specified cell
    */
   private def performCheckedSelection(clickedCell: CellView): Unit =
     this.context.chessEngineProxy.getState.onComplete {
-      case Success(value) =>
+      case Success(Running(status)) =>
         Platform.runLater {
           this.chessBoardBelief.get(clickedCell.position) match
-            case Some(piece) if piece.team == value.currentTurn => this.selectCell(clickedCell)
-            case _                                              => enter(NoneSelected)
+            case Some(piece) if piece.team == status.currentTurn => this.selectCell(clickedCell)
+            case _                                               => enter(NoneSelected)
         }
       case _ =>
     }

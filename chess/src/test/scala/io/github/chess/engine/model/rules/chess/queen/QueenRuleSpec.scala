@@ -69,7 +69,7 @@ class QueenRuleSpec extends AbstractChessRuleSpec:
       * | * | * | * | * | * | * | *
       * | * | K | * | Q | p | * | *
       * | * | * | * | * | * | * | *
-      * | * | K | * | * | * | * | *
+      * | * | N | * | * | * | * | *
       * | * | * | * | * | * | * | *
       * | * | * | * | p | * | * | *
     })

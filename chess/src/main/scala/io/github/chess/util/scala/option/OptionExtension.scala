@@ -4,7 +4,7 @@
  *
  * Full license description available at: https://github.com/jahrim/PPS-22-chess/blob/master/LICENSE
  */
-package io.github.chess.util.option
+package io.github.chess.util.scala.option
 
 /** Extension for the [[Option]] class. */
 object OptionExtension:

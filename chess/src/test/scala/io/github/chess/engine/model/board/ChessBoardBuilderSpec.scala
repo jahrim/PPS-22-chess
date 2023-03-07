@@ -10,7 +10,7 @@ import io.github.chess.AbstractSpec
 import io.github.chess.engine.model.board.ChessBoardBuilder.*
 import io.github.chess.engine.model.game.Team
 import io.github.chess.engine.model.pieces.{Pawn, Piece}
-import io.github.chess.util.option.OptionExtension.anyToOptionOfAny
+import io.github.chess.util.scala.option.OptionExtension.given
 
 import java.lang.IllegalStateException
 

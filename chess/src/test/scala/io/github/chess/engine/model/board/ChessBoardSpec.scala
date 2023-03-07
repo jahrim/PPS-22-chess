@@ -10,7 +10,7 @@ import io.github.chess.AbstractSpec
 import io.github.chess.engine.model.board.ChessBoard.*
 import io.github.chess.engine.model.game.Team
 import io.github.chess.engine.model.pieces.{Pawn, Piece}
-import io.github.chess.util.option.OptionExtension.anyToOptionOfAny
+import io.github.chess.util.scala.option.OptionExtension.given
 
 /** Test suit for the [[ChessBoard]]. */
 class ChessBoardSpec extends AbstractSpec:

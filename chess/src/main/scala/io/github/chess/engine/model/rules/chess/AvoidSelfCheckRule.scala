@@ -9,7 +9,7 @@ package io.github.chess.engine.model.rules.chess
 import io.github.chess.engine.model.board.Position
 import io.github.chess.engine.model.game.{ChessGameAnalyzer, ChessGameStatus}
 import io.github.chess.engine.model.moves.Move
-import io.github.chess.util.general.GivenExtension.within
+import io.github.chess.util.scala.givens.GivenExtension.within
 
 /** Mixin that removes all the moves that would put the current player in check from the specified rule. */
 trait AvoidSelfCheckRule extends ChessRule with RuleShorthands:

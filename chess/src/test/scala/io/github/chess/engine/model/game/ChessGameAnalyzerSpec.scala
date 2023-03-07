@@ -7,7 +7,7 @@
 package io.github.chess.engine.model.game
 
 import io.github.chess.AbstractSpec
-import io.github.chess.engine.model.board.ChessBoard
+import io.github.chess.engine.model.board.{ChessBoard, Position, File, Rank}
 import io.github.chess.engine.model.board.ChessBoard.*
 import io.github.chess.engine.model.game.ChessGameAnalyzer.*
 import io.github.chess.engine.model.game.{ChessGameAnalyzer, ChessGameStatus}
@@ -54,4 +54,15 @@ class ChessGameAnalyzerSpec extends AbstractSpec:
       ),
       teamPerspective = Team.WHITE
     ) shouldEqual Some(CheckMate)
+  }
+
+  it should "be able to recognize a promotion" in {
+    ChessGameAnalyzer.situationOf(
+      ChessGameStatus(
+        ChessBoard {
+          P | * | B | ** { 8 }
+        }
+      ),
+      teamPerspective = Team.WHITE
+    ) shouldEqual Some(Promotion(Position(File.A, Rank._8)))
   }

@@ -7,7 +7,7 @@
 package io.github.chess.engine.model.rules.chess.pawn
 
 import PawnMovementRule.*
-import io.github.chess.util.general.GivenExtension.within
+import io.github.chess.util.scala.givens.GivenExtension.within
 import io.github.chess.engine.model.board.{Position, Rank}
 import io.github.chess.engine.model.game.{ChessGameStatus, Team}
 import io.github.chess.engine.model.moves.Move

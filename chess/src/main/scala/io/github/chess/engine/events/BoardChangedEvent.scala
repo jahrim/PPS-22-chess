@@ -11,8 +11,8 @@ import io.github.chess.engine.model.configuration.Player
 import io.github.chess.engine.model.moves.Move
 import io.github.chess.engine.model.pieces.Piece
 
-/** Represents the event in which a piece was moved on the board. */
-trait PieceMovedEvent extends Event:
+/** Represents the event triggered when the chess board has changed. */
+trait BoardChangedEvent extends Event:
 
   /**
    * The player that should be playing next.
@@ -21,7 +21,7 @@ trait PieceMovedEvent extends Event:
   def currentPlayer: Player
 
   /**
-   * The disposition of the board after the move was performed.
+   * The disposition of the board after it was changed.
    * @return Current disposition of the board
    */
   def boardDisposition: Map[Position, Piece]
@@ -32,25 +32,25 @@ trait PieceMovedEvent extends Event:
    */
   def lastMove: Move
 
-/** Object helper for PieceMovedEvent. */
-object PieceMovedEvent:
+/** Object helper for BoardChangedEvent. */
+object BoardChangedEvent:
 
   /**
-   * Creates an instance of the Piece Moved Event.
+   * Creates an instance of the Board Changed Event.
    * @param currentPlayer the player that should be playing next
    * @param boardDisposition current disposition of the board
    * @param lastMove last move that was performed on the board
-   * @return The event containing all the changes applied due to the move
+   * @return The event containing all the changes applied to the board
    */
   def apply(
       currentPlayer: Player,
       boardDisposition: Map[Position, Piece],
       lastMove: Move
-  ): PieceMovedEvent =
-    PieceMovedEventImpl(currentPlayer, boardDisposition, lastMove)
+  ): BoardChangedEvent =
+    BoardChangedEventImpl(currentPlayer, boardDisposition, lastMove)
 
-  private case class PieceMovedEventImpl(
+  private case class BoardChangedEventImpl(
       override val currentPlayer: Player,
       override val boardDisposition: Map[Position, Piece],
       override val lastMove: Move
-  ) extends PieceMovedEvent
+  ) extends BoardChangedEvent

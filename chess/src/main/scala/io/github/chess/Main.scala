@@ -12,7 +12,7 @@ import io.github.chess.engine.adapters.Adapter
 import io.github.chess.engine.model.game.ChessGame
 import io.github.chess.engine.ports.ChessPort
 import io.github.chess.engine.services.ChessService
-import io.github.chess.util.debug.Logger
+import io.github.chess.util.scala.debug.Logger
 import io.vertx.core.{Future, Promise, Vertx}
 
 /** The main application. */

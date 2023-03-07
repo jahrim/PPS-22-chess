@@ -6,7 +6,7 @@
  */
 package io.github.chess
 
-import io.github.chess.util.debug.Logger
+import io.github.chess.util.scala.debug.Logger
 import org.awaitility.scala.AwaitilitySupport
 import org.junit.runner.RunWith
 import org.scalatest.BeforeAndAfter

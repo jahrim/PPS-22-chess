@@ -10,7 +10,6 @@ import io.github.chess.AbstractSpec
 import io.github.chess.engine.model.board.ChessBoardBuilder.*
 import io.github.chess.engine.model.game.Team
 import io.github.chess.engine.model.pieces.Pawn
-import io.github.chess.util.option.OptionExtension.anyToOptionOfAny
 
 /** Test suit for the [[ChessBoardBuilder]]. */
 class ChessBoardBuilderDSLSpec extends AbstractSpec:

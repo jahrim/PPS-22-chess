@@ -6,7 +6,9 @@
  */
 package io.github.chess.engine.model.game
 
-import io.github.chess.engine.model.pieces.King
+import io.github.chess.engine.model.board.{Position, Rank}
+import io.github.chess.engine.model.pieces.{King, Pawn}
+import io.github.chess.engine.model.game.Team.*
 
 /**
  * Collection of analysis tools for evaluating
@@ -29,7 +31,10 @@ object ChessGameAnalyzer:
       case (true, false) => Some(Stale)
       case (false, true) => Some(Check)
       case (true, true)  => Some(CheckMate)
-      case _             => None
+      case _ =>
+        promotion(state, teamPerspective) match
+          case Some(pawnPosition) => Some(Promotion(pawnPosition))
+          case _                  => None
 
   /** As [[situationOf situationOf(state, state.currentTurn)]]. */
   def situationOf(state: ChessGameStatus): Option[ChessGameSituation] =
@@ -68,6 +73,23 @@ object ChessGameAnalyzer:
   /** As [[stale stale(state, state.currentTurn)]]. */
   def stale(state: ChessGameStatus): Boolean = stale(state, state.currentTurn)
 
+  /**
+   * @param state           the state of the specified game
+   * @param teamPerspective the perspective of the specified team
+   * @return an optional containing the position of the first pawn that can be promoted
+   *         by the specified team, an empty optional if no pawn can be promoted.
+   */
+  def promotion(state: ChessGameStatus, teamPerspective: Team): Option[Position] =
+    val enemyBaseRank = if state.currentTurn == WHITE then Rank._8 else Rank._1
+    state.chessBoard
+      .pieces(teamPerspective)
+      .collectFirst {
+        case (position, piece: Pawn) if position.rank == enemyBaseRank => position
+      }
+
+  /** As [[promotion promotion(state, state.currentTurn)]]. */
+  def promotion(state: ChessGameStatus): Option[Position] = promotion(state, state.currentTurn)
+
   /** A situation in a chess game. */
   enum ChessGameSituation:
     /** Situation where a king is threatened. */
@@ -81,3 +103,6 @@ object ChessGameAnalyzer:
      * his king is threatened.
      */
     case CheckMate
+
+    /** Situation where a player can promote a pawn. */
+    case Promotion(pawnPosition: Position)

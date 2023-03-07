@@ -4,7 +4,7 @@
  *
  * Full license description available at: https://github.com/jahrim/PPS-22-chess/blob/master/LICENSE
  */
-package io.github.chess.util.debug
+package io.github.chess.util.scala.debug
 
 import scala.util.{Failure, Success, Try}
 

@@ -4,7 +4,7 @@
  *
  * Full license description available at: https://github.com/jahrim/PPS-22-chess/blob/master/LICENSE
  */
-package io.github.chess.util.debug
+package io.github.chess.util.scala.debug
 
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -47,10 +47,15 @@ object Logger:
    * @return the result of the specified activity
    */
   def logActivity[T](tag: Tag, category: Category)(activityName: String)(activity: => T): T =
-    Logger.log(tag, category, s"$activityName : started")
-    val result = activity
-    Logger.log(tag, category, s"$activityName : ended")
-    result
+    try
+      Logger.log(tag, category, s"$activityName : started")
+      val result = activity
+      Logger.log(tag, category, s"$activityName : ended")
+      result
+    catch
+      case e: Exception =>
+        Logger.log(tag, category, s"$activityName : failed [${e.getMessage}]")
+        throw e
 
   /**
    * Prints the specified message as an information.

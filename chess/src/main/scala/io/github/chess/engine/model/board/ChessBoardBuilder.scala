@@ -8,9 +8,9 @@ package io.github.chess.engine.model.board
 
 import io.github.chess.engine.model.game.Team
 import io.github.chess.engine.model.pieces.{Bishop, King, Knight, Pawn, Piece, Queen, Rook}
-import io.github.chess.util.exception.Require
-import io.github.chess.util.general.GivenExtension.within
-import io.github.chess.util.option.OptionExtension.given
+import io.github.chess.util.scala.givens.GivenExtension.within
+import io.github.chess.util.scala.exception.Require
+import io.github.chess.util.scala.option.OptionExtension.given
 
 import scala.annotation.targetName
 

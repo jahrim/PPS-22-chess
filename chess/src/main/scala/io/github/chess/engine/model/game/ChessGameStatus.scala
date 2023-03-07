@@ -9,7 +9,7 @@ package io.github.chess.engine.model.game
 import io.github.chess.engine.model.board.ChessBoard
 import io.github.chess.engine.model.configuration.GameConfiguration
 
-/** The state of a chess game. */
+/** The content of a configured chess game. */
 trait ChessGameStatus:
   /** @return the chess board of this chess game */
   def chessBoard: ChessBoard
@@ -48,10 +48,7 @@ trait ChessGameStatus:
    * Updates the currently playing team from White to Black and viceversa
    * @return a new updated chess game status
    */
-  def changeTeam(): ChessGameStatus
-
-  // TODO: consider this
-  //  def timeRemaining: Time
+  def changeTurn(): ChessGameStatus
 
 /** Companion object of [[ChessGameStatus]]. */
 object ChessGameStatus:
@@ -60,7 +57,7 @@ object ChessGameStatus:
    * @param history the history of the moves executed in the game
    * @param initialTurn the team who is playing first
    * @param gameConfiguration configuration of the game
-   * @return a state
+   * @return a new state of a chess game
    */
   def apply(
       chessBoard: ChessBoard = ChessBoard.standard,
@@ -83,5 +80,5 @@ object ChessGameStatus:
       BasicChessGameStatus(chessBoard, newHistory, currentTurn, gameConfiguration)
     override def updateGameConfiguration(newGameConfiguration: GameConfiguration): ChessGameStatus =
       BasicChessGameStatus(chessBoard, history, currentTurn, newGameConfiguration)
-    override def changeTeam(): ChessGameStatus =
+    override def changeTurn(): ChessGameStatus =
       BasicChessGameStatus(chessBoard, history, currentTurn.oppositeTeam, gameConfiguration)

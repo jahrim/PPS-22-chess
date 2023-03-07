@@ -6,7 +6,7 @@
  */
 package io.github.chess.application.viewcontroller.pages.template
 
-import io.github.chess.util.option.OptionExtension.getOrThrow
+import io.github.chess.util.scala.option.OptionExtension.getOrThrow
 import io.github.chess.application.viewcontroller.controllers.template.FXMLController
 import io.github.chess.application.viewcontroller.pages.template.{Page, PageWithController}
 import javafx.fxml.FXMLLoader
