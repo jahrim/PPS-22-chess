@@ -57,7 +57,10 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
   override def startGame(gameConfiguration: GameConfiguration): Future[Unit] =
     runOnVerticle("Game initialization") {
       onlyIfNotConfigured {
-        this.state = Running(ChessGameStatus(gameConfiguration = gameConfiguration))
+        val status = ChessGameStatus(gameConfiguration = gameConfiguration)
+        this.state = Running(status)
+        // Initialize all the Prolog Rule(s)
+        assert(!ChessGameAnalyzer.check(status))
         this.timerManager.start(
           gameConfiguration.timeConstraint,
           this.publishTimePassedEvent(),
