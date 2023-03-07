@@ -37,11 +37,37 @@ sottoscriversi:
   partita sia stata impostata con un vincolo temporale.
 - _TimePassedEvent_: evento generato per avvisare l'utente che è trascorso del tempo, nel caso in cui
   la partita sia stata impostata con un vincolo temporale.
-- _PieceMovedEvent_: evento generato per avvisare l'utente che un pezzo è stato mosso e che è cambiato il giocatore 
-  di turno.
+- _BoardChangedEvent_: evento generato per avvisare l'utente che la scacchiera è stata modificata.
+- _TurnChangedEvent_: evento generato per avvisare l'utente che il controllo del gioco è passato a un altro giocatore.
 - _PromotingPawnEvent_: evento generato per avvisare l'utente che un pedone deve essere promosso.
 
-[//]: # (TODO aggiungere diagrammi)
+L'engine è un servizio stateful, per cui possiede uno stato che viene modificato in base alle richieste ricevute dagli
+utenti. In base a tale stato, le funzionalità esposte dal contratto possono essere abilitate o disabilitate, secondo il
+seguente diagramma degli stati.
+
+![Diagramma a stati dell'engine](../images/engine-state-diagram.png)
+
+Quando il servizio viene avviato, si trova nello stato _Engine Started_, in cui diventa possibile richiedere il suo 
+stato o sottoscriversi ai suoi eventi.
+
+Inizialmente, il servizio si trova nello stato _Game Not Configured_, in cui la partita gestita dal servizio non è 
+configurata. In tale stato, il servizio è in attesa che un utente cominci una nuova partita configurandola.
+
+Una volta cominciata, il servizio entra nello stato _Game Running_, in cui la partita è in esecuzione. In tale stato, 
+è possibile richiedere al servizio le mosse di un certo pezzo sulla scacchiera, muovere un pezzo della scacchiera o 
+arrendersi.
+Se un utente notifica il servizio di volersi arrendere, il servizio termina la partita ritornando nello stato 
+_Game Not Configured_.
+Invece, se un utente notifica il servizio di una certa mossa da eseguire, il servizio la esegue se è una mossa che coinvolge
+uno dei pezzi del giocatore di turno.
+
+Una volta specificata la mossa da eseguire, se un pedone dell'utente ha raggiunto la base avversaria, il servizio entra
+nello stato _Game Awaiting Promotion_, in cui si mette in attesa che il giocatore di turno invii una nuova richiesta per
+promuovere il pedone ad un certo pezzo. In ogni altro caso, la partita procede normalmente ed il controllo della
+scacchiera passa al giocatore successivo.
+
+Solo nello stato _Game Awaiting Promotion_, è possibile richiedere al servizio di promuovere un pedone. Quando ciò
+accade il controllo della scacchiera passa al giocatore successivo.
 
 ## View
 

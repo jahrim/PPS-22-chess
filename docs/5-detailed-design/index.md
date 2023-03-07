@@ -40,8 +40,12 @@ in cui vengono indicate le seguenti informazioni:
 
 Nel caso di una partita con limiti di tempo, l'engine delega al `TimerManager` la gestione del vincolo temporale.
 
-Una volta avviata la partita, è possibile ottenerne lo stato modellato dalla classe `ChessGameStatus`, la quale 
-permette di accedere alle seguenti informazioni:
+In ogni momento, è possibile ottenere lo stato della partita modellato dalla enumerazione `ChessGameState`, che 
+definisce i valori `NotConfigured`, `Running` e `AwaitingPromotion` come possibili stati della partita, rispecchiando
+quelli identificati in fase di analisi architetturale. 
+
+Nel caso in cui la partita sia configurata, il suo stato comprende anche un `ChessGameStatus` che permette di accedere 
+alle seguenti informazioni:
 - `ChessBoard`: rappresenta la scacchiera contenente quindi la disposizione di tutti i pezzi del gioco.
 - `ChessGameHistory`: rappresenta lo storico delle mosse, in particolare permette anche di ottenere le mosse specifiche 
   per un pezzo.
@@ -74,7 +78,10 @@ quindi potendo reagire di conseguenza.
 I tipi di eventi che vengono generati estendono la classe `Event` e sono:
 - `GameOverEvent`: evento generato quando la partita è terminata per qualsiasi motivo. Esso contiene la causa del 
   termine della partita, modellata dalla classe `GameOverCause` e opzionalmente il vincitore.
-- `PieceMovedEvent`: evento generato sia quando un pezzo viene mosso, sia quando viene effettuata la promozione.
+- `BoardChangedEvent`: evento generato quando la scacchiera è stata modificata, ossia quando un pezzo viene mosso o 
+  quando viene effettuata la promozione di un pedone.
+- `TurnChangedEvent`: evento generato quando il controllo della scacchiera passa ad un altro giocatore. Esso informa
+  l'utente di quale sia il giocatore che ha il controllo della scacchiera.
 - `PromotingPawnEvent`: evento generato quando un pedone deve essere promosso, informando della sua posizione e dei 
   pezzi in cui esso si possa promuovere. Quest'ultimo concetto viene modellato dalla classe `PromotionPiece`.
 - `TimePassedEvent`: evento generato ogni secondo, nel caso la partita sia stata impostata con un vincolo temporale.
