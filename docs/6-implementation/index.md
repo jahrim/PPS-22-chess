@@ -8,7 +8,7 @@ realizzato.
 
 ## [Felice Mirko](mirko/mirko.md)
 
-## Kentpayeva Madina
+## [Kentpayeva Madina](madina/madina.md)
 
 [Back to index](../index.md) |
 [Previous Chapter](../5-detailed-design/index.md) |
