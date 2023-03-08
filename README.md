@@ -1,9 +1,14 @@
 # PPS-22-chess
 
-Project for pps.
+Project for _Paradigmi di Programmazione e Sviluppo_.
 
 System documentation is available at [GitHub Pages](https://jahrim.github.io/PPS-22-chess/).  
 <br/>
+
+## Requirements
+
+To play the game you need to have installed:
+- _**JDK 11+**_.
 
 ### GitHub Release:
 

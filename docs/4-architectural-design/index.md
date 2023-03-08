@@ -41,7 +41,7 @@ sottoscriversi:
 - _TurnChangedEvent_: evento generato per avvisare l'utente che il controllo del gioco è passato a un altro giocatore.
 - _PromotingPawnEvent_: evento generato per avvisare l'utente che un pedone deve essere promosso.
 
-L'engine è un servizio stateful, per cui possiede uno stato che viene modificato in base alle richieste ricevute dagli
+L'engine è un servizio _stateful_, per cui possiede uno stato che viene modificato in base alle richieste ricevute dagli
 utenti. In base a tale stato, le funzionalità esposte dal contratto possono essere abilitate o disabilitate, secondo il
 seguente diagramma degli stati.
 
@@ -69,7 +69,7 @@ scacchiera passa al giocatore successivo.
 Solo nello stato _Game Awaiting Promotion_, è possibile richiedere al servizio di promuovere un pedone. Quando ciò
 accade il controllo della scacchiera passa al giocatore successivo.
 
-## View
+## Application
 
 L'applicazione prevede quattro schermate principali, presentati nei seguenti mockup.
 Per estendibilità, i mockup sono stati realizzati considerando anche i requisiti opzionali.
@@ -79,7 +79,7 @@ Per estendibilità, i mockup sono stati realizzati considerando anche i requisit
 Nella schermata raffigurata, sono presenti quattro pulsanti:
 - _New Game_: quando premuto, visualizza la pagina di configurazione della partita.
 - _Leaderboard_: quando premuto, visualizza la pagina della classifica dei giocatori.
-- _Settings_: quando premuto, visualizza la pagine per le impostazioni grafiche dell'applicazione.
+- _Settings_: quando premuto, visualizza la pagina per le impostazioni grafiche dell'applicazione.
 - _Exit_: quando premuto, termina l'applicazione.
 
 ![Main Menu Page](TODO)
@@ -87,7 +87,7 @@ Nella schermata raffigurata, sono presenti quattro pulsanti:
 ### Game Configuration
 
 Nella schermata seguente, sono presenti vari controlli per permettere di configurare la partita, impostando diversi 
-parametri, come vincoli temporali, modalità di gioco, nomi dei giocatori, difficoltà dell'AI.
+parametri, come vincoli temporali, modalità di gioco, nomi dei giocatori, difficoltà dell'_AI_.
 
 Premendo il pulsante _Start Game_, viene visualizzata la pagina della partita, dopo aver richiesto l'avvio della 
 partita all'engine.
