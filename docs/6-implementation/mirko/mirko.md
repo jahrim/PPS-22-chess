@@ -5,15 +5,13 @@ I file completamente attribuili al sottoscritto sono: `Position`, `File`, `Rank`
 `PromotingPawnEvent`, `PromotionPiece`, `GameConfiguration`, `Player`, `WhitePlayer`, `BlackPlayer`,
 `GameMode`, `TimeConstraint`, `timer`, `TimerManager`, `TimePassedEvent`, `Combinator`,  `CastlingRule`, `CastlingMove`.
 
-Altri file a cui ho collaborato sono: `PrologEngine`, `PrologRule`, `GameConfigurationController` modificato per quanto 
+Altri file a cui ho collaborato sono: `GameConfigurationController` modificato per quanto 
 riguarda il vero e proprio sviluppo delle funzionalità grafiche, ma senza necessità di crearla da zero grazie alla 
 struttura base sviluppata da altri membri del gruppo, `ChessGame` per quanto riguarda lo sviluppo della promozione, 
 della logica relativa alla gestione del tempo, `ChessBoardController` per quanto riguarda l'evidenziamento della 
-mossa di cattura, `LRule` e `KnightRule` per quanto riguarda solo il movimento del cavallo, `DiagonalRule` e 
-`BishopRule` per quanto riguarda solo il movimento dell'alfiere, `AllDirectionsOneStepRule`, `KingMovementRule`, 
-`KingRuleCollection` e `KingRule`, per quanto riguarda solo il movimento del re.
-
-[//]: # (TODO + prolog rules?)
+mossa di cattura, `LRule` e `KnightRule` solo per quanto riguarda il movimento del cavallo, `DiagonalRule` e 
+`BishopRule` solo per quanto riguarda il movimento dell'alfiere, `AllDirectionsOneStepRule`, `KingMovementRule`, 
+`KingRuleCollection` e `KingRule`, solo per quanto riguarda il movimento del re.
 
 Per meglio rappresentare il codice sviluppato, si possono raggruppare i file per gruppi di funzionalità.
 

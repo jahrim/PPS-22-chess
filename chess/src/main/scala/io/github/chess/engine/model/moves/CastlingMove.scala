@@ -7,31 +7,38 @@
 package io.github.chess.engine.model.moves
 
 import io.github.chess.engine.model.board.Position
-import io.github.chess.engine.model.pieces.King
 
 /** Represents the moving from a [[Position]] to another [[Position]]. */
 trait CastlingMove extends Move:
 
+  /**
+   * Returns the [[Position]] where the rook should be before the move.
+   * @return the [[Position]] where the rook should be before the move
+   */
   def rookFromPosition: Position
 
+  /**
+   * Returns the [[Position]] where the rook should be after the move.
+   * @return the [[Position]] where the rook should be after the move
+   */
   def rookToPosition: Position
 
-/** Factory for [[Move]] instances. */
+/** Factory for [[CastlingMove]] instances. */
 object CastlingMove:
   /**
-   * Creates a castling move, using the two needed positions.
-   * @param from source [[Position]]
-   * @param to   target [[Position]]
-   * @param rookFromPosition rook start position
-   * @param rookToPosition rook target position
-   * @return a new [[Move]]
+   * Creates a castling move, using the needed positions.
+   * @param kingFrom king start [[Position]]
+   * @param kingTo king target [[Position]]
+   * @param rookFromPosition rook start [[Position]]
+   * @param rookToPosition rook target [[Position]]
+   * @return a new [[CastlingMove]]
    */
   def apply(
-      from: Position,
-      to: Position,
+      kingFrom: Position,
+      kingTo: Position,
       rookFromPosition: Position,
       rookToPosition: Position
-  ): CastlingMove = CastlingMoveImpl(from, to, rookFromPosition, rookToPosition)
+  ): CastlingMove = CastlingMoveImpl(kingFrom, kingTo, rookFromPosition, rookToPosition)
 
   private case class CastlingMoveImpl(
       override val from: Position,
