@@ -49,7 +49,7 @@ alle seguenti informazioni:
 - `ChessBoard`: rappresenta la scacchiera contenente quindi la disposizione di tutti i pezzi del gioco.
 - `ChessGameHistory`: rappresenta lo storico delle mosse, in particolare permette anche di ottenere le mosse specifiche 
   per un pezzo.
-- `Team`: rappresenta la squadra **White** o **Black**. In questo caso viene utilizzata per rappresentare la squadra di 
+- `Team`: rappresenta la squadra **White** o **Black**. In questo caso viene utilizzata per rappresentare la squadra di
   turno.
 - `GameConfiguration`: rappresenta la configurazione della partita.
 
@@ -61,7 +61,27 @@ Questi sono caratterizzati da un `Team` di appartenenza e da una propria regola 
 Quest'ultima offre la possibilità di ritrovamento di mosse disponibili, a partire da una posizione data e dallo 
 stato del gioco.
 
-... rules
+Il ritrovamento delle mosse per ogni pezzo è possibile grazie alla presenza dell'insieme di regole associate.
+Queste regole sono strutturate in maniera "modulare", che permette l'assemblaggio di mosse specifiche a partire da 
+quelle più generali.
+Di seguito è fornito il diagramma che mostra i legami che esistono tra le regole attualmente presenti.
+
+[Diagramma delle regole dei pezzi](../images/rules_with_prolog.svg)
+
+Come si può osservare, la maggior parte delle dipendenze è di _estensione_/_realizzazione_, il che permette di avere 
+regole generali, che mano a mano diventano più specifiche, rendendo possibile un eventuale riutilizzo.
+
+È importante notare come tutte le classi d'interfaccia nel diagramma, esclusa l'interfaccia principale `ChessRule`, 
+sono effettivamente dei _mixin_, che permettono di limitare o trasformare le mosse secondo una particolare logica.
+Ad esempio, il _mixin_ `AvoidAlliesRule` permette di limitare le mosse trovate, per escludere quelle che causerebbero 
+la cattura di un pezzo alleato.
+
+Per dare una maggiore enfasi al fatto che i pezzi si muovo secondo delle specifiche **regole**, è stato deciso
+d'implementare le regole di spostamento dell'_Alfiere_ e della _Torre_ utilizzando il linguaggio **Prolog**.
+In particolare sono state sviluppate in _Prolog_ la parte delle regole relativa al ritrovamento delle posizioni 
+nelle singole direzioni.
+Queste posizioni, vengono successivamente analizzate per limitarle alle posizioni all'interno della scacchiera e 
+infine processate attraverso le regole adeguate, per limitarle solo a quelle accettabili.
 
 A partita avviata, è possibile ottenere l'insieme delle mosse disponibili da una specifica posizione.
 Una mossa è rappresentata dalla classe `Move`, la quale contiene la `Position` di partenza e quella di arrivo.

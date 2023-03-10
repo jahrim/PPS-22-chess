@@ -1,0 +1,991 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='-23 -29 1325 1070' xmlns:xlink='http://www.w3.org/1999/xlink' width='1325.0px' font-size='13' font-family='Arial, LiberationSans' version='1.1' height='1070.0px'>
+  <defs>
+<style type='text/css'><![CDATA[svg text {text-rendering: geometricPrecision;}]]></style>    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='f62c35ea-1f57-4a6c-9b05-a82d68a26152' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='a77a74d6-8e16-4d56-a43c-216febe0de81' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='920f4f31-20e8-4190-8465-0b8a1514104b' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='19ebd055-700c-43ec-89e5-85435eb1db0c' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='5f4f4201-9466-4127-a10f-4e6d632f4336' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='639e6c71-f47b-4c9c-9a56-e29b205c0eb8' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='9278e197-3116-49f8-ae7f-0c002e6fedf5' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='f2809d91-6d4b-45b7-8bce-e5921c765255' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='f7714b40-ff8c-4a38-a08e-1d8d3b4295de' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='0279eaf1-81a8-4148-a4ab-23c23b363b31' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='ec9b9106-f45e-4e20-b7fc-7085a166e211' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='3e05425d-dfc3-435a-8c16-dd4b9f9dfaf9' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='0123ca2f-f945-49e6-be39-a7eaa4fd08ee' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='645cd60d-77aa-4737-8cff-191f264cc825' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='4ced38ad-fba1-47c4-81cd-015f7ba854ea' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='6c46bae1-e270-4eca-af31-e5c116632065' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='8ae0ac33-f334-4ae6-9d1e-c594e9c6d21a' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='bdc0a30e-018b-42a3-a222-06dc7d4b1b07' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='c7d95af1-fd85-4691-8d63-66fd9ad553bd' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='2b64bc45-13b7-434b-b3e1-bb82c0743c8a' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='a87a9bbb-af85-4725-9b45-bb53bf4f7adc' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='edf723d8-5a43-4c0f-baa7-d172db295b6f' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='6930bc0d-2ceb-4591-abc7-165224fcbdce' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='14f606f2-c440-4dca-984b-fb5edbb82449' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='a2d7adaa-1484-4dd4-8f10-cf47349a49a7' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='ac9298a7-9e3a-4498-b830-6e7d7c1a783a' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='bd9eb86a-88b9-4f22-b084-4e0a8b9c0e5f' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='7ce6ccde-4d5b-49a8-a587-6daa12f328d6' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='da6dfb78-0f47-45a7-9380-ea0aae743de3' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='05a2117e-33b4-4d35-a6bc-5a6c0124305d' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='1b3ad2a5-6ff8-4b48-88ee-4603d519277c' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='75499d09-9019-4135-9a4a-9b203b9d67a9' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='facded0b-dbe6-4d27-932b-3f7bf1d5e3a2' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='76d03da9-ce6a-4155-a0c7-45b158c7b69f' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='cfbb6a15-af73-4237-ac67-70ba0356fcd1' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='453cbf9f-80f8-4781-b7ec-8e17db8cfec6' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='85349f6e-c26a-44fd-be2d-af635a7673b7' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='ee3b8e78-169a-42d4-809d-417b977632af' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='f53b3041-d8e8-4791-bffe-afb9c1714f3b' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='f4f8d700-d277-4471-8722-5937f27fabe2' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='c78174f3-ae61-40c6-b74b-3f66875a3bcb' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(238, 238, 238)'/>
+    </linearGradient>
+  </defs>
+  <desc>ClassDiagram</desc>
+  <g transform='translate(628.0,537.0)' id='_UmoQwr50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='138.0px' y='0.0' stroke-width='1.0' fill='url(#f62c35ea-1f57-4a6c-9b05-a82d68a26152)' stroke='rgb(187, 187, 187)' look='allInOne' height='42.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='69.0' y='18.0' font-size='12' fill='rgb(105, 105, 105)'>« Interface »</text>
+    <text font-weight='bold' text-anchor='middle' x='69.0' y='35.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>EnPassantFilterRule</text>
+    <line y1='42.0' x1='0.0' y2='42.0' x2='138.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(454.0,396.0)' id='_UmoQw750Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='324.0px' y='0.0' stroke-width='1.0' fill='url(#a77a74d6-8e16-4d56-a43c-216febe0de81)' stroke='rgb(187, 187, 187)' look='allInOne' height='70.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='162.0' y='18.0' font-size='12' fill='rgb(105, 105, 105)'>« Interface »</text>
+    <text font-weight='bold' text-anchor='middle' x='162.0' y='35.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>ChessRule</text>
+    <line y1='42.0' x1='0.0' y2='42.0' x2='324.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+    <g transform='translate(0.0,42.0)' id='_UmoQxL50Ee2iMaDbHjOx0Q'>
+      <image x='4.0' width='16.0' y='5.0' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAG8dAAB6pAAA9NYAAIZwAAB37gAA9bAAADqjAAAVsi1zQqwAAAMAUExURQAAAP///8HBw6Ky1rfD3Ymh0au73Ku62Yag0aq72bPB27fD2b7J3YWh0Ieiz4ahzomk0Z2z2Ki72bPD3L7J23eXyIajz7TE27PD2rTD2maPxbvK38PP32OMwGSMvYamz7PE2LXE10V/vkh/v0d/vEiAvUh+vFGEu1OEvGaEpqC40kaBvUWAukd/ukmBvGGQvmSGqWOEpZ+61QA9cwA8cgA7cQI7cAM8czZ0rT16sEF9s0J9tUSBuE6GuVGFt2OGpmSHp2OEo2WGpWSFpAA8cAA9cAA7bwA8bgA9bgA7bQI8bgI8bD18slCGtWKFo2OGpGSHpQA9bAA7aDR3rAWBSUOcbHGxdf///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADH1d5AAAABYdFJOU////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wB4m8IIAAAA2UlEQVR42lSPzUoCURhAz/0cUrhjTYzuIu0PicZFy57ABxjQdxR8iQQJYmrTDYJZNEZQC2fGHPIndVyUkGdz4OyO6rCL/Mqkj//Ce8iR8Uge/sJzNUqG+etocH4PqA6TQEpfUzWvlBoOFDyKrsnOLnQi1weAEKRG37iTWWs8iJ9AqN9Ns/0sqL3oVf8YCl7UGO05lbKTDRer0FxZXNL8CE/tNMaHHgLx9+zkU9++gUDXgqK45Z8YH8DHAh3Z9tIGAWFtATUID2GNykFtb7vgq7y3vYV2G3JgMwDzTEnCPC8r9AAAAABJRU5ErkJggg==' height='16.0'/>
+      <text x='22.0' y='16.0' font-size='12' fill='rgb(105, 105, 105)'></text>
+      <text text-anchor='start' x='24.0' y='16.0' font-size='13' font-style='normal' fill='rgb(0, 0, 0)'>findMoves(Position, ChessGameStatus): Set[Move]</text>
+    </g>
+  </g>
+  <g transform='translate(1144.0,410.0)' id='_UmoQxb50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='111.0px' y='0.0' stroke-width='1.0' fill='url(#920f4f31-20e8-4190-8465-0b8a1514104b)' stroke='rgb(187, 187, 187)' look='allInOne' height='42.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='55.5' y='18.0' font-size='12' fill='rgb(105, 105, 105)'>« Interface »</text>
+    <text font-weight='bold' text-anchor='middle' x='55.5' y='35.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>AvoidAlliesRule</text>
+    <line y1='42.0' x1='0.0' y2='42.0' x2='111.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(962.0,410.0)' id='_UmoQxr50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='141.0px' y='0.0' stroke-width='1.0' fill='url(#19ebd055-700c-43ec-89e5-85435eb1db0c)' stroke='rgb(187, 187, 187)' look='allInOne' height='42.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='70.5' y='18.0' font-size='12' fill='rgb(105, 105, 105)'>« Interface »</text>
+    <text font-weight='bold' text-anchor='middle' x='70.5' y='35.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>CaptureMoveMapper</text>
+    <line y1='42.0' x1='0.0' y2='42.0' x2='141.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(318.0,537.0)' id='_UmoQx750Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='134.0px' y='0.0' stroke-width='1.0' fill='url(#5f4f4201-9466-4127-a10f-4e6d632f4336)' stroke='rgb(187, 187, 187)' look='allInOne' height='42.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='67.0' y='18.0' font-size='12' fill='rgb(105, 105, 105)'>« Interface »</text>
+    <text font-weight='bold' text-anchor='middle' x='67.0' y='35.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>AvoidAllPiecesRule</text>
+    <line y1='42.0' x1='0.0' y2='42.0' x2='134.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(1129.0,537.0)' id='_UmoQyL50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='143.0px' y='0.0' stroke-width='1.0' fill='url(#639e6c71-f47b-4c9c-9a56-e29b205c0eb8)' stroke='rgb(187, 187, 187)' look='allInOne' height='42.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='71.5' y='18.0' font-size='12' fill='rgb(105, 105, 105)'>« Interface »</text>
+    <text font-weight='bold' text-anchor='middle' x='71.5' y='35.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>OnlyCaptureEnemies</text>
+    <line y1='42.0' x1='0.0' y2='42.0' x2='143.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(663.0,818.0)' id='_UmoQ3r50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='107.0px' y='0.0' stroke-width='1.0' fill='url(#9278e197-3116-49f8-ae7f-0c002e6fedf5)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='53.5' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>EnPassantRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='107.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(220.0,615.0)' id='_UmoQ5r50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='107.0px' y='0.0' stroke-width='1.0' fill='url(#f2809d91-6d4b-45b7-8bce-e5921c765255)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='53.5' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>SingleStepRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='107.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(438.0,615.0)' id='_UmoQ7r50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='94.0px' y='0.0' stroke-width='1.0' fill='url(#f7714b40-ff8c-4a38-a08e-1d8d3b4295de)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='47.0' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>TwoStepRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='94.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(716.0,615.0)' id='_Umo30b50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='136.0px' y='0.0' stroke-width='1.0' fill='url(#0279eaf1-81a8-4148-a4ab-23c23b363b31)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='68.0' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>PawnCaptureMoves</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='136.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(386.0,816.0)' id='_Umo32b50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='138.0px' y='0.0' stroke-width='1.0' fill='url(#ec9b9106-f45e-4e20-b7fc-7085a166e211)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='69.0' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>PawnMovementRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='138.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(547.0,927.0)' id='_Umo34b50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='137.0px' y='0.0' stroke-width='1.0' fill='url(#3e05425d-dfc3-435a-8c16-dd4b9f9dfaf9)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='68.5' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>PawnRuleCollection</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='137.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(265.0,710.0)' id='_Umo36b50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='117.0px' y='0.0' stroke-width='1.0' fill='url(#0123ca2f-f945-49e6-be39-a7eaa4fd08ee)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='58.5' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>ForwardOneRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='117.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(396.0,710.0)' id='_Umo38b50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='117.0px' y='0.0' stroke-width='1.0' fill='url(#645cd60d-77aa-4737-8cff-191f264cc825)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='58.5' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>DoubleMoveRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='117.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(787.0,818.0)' id='_Umo3-b50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='123.0px' y='0.0' stroke-width='1.0' fill='url(#4ced38ad-fba1-47c4-81cd-015f7ba854ea)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='61.5' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>PawnCaptureRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='123.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(579.0,985.0)' id='_Umo4Ab50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='74.0px' y='0.0' stroke-width='1.0' fill='url(#6c46bae1-e270-4eca-af31-e5c116632065)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='37.0' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>PawnRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='74.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(633.0,123.0)' id='_Umo4TL50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='81.0px' y='0.0' stroke-width='1.0' fill='url(#8ae0ac33-f334-4ae6-9d1e-c594e9c6d21a)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='40.5' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>KnightRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='81.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(330.0,315.0)' id='_Umo4Tb50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='107.0px' y='0.0' stroke-width='1.0' fill='url(#bdc0a30e-018b-42a3-a222-06dc7d4b1b07)' stroke='rgb(187, 187, 187)' look='allInOne' height='42.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='53.5' y='18.0' font-size='12' fill='rgb(105, 105, 105)'>« Interface »</text>
+    <text font-weight='bold' text-anchor='middle' x='53.5' y='35.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>DirectionalRule</text>
+    <line y1='42.0' x1='0.0' y2='42.0' x2='107.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(644.0,323.0)' id='_Umo4Tr50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='60.0px' y='0.0' stroke-width='1.0' fill='url(#c7d95af1-fd85-4691-8d63-66fd9ad553bd)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='30.0' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>LRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='60.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(7.0,432.0)' id='_Umo4Xb50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='111.0px' y='0.0' stroke-width='1.0' fill='url(#2b64bc45-13b7-434b-b3e1-bb82c0743c8a)' stroke='rgb(187, 187, 187)' look='allInOne' height='42.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='55.5' y='18.0' font-size='12' fill='rgb(105, 105, 105)'>« Interface »</text>
+    <text font-weight='bold' text-anchor='middle' x='55.5' y='35.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>AvoidSelfCheck</text>
+    <line y1='42.0' x1='0.0' y2='42.0' x2='111.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(265.0,251.0)' id='_Umo4bL50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='95.0px' y='0.0' stroke-width='1.0' fill='url(#a87a9bbb-af85-4725-9b45-bb53bf4f7adc)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='47.5' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>DiagonalRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='95.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(411.0,251.0)' id='_Umo4bb50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='89.0px' y='0.0' stroke-width='1.0' fill='url(#edf723d8-5a43-4c0f-baa7-d172db295b6f)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='44.5' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>StraightRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='89.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(324.0,180.0)' id='_Umo4br50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='120.0px' y='0.0' stroke-width='1.0' fill='url(#6930bc0d-2ceb-4591-abc7-165224fcbdce)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='60.0' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>AllDirectionsRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='120.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(449.0,123.0)' id='_Umo4jr50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='73.0px' y='0.0' stroke-width='1.0' fill='url(#14f606f2-c440-4dca-984b-fb5edbb82449)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='36.5' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>RookRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='73.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(220.0,123.0)' id='_Umo4lr50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='84.0px' y='0.0' stroke-width='1.0' fill='url(#a2d7adaa-1484-4dd4-8f10-cf47349a49a7)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='42.0' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>BishopRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='84.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(344.0,123.0)' id='_Umo4nr50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='81.0px' y='0.0' stroke-width='1.0' fill='url(#ac9298a7-9e3a-4498-b830-6e7d7c1a783a)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='40.5' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>QueenRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='81.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(842.0,373.0)' id='_Umo4pr50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='146.0px' y='0.0' stroke-width='1.0' fill='url(#bd9eb86a-88b9-4f22-b084-4e0a8b9c0e5f)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='73.0' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>AllDirectionsOneStep</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='146.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(849.0,323.0)' id='_Umo4p750Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='133.0px' y='0.0' stroke-width='1.0' fill='url(#7ce6ccde-4d5b-49a8-a587-6daa12f328d6)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='66.5' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>KingMovementRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='133.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(716.0,323.0)' id='_Umo4qL50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='91.0px' y='0.0' stroke-width='1.0' fill='url(#da6dfb78-0f47-45a7-9380-ea0aae743de3)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='45.5' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>CastlingRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='91.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(770.0,251.0)' id='_Umo4qb50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='132.0px' y='0.0' stroke-width='1.0' fill='url(#05a2117e-33b4-4d35-a6bc-5a6c0124305d)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='66.0' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>KingRuleCollection</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='132.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(801.0,123.0)' id='_Umo4qr50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='69.0px' y='0.0' stroke-width='1.0' fill='url(#1b3ad2a5-6ff8-4b48-88ee-4603d519277c)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='34.5' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>KingRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='69.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(549.0,302.0)' id='_Umo5Jb50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='90.0px' y='0.0' stroke-width='1.0' fill='url(#75499d09-9019-4135-9a4a-9b203b9d67a9)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='45.0' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>SPrologRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='90.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(547.0,180.0)' id='_Umo5Jr50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='91.0px' y='0.0' stroke-width='1.0' fill='url(#facded0b-dbe6-4d27-932b-3f7bf1d5e3a2)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='45.5' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>NPrologRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='91.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(547.0,240.0)' id='_Umo5J750Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='94.0px' y='0.0' stroke-width='1.0' fill='url(#76d03da9-ce6a-4155-a0c7-45b158c7b69f)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='47.0' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>WPrologRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='94.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(466.0,359.0)' id='_Umo5KL50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='90.0px' y='0.0' stroke-width='1.0' fill='url(#cfbb6a15-af73-4237-ac67-70ba0356fcd1)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='45.0' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>EPrologRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='90.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(129.0,180.0)' id='_Umo5Pb50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='103.0px' y='0.0' stroke-width='1.0' fill='url(#453cbf9f-80f8-4781-b7ec-8e17db8cfec6)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='51.5' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>NWPrologRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='103.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(130.0,302.0)' id='_Umo5Pr50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='99.0px' y='0.0' stroke-width='1.0' fill='url(#85349f6e-c26a-44fd-be2d-af635a7673b7)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='49.5' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>NEPrologRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='99.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(129.0,386.0)' id='_Umo5P750Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='99.0px' y='0.0' stroke-width='1.0' fill='url(#ee3b8e78-169a-42d4-809d-417b977632af)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='49.5' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>SEPrologRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='99.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(242.0,386.0)' id='_Umo5QL50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='102.0px' y='0.0' stroke-width='1.0' fill='url(#f53b3041-d8e8-4791-bffe-afb9c1714f3b)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='51.0' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>SWPrologRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='102.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(932.0,516.0)' id='_Umpe4r50Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='159.0px' y='0.0' stroke-width='1.0' fill='url(#f4f8d700-d277-4471-8722-5937f27fabe2)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='79.5' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>WhitePawnCaptureRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='159.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(931.0,615.0)' id='_Umpe4750Ee2iMaDbHjOx0Q'>
+    <rect rx='3.0' ry='3.0' x='0.0' width='158.0px' y='0.0' stroke-width='1.0' fill='url(#c78174f3-ae61-40c6-b74b-3f66875a3bcb)' stroke='rgb(187, 187, 187)' look='allInOne' height='26.0px'/>
+    <text font-weight='bold' text-anchor='middle' x='79.0' y='19.0' font-size='13' font-style='normal' fill='rgb(3, 54, 86)'>BlackPawnCaptureRule</text>
+    <line y1='26.0' x1='0.0' y2='26.0' x2='158.0' stroke-width='1.0' stroke='rgb(187, 187, 187)' look='border'/>
+  </g>
+  <g transform='translate(379.0,771.0)' id='_Umo4DL50Ee2iMaDbHjOx0Q'>
+    <text text-anchor='middle' x='10.5' y='16.0' font-size='13' fill='rgb(0, 0, 0)'/>
+  </g>
+  <g transform='translate(445.0,771.0)' id='_Umo4Eb50Ee2iMaDbHjOx0Q'>
+    <text text-anchor='middle' x='10.5' y='16.0' font-size='13' fill='rgb(0, 0, 0)'/>
+  </g>
+  <g transform='translate(656.0,881.0)' id='_Umo4Fr50Ee2iMaDbHjOx0Q'>
+    <text text-anchor='middle' x='10.5' y='16.0' font-size='13' fill='rgb(0, 0, 0)'/>
+  </g>
+  <g transform='translate(722.0,881.0)' id='_Umo4G750Ee2iMaDbHjOx0Q'>
+    <text text-anchor='middle' x='10.5' y='16.0' font-size='13' fill='rgb(0, 0, 0)'/>
+  </g>
+  <g transform='translate(525.0,880.0)' id='_Umo4IL50Ee2iMaDbHjOx0Q'>
+    <text text-anchor='middle' x='10.5' y='16.0' font-size='13' fill='rgb(0, 0, 0)'/>
+  </g>
+  <g transform='translate(410.0,224.0)' id='_Umo4h750Ee2iMaDbHjOx0Q'>
+    <text text-anchor='middle' x='10.5' y='16.0' font-size='13' fill='rgb(0, 0, 0)'/>
+  </g>
+  <g transform='translate(339.0,224.0)' id='_Umo4jL50Ee2iMaDbHjOx0Q'>
+    <text text-anchor='middle' x='10.5' y='16.0' font-size='13' fill='rgb(0, 0, 0)'/>
+  </g>
+  <g transform='translate(866.0,295.0)' id='_Umo4yr50Ee2iMaDbHjOx0Q'>
+    <text text-anchor='middle' x='10.5' y='16.0' font-size='13' fill='rgb(0, 0, 0)'/>
+  </g>
+  <g transform='translate(789.0,295.0)' id='_Umo4z750Ee2iMaDbHjOx0Q'>
+    <text text-anchor='middle' x='10.5' y='16.0' font-size='13' fill='rgb(0, 0, 0)'/>
+  </g>
+  <g transform='translate(514.0,224.0)' id='_Umo5LL50Ee2iMaDbHjOx0Q'>
+    <text text-anchor='middle' x='10.5' y='16.0' font-size='13' fill='rgb(0, 0, 0)'/>
+  </g>
+  <g transform='translate(514.0,253.0)' id='_Umo5Mb50Ee2iMaDbHjOx0Q'>
+    <text text-anchor='middle' x='10.5' y='16.0' font-size='13' fill='rgb(0, 0, 0)'/>
+  </g>
+  <g transform='translate(473.0,313.0)' id='_Umo5Nr50Ee2iMaDbHjOx0Q'>
+    <text text-anchor='middle' x='10.5' y='16.0' font-size='13' fill='rgb(0, 0, 0)'/>
+  </g>
+  <g transform='translate(517.0,286.0)' id='_Umo5O750Ee2iMaDbHjOx0Q'>
+    <text text-anchor='middle' x='10.5' y='16.0' font-size='13' fill='rgb(0, 0, 0)'/>
+  </g>
+  <g transform='translate(237.0,224.0)' id='_Umo5RL50Ee2iMaDbHjOx0Q'>
+    <text text-anchor='middle' x='10.5' y='16.0' font-size='13' fill='rgb(0, 0, 0)'/>
+  </g>
+  <g transform='translate(236.0,285.0)' id='_Umo5Sb50Ee2iMaDbHjOx0Q'>
+    <text text-anchor='middle' x='10.5' y='16.0' font-size='13' fill='rgb(0, 0, 0)'/>
+  </g>
+  <g transform='translate(236.0,327.0)' id='_Umo5Tr50Ee2iMaDbHjOx0Q'>
+    <text text-anchor='middle' x='10.5' y='16.0' font-size='13' fill='rgb(0, 0, 0)'/>
+  </g>
+  <g transform='translate(293.0,327.0)' id='_Umpe4L50Ee2iMaDbHjOx0Q'>
+    <text text-anchor='middle' x='10.5' y='16.0' font-size='13' fill='rgb(0, 0, 0)'/>
+  </g>
+  <g transform='translate(888.0,574.0)' id='_Umpe5750Ee2iMaDbHjOx0Q'>
+    <text text-anchor='middle' x='10.5' y='16.0' font-size='13' fill='rgb(0, 0, 0)'/>
+  </g>
+  <g transform='translate(882.0,623.0)' id='_Umpe7L50Ee2iMaDbHjOx0Q'>
+    <text text-anchor='middle' x='10.5' y='16.0' font-size='13' fill='rgb(0, 0, 0)'/>
+  </g>
+  <text text-anchor='middle' x='415.0' y='773.0' fill='rgb(0, 0, 0)'>« use »</text>
+  <text text-anchor='middle' x='487.0' y='779.0' fill='rgb(0, 0, 0)'>« use »</text>
+  <text text-anchor='middle' x='654.0' y='874.0' fill='rgb(0, 0, 0)'>« use »</text>
+  <text text-anchor='middle' x='745.0' y='904.0' fill='rgb(0, 0, 0)'>« use »</text>
+  <text text-anchor='middle' x='555.0' y='881.0' fill='rgb(0, 0, 0)'>« use »</text>
+  <text text-anchor='middle' x='440.0' y='226.0' fill='rgb(0, 0, 0)'>« use »</text>
+  <text text-anchor='middle' x='325.0' y='223.0' fill='rgb(0, 0, 0)'>« use »</text>
+  <text text-anchor='middle' x='901.0' y='299.0' fill='rgb(0, 0, 0)'>« use »</text>
+  <text text-anchor='middle' x='778.0' y='297.0' fill='rgb(0, 0, 0)'>« use »</text>
+  <text text-anchor='middle' x='512.0' y='215.0' fill='rgb(0, 0, 0)'>« use »</text>
+  <text text-anchor='middle' x='528.0' y='245.0' fill='rgb(0, 0, 0)'>« use »</text>
+  <text text-anchor='middle' x='526.0' y='342.0' fill='rgb(0, 0, 0)'>« use »</text>
+  <text text-anchor='middle' x='550.0' y='288.0' fill='rgb(0, 0, 0)'>« use »</text>
+  <text text-anchor='middle' x='249.0' y='219.0' fill='rgb(0, 0, 0)'>« use »</text>
+  <text text-anchor='middle' x='223.0' y='283.0' fill='rgb(0, 0, 0)'>« use »</text>
+  <text text-anchor='middle' x='180.0' y='375.0' fill='rgb(0, 0, 0)'>« use »</text>
+  <text text-anchor='middle' x='271.0' y='378.0' fill='rgb(0, 0, 0)'>« use »</text>
+  <text text-anchor='middle' x='878.0' y='575.0' fill='rgb(0, 0, 0)'>« use »</text>
+  <text text-anchor='middle' x='893.0' y='647.0' fill='rgb(0, 0, 0)'>« use »</text>
+  <g id='_Umpe8r50Ee2iMaDbHjOx0Q'>
+    <line y1='537.0' x1='697.0' y2='501.0' x2='697.0' id='_UmoQy750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_Umpe8r50Ee2iMaDbHjOx0Q'>
+    <line y1='501.0' x1='697.0' y2='502.0' x2='697.0' id='_UmoQzL50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_Umpe8r50Ee2iMaDbHjOx0Q'>
+    <line y1='502.0' x1='697.0' y2='466.0' x2='697.0' id='_UmoQzb50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(697.0,466.0) rotate(-0.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_Umpe_r50Ee2iMaDbHjOx0Q'>
+    <line y1='431.0' x1='962.0' y2='431.0' x2='870.0' id='_UmoQ0r50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_Umpe_r50Ee2iMaDbHjOx0Q'>
+    <line y1='431.0' x1='870.0' y2='431.0' x2='870.0' id='_UmoQ0750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_Umpe_r50Ee2iMaDbHjOx0Q'>
+    <line y1='431.0' x1='870.0' y2='431.0' x2='778.0' id='_UmoQ1L50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(778.0,431.0) rotate(-90.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfAL50Ee2iMaDbHjOx0Q'>
+    <line y1='537.0' x1='386.0' y2='520.0' x2='386.0' id='_UmoQ2b50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfAL50Ee2iMaDbHjOx0Q'>
+    <line y1='520.0' x1='386.0' y2='521.0' x2='529.0' id='_UmoQ2r50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfAL50Ee2iMaDbHjOx0Q'>
+    <line y1='521.0' x1='529.0' y2='466.0' x2='529.0' id='_UmoQ2750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(529.0,466.0) rotate(-0.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfBb50Ee2iMaDbHjOx0Q'>
+    <line y1='818.0' x1='692.0' y2='698.0' x2='692.0' stroke-dasharray='7, 3' id='_UmoQ4b50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfBb50Ee2iMaDbHjOx0Q'>
+    <line y1='698.0' x1='692.0' y2='699.0' x2='692.0' stroke-dasharray='7, 3' id='_UmoQ4r50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfBb50Ee2iMaDbHjOx0Q'>
+    <line y1='699.0' x1='692.0' y2='579.0' x2='692.0' stroke-dasharray='7, 3' id='_UmoQ4750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(692.0,579.0) rotate(-0.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfB750Ee2iMaDbHjOx0Q'>
+    <line y1='615.0' x1='283.0' y2='498.0' x2='283.0' stroke-dasharray='7, 3' id='_UmoQ6b50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfB750Ee2iMaDbHjOx0Q'>
+    <line y1='498.0' x1='283.0' y2='499.0' x2='489.0' stroke-dasharray='7, 3' id='_UmoQ6r50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfB750Ee2iMaDbHjOx0Q'>
+    <line y1='499.0' x1='489.0' y2='466.0' x2='489.0' stroke-dasharray='7, 3' id='_UmoQ6750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(489.0,466.0) rotate(-0.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfCb50Ee2iMaDbHjOx0Q'>
+    <line y1='626.0' x1='532.0' y2='626.0' x2='564.0' stroke-dasharray='7, 3' id='_UmoQ8b50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfCb50Ee2iMaDbHjOx0Q'>
+    <line y1='626.0' x1='564.0' y2='541.0' x2='564.0' stroke-dasharray='7, 3' id='_UmoQ8r50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfCb50Ee2iMaDbHjOx0Q'>
+    <line y1='541.0' x1='564.0' y2='466.0' x2='564.0' stroke-dasharray='7, 3' id='_UmoQ8750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(564.0,466.0) rotate(-0.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfC750Ee2iMaDbHjOx0Q'>
+    <line y1='615.0' x1='813.0' y2='540.0' x2='813.0' stroke-dasharray='7, 3' id='_Umo31L50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfC750Ee2iMaDbHjOx0Q'>
+    <line y1='540.0' x1='813.0' y2='451.0' x2='813.0' stroke-dasharray='7, 3' id='_Umo31b50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfC750Ee2iMaDbHjOx0Q'>
+    <line y1='451.0' x1='813.0' y2='451.0' x2='778.0' stroke-dasharray='7, 3' id='_Umo31r50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(778.0,451.0) rotate(-90.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfDb50Ee2iMaDbHjOx0Q'>
+    <line y1='831.0' x1='524.0' y2='831.0' x2='586.0' stroke-dasharray='7, 3' id='_Umo33L50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfDb50Ee2iMaDbHjOx0Q'>
+    <line y1='831.0' x1='586.0' y2='641.0' x2='586.0' stroke-dasharray='7, 3' id='_Umo33b50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfDb50Ee2iMaDbHjOx0Q'>
+    <line y1='641.0' x1='586.0' y2='466.0' x2='586.0' stroke-dasharray='7, 3' id='_Umo33r50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(586.0,466.0) rotate(-0.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfD750Ee2iMaDbHjOx0Q'>
+    <line y1='927.0' x1='614.0' y2='696.0' x2='614.0' stroke-dasharray='7, 3' id='_Umo35L50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfD750Ee2iMaDbHjOx0Q'>
+    <line y1='696.0' x1='614.0' y2='697.0' x2='614.0' stroke-dasharray='7, 3' id='_Umo35b50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfD750Ee2iMaDbHjOx0Q'>
+    <line y1='697.0' x1='614.0' y2='466.0' x2='614.0' stroke-dasharray='7, 3' id='_Umo35r50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(614.0,466.0) rotate(-0.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfEb50Ee2iMaDbHjOx0Q'>
+    <line y1='710.0' x1='295.0' y2='675.0' x2='295.0' id='_Umo37L50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfEb50Ee2iMaDbHjOx0Q'>
+    <line y1='675.0' x1='295.0' y2='676.0' x2='295.0' id='_Umo37b50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfEb50Ee2iMaDbHjOx0Q'>
+    <line y1='676.0' x1='295.0' y2='641.0' x2='295.0' id='_Umo37r50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(295.0,641.0) rotate(-0.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfFL50Ee2iMaDbHjOx0Q'>
+    <line y1='710.0' x1='475.0' y2='675.0' x2='475.0' id='_Umo39L50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfFL50Ee2iMaDbHjOx0Q'>
+    <line y1='675.0' x1='475.0' y2='676.0' x2='475.0' id='_Umo39b50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfFL50Ee2iMaDbHjOx0Q'>
+    <line y1='676.0' x1='475.0' y2='641.0' x2='475.0' id='_Umo39r50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(475.0,641.0) rotate(-0.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfF750Ee2iMaDbHjOx0Q'>
+    <line y1='818.0' x1='819.0' y2='729.0' x2='819.0' id='_Umo3_L50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfF750Ee2iMaDbHjOx0Q'>
+    <line y1='729.0' x1='819.0' y2='730.0' x2='819.0' id='_Umo3_b50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfF750Ee2iMaDbHjOx0Q'>
+    <line y1='730.0' x1='819.0' y2='641.0' x2='819.0' id='_Umo3_r50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(819.0,641.0) rotate(-0.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfGr50Ee2iMaDbHjOx0Q'>
+    <line y1='985.0' x1='616.0' y2='969.0' x2='616.0' id='_Umo4BL50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfGr50Ee2iMaDbHjOx0Q'>
+    <line y1='969.0' x1='616.0' y2='969.0' x2='616.0' id='_Umo4Bb50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfGr50Ee2iMaDbHjOx0Q'>
+    <line y1='969.0' x1='616.0' y2='953.0' x2='616.0' id='_Umo4Br50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(616.0,953.0) rotate(-0.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfHL50Ee2iMaDbHjOx0Q'>
+    <line y1='816.0' x1='438.0' y2='736.0' x2='340.0' stroke-dasharray='7, 3' id='_Umo4C750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polyline transform='translate(340.0,736.0) rotate(-50.77432590266328)' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='-5.0,10.0 0.0,0.0 5.0,10.0'/>
+  </g>
+  <g id='_UmpfHb50Ee2iMaDbHjOx0Q'>
+    <line y1='816.0' x1='455.0' y2='736.0' x2='455.0' stroke-dasharray='7, 3' id='_Umo4EL50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polyline transform='translate(455.0,736.0) rotate(-0.0)' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='-5.0,10.0 0.0,0.0 5.0,10.0'/>
+  </g>
+  <g id='_UmpfHr50Ee2iMaDbHjOx0Q'>
+    <line y1='927.0' x1='628.0' y2='844.0' x2='704.0' stroke-dasharray='7, 3' id='_Umo4Fb50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polyline transform='translate(704.0,844.0) rotate(42.47917209228982)' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='-5.0,10.0 0.0,0.0 5.0,10.0'/>
+  </g>
+  <g id='_UmpfH750Ee2iMaDbHjOx0Q'>
+    <line y1='927.0' x1='643.0' y2='844.0' x2='821.0' stroke-dasharray='7, 3' id='_Umo4Gr50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polyline transform='translate(821.0,844.0) rotate(65.0007305691796)' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='-5.0,10.0 0.0,0.0 5.0,10.0'/>
+  </g>
+  <g id='_UmpfIL50Ee2iMaDbHjOx0Q'>
+    <line y1='927.0' x1='597.0' y2='842.0' x2='473.0' stroke-dasharray='7, 3' id='_Umo4H750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polyline transform='translate(473.0,842.0) rotate(-55.56999122082709)' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='-5.0,10.0 0.0,0.0 5.0,10.0'/>
+  </g>
+  <g id='_Umpe_L50Ee2iMaDbHjOx0Q'>
+    <line y1='431.0' x1='1144.0' y2='431.0' x2='1124.0' id='_Umo4JL50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_Umpe_L50Ee2iMaDbHjOx0Q'>
+    <line y1='431.0' x1='1124.0' y2='431.0' x2='1123.0' id='_Umo4Jb50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_Umpe_L50Ee2iMaDbHjOx0Q'>
+    <line y1='431.0' x1='1123.0' y2='431.0' x2='1103.0' id='_Umo4Jr50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(1103.0,431.0) rotate(-90.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfAr50Ee2iMaDbHjOx0Q'>
+    <line y1='537.0' x1='1199.0' y2='494.0' x2='1199.0' id='_Umo4K750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfAr50Ee2iMaDbHjOx0Q'>
+    <line y1='494.0' x1='1199.0' y2='495.0' x2='1199.0' id='_Umo4LL50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfAr50Ee2iMaDbHjOx0Q'>
+    <line y1='495.0' x1='1199.0' y2='452.0' x2='1199.0' id='_Umo4Lb50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(1199.0,452.0) rotate(-0.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfEr50Ee2iMaDbHjOx0Q'>
+    <line y1='710.0' x1='349.0' y2='644.0' x2='349.0' stroke-dasharray='7, 3' id='_Umo4Mr50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfEr50Ee2iMaDbHjOx0Q'>
+    <line y1='644.0' x1='349.0' y2='645.0' x2='349.0' stroke-dasharray='7, 3' id='_Umo4M750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfEr50Ee2iMaDbHjOx0Q'>
+    <line y1='645.0' x1='349.0' y2='579.0' x2='349.0' stroke-dasharray='7, 3' id='_Umo4NL50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(349.0,579.0) rotate(-0.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfFb50Ee2iMaDbHjOx0Q'>
+    <line y1='710.0' x1='422.0' y2='644.0' x2='422.0' stroke-dasharray='7, 3' id='_Umo4Ob50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfFb50Ee2iMaDbHjOx0Q'>
+    <line y1='644.0' x1='422.0' y2='645.0' x2='422.0' stroke-dasharray='7, 3' id='_Umo4Or50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfFb50Ee2iMaDbHjOx0Q'>
+    <line y1='645.0' x1='422.0' y2='579.0' x2='422.0' stroke-dasharray='7, 3' id='_Umo4O750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(422.0,579.0) rotate(-0.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfBL50Ee2iMaDbHjOx0Q'>
+    <line y1='818.0' x1='746.0' y2='729.0' x2='746.0' id='_Umo4QL50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfBL50Ee2iMaDbHjOx0Q'>
+    <line y1='729.0' x1='746.0' y2='730.0' x2='746.0' id='_Umo4Qb50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfBL50Ee2iMaDbHjOx0Q'>
+    <line y1='730.0' x1='746.0' y2='641.0' x2='746.0' id='_Umo4Qr50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(746.0,641.0) rotate(-0.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfGL50Ee2iMaDbHjOx0Q'>
+    <line y1='818.0' x1='874.0' y2='686.0' x2='874.0' stroke-dasharray='7, 3' id='_Umo4R750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfGL50Ee2iMaDbHjOx0Q'>
+    <line y1='686.0' x1='874.0' y2='687.0' x2='1201.0' stroke-dasharray='7, 3' id='_Umo4SL50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfGL50Ee2iMaDbHjOx0Q'>
+    <line y1='687.0' x1='1201.0' y2='579.0' x2='1201.0' stroke-dasharray='7, 3' id='_Umo4Sb50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(1201.0,579.0) rotate(-0.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfKL50Ee2iMaDbHjOx0Q'>
+    <line y1='349.0' x1='674.0' y2='373.0' x2='674.0' stroke-dasharray='7, 3' id='_Umo4Ub50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfKL50Ee2iMaDbHjOx0Q'>
+    <line y1='373.0' x1='674.0' y2='372.0' x2='674.0' stroke-dasharray='7, 3' id='_Umo4Ur50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfKL50Ee2iMaDbHjOx0Q'>
+    <line y1='372.0' x1='674.0' y2='396.0' x2='674.0' stroke-dasharray='7, 3' id='_Umo4U750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(674.0,396.0) rotate(-180.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfIr50Ee2iMaDbHjOx0Q'>
+    <line y1='149.0' x1='674.0' y2='236.0' x2='674.0' id='_Umo4WL50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfIr50Ee2iMaDbHjOx0Q'>
+    <line y1='236.0' x1='674.0' y2='236.0' x2='674.0' id='_Umo4Wb50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfIr50Ee2iMaDbHjOx0Q'>
+    <line y1='236.0' x1='674.0' y2='323.0' x2='674.0' id='_Umo4Wr50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(674.0,323.0) rotate(-180.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfKr50Ee2iMaDbHjOx0Q'>
+    <line y1='449.0' x1='118.0' y2='449.0' x2='286.0' id='_Umo4YL50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfKr50Ee2iMaDbHjOx0Q'>
+    <line y1='449.0' x1='286.0' y2='449.0' x2='286.0' id='_Umo4Yb50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfKr50Ee2iMaDbHjOx0Q'>
+    <line y1='449.0' x1='286.0' y2='449.0' x2='454.0' id='_Umo4Yr50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(454.0,449.0) rotate(90.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfJr50Ee2iMaDbHjOx0Q'>
+    <line y1='357.0' x1='382.0' y2='377.0' x2='382.0' id='_Umo4Z750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfJr50Ee2iMaDbHjOx0Q'>
+    <line y1='377.0' x1='382.0' y2='426.0' x2='382.0' id='_Umo4aL50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfJr50Ee2iMaDbHjOx0Q'>
+    <line y1='426.0' x1='382.0' y2='426.0' x2='454.0' id='_Umo4ab50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(454.0,426.0) rotate(90.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfLL50Ee2iMaDbHjOx0Q'>
+    <line y1='277.0' x1='345.0' y2='296.0' x2='345.0' stroke-dasharray='7, 3' id='_Umo4cb50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfLL50Ee2iMaDbHjOx0Q'>
+    <line y1='296.0' x1='345.0' y2='296.0' x2='345.0' stroke-dasharray='7, 3' id='_Umo4cr50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfLL50Ee2iMaDbHjOx0Q'>
+    <line y1='296.0' x1='345.0' y2='315.0' x2='345.0' stroke-dasharray='7, 3' id='_Umo4c750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(345.0,315.0) rotate(-180.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfLr50Ee2iMaDbHjOx0Q'>
+    <line y1='277.0' x1='424.0' y2='296.0' x2='424.0' stroke-dasharray='7, 3' id='_Umo4eL50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfLr50Ee2iMaDbHjOx0Q'>
+    <line y1='296.0' x1='424.0' y2='296.0' x2='424.0' stroke-dasharray='7, 3' id='_Umo4eb50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfLr50Ee2iMaDbHjOx0Q'>
+    <line y1='296.0' x1='424.0' y2='315.0' x2='424.0' stroke-dasharray='7, 3' id='_Umo4er50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(424.0,315.0) rotate(-180.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfML50Ee2iMaDbHjOx0Q'>
+    <line y1='206.0' x1='383.0' y2='261.0' x2='383.0' stroke-dasharray='7, 3' id='_Umo4f750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfML50Ee2iMaDbHjOx0Q'>
+    <line y1='261.0' x1='383.0' y2='260.0' x2='383.0' stroke-dasharray='7, 3' id='_Umo4gL50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfML50Ee2iMaDbHjOx0Q'>
+    <line y1='260.0' x1='383.0' y2='315.0' x2='383.0' stroke-dasharray='7, 3' id='_Umo4gb50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(383.0,315.0) rotate(-180.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfMb50Ee2iMaDbHjOx0Q'>
+    <line y1='206.0' x1='397.0' y2='251.0' x2='442.0' stroke-dasharray='7, 3' id='_Umo4hr50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polyline transform='translate(442.0,251.0) rotate(135.0)' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='-5.0,10.0 0.0,0.0 5.0,10.0'/>
+  </g>
+  <g id='_UmpfMr50Ee2iMaDbHjOx0Q'>
+    <line y1='206.0' x1='371.0' y2='251.0' x2='326.0' stroke-dasharray='7, 3' id='_Umo4i750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polyline transform='translate(326.0,251.0) rotate(-135.0)' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='-5.0,10.0 0.0,0.0 5.0,10.0'/>
+  </g>
+  <g id='_UmpfNL50Ee2iMaDbHjOx0Q'>
+    <line y1='149.0' x1='474.0' y2='200.0' x2='474.0' id='_Umo4kb50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfNL50Ee2iMaDbHjOx0Q'>
+    <line y1='200.0' x1='474.0' y2='200.0' x2='474.0' id='_Umo4kr50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfNL50Ee2iMaDbHjOx0Q'>
+    <line y1='200.0' x1='474.0' y2='251.0' x2='474.0' id='_Umo4k750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(474.0,251.0) rotate(-180.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfOL50Ee2iMaDbHjOx0Q'>
+    <line y1='149.0' x1='284.0' y2='200.0' x2='284.0' id='_Umo4mb50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfOL50Ee2iMaDbHjOx0Q'>
+    <line y1='200.0' x1='284.0' y2='200.0' x2='284.0' id='_Umo4mr50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfOL50Ee2iMaDbHjOx0Q'>
+    <line y1='200.0' x1='284.0' y2='251.0' x2='284.0' id='_Umo4m750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(284.0,251.0) rotate(-180.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfPL50Ee2iMaDbHjOx0Q'>
+    <line y1='149.0' x1='384.0' y2='165.0' x2='384.0' id='_Umo4ob50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfPL50Ee2iMaDbHjOx0Q'>
+    <line y1='165.0' x1='384.0' y2='164.0' x2='384.0' id='_Umo4or50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfPL50Ee2iMaDbHjOx0Q'>
+    <line y1='164.0' x1='384.0' y2='180.0' x2='384.0' id='_Umo4o750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(384.0,180.0) rotate(-180.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfQL50Ee2iMaDbHjOx0Q'>
+    <line y1='399.0' x1='915.0' y2='416.0' x2='915.0' stroke-dasharray='7, 3' id='_Umo4rb50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfQL50Ee2iMaDbHjOx0Q'>
+    <line y1='416.0' x1='915.0' y2='416.0' x2='810.0' stroke-dasharray='7, 3' id='_Umo4rr50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfQL50Ee2iMaDbHjOx0Q'>
+    <line y1='416.0' x1='810.0' y2='416.0' x2='778.0' stroke-dasharray='7, 3' id='_Umo4r750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(778.0,416.0) rotate(-90.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfQr50Ee2iMaDbHjOx0Q'>
+    <line y1='349.0' x1='915.0' y2='361.0' x2='915.0' id='_Umo4tL50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfQr50Ee2iMaDbHjOx0Q'>
+    <line y1='361.0' x1='915.0' y2='361.0' x2='915.0' id='_Umo4tb50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfQr50Ee2iMaDbHjOx0Q'>
+    <line y1='361.0' x1='915.0' y2='373.0' x2='915.0' id='_Umo4tr50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(915.0,373.0) rotate(-180.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfRb50Ee2iMaDbHjOx0Q'>
+    <line y1='349.0' x1='747.0' y2='373.0' x2='747.0' stroke-dasharray='7, 3' id='_Umo4u750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfRb50Ee2iMaDbHjOx0Q'>
+    <line y1='373.0' x1='747.0' y2='372.0' x2='747.0' stroke-dasharray='7, 3' id='_Umo4vL50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfRb50Ee2iMaDbHjOx0Q'>
+    <line y1='372.0' x1='747.0' y2='396.0' x2='747.0' stroke-dasharray='7, 3' id='_Umo4vb50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(747.0,396.0) rotate(-180.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfR750Ee2iMaDbHjOx0Q'>
+    <line y1='277.0' x1='834.0' y2='337.0' x2='834.0' stroke-dasharray='7, 3' id='_Umo4wr50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfR750Ee2iMaDbHjOx0Q'>
+    <line y1='337.0' x1='834.0' y2='404.0' x2='834.0' stroke-dasharray='7, 3' id='_Umo4w750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfR750Ee2iMaDbHjOx0Q'>
+    <line y1='404.0' x1='834.0' y2='404.0' x2='778.0' stroke-dasharray='7, 3' id='_Umo4xL50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(778.0,404.0) rotate(-90.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfS750Ee2iMaDbHjOx0Q'>
+    <line y1='277.0' x1='850.0' y2='323.0' x2='901.0' stroke-dasharray='7, 3' id='_Umo4yb50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polyline transform='translate(901.0,323.0) rotate(132.04922089099367)' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='-5.0,10.0 0.0,0.0 5.0,10.0'/>
+  </g>
+  <g id='_UmpfTL50Ee2iMaDbHjOx0Q'>
+    <line y1='277.0' x1='822.0' y2='323.0' x2='775.0' stroke-dasharray='7, 3' id='_Umo4zr50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polyline transform='translate(775.0,323.0) rotate(-134.38394009160078)' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='-5.0,10.0 0.0,0.0 5.0,10.0'/>
+  </g>
+  <g id='_UmpfSb50Ee2iMaDbHjOx0Q'>
+    <line y1='149.0' x1='835.0' y2='200.0' x2='835.0' id='_Umo40750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfSb50Ee2iMaDbHjOx0Q'>
+    <line y1='200.0' x1='835.0' y2='200.0' x2='835.0' id='_Umo41L50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfSb50Ee2iMaDbHjOx0Q'>
+    <line y1='200.0' x1='835.0' y2='251.0' x2='835.0' id='_Umo41b50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(835.0,251.0) rotate(-180.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfG750Ee2iMaDbHjOx0Q'>
+    <line y1='996.0' x1='579.0' y2='996.0' x2='58.0' stroke-dasharray='7, 3' id='_Umo42r50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfG750Ee2iMaDbHjOx0Q'>
+    <line y1='996.0' x1='58.0' y2='494.0' x2='58.0' stroke-dasharray='7, 3' id='_Umo42750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfG750Ee2iMaDbHjOx0Q'>
+    <line y1='494.0' x1='58.0' y2='474.0' x2='58.0' stroke-dasharray='7, 3' id='_Umo43L50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(58.0,474.0) rotate(-0.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfQ750Ee2iMaDbHjOx0Q'>
+    <line y1='338.0' x1='982.0' y2='338.0' x2='1160.0' stroke-dasharray='7, 3' id='_Umo44b50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfQ750Ee2iMaDbHjOx0Q'>
+    <line y1='338.0' x1='1160.0' y2='390.0' x2='1160.0' stroke-dasharray='7, 3' id='_Umo44r50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+  </g>
+  <g id='_UmpfQ750Ee2iMaDbHjOx0Q'>
+    <line y1='390.0' x1='1160.0' y2='410.0' x2='1160.0' stroke-dasharray='7, 3' id='_Umo44750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polygon transform='translate(1160.0,410.0) rotate(-180.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfI750Ee2iMaDbHjOx0Q'>
+    <line y1='123.0' x1='674.0' y2='86.0' x2='674.0' stroke-dasharray='7, 3' id='_Umo46L50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 100, 0)'/>
+  </g>
+  <g id='_UmpfI750Ee2iMaDbHjOx0Q'>
+    <line y1='86.0' x1='674.0' y2='85.0' x2='1181.0' stroke-dasharray='7, 3' id='_Umo46b50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 100, 0)'/>
+  </g>
+  <g id='_UmpfI750Ee2iMaDbHjOx0Q'>
+    <line y1='85.0' x1='1181.0' y2='410.0' x2='1181.0' stroke-dasharray='7, 3' id='_Umo46r50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 100, 0)'/>
+    <polygon transform='translate(1181.0,410.0) rotate(-180.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 100, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfOb50Ee2iMaDbHjOx0Q'>
+    <line y1='123.0' x1='261.0' y2='12.0' x2='261.0' stroke-dasharray='7, 3' id='_Umo47750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(128, 0, 128)'/>
+  </g>
+  <g id='_UmpfOb50Ee2iMaDbHjOx0Q'>
+    <line y1='12.0' x1='261.0' y2='11.0' x2='1244.0' stroke-dasharray='7, 3' id='_Umo48L50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(128, 0, 128)'/>
+  </g>
+  <g id='_UmpfOb50Ee2iMaDbHjOx0Q'>
+    <line y1='11.0' x1='1244.0' y2='410.0' x2='1244.0' stroke-dasharray='7, 3' id='_Umo48b50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(128, 0, 128)'/>
+    <polygon transform='translate(1244.0,410.0) rotate(-180.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(128, 0, 128)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfPb50Ee2iMaDbHjOx0Q'>
+    <line y1='123.0' x1='384.0' y2='38.0' x2='384.0' stroke-dasharray='7, 3' id='_Umo49r50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(106, 218, 255)'/>
+  </g>
+  <g id='_UmpfPb50Ee2iMaDbHjOx0Q'>
+    <line y1='38.0' x1='384.0' y2='37.0' x2='1224.0' stroke-dasharray='7, 3' id='_Umo49750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(106, 218, 255)'/>
+  </g>
+  <g id='_UmpfPb50Ee2iMaDbHjOx0Q'>
+    <line y1='37.0' x1='1224.0' y2='410.0' x2='1224.0' stroke-dasharray='7, 3' id='_Umo4-L50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(106, 218, 255)'/>
+    <polygon transform='translate(1224.0,410.0) rotate(-180.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(106, 218, 255)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfNb50Ee2iMaDbHjOx0Q'>
+    <line y1='123.0' x1='488.0' y2='64.0' x2='488.0' stroke-dasharray='7, 3' id='_Umo4_b50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(136, 0, 0)'/>
+  </g>
+  <g id='_UmpfNb50Ee2iMaDbHjOx0Q'>
+    <line y1='64.0' x1='488.0' y2='63.0' x2='1203.0' stroke-dasharray='7, 3' id='_Umo4_r50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(136, 0, 0)'/>
+  </g>
+  <g id='_UmpfNb50Ee2iMaDbHjOx0Q'>
+    <line y1='63.0' x1='1203.0' y2='410.0' x2='1203.0' stroke-dasharray='7, 3' id='_Umo4_750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(136, 0, 0)'/>
+    <polygon transform='translate(1203.0,410.0) rotate(-180.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(136, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfNr50Ee2iMaDbHjOx0Q'>
+    <line y1='123.0' x1='487.0' y2='64.0' x2='487.0' stroke-dasharray='7, 3' id='_Umo5BL50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(136, 0, 0)'/>
+  </g>
+  <g id='_UmpfNr50Ee2iMaDbHjOx0Q'>
+    <line y1='64.0' x1='487.0' y2='63.0' x2='46.0' stroke-dasharray='7, 3' id='_Umo5Bb50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(136, 0, 0)'/>
+  </g>
+  <g id='_UmpfNr50Ee2iMaDbHjOx0Q'>
+    <line y1='63.0' x1='46.0' y2='432.0' x2='46.0' stroke-dasharray='7, 3' id='_Umo5Br50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(136, 0, 0)'/>
+    <polygon transform='translate(46.0,432.0) rotate(-180.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(136, 0, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfPr50Ee2iMaDbHjOx0Q'>
+    <line y1='123.0' x1='385.0' y2='38.0' x2='385.0' stroke-dasharray='7, 3' id='_Umo5C750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(106, 218, 255)'/>
+  </g>
+  <g id='_UmpfPr50Ee2iMaDbHjOx0Q'>
+    <line y1='38.0' x1='385.0' y2='37.0' x2='21.0' stroke-dasharray='7, 3' id='_Umo5DL50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(106, 218, 255)'/>
+  </g>
+  <g id='_UmpfPr50Ee2iMaDbHjOx0Q'>
+    <line y1='37.0' x1='21.0' y2='432.0' x2='21.0' stroke-dasharray='7, 3' id='_Umo5Db50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(106, 218, 255)'/>
+    <polygon transform='translate(21.0,432.0) rotate(-180.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(106, 218, 255)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfOr50Ee2iMaDbHjOx0Q'>
+    <line y1='135.0' x1='220.0' y2='135.0' x2='112.0' stroke-dasharray='7, 3' id='_Umo5Er50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(128, 0, 128)'/>
+  </g>
+  <g id='_UmpfOr50Ee2iMaDbHjOx0Q'>
+    <line y1='135.0' x1='112.0' y2='412.0' x2='112.0' stroke-dasharray='7, 3' id='_Umo5E750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(128, 0, 128)'/>
+  </g>
+  <g id='_UmpfOr50Ee2iMaDbHjOx0Q'>
+    <line y1='412.0' x1='112.0' y2='432.0' x2='112.0' stroke-dasharray='7, 3' id='_Umo5FL50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(128, 0, 128)'/>
+    <polygon transform='translate(112.0,432.0) rotate(-180.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(128, 0, 128)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfJL50Ee2iMaDbHjOx0Q'>
+    <line y1='123.0' x1='673.0' y2='86.0' x2='673.0' stroke-dasharray='7, 3' id='_Umo5Gb50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 100, 0)'/>
+  </g>
+  <g id='_UmpfJL50Ee2iMaDbHjOx0Q'>
+    <line y1='86.0' x1='673.0' y2='85.0' x2='68.0' stroke-dasharray='7, 3' id='_Umo5Gr50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 100, 0)'/>
+  </g>
+  <g id='_UmpfJL50Ee2iMaDbHjOx0Q'>
+    <line y1='85.0' x1='68.0' y2='432.0' x2='68.0' stroke-dasharray='7, 3' id='_Umo5G750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 100, 0)'/>
+    <polygon transform='translate(68.0,432.0) rotate(-180.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 100, 0)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfSr50Ee2iMaDbHjOx0Q'>
+    <line y1='123.0' x1='836.0' y2='109.0' x2='836.0' stroke-dasharray='7, 3' id='_Umo5IL50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 139)'/>
+  </g>
+  <g id='_UmpfSr50Ee2iMaDbHjOx0Q'>
+    <line y1='109.0' x1='836.0' y2='108.0' x2='92.0' stroke-dasharray='7, 3' id='_Umo5Ib50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 139)'/>
+  </g>
+  <g id='_UmpfSr50Ee2iMaDbHjOx0Q'>
+    <line y1='108.0' x1='92.0' y2='432.0' x2='92.0' stroke-dasharray='7, 3' id='_Umo5Ir50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 139)'/>
+    <polygon transform='translate(92.0,432.0) rotate(-180.0)' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 139)' points='-6.0,10.0 0.0,0.0 6.0,10.0'/>
+  </g>
+  <g id='_UmpfX750Ee2iMaDbHjOx0Q'>
+    <line y1='251.0' x1='481.0' y2='206.0' x2='567.0' stroke-dasharray='7, 3' id='_Umo5K750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polyline transform='translate(567.0,206.0) rotate(62.37892501692447)' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='-5.0,10.0 0.0,0.0 5.0,10.0'/>
+  </g>
+  <g id='_UmpfYL50Ee2iMaDbHjOx0Q'>
+    <line y1='260.0' x1='500.0' y2='256.0' x2='547.0' stroke-dasharray='7, 3' id='_Umo5ML50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polyline transform='translate(547.0,256.0) rotate(85.13548556223948)' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='-5.0,10.0 0.0,0.0 5.0,10.0'/>
+  </g>
+  <g id='_UmpfYb50Ee2iMaDbHjOx0Q'>
+    <line y1='277.0' x1='462.0' y2='359.0' x2='504.0' stroke-dasharray='7, 3' id='_Umo5Nb50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polyline transform='translate(504.0,359.0) rotate(152.87869659584135)' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='-5.0,10.0 0.0,0.0 5.0,10.0'/>
+  </g>
+  <g id='_UmpfYr50Ee2iMaDbHjOx0Q'>
+    <line y1='277.0' x1='491.0' y2='302.0' x2='558.0' stroke-dasharray='7, 3' id='_Umo5Or50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polyline transform='translate(558.0,302.0) rotate(110.46227152342222)' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='-5.0,10.0 0.0,0.0 5.0,10.0'/>
+  </g>
+  <g id='_UmpfZ750Ee2iMaDbHjOx0Q'>
+    <line y1='251.0' x1='288.0' y2='206.0' x2='205.0' stroke-dasharray='7, 3' id='_Umo5Q750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polyline transform='translate(205.0,206.0) rotate(-61.53483785734516)' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='-5.0,10.0 0.0,0.0 5.0,10.0'/>
+  </g>
+  <g id='_UmpfaL50Ee2iMaDbHjOx0Q'>
+    <line y1='277.0' x1='279.0' y2='302.0' x2='213.0' stroke-dasharray='7, 3' id='_Umo5SL50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polyline transform='translate(213.0,302.0) rotate(-110.74608027568343)' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='-5.0,10.0 0.0,0.0 5.0,10.0'/>
+  </g>
+  <g id='_Umpfab50Ee2iMaDbHjOx0Q'>
+    <line y1='277.0' x1='300.0' y2='386.0' x2='191.0' stroke-dasharray='7, 3' id='_Umo5Tb50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polyline transform='translate(191.0,386.0) rotate(-135.0)' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='-5.0,10.0 0.0,0.0 5.0,10.0'/>
+  </g>
+  <g id='_Umpfar50Ee2iMaDbHjOx0Q'>
+    <line y1='277.0' x1='311.0' y2='386.0' x2='294.0' stroke-dasharray='7, 3' id='_Umo5Ur50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polyline transform='translate(294.0,386.0) rotate(-171.1353766115892)' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='-5.0,10.0 0.0,0.0 5.0,10.0'/>
+  </g>
+  <g id='_Umpfbb50Ee2iMaDbHjOx0Q'>
+    <line y1='615.0' x1='813.0' y2='542.0' x2='982.0' stroke-dasharray='7, 3' id='_Umpe5r50Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polyline transform='translate(982.0,542.0) rotate(66.63794122942899)' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='-5.0,10.0 0.0,0.0 5.0,10.0'/>
+  </g>
+  <g id='_Umpfbr50Ee2iMaDbHjOx0Q'>
+    <line y1='628.0' x1='852.0' y2='628.0' x2='931.0' stroke-dasharray='7, 3' id='_Umpe6750Ee2iMaDbHjOx0Q' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)'/>
+    <polyline transform='translate(931.0,628.0) rotate(90.0)' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='-5.0,10.0 0.0,0.0 5.0,10.0'/>
+  </g>
+</svg>
