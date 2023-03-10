@@ -51,7 +51,7 @@ Altre classi sviluppate da _Derevyanchenko Maxim_ e _Felice Mirko_ sono: `Move` 
 
 ## Cesario Jahrim Gabriele
 
-## Derevyanchenko Maxim
+## [Derevyanchenko Maxim](maxim/maxim.md)
 
 ## [Felice Mirko](mirko/mirko.md)
 
