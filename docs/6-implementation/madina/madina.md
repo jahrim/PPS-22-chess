@@ -22,10 +22,10 @@ ho contribuito.
 
 ## Regole dei pezzi
 Per implementare le regole della regina e della torre, modellate rispettivamente dalle classi
-`QueenRule` e `RookRule`, è stato necessario definire i vari concetti relativi alla direzioni
+`QueenRule` e `RookRule`, è stato necessario definire i vari concetti relativi alle direzioni
 cardinali. Quindi, si è deciso di definire delle teorie Prolog che attraverso delle _regole_
 logiche permettono, data una posizione di partenza sulla scacchiera, di ottenere le posizioni 
-he si trovano ad una certa direzione cardinale rispetto alla posizione di partenza.
+che si trovano ad una certa direzione cardinale rispetto alla posizione di partenza.
 
 In particolare, sono state realizzate le seguenti `PrologRule`: `NPrologRule`, `SPrologRule`, 
 `EPrologRule`, `WPrologRule`. Di seguito, si riporta l'implementazione della `NPrologRule` in
@@ -37,8 +37,8 @@ codice Prolog (le altre regole sono state implementate in maniera simile).
 n_move(X1, Y1, X1, Y2) :- Y2 is Y1 + 1; n_move(X1, Y1 + 1, X1, Y2).
 ```
 
-Come si può notare, uno dei problemi di questa regola è che non è _fully-relational_, il che
-significa le _variabili_ nella _testa_ della regola sono necessariamente o solo di input o
+Come si può notare, uno dei problemi di questa regola è che non è _fully-relational_, ovvero 
+le _variabili_ nella _testa_ della regola sono necessariamente o solo di input o
 solo di output. Ciò è dovuto principalmente alla presenza dell'operatore `is`, usato per
 eseguire calcoli numerici in Prolog.
 \
@@ -133,23 +133,23 @@ dalla classe `ChessGameSituation`, sono:
   sul re del giocatore di turno. L'algoritmo di verifica è implementato come segue;
   ```scala
     def check(state: ChessGameStatus, teamPerspective: Team): Boolean =
-    state.chessBoard.pieces(teamPerspective.oppositeTeam).exists {
-      (opponentPosition, opponentPiece) =>
-        opponentPiece.rule
-          .findMoves(opponentPosition, state)
-          .flatMap { move => state.chessBoard.pieces(teamPerspective).get(move.to) }
-          .exists { case _: King => true; case _ => false }
-    }
+      state.chessBoard.pieces(teamPerspective.oppositeTeam).exists {
+        (opponentPosition, opponentPiece) =>
+          opponentPiece.rule
+            .findMoves(opponentPosition, state)
+            .flatMap { move => state.chessBoard.pieces(teamPerspective).get(move.to) }
+            .exists { case _: King => true; case _ => false }
+      }
   ```
   
 - `Stale`: è verificata se il giocatore di turno non ha mosse disponibili. L'algoritmo di verifica è
   implementato come segue;
   ```scala
     def stale(state: ChessGameStatus, teamPerspective: Team): Boolean =
-    state.chessBoard
-      .pieces(teamPerspective)
-      .flatMap((position, piece) => piece.rule.findMoves(position, state))
-      .isEmpty
+      state.chessBoard
+        .pieces(teamPerspective)
+        .flatMap((position, piece) => piece.rule.findMoves(position, state))
+        .isEmpty
   ```
 - `CheckMate`: è verificata se il giocatore di turno si trova sia in `Check` che in `Stale`.
 
@@ -171,7 +171,7 @@ si costruisce il `ChessBoardController` a partire da una `GridPane` contenente l
 La costruzione del `ChessBoardController` è delegata al _factory method_ `fromGridPane` che mappa ogni cella
 di una `GridPane` a una `CellView`, a cui è associata una posizione nella scacchiera. 
 \
-A supporto di questa operazione e di altre relative alla grafica, sono state realizzate diversi funzione di
+A supporto di questa operazione e di altre relative alla grafica, sono state realizzate diverse funzioni di
 utilità all'interno della classe `FXUtils`.
 
 Una `CellView` gestisce la rappresentazione grafica di una cella nella scacchiera, permettendo la visualizzazione
@@ -227,4 +227,4 @@ Come visto nel codice precedente, quando una `CellView` della scacchiera è prem
   si entra in `PieceSelected`.
 - se lo stato è `PieceSelected` e la cella cliccata è una delle posizioni raggiungibili dal pezzo selezionato,
   si richiede all'engine di eseguire la mossa che sposta il pezzo sulla cella cliccata.
-  Altrimenti, la cella viene deselezionata, ritornando a `NoneSelected`.
+  In ogni caso, alla fine la cella viene deselezionata, ritornando a `NoneSelected`.
