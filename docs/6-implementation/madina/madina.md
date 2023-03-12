@@ -59,10 +59,33 @@ Una `Direction` non è altro che una funzione che, data una posizione di partenz
 una sequenza ordinata delle posizioni successive. Dalle `Direction` è poi possibile mappare
 le posizioni libere sulla scacchiera in mosse eseguibili da un certo pezzo, come implementato
 dalla `findMoves` della `DirectionalRule`.
-\
+
 A supporto della `DirectionalRule` e di altre regole, è stato definito un mixin chiamato 
 `RuleShorthands`, che, quando esteso da una classe, abilita l'utilizzo di diverse funzionalità
 che possono essere utili all'interno della definizione di una regola di gioco.
+\
+Siccome molte delle funzionalità richiedono lo stato della partita in input, modellato dalla
+classe `ChessGameStatus`, si è deciso di richiedere tale stato sotto forma di _given instance_.
+\
+A tal proposito, è stata realizzata una funzione di utility che permette di dichiarare given
+instance in modo più dichiarativo, chiamata `GivenExtension.within`. 
+
+Di seguito, si riporta un esempio della sua applicazione nel metodo `limitDirection` della `DirectionalRule`,
+che restituisce l'insieme delle mosse possibili data una posizione sulla scacchiera e la direzione della mossa,
+a cui ho contribuito solo parzialmente. 
+\
+Nell'esempio, nel blocco di codice all'interno di `within`, lo `status`
+del gioco è disponibile come given instance, infatti è possibile usare il metodo `occupied` delle `RuleShorthands`
+senza specificarlo.
+
+```scala
+import io.github.chess.util.scala.givens.GivenExtension.within
+private def limitDirection(startingPosition: Position, status: ChessGameStatus, direction: Direction): Set[Move] =
+  within(status) {
+    val (availablePositions, obstructedPositions) = direction(startingPosition).span(!occupied(_))
+    (availablePositions ++ obstructedPositions.take(1)).map(Move(startingPosition, _)).toSet
+  }
+```
 
 Quindi, è stata implementata la `StraightRule`, come una `DirectionalRule` le cui direzioni
 di movimento sono quelle verticali ed orizzontali, ovvero quelle di una torre. Infatti, la
@@ -83,28 +106,28 @@ non puramente grafico. Di seguito, si riporta un esempio dei test relativi al mo
 della regina, contenuti nel `QueenRuleSpec`.
 
 ```scala
-  it should "be blocked by pieces of the same team" in {
-    val chessGameStatus: ChessGameStatus = ChessGameStatus(ChessBoard {
-      * | * | * | * | * | * | * | *
-      * | * | N | * | * | * | * | *
-      * | * | * | * | * | R | * | *
-      * | N | * | * | Q | * | * | *
-      * | * | * | K | * | * | * | *
-      * | * | * | * | * | * | * | *
-      * | * | * | * | R | * | * | *
-      * | * | * | * | * | * | * | *
-    })
-    getChessBoardFromMoves(queenPosition, chessGameStatus) shouldEqual ChessBoard {
-      * | * | * | * | X | * | * | *
-      * | * | * | * | X | * | * | *
-      * | * | * | X | X | * | * | *
-      * | * | X | X | * | X | X | X
-      * | * | * | * | X | X | * | *
-      * | * | * | * | X | * | X | *
-      * | * | * | * | * | * | * | X
-      * | * | * | * | * | * | * | *
-    }
+it should "be blocked by pieces of the same team" in {
+  val chessGameStatus: ChessGameStatus = ChessGameStatus(ChessBoard {
+    * | * | * | * | * | * | * | *
+    * | * | N | * | * | * | * | *
+    * | * | * | * | * | R | * | *
+    * | N | * | * | Q | * | * | *
+    * | * | * | K | * | * | * | *
+    * | * | * | * | * | * | * | *
+    * | * | * | * | R | * | * | *
+    * | * | * | * | * | * | * | *
+  })
+  getChessBoardFromMoves(queenPosition, chessGameStatus) shouldEqual ChessBoard {
+    * | * | * | * | X | * | * | *
+    * | * | * | * | X | * | * | *
+    * | * | * | X | X | * | * | *
+    * | * | X | X | * | X | X | X
+    * | * | * | * | X | X | * | *
+    * | * | * | * | X | * | X | *
+    * | * | * | * | * | * | * | X
+    * | * | * | * | * | * | * | *
   }
+}
 ```
 
 Il test riportato, verifica che una regina non possa eseguire mosse sovrapponendosi a pezzi
@@ -132,24 +155,24 @@ dalla classe `ChessGameSituation`, sono:
 - `Check`: è verificata se esiste una mossa dell'avversario che gli permette di muovere un pezzo
   sul re del giocatore di turno. L'algoritmo di verifica è implementato come segue;
   ```scala
-    def check(state: ChessGameStatus, teamPerspective: Team): Boolean =
-      state.chessBoard.pieces(teamPerspective.oppositeTeam).exists {
-        (opponentPosition, opponentPiece) =>
-          opponentPiece.rule
-            .findMoves(opponentPosition, state)
-            .flatMap { move => state.chessBoard.pieces(teamPerspective).get(move.to) }
-            .exists { case _: King => true; case _ => false }
-      }
+  def check(state: ChessGameStatus, teamPerspective: Team): Boolean =
+    state.chessBoard.pieces(teamPerspective.oppositeTeam).exists {
+      (opponentPosition, opponentPiece) =>
+        opponentPiece.rule
+          .findMoves(opponentPosition, state)
+          .flatMap { move => state.chessBoard.pieces(teamPerspective).get(move.to) }
+          .exists { case _: King => true; case _ => false }
+    }
   ```
   
 - `Stale`: è verificata se il giocatore di turno non ha mosse disponibili. L'algoritmo di verifica è
   implementato come segue;
   ```scala
-    def stale(state: ChessGameStatus, teamPerspective: Team): Boolean =
-      state.chessBoard
-        .pieces(teamPerspective)
-        .flatMap((position, piece) => piece.rule.findMoves(position, state))
-        .isEmpty
+  def stale(state: ChessGameStatus, teamPerspective: Team): Boolean =
+    state.chessBoard
+      .pieces(teamPerspective)
+      .flatMap((position, piece) => piece.rule.findMoves(position, state))
+      .isEmpty
   ```
 - `CheckMate`: è verificata se il giocatore di turno si trova sia in `Check` che in `Stale`.
 
@@ -193,31 +216,31 @@ Alla creazione il `ChessBoardController` inizializza gli handler relativi alla s
 cambia di conseguenza, secondo il seguente comportamento:
 
 ```scala
-  private def onCellClicked(event: MouseEvent, clickedCell: CellView): Unit =
-    this.getState match
-      case NoneSelected => this.selectCell(clickedCell)
-      case PieceSelected(selectedCell, availableMoves) =>
-        availableMoves.get(clickedCell.position) match
-          case Some(selectedMove) =>
-            this.context.chessEngineProxy.applyMove(selectedMove)
-            enter(NoneSelected)
-          case None if clickedCell.position == selectedCell.position => enter(NoneSelected)
-          case _ => this.selectCell(clickedCell)
+private def onCellClicked(event: MouseEvent, clickedCell: CellView): Unit =
+  this.getState match
+    case NoneSelected => this.selectCell(clickedCell)
+    case PieceSelected(selectedCell, availableMoves) =>
+      availableMoves.get(clickedCell.position) match
+        case Some(selectedMove) =>
+          this.context.chessEngineProxy.applyMove(selectedMove)
+          enter(NoneSelected)
+        case None if clickedCell.position == selectedCell.position => enter(NoneSelected)
+        case _ => this.selectCell(clickedCell)
 
-    private def selectCell(cell: CellView): Unit =
-      this.chessBoardBelief.get(cell.position).map(_ => cell) match
-        case Some(selectedCell) =>
-          getAvailableMoves(selectedCell).onComplete {
-            case Success(availableMoves) =>
-              Platform.runLater { enter(PieceSelected(selectedCell, availableMoves)) }
-            case Failure(exception) => throw exception
-          }
-        case None => enter(NoneSelected)
+private def selectCell(cell: CellView): Unit =
+  this.chessBoardBelief.get(cell.position).map(_ => cell) match
+    case Some(selectedCell) =>
+      getAvailableMoves(selectedCell).onComplete {
+        case Success(availableMoves) =>
+          Platform.runLater { enter(PieceSelected(selectedCell, availableMoves)) }
+        case Failure(exception) => throw exception
+      }
+    case None => enter(NoneSelected)
 
-    private def getAvailableMoves(cell: CellView): Future[Map[Position, Move]] =
-      this.context.chessEngineProxy
-          .findMoves(cell.position)
-          .map(moves => moves.map(move => move.to -> move).toMap[Position, Move])
+private def getAvailableMoves(cell: CellView): Future[Map[Position, Move]] =
+  this.context.chessEngineProxy
+      .findMoves(cell.position)
+      .map(moves => moves.map(move => move.to -> move).toMap[Position, Move])
 ```
 
 Come visto nel codice precedente, quando una `CellView` della scacchiera è premuta, si valuta lo stato del 
