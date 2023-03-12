@@ -4,16 +4,25 @@ Per quanto riguarda il design architetturale del sistema si identificano due mac
 i quali vengono suddivisi a loro volta in altri sotto-componenti:
 - Engine: gestisce la creazione e lo sviluppo di una partita degli scacchi.
   È stato realizzato come servizio, seguendo un'architettura di tipo esagonale,
-  anche conosciuta come _ports & adapters_.
+  anche conosciuta come _ports & adapters_, allo scopo di facilitarne la
+  composizione con altri servizi. In particolare, l'architettura prevede i seguenti componenti:
   - Modello: definisce la _business logic_ del sistema.
   - Porta: espone le funzionalità del modello in rapporto a uno specifico caso d'uso del servizio.
   - Adapter: permette l'interazione con una specifica porta attraverso una specifica tecnologia.
-- Applicativo: gestisce l'interazione dell'utente col servizio.
+- Applicativo: gestisce l'interazione dell'utente col servizio. In particolare, è composto da:
   - Proxy: media l'interazione tra l'applicazione e l'engine al fine di proteggere l'utilizzatore dai
     cambiamenti del servizio.
   - ViewController: gestisce l'interazione tra utente e l'applicazione.
 
-![Design Architetturale](../images/architectural-design.png)
+Di seguito, si riporta l'architettura del sistema nella sua forma più generale, in cui l'engine può
+includere modelli, porte e adapter diversi.
+
+![Design Architetturale Generale](../images/general-architectural-design.png)
+
+Per lo scopo di questo progetto, è possibile semplificare l'architettura considerando semplicemente il flusso 
+d'informazioni tra l'applicazione e l'engine.
+
+![Design Architetturale Generale](../images/architectural-design.png)
 
 ## Engine
 
