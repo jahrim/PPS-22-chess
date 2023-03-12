@@ -82,7 +82,7 @@ Nella schermata raffigurata, sono presenti quattro pulsanti:
 - _Settings_: quando premuto, visualizza la pagina per le impostazioni grafiche dell'applicazione.
 - _Exit_: quando premuto, termina l'applicazione.
 
-![Main Menu Page](TODO)
+![Main Menu Mockup](../images/mockups/main-menu-mockup.png)
 
 ### Game Configuration
 
@@ -92,7 +92,7 @@ parametri, come vincoli temporali, modalità di gioco, nomi dei giocatori, diffi
 Premendo il pulsante _Start Game_, viene visualizzata la pagina della partita, dopo aver richiesto l'avvio della 
 partita all'engine.
 
-![Game Configuration Page](TODO)
+![Game Configuration Mockup](../images/mockups/game-configuration-mockup.png)
 
 ### Game 
 
@@ -102,36 +102,43 @@ scacchiera di gioco, la quale contiene tutti i pezzi attualmente disponibili.
 Inoltre, vengono visualizzati il turno corrente, il tempo rimanente al giocatore di turno e l'ultima mossa
 effettuata, i quali vengono mantenuti aggiornati in relazione agli eventi generati dall'engine.
 
-Infine, è presente anche un pulsante di resa che, in seguito al comando appropriato all'engine, comporta l'immediata 
-sconfitta del giocatore di turno.
-
-Quando l'interfaccia viene notificata della terminazione della partita da parte dell'engine, viene visualizzata la 
-finestra di risultato della partita.
-
 In quest'interfaccia, è possibile selezionare una casella della scacchiera per due scopi diversi:
 - Visualizzazione delle mosse possibili del pezzo selezionato
 - Applicazione di una delle mosse visualizzate
 
 Entrambe dipendono dalle rispettive funzionalità dell'engine.
 
+Infine, è presente anche un pulsante di resa che, in seguito al comando appropriato all'engine, comporta l'immediata
+sconfitta del giocatore di turno.
+
 Quando l'interfaccia viene notificata della avvenente promozione di un pedone, viene visualizzata la finestra di 
 scelta del pezzo in cui promuoverlo.
 
-![Game Page](TODO)
+Quando l'interfaccia viene notificata della terminazione della partita da parte dell'engine, viene visualizzata la
+finestra di risultato della partita.
+
+![Game Mockup](../images/mockups/game-mockup.png)
 
 ### Promotion Dialog
 
-In seguito alla scelta, viene richiesto all'engine di completare la promozione del pedone.
+Tale finestra permette di scegliere il pezzo al quale si vuole promuovere il pedone. 
 
-![Promotion Dialog](TODO)
+Alla pressione del pulsante _Confirm_, viene richiesto all'engine di completare la 
+promozione del pedone in base alla propria scelta.
+
+![Promotion Mockup](../images/mockups/promotion-mockup.png)
 
 ### Result Dialog
 
 Tale finestra contiene il risultato finale della partita, il quale indica la causa della terminazione e un messaggio
 contenente ulteriori dettagli.
 
-![Result Dialog](TODO)
+Alla pressione del pulsante _Save Replay_, sarà richiesto all'utente dove desidera salvare il file contenente il
+replay della partita appena giocata.
 
+Alla pressione del pulsante _Main Menu_, viene visualizzata la schermata principale dell'applicazione.
+
+![Result Mockup](../images/mockups/result-mockup.png)
 
 ## Scelte Tecnologiche
 
@@ -139,7 +146,6 @@ Per la realizzazione del sistema, non saranno necessarie delle tecnologie specif
 sarà necessaria una tecnologia per l'interfaccia grafica.
 Inoltre, allo scopo di rendere il progetto predisposto a una modalità distribuita, è necessario un'ulteriore tecnologia 
 che permetta all'engine di essere asincrono e reattivo.
-
 
 [Back to index](../index.md) |
 [Previous Chapter](../3-requirements/index.md) |
