@@ -168,12 +168,18 @@ Esistono due tipi di _FXComponent_:
   all'_FXMLLoader_ di ScalaFX d'inizializzarlo in autonomia.
 
 Nell'applicazione sono presenti tre schermate principali:
-- `MainMenuPage`: rappresenta la pagina iniziale ed è controllata dal `MainMenuController`.
+- `MainMenuPage`: rappresenta la pagina iniziale ed è controllata dal `MainMenuController`.  
+  ![Main Menu Page](../images/screenshots/main-menu-page.png)
+
 - `GameConfigurationPage`: rappresenta la pagina di configurazione di una partita ed è controllata dal 
-  `GameConfigurationController`.
+  `GameConfigurationController`.  
+  ![Game Configuration Page](../images/screenshots/game-configuration-page.png)
+
 - `GamePage`: rappresenta la pagina in cui si sviluppa una partita ed è controllata dal `GameController`. 
   In particolare la scacchiera è composta da un insieme di `CellView` ed è controllata dal `ChessBoardController`.
-  La rappresentazione grafica di ciascuno dei pezzi sulla scacchiera è gestita dalla classe `PieceView`.
+  La rappresentazione grafica di ciascuno dei pezzi sulla scacchiera è gestita dalla classe `PieceView`.  
+  ![Game Page](../images/screenshots/game-page.png)
+  ![Game Page - Piece Selected](../images/screenshots/game-page-piece-selected.png)
 
 Il _GameController_ alla creazione si sottoscrive agli eventi dell'engine e aggiorna lo stato visualizzato della 
 partita, in relazioni agli eventi ricevuti.
