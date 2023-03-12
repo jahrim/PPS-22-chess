@@ -49,7 +49,7 @@ interne alla scacchiera.
 
 Altre classi sviluppate da _Derevyanchenko Maxim_ e _Felice Mirko_ sono: `Move` e `Piece`.
 
-## Cesario Jahrim Gabriele
+## [Cesario Jahrim Gabriele](jahrim/jahrim.md)
 
 ## [Derevyanchenko Maxim](maxim/maxim.md)
 
