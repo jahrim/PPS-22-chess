@@ -56,24 +56,26 @@
    <GridPane fx:id="mainPane">
       <columnConstraints>
          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" percentWidth="25.0" />
-         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" percentWidth="20.0" />
-         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" percentWidth="10.0" />
-         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" percentWidth="20.0" />
+         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" percentWidth="25.0" />
+         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" percentWidth="25.0" />
          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" percentWidth="25.0" />
       </columnConstraints>
       <rowConstraints>
          <RowConstraints maxHeight="112.0" minHeight="10.0" prefHeight="106.0" vgrow="SOMETIMES" />
-         <RowConstraints maxHeight="163.0" minHeight="5.0" prefHeight="119.0" vgrow="SOMETIMES" />
-         <RowConstraints maxHeight="145.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
-         <RowConstraints maxHeight="203.0" minHeight="10.0" prefHeight="87.0" vgrow="SOMETIMES" />
-         <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="89.0" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="163.0" minHeight="5.0" prefHeight="100.0" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="145.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="203.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
       </rowConstraints>
-      <Text strokeType="OUTSIDE" text="Game Config" GridPane.columnIndex="1" GridPane.columnSpan="3">
+      <Text strokeType="OUTSIDE" text="Game Config" GridPane.columnIndex="1" GridPane.columnSpan="2">
          <font>
             <Font size="60.0" />
          </font>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
       </Text>
-      <Button fx:id="startGameButton" focusTraversable="false" mnemonicParsing="false" text="Start Game" GridPane.columnIndex="4" GridPane.rowIndex="4">
+      <Button fx:id="startGameButton" focusTraversable="false" mnemonicParsing="false" text="Start Game" GridPane.columnIndex="3" GridPane.rowIndex="4">
          <font>
             <Font size="18.0" />
          </font>
@@ -84,35 +86,41 @@
          </font>
       </Button>
       <ChoiceBox fx:id="timeConstraint" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <Label text="Time Constraint" GridPane.rowIndex="1">
+      <Label text="Time Constraint" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+      </Label>
+      <Label text="Time (minutes)" GridPane.columnIndex="2" GridPane.rowIndex="1">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label text="Time (minutes)" GridPane.columnIndex="3" GridPane.rowIndex="1">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Spinner fx:id="time" prefWidth="75.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+      <Spinner fx:id="time" prefWidth="75.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
       <Label text="White Player" GridPane.rowIndex="3">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="whitePlayer" promptText="White Player Name" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <Label text="Black Player" GridPane.columnIndex="3" GridPane.rowIndex="3">
+      <TextField fx:id="whitePlayer" promptText="White Player Name" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets left="15.0" right="15.0" />
+         </GridPane.margin></TextField>
+      <Label text="Black Player" GridPane.columnIndex="2" GridPane.rowIndex="3">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="blackPlayer" promptText="Black Player Name" GridPane.columnIndex="4" GridPane.rowIndex="3">
+      <TextField fx:id="blackPlayer" promptText="Black Player Name" GridPane.columnIndex="3" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets left="15.0" right="15.0" />
          </GridPane.margin>
       </TextField>
-      <ChoiceBox fx:id="gameMode" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <Label text="Mode" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <ChoiceBox fx:id="gameMode" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Label text="Mode" GridPane.rowIndex="2">
          <font>
             <Font size="18.0" />
          </font>
