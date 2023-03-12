@@ -2,17 +2,17 @@
 
 Per quanto riguarda il design architetturale del sistema si identificano due macro-componenti principali,
 i quali vengono suddivisi a loro volta in altri sotto-componenti:
-- Engine: gestisce la creazione e lo sviluppo di una partita degli scacchi.
+- _Engine_: gestisce la creazione e lo sviluppo di una partita degli scacchi.
   È stato realizzato come servizio, seguendo un'architettura di tipo esagonale,
   anche conosciuta come _ports & adapters_, allo scopo di facilitarne la
   composizione con altri servizi. In particolare, l'architettura prevede i seguenti componenti:
-  - Modello: definisce la _business logic_ del sistema.
-  - Porta: espone le funzionalità del modello in rapporto a uno specifico caso d'uso del servizio.
-  - Adapter: permette l'interazione con una specifica porta attraverso una specifica tecnologia.
-- Applicativo: gestisce l'interazione dell'utente col servizio. In particolare, è composto da:
-  - Proxy: media l'interazione tra l'applicazione e l'engine al fine di proteggere l'utilizzatore dai
+  - _Modello_: definisce la _business logic_ del sistema.
+  - _Porta_: espone le funzionalità del modello in rapporto a uno specifico caso d'uso del servizio.
+  - _Adapter_: permette l'interazione con una specifica porta attraverso una specifica tecnologia.
+- _Applicazione_: gestisce l'interazione dell'utente col servizio. In particolare, è composto da:
+  - _Proxy_: media l'interazione tra l'applicazione e l'engine al fine di proteggere l'utilizzatore dai
     cambiamenti del servizio.
-  - ViewController: gestisce l'interazione tra utente e l'applicazione.
+  - _ViewController_: gestisce l'interazione tra utente e l'applicazione.
 
 Di seguito, si riporta l'architettura del sistema nella sua forma più generale, in cui l'engine può
 includere modelli, porte e adapter diversi.
@@ -78,12 +78,12 @@ scacchiera passa al giocatore successivo.
 Solo nello stato _Game Awaiting Promotion_, è possibile richiedere al servizio di promuovere un pedone. Quando ciò
 accade il controllo della scacchiera passa al giocatore successivo.
 
-## Application
+## Applicazione
 
 L'applicazione prevede quattro schermate principali, presentati nei seguenti mockup.
 Per estendibilità, i mockup sono stati realizzati considerando anche i requisiti opzionali.
 
-### Main Menu
+### Main Menu Page
 
 Nella schermata raffigurata, sono presenti quattro pulsanti:
 - _New Game_: quando premuto, visualizza la pagina di configurazione della partita.
@@ -93,7 +93,7 @@ Nella schermata raffigurata, sono presenti quattro pulsanti:
 
 ![Main Menu Mockup](../images/mockups/main-menu-mockup.png)
 
-### Game Configuration
+### Game Configuration Page
 
 Nella schermata seguente, sono presenti vari controlli per permettere di configurare la partita, impostando diversi 
 parametri, come vincoli temporali, modalità di gioco, nomi dei giocatori, difficoltà dell'_AI_.
@@ -103,7 +103,7 @@ partita all'engine.
 
 ![Game Configuration Mockup](../images/mockups/game-configuration-mockup.png)
 
-### Game 
+### Game Page
 
 In questa schermata, viene rappresentato lo stato corrente del gioco, di cui viene principalmente mostrata la 
 scacchiera di gioco, la quale contiene tutti i pezzi attualmente disponibili.
