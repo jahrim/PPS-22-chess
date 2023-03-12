@@ -4,13 +4,13 @@
  *
  * Full license description available at: https://github.com/jahrim/PPS-22-chess/blob/master/LICENSE
  */
-package io.github.chess.application.proxy
+package io.github.chess.engine.adapters
 
 import io.github.chess.engine.ports.ChessPort
+import io.vertx.core.Vertx
 
 /**
- * A proxy for interacting with a chess engine service through local interactions.
- * @param port the local port of the chess engine service
+ * Represents an adapter that allows to interact with a specific port
+ * of a service, exposing the port to local interactions.
  */
-case class ChessLocalProxy(private val port: ChessPort) extends ChessPort:
-  export port.*
+class LocalChessAdapter(override val port: ChessPort) extends Adapter[ChessPort]

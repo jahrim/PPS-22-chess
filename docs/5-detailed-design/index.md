@@ -4,10 +4,10 @@ Come spiegato precedentemente, il sistema rappresentato in figura è suddiviso i
 - Engine Module
 - Application Module
 
-![diagramma](TODO)
+![System Class Diagram](TODO)
 
 Come si vede in figura, l'_Application Module_ dipende dall'_Engine Module_, in particolare utilizza
-un `ChessLocalProxy` per comunicare con un `ChessLocalAdapter` messo a disposizione dall'engine.
+un `LocalChessProxy` per comunicare con un `LocalChessAdapter` messo a disposizione dall'engine.
 
 Da notare come queste due classi per la comunicazione siano solo fittizie, in quanto il servizio e
 l'applicazione vengono eseguiti sulla stessa macchina.
@@ -35,14 +35,25 @@ Volontariamente, per mancanze di tempistiche, non sono stati sviluppati test per
 
 
 ## Engine Module
+Il servizio è stato realizzato attraverso la libreria _Vertx_, che facilita la creazione di sistemi
+reattivi a certi eventi.
+
+Di seguito, se ne riporta il diagramma delle classi.
+
+![Engine Class Diagram](TODO)
 
 La classe principale di questo modulo è il `ChessService`, il quale permette di avviare il servizio
-relativo all'engine, inizializzando i vari `Adapter` e le relative porte del servizio.
-Al momento il sistema presenta un unico _Adapter_, il `ChessLocalAdapter` che permette solo
-interazioni locali con la `ChessPort` relativa al servizio, del quale espone il contratto
-come visto nel _Design Architetturale_.
-La `ChessPort` è implementata dalla classe `ChessGame`, la quale amministra un gioco di scacchi, permettendo l'avvio
-e lo sviluppo di più partite, gestendole una alla volta.
+relativo all'engine, inizializzando i vari `Adapter` e le relative porte del servizio. In particolare,
+il `ChessService` è un `Verticle`, per cui è possibile eseguirne il deployment all'interno di un `Vertx`.
+
+Al momento il sistema presenta un unico _Adapter_, il `LocalChessAdapter` che permette solo
+interazioni locali con la `ChessPort` relativa al servizio.
+
+La `ChessPort` espone il contratto del servizio come visto nel _Design Architetturale_. Il contratto del servizio 
+è stato definito in modo da essere completamente asincrono e non bloccante.
+
+La _ChessPort_ è implementata dalla classe `ChessGame`, che contiene la business logic del servizio e amministra un 
+gioco di scacchi, permettendo l'avvio e lo sviluppo di più partite, gestendole una alla volta.
 
 ### Avvio della partita
 
@@ -63,9 +74,9 @@ Nel caso di una partita con limiti di tempo, l'engine delega al `TimerManager` l
 
 ### Ottenimento dello stato del gioco corrente
 
-In ogni momento, è possibile ottenere lo stato della partita modellato dalla enumerazione `ChessGameState`, che 
-definisce i valori **NotConfigured**, **Running** e **AwaitingPromotion** come possibili stati della partita, rispecchiando
-quelli identificati in fase di analisi architetturale. 
+In ogni momento, è possibile ottenere lo stato della partita modellato dalla enumerazione `ChessGameState`, che
+definisce i valori **NotConfigured**, **Running** e **AwaitingPromotion** come possibili stati della partita, 
+rispecchiando quelli identificati in fase di analisi architetturale. 
 
 Nel caso in cui la partita sia configurata, il suo stato comprende anche un `ChessGameStatus` che permette di accedere 
 alle seguenti informazioni:
@@ -83,6 +94,8 @@ Questi sono caratterizzati da un _Team_ di appartenenza e da una propria regola 
 `ChessRule`.
 Quest'ultima offre la possibilità di ritrovamento di mosse disponibili, a partire da una posizione data e dallo 
 stato del gioco.
+
+### Ottenimento delle possibili mosse di un pezzo
 
 Il ritrovamento delle mosse per ogni pezzo è possibile grazie alla presenza dell'insieme di regole associate.
 Queste regole sono strutturate in maniera "modulare", che permette l'assemblaggio di mosse specifiche a partire da 
@@ -146,13 +159,19 @@ I tipi di eventi che vengono generati estendono la classe `Event` e sono:
   pezzi in cui esso si possa promuovere. Quest'ultimo concetto viene modellato dalla classe `PromotionPiece`.
 - `TimePassedEvent`: evento generato ogni secondo, nel caso la partita sia stata impostata con un vincolo temporale.
   Esso informa del tempo rimasto al giocatore corrente.
-
-![diagramma](TODO)
+- `CheckNotificationEvent`: evento generato quando si individua una situazione di scacco sulla scacchiera. Esso
+  informa l'utente di quale sia il giocatore che è stato messo in scacco.
 
 ## Application Module
+L'applicazione è stata realizzata utilizzando la libreria _ScalaFX_, la quale è un wrapper di _JavaFX_ che permette
+di realizzare semplici interfacce grafiche molto velocemente, sfruttando la dichiaratività di Scala. 
+
+Di seguito, se ne riporta il diagramma delle classi.
+
+![Application Class Diagram](../images/application-class-diagram.png)
 
 La classe principale di questo modulo è `ChessApplication`, che permette di avviare l'interfaccia grafica fornendole
-il proxy per comunicare con l'engine.
+il proxy per comunicare con l'engine, modellato dalla classe `LocalChessProxy`.
 
 L'applicazione è composta da diversi componenti modellati dalla classe `ChessApplicationComponent` a cui viene fornito
 il contesto dell'applicazione, modellata dalla classe `ChessApplicationContext`, la quale permette di accedere da una 
@@ -160,12 +179,18 @@ parte allo _Stage_ primario dell'applicazione e dall'altra al proxy.
 
 Un `FXComponent` è un componente che ha accesso alle funzionalità implicite di ScalaFX.\
 Uno `StageComponent` è un _FXComponent_ che gestisce un proprio _Stage_ (eventualmente non quello primario).
-Esistono due tipi di _FXComponent_:
+
+Esistono due tipi principali di _FXComponent_:
 - `Page`: gestisce la visualizzazione di una schermata dell'applicazione.\
-  Un tipo particolare di _Page_ è un `FXMLPage` la cui rappresentazione grafica è definita da un file _FXML_.
+  In particolare, una `PageWithController` è una _Page_ a cui è associato un certo _Controller_.
+  Un tipo di particolare di _PageWithController_ è un `FXMLPage` la cui rappresentazione grafica è definita da un
+  file in formato _.fxml_.\
+  Una _Page_ permette di ottenere la propria rappresentazione grafica e di applicarla successivamente a un certo
+  _Stage_ dell'applicazione. Diversamente, una `ApplicablePage` richiede uno _Stage_ quando creata e viene applicata
+  istantaneamente.
 - `Controller`: gestisce la logica d'interazione con un certo componente grafico dell'applicazione.\
-  Un tipo particolare di _Controller_ è un `FXMLController` che estende l'interfaccia _Initializable_, permettendo 
-  all'_FXMLLoader_ di ScalaFX d'inizializzarlo in autonomia.
+  Un tipo particolare di _Controller_ è un `FXMLController` che estende l'interfaccia `Initializable` di ScalaFX, 
+  permettendo al componente che carica i file fxml d'inizializzarlo in autonomia.
 
 Nell'applicazione sono presenti tre schermate principali:
 - `MainMenuPage`: rappresenta la pagina iniziale ed è controllata dal `MainMenuController`.  
@@ -182,8 +207,7 @@ Nell'applicazione sono presenti tre schermate principali:
   ![Game Page - Piece Selected](../images/screenshots/game-page-piece-selected.png)
 
 Il _GameController_ alla creazione si sottoscrive agli eventi dell'engine e aggiorna lo stato visualizzato della 
-partita, in relazioni agli eventi ricevuti.
-
+partita, in relazione agli eventi ricevuti.
 
 [Back to index](../index.md) |
 [Previous Chapter](../4-architectural-design/index.md) |

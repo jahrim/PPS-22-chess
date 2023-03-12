@@ -7,7 +7,7 @@
 package io.github.chess
 
 import io.github.chess.application.ChessApplication
-import io.github.chess.application.proxy.ChessLocalProxy
+import io.github.chess.application.proxy.LocalChessProxy
 import io.github.chess.engine.adapters.Adapter
 import io.github.chess.engine.model.game.ChessGame
 import io.github.chess.engine.ports.ChessPort
@@ -54,6 +54,6 @@ def deployServiceLocally(): Future[ChessService] =
 def deployApplicationLocally(service: ChessService): Unit =
   service.localAdapter.foreach { localAdapter =>
     Logger.info("Start", "Starting application...")
-    ChessApplication.launch(ChessLocalProxy(localAdapter.port))(Array.empty)
+    ChessApplication.launch(LocalChessProxy(localAdapter.port))(Array.empty)
     Logger.info("Start", "Application started.")
   }

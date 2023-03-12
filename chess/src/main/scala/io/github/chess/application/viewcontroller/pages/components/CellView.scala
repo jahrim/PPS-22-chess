@@ -6,6 +6,7 @@
  */
 package io.github.chess.application.viewcontroller.pages.components
 
+import io.github.chess.application.viewcontroller.FXComponent
 import io.github.chess.util.scala.number.NumberExtension.sameParityAs
 import io.github.chess.engine.model.board.{Position, Rank}
 import io.github.chess.application.viewcontroller.configuration.InterfaceConfiguration.{
@@ -21,7 +22,6 @@ import io.github.chess.application.viewcontroller.fxutils.FXUtils
 import io.github.chess.application.viewcontroller.fxutils.FXUtils.*
 import io.github.chess.application.viewcontroller.fxutils.FXUtils.given
 import javafx.scene.layout.Pane
-import scalafx.Includes.*
 import scalafx.scene.image.ImageView
 import scalafx.scene.paint.Color
 import scalafx.stage.Stage
@@ -30,7 +30,7 @@ import scalafx.stage.Stage
  * Handles the view of a cell of the chess board view.
  * @param cell     the cell of the chess board view
  */
-case class CellView(cell: GridCell[Pane]):
+case class CellView(cell: GridCell[Pane]) extends FXComponent:
   export cell.content.setOnMouseClicked
 
   private var layers: Map[Layer, ImageView] = Map()

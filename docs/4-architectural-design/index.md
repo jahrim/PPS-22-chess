@@ -49,6 +49,7 @@ sottoscriversi:
 - _BoardChangedEvent_: evento generato per avvisare l'utente che la scacchiera è stata modificata.
 - _TurnChangedEvent_: evento generato per avvisare l'utente che il controllo del gioco è passato a un altro giocatore.
 - _PromotingPawnEvent_: evento generato per avvisare l'utente che un pedone deve essere promosso.
+- _CheckNotificationEvent_: evento generato quando si individua una situazione di scacco sulla scacchiera.
 
 L'engine è un servizio _stateful_, per cui possiede uno stato che viene modificato in base alle richieste ricevute dagli
 utenti. In base a tale stato, le funzionalità esposte dal contratto possono essere abilitate o disabilitate, secondo il

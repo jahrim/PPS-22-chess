@@ -8,6 +8,7 @@ package io.github.chess.application.viewcontroller.pages.components
 
 import io.github.chess.engine.model.game.Team
 import Team.WHITE
+import io.github.chess.application.viewcontroller.FXComponent
 import io.github.chess.engine.model.pieces.{Bishop, King, Knight, Pawn, Piece, Queen, Rook}
 import io.github.chess.application.viewcontroller.pages.components.PieceView
 import io.github.chess.application.viewcontroller.configuration.InterfaceConfiguration.Images
@@ -35,4 +36,4 @@ object PieceView:
  * Handles the view of a chess piece.
  * @param image the image representing this chess piece
  */
-case class PieceView private (image: Image)
+case class PieceView private (image: Image) extends FXComponent
