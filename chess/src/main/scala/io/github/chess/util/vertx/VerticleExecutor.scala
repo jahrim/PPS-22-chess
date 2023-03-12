@@ -47,6 +47,7 @@ class VerticleExecutor(private val vertx: Vertx):
    */
   private def runPendingTask(message: Message[TaskId]): Unit =
     this.pendingTasks.get(message.body()).foreach(_.execute())
+    this.pendingTasks.remove(message.body())
 
 /** Companion object of [[VerticleExecutor]]. */
 object VerticleExecutor:
