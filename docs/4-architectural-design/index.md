@@ -17,12 +17,12 @@ i quali vengono suddivisi a loro volta in altri sotto-componenti:
 Di seguito, si riporta l'architettura del sistema nella sua forma più generale, in cui l'engine può
 includere modelli, porte e adapter diversi.
 
-![Design Architetturale Generale](../images/general-architectural-design.png)
+![Design Architetturale Generale](../images/diagrams/general-architectural-design.png)
 
 Per lo scopo di questo progetto, è possibile semplificare l'architettura considerando semplicemente il flusso 
 d'informazioni tra l'applicazione e l'engine.
 
-![Design Architetturale Generale](../images/architectural-design.png)
+![Design Architetturale Generale](../images/diagrams/architectural-design.png)
 
 ## Engine
 
@@ -55,7 +55,7 @@ L'engine è un servizio _stateful_, per cui possiede uno stato che viene modific
 utenti. In base a tale stato, le funzionalità esposte dal contratto possono essere abilitate o disabilitate, secondo il
 seguente diagramma degli stati.
 
-![Diagramma a stati dell'engine](../images/engine-state-diagram.png)
+![Diagramma a stati dell'engine](../images/diagrams/engine-state-diagram.png)
 
 Quando il servizio viene avviato, si trova nello stato _Engine Started_, in cui diventa possibile richiedere il suo 
 stato o sottoscriversi ai suoi eventi.

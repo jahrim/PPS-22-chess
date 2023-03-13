@@ -4,7 +4,7 @@ Come spiegato precedentemente, il sistema rappresentato in figura è suddiviso i
 - Engine Module
 - Application Module
 
-![System Class Diagram](../images/system-class-diagram.png)
+![System Class Diagram](../images/diagrams/system-class-diagram.png)
 
 Come si vede in figura, l'_Application Module_ dipende dall'_Engine Module_, in particolare utilizza
 un `LocalChessProxy` per comunicare con un `LocalChessAdapter` messo a disposizione dall'engine.
@@ -40,7 +40,7 @@ reattivi a certi eventi.
 
 Di seguito, se ne riporta il diagramma delle classi.
 
-![Engine Class Diagram](../images/engine-class-diagram.png)
+![Engine Class Diagram](../images/diagrams/engine-class-diagram.png)
 
 La classe principale di questo modulo è il `ChessService`, il quale permette di avviare il servizio
 relativo all'engine, inizializzando i vari `Adapter` e le relative porte del servizio. In particolare,
@@ -102,7 +102,7 @@ Queste regole sono strutturate in maniera "modulare", che permette l'assemblaggi
 quelle più generali.
 Di seguito è fornito il diagramma che mostra i legami che esistono tra le regole attualmente presenti.
 
-[Diagramma delle regole dei pezzi](../images/rules_with_prolog.svg)
+[Diagramma delle regole dei pezzi](../images/diagrams/rules-class-diagram.svg)
 
 Come si può osservare, la maggior parte delle dipendenze è di _estensione_/_realizzazione_, il che permette di avere 
 regole generali, che mano a mano diventano più specifiche, rendendo possibile un eventuale riutilizzo.
@@ -168,7 +168,7 @@ di realizzare semplici interfacce grafiche molto velocemente, sfruttando la dich
 
 Di seguito, se ne riporta il diagramma delle classi.
 
-![Application Class Diagram](../images/application-class-diagram.png)
+![Application Class Diagram](../images/diagrams/application-class-diagram.png)
 
 La classe principale di questo modulo è `ChessApplication`, che permette di avviare l'interfaccia grafica fornendole
 il proxy per comunicare con l'engine, modellato dalla classe `LocalChessProxy`.
