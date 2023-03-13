@@ -4,7 +4,7 @@ Come spiegato precedentemente, il sistema rappresentato in figura è suddiviso i
 - Engine Module
 - Application Module
 
-![System Class Diagram](TODO)
+![System Class Diagram](../images/system-class-diagram.png)
 
 Come si vede in figura, l'_Application Module_ dipende dall'_Engine Module_, in particolare utilizza
 un `LocalChessProxy` per comunicare con un `LocalChessAdapter` messo a disposizione dall'engine.
@@ -40,7 +40,7 @@ reattivi a certi eventi.
 
 Di seguito, se ne riporta il diagramma delle classi.
 
-![Engine Class Diagram](TODO)
+![Engine Class Diagram](../images/engine-class-diagram.png)
 
 La classe principale di questo modulo è il `ChessService`, il quale permette di avviare il servizio
 relativo all'engine, inizializzando i vari `Adapter` e le relative porte del servizio. In particolare,

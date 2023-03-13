@@ -33,7 +33,7 @@ import io.vertx.core.{Future, Promise, Vertx}
 def deployServiceLocally(): Future[ChessService] =
   Logger.info("Start", "Deploying chess engine service...")
   val vertx = Vertx.vertx()
-  val service = ChessService(ChessGame(vertx))
+  val service = ChessService()
   val serviceDeployed: Promise[ChessService] = Promise.promise()
   vertx
     .deployVerticle(service)
