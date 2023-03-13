@@ -102,7 +102,7 @@ Queste regole sono strutturate in maniera "modulare", che permette l'assemblaggi
 quelle più generali.
 Di seguito è fornito il diagramma che mostra i legami che esistono tra le regole attualmente presenti.
 
-[Diagramma delle regole dei pezzi](../images/diagrams/rules-class-diagram.svg)
+![Diagramma delle regole dei pezzi](../images/diagrams/rules-class-diagram.svg)
 
 Come si può osservare, la maggior parte delle dipendenze è di _estensione_/_realizzazione_, il che permette di avere 
 regole generali, che mano a mano diventano più specifiche, rendendo possibile un eventuale riutilizzo.
