@@ -11,20 +11,20 @@ visualizzare e interagire in maniera corretta.
 
 Inoltre, anche i requisiti non funzionali sono stati raggiunti con successo.
 
-## Migliore e sviluppi futuri
+## Migliorie e sviluppi futuri
 
 Sicuramente, avendo più tempo a disposizione si potrebbero fare migliorie grafiche e nuove funzionalità come quelle 
 opzionali citate inizialmente.
 Di queste infatti soltanto una funzionalità è stata sviluppata: l'aggiunta di un ulteriore vincolo
 temporale per giocatore.
 
-Altre funzionalità/migliore apportabili sono:
+Altre funzionalità/migliorie apportabili sono:
 - Evidenziamento dei pezzi relativi agli stati di scacco o scacco matto.
 - Suggerimento della mossa migliore da effettuare.
 - Possibilità di eseguire _drag and drop_ sui pezzi di gioco.
 - Aggiunta di animazioni.
 - Ridimensionamento percentuale delle schermate.
-- Abbellimento grafico generale.
+- Rifinitura della grafica dell'applicazione.
 
 Nel complesso, a pari del tempo messo a disposizione, il Team è molto soddisfatto del sistema, soprattutto
 per l'architettura utilizzata e la sua struttura, la quale permette un'agevole estendibilità sia per quanto riguarda
