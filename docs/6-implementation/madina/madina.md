@@ -207,7 +207,7 @@ grafica di un pezzo degli scacchi, mappandolo alla corrispondente immagine.
 Il `ChessBoardController` estende la classe `StatefulSystem`, che rappresenta un sistema con uno stato, permettendo
 di specificarne il comportamento di entrata e di uscita da uno dei possibili stati che può assumere. Lo stato del 
 `ChessBoardController` può essere:
-- `NoneSelected`: in questo stato, nessuna pezzo sulla scacchiera è stata ancora selezionato.
+- `NoneSelected`: in questo stato, nessun pezzo sulla scacchiera è stato ancora selezionato.
 - `PieceSelected`: in questo stato, un pezzo è stato selezionato e le sue mosse disponibili sono visibili sulla 
    scacchiera.
 
