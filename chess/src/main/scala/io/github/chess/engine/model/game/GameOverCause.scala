@@ -12,7 +12,7 @@ enum GameOverCause:
   case Checkmate
 
   /** When a player has no available moves. */
-  case Stale
+  case Stalemate
 
   /** When a player has surrendered. */
   case Surrender

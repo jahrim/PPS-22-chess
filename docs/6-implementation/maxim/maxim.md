@@ -22,7 +22,7 @@ Tra i componenti implementati individualmente da me, si possono osservare:
 
 I file invece implementati in collaborazione con gli altri membri del team includono:
 - `ChessBoard`, di cui ho implementato una versione di partenza;
-- _Rule_ di altri pezzi per implementare una modalità di ritrovamento delle mosse di cattura comune;
+- Alcune `ChessRule` di altri pezzi per implementare una modalità di ritrovamento delle mosse di cattura comune;
 - `GameController`, per il quale ho aggiunto l'aggiornamento dei componenti grafici alla ricezione dell'evento
   `PieceMovedEvent`;
 - `ChessBoardController`, aggiungendo verifiche per risolvere delle problematiche relative alla selezione dei pezzi 
@@ -38,8 +38,8 @@ Questo è possibile per il fatto che le mosse di un pedone sono definite da quat
 grado 
 di ottenere non più di due mosse individualmente.
 Queste regole sono:
-- Mossa di un passo in avanti (`ForwardOneRule`): la mossa principale del pedone che gli permette di avanzare. Essa 
-  è disponibile sempre, a meno che la posizione di destinazione non sia già occupata da un altro pezzo;
+- Mossa di un passo in avanti (`ForwardOneRule`): la mossa principale del pedone che gli permette di avanzare di una
+  posizione. Essa è disponibile sempre, a meno che la posizione di destinazione non sia già occupata da un altro pezzo;
 - Mossa di due caselle in avanti, denominata nel progetto come _mossa doppia_ (`DoubleMoveRule`): questa è la mossa 
   effettuabile dal pedone, esclusivamente come suo primo spostamento;
 - Cattura (`PawnCaptureRule`): il pedone è l'unico pezzo degli scacchi che possiede la regola di cattura che è 
@@ -78,7 +78,7 @@ Questo era necessario poiché alcune regole hanno una logica di movimento che ri
 verificare la disponibilità delle mosse.
 In particolare l'_Alfiere_, la _Torre_ e la _Regina_, muovendosi in un insieme di direzioni, presentano la necessità 
 di evitare gli ostacoli.
-Infatti, quando uno di questi pezzi incontra un pezzo sul suo percorso, tutte le posizioni successive non saranno 
+Infatti, quando uno di questi pezzi incontra un altro pezzo sul suo percorso, tutte le posizioni successive non saranno 
 accessibili.
 
 Gli altri tre tipi di pezzi, invece, possiedono le mosse base che comportano lo spostamento di una sola posizione 
@@ -87,7 +87,7 @@ Gli altri tre tipi di pezzi, invece, possiedono le mosse base che comportano lo 
 Questo rende il ritrovamento per il secondo gruppo molto più semplice.
 
 In una versione iniziale infatti, l'analisi per il ritrovamento delle mosse di cattura per i pezzi di Alfiere, Torre e 
-Regina era inclusa nel ritrovamento delle le mosse, il che era estremamente specifico a quel tipo di spostamento.
+Regina era inclusa nel ritrovamento delle loro mosse, il che era estremamente specifico a quel tipo di spostamento.
 
 Successivamente, ho semplificato quest'analisi, restringendola a una semplice rimozione di tutte le posizioni 
 che finiscono dietro a un eventuale ostacolo, mantenendo l'ostacolo tra le posizioni accettabili.
@@ -95,7 +95,8 @@ che finiscono dietro a un eventuale ostacolo, mantenendo l'ostacolo tra le posiz
 A questo punto, tutti i pezzi possono essere analizzati in maniera analoga, dato che le uniche mosse non accettabili 
 a questo punto saranno solo quelle che comporteranno la cattura del pezzo alleato.
 
-Per aggiungere quest'ultima funzionalità è stato realizzato il _mixin_ `AvoidAlliesRule`.
+Per aggiungere la funzionalità che permette di scartare le mosse di cattura dei pezzi alleati è stato realizzato il 
+_mixin_ `AvoidAlliesRule`. 
 Questo _mixin_ estende a sua volta il `CaptureMoveMapper`, il quale analizza tutte le mosse ed eventualmente 
 trasforma, quelle che finiscono su un qualsiasi pezzo, in _mosse di cattura_:
 
@@ -112,6 +113,20 @@ Ad esempio la regola del **Pedone** può essere definita semplicemente da questo
 
 ![La regola della Torre](PawnRule.png)
 
+## Regole Prolog del pedone
+
+Per dare una maggiore enfasi al fatto che le mosse effettuabili da un pedone sono definite da un insieme di regole,
+ho scelto d'implementare anche le regole di cattura del pedone nel linguaggio **Prolog**.
+
+Perciò sono stati definiti due file _Prolog_, uno per il pedone del team bianco e uno per il team nero, per
+rispettare il fatto che i due pedoni si spostano in direzioni opposte.
+
+Successivamente tali posizioni sono filtrate per rimuovere quelle che finirebbero al di fuori dei limiti della
+scacchiera.
+Per fare ciò, è stato definito il _mixin_ `InsideBoardFilterRule`, che prende tutte le posizioni ritrovate da una
+regola prolog ed esegue la `filter` per rimuovere tutte quelle che non apparterrebbero alla scacchiera.
+Infine il risultato viene analizzato dal `PawnCaptureMoves` per mantenere esclusivamente le mosse accettabili.
+
 ## Eventi
 
 Per aggiornare le informazioni contenute nell'interfaccia grafica era necessario mettere in comunicazione il modello 
@@ -127,16 +142,5 @@ e l'ultima mossa effettuata.
 Grazie a questi dati, l'interfaccia può essere aggiornata, informando l'utente dello stato in cui si trova la 
 partita, compresa di tutte le informazioni necessarie.
 
-## Regole Prolog del pedone
-
-Per dare una maggiore enfasi al fatto che le mosse effettuabili da un pedone sono definite da un insieme di regole, 
-ho scelto d'implementare anche le regole di cattura del pedone nel linguaggio **Prolog**.
-
-Perciò sono stati definiti due file _Prolog_, uno per il pedone del team bianco e uno per il team nero, per 
-rispettare il fatto che i due pedoni si spostano in direzioni opposte.
-
-Successivamente tali posizioni sono filtrate per rimuovere quelle che finirebbero al di fuori dei limiti della 
-scacchiera.
-Per fare ciò, è stato definito il _mixin_ `InsideBoardFilterRule`, che prende tutte le posizioni ritrovate da una 
-regola prolog ed esegue la `filter` per rimuovere tutte quelle che non apparterrebbero alla scacchiera.
-Infine il risultato viene analizzato dal `PawnCaptureMoves` per mantenere esclusivamente le mosse accettabili.
+[Back to index](../../index.md) |
+[Back to implementation](../../6-implementation/index.md)

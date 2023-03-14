@@ -164,7 +164,7 @@ class ChessGame(private val vertx: Vertx) extends ChessPort:
               )
             )
           case Some(Stale) =>
-            this.publish(GameOverEvent(GameOverCause.Stale))
+            this.publish(GameOverEvent(GameOverCause.Stalemate))
           case Some(Check) =>
             this.publish(
               CheckNotificationEvent(status.gameConfiguration.player(status.currentTurn))

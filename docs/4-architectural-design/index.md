@@ -1,6 +1,6 @@
 # Design Architetturale
 
-Per quanto riguarda il design architetturale del sistema si identificano due macro-componenti principali,
+Per quanto riguarda il design architetturale del sistema, si identificano due macro-componenti principali,
 i quali vengono suddivisi a loro volta in altri sotto-componenti:
 - _Engine_: gestisce la creazione e lo sviluppo di una partita degli scacchi.
   È stato realizzato come servizio, seguendo un'architettura di tipo esagonale,
@@ -27,18 +27,19 @@ d'informazioni tra l'applicazione e l'engine.
 ## Engine
 
 Per esplicitare i vari casi d'uso, il contratto del servizio prevede le seguenti funzionalità:
-- _Ottenimento dello stato del gioco corrente_: funzionalità che permette di ottenere lo stato della scacchiera, lo 
-  storico delle mosse compiute, il turno del giocatore corrente e la configurazione della partita.
+- _Ottenimento dello stato del servizio_: funzionalità che permette di ottenere lo stato del servizio, il quale può
+  includere lo stato della scacchiera, lo storico delle mosse compiute, il turno del giocatore corrente e la 
+  configurazione della partita.
 - _Avvio della partita_: funzionalità che, a partire da una data configurazione, permette di avviare 
   una partita.
 - _Ottenimento delle possibili mosse_: funzionalità che, a partire da una posizione su una scacchiera, trova tutte le 
-  possibili mosse.
+  possibili mosse del pezzo in tale posizione.
 - _Applicazione di una mossa_: funzionalità che applica una specifica mossa alla partita.
 - _Promozione_: funzionalità che, a partire da una posizione e da un tipo di pezzo, promuove il pedone in tale posizione
   al pezzo specificato.
 - _Resa_: funzionalità che permette al giocatore di turno di arrendersi.
 
-In seguito all'applicazione delle varie funzionalità, vengono creati determinati eventi, ai quali è possibile 
+In seguito all'applicazione delle varie funzionalità vengono creati determinati eventi, ai quali è possibile 
 sottoscriversi:
 - _GameOverEvent_: evento generato per avvisare l'utente che la partita è terminata. Esso può essere
   generato in più momenti: quando un giocatore subisce lo scacco matto, quando il giocatore di turno non ha 
@@ -68,12 +69,12 @@ Una volta cominciata, il servizio entra nello stato _Game Running_, in cui la pa
 arrendersi.
 Se un utente notifica il servizio di volersi arrendere, il servizio termina la partita ritornando nello stato 
 _Game Not Configured_.
-Invece, se un utente notifica il servizio di una certa mossa da eseguire, il servizio la esegue se è una mossa che coinvolge
-uno dei pezzi del giocatore di turno.
+Invece, se un utente notifica il servizio di una certa mossa da eseguire, il servizio la esegue solo se è una mossa che 
+coinvolge uno dei pezzi del giocatore di turno.
 
 Una volta specificata la mossa da eseguire, se un pedone dell'utente ha raggiunto la base avversaria, il servizio entra
 nello stato _Game Awaiting Promotion_, in cui si mette in attesa che il giocatore di turno invii una nuova richiesta per
-promuovere il pedone ad un certo pezzo. In ogni altro caso, la partita procede normalmente ed il controllo della
+promuovere il pedone a un certo pezzo. In ogni altro caso, la partita procede normalmente e il controllo della
 scacchiera passa al giocatore successivo.
 
 Solo nello stato _Game Awaiting Promotion_, è possibile richiedere al servizio di promuovere un pedone. Quando ciò
@@ -81,23 +82,24 @@ accade il controllo della scacchiera passa al giocatore successivo.
 
 ## Applicazione
 
-L'applicazione prevede quattro schermate principali, presentati nei seguenti mockup.
+L'applicazione prevede cinque schermate principali, presentate nei seguenti mockup.
 Per estendibilità, i mockup sono stati realizzati considerando anche i requisiti opzionali.
 
 ### Main Menu Page
 
 Nella schermata raffigurata, sono presenti quattro pulsanti:
 - _New Game_: quando premuto, visualizza la pagina di configurazione della partita.
-- _Leaderboard_: quando premuto, visualizza la pagina della classifica dei giocatori.
-- _Settings_: quando premuto, visualizza la pagina per le impostazioni grafiche dell'applicazione.
+- _Leaderboard_: quando premuto, visualizza la pagina della classifica dei giocatori. Opzionale.
+- _Settings_: quando premuto, visualizza la pagina per le impostazioni grafiche dell'applicazione. Opzionale.
 - _Exit_: quando premuto, termina l'applicazione.
 
 ![Main Menu Mockup](../images/mockups/main-menu-mockup.png)
 
 ### Game Configuration Page
 
-Nella schermata seguente, sono presenti vari controlli per permettere di configurare la partita, impostando diversi 
-parametri, come vincoli temporali, modalità di gioco, nomi dei giocatori, difficoltà dell'_AI_.
+Nella schermata seguente, sono presenti vari controlli per permettere all'utente di configurare la partita, 
+impostando diversi parametri, come vincoli temporali, modalità di gioco, nomi dei giocatori, difficoltà del 
+computer.
 
 Premendo il pulsante _Start Game_, viene visualizzata la pagina della partita, dopo aver richiesto l'avvio della 
 partita all'engine.
@@ -144,7 +146,7 @@ Tale finestra contiene il risultato finale della partita, il quale indica la cau
 contenente ulteriori dettagli.
 
 Alla pressione del pulsante _Save Replay_, sarà richiesto all'utente dove desidera salvare il file contenente il
-replay della partita appena giocata.
+replay della partita appena giocata. Questa funzionalità è opzionale.
 
 Alla pressione del pulsante _Main Menu_, viene visualizzata la schermata principale dell'applicazione.
 

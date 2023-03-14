@@ -1,7 +1,7 @@
-Durante gli Sprint il lavoro è stato cercato di essere suddiviso il più possibile. Nel complesso
+Durante gli Sprint si è cercato di suddividere il lavoro il più possibile. Nel complesso
 è stato sviluppato codice completamente da parte mia, mentre altre parti sono state sviluppate in cooperazione.
 
-I file completamente attribuili al sottoscritto sono: `Position`, `File`, `Rank`, `OutsideBoardException`,
+I file completamente attribuibili al sottoscritto sono: `Position`, `File`, `Rank`, `OutsideBoardException`,
 `PromotingPawnEvent`, `PromotionPiece`, `GameConfiguration`, `Player`, `WhitePlayer`, `BlackPlayer`,
 `GameMode`, `TimeConstraint`, `timer`, `TimerManager`, `TimePassedEvent`, `Combinator`,  `CastlingRule`, `CastlingMove`.
 
@@ -175,7 +175,7 @@ Per permettere di fare ciò è necessario fare in modo che l'utente possa esegui
 Questo è possibile utilizzando il pattern _**strategy**_, definendo nel costruttore del _Timer_ parametri come 
 funzioni.
 Difatti come si osserva nella figura seguente, vengono definiti due parametri come funzioni che verranno utilizzate 
-per eseguire codice esterno rispettivamente, a ogni esecuzione e nel momento in cui il _Timer_ esaurisce il tempo 
+per eseguire codice esterno, rispettivamente a ogni esecuzione e nel momento in cui il _Timer_ esaurisce il tempo 
 rimanente.
 
 ![Higher order function](higher_order_function.png)
@@ -207,7 +207,7 @@ includono la relativa parte di cattura di altri pezzi, il cui codice è stato sv
 ### Regola dell'Alfiere
 
 L'alfiere possiede un'unica regola di movimento, quella diagonale.
-Per ottenere le mosse quindi questa regola bisogna innanzitutto ottenere le coordinate, sfruttando le regole _prolog_
+Per ottenere le mosse di questa regola bisogna innanzitutto ottenere le coordinate, sfruttando le regole _prolog_
 sviluppate precedentemente.
 In seguito basta solo generare le mosse a partire dalla cella iniziale e da quelle ottenute.
 
@@ -260,3 +260,6 @@ Come si osserva in figura, il codice infatti sfrutta la _**for comprehension**_ 
 possibili valori di _X_ e _Y_,
 da aggiungere poi alla coppia di coordinate specificata.
 Il filtro opzionale viene realizzato mediante un **_default parameter value_**.
+
+[Back to index](../../index.md) |
+[Back to implementation](../../6-implementation/index.md)

@@ -67,7 +67,7 @@ che possono essere utili all'interno della definizione di una regola di gioco.
 Siccome molte delle funzionalità richiedono lo stato della partita in input, modellato dalla
 classe `ChessGameStatus`, si è deciso di richiedere tale stato sotto forma di _given instance_.
 \
-A tal proposito, è stata realizzata una funzione di utility che permette di dichiarare given
+A tal proposito, è stata realizzata una funzione di utility che permette di definire given
 instance in modo più dichiarativo, chiamata `GivenExtension.within`. 
 
 Di seguito, si riporta un esempio della sua applicazione nel metodo `limitDirection` della `DirectionalRule`,
@@ -250,4 +250,8 @@ Come visto nel codice precedente, quando una `CellView` della scacchiera è prem
   si entra in `PieceSelected`.
 - se lo stato è `PieceSelected` e la cella cliccata è una delle posizioni raggiungibili dal pezzo selezionato,
   si richiede all'engine di eseguire la mossa che sposta il pezzo sulla cella cliccata.
-  In ogni caso, alla fine la cella viene deselezionata, ritornando a `NoneSelected`.
+  In ogni caso, alla fine la cella viene deselezionata, e in base alla cella cliccata si ritorna a `NoneSelected`
+  o a `PieceSelected`.
+
+[Back to index](../../index.md) |
+[Back to implementation](../../6-implementation/index.md)

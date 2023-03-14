@@ -32,7 +32,7 @@ Durante l'analisi del problema sono stati individuati i seguenti requisiti del s
     - i tipi di giocatore (umano)
     - i vincoli temporali (senza limiti, con limite per mossa definito dall'utente)
     - i nominativi del giocatore bianco e del giocatore nero
-- Il gioco si svolge in maniere interattiva, facendo eseguire le mosse dei giocatori una volta a testa.
+- Il gioco si svolge in maniera interattiva, facendo eseguire le mosse dei giocatori una volta a testa.
 - Il campo da gioco deve essere rappresentato da una scacchiera, ossia una griglia in cui righe e colonne
   siano identificate rispettivamente da un numero da 1 a 8 e da una lettera da A a H,
   per cui le singole celle siano univoche rispetto alla combinazione dei due valori.
@@ -52,28 +52,29 @@ Durante l'analisi del problema sono stati individuati i seguenti requisiti del s
       direzione di una delle due torri alla sua destra o sinistra, soltanto nel caso in cui anche queste non abbiano 
       effettuato alcuna mossa e non sia presente alcun altro pezzo nelle celle intermedie tra i due pezzi. A questo 
       punto la torre si muove del numero di caselle necessarie per scavalcare il re.
-- Qualunque regola di movimento non deve permettere di scavalcare altri pezzi e deve obbligare il movimento nei limiti 
-  della scacchiera.
+- Qualunque regola di movimento non deve permettere di scavalcare altri pezzi, a eccezione della regola del cavallo.
+- Qualunque regola di movimento deve obbligare il movimento nei limiti della scacchiera.
 - Ogni pezzo può effettuare la cattura di un altro pezzo dell'avversario, muovendosi nella posizione di tale
-  pezzo, causando la rimozione dalla scacchiera.
+  pezzo, causandone la rimozione dalla scacchiera.
 - Sono presenti alcune eccezioni alle regole di cattura:
-    - Il pedone effettua la cattura sempre e solo, muovendosi di una posizione in avanti in diagonale.
-    - Quando un pedone avversario, effettuando la _mossa doppia_ finisce esattamente accanto, ovvero sulla stessa traversa
+    - Il pedone effettua la cattura sempre e solo muovendosi di una posizione in avanti in diagonale.
+    - Quando un pedone avversario, effettuando la _mossa doppia_, finisce esattamente accanto, ovvero sulla stessa traversa
       e su colonna adiacente, al pedone del giocatore del turno successivo, quest'ultimo in tale turno può catturarlo 
-      come se il pedone avversario si fosse mosso di un passo solo. Tale mossa viene definita _En Passant_.
+      come se il pedone avversario si fosse mosso di un passo solo. Tale mossa viene definita _Presa al varco_ o 
+      _En Passant_.
 - Il sistema deve essere in grado di riconoscere particolari stati del gioco:
     - scacco
     - scacco matto
     - stallo
-    - resa
+- Il sistema deve permettere al giocatore di turno di arrendersi, terminando la partita.
 
 ## Non funzionali
 - Realizzazione di software in grado di essere facilmente ampliabile, in termini di estendibilità di funzionalità e 
-  di preparazione a una eventuale modalità distribuita.
+  componibilità con altri servizi, al fine di renderlo distribuito.
 - Realizzazione di un'interfaccia grafica che aiuti l'utente a realizzare le mosse in maniera intuitiva e rapida, 
-  mostrando quindi le mosse disponibili di un dato pezzo.
-- Realizzazione di un algoritmo di analisi delle mosse disponibili che venga effettuata in modo sufficientemente 
-  rapido, in maniera tale da non far attendere all'utente una quantità di tempo non trascurabile.
+  ad esempio mostrando le mosse disponibili di un dato pezzo.
+- Realizzazione di un algoritmo di analisi delle mosse disponibili sufficientemente ottimizzato, che non comporti un 
+  attesa elevata da parte dell'utente (in media, minore di un secondo).
 - Sviluppo di una notazione standard per le mosse che sia interoperabile con altri sistemi.
 
 ## Di implementazione:
@@ -82,6 +83,7 @@ Durante l'analisi del problema sono stati individuati i seguenti requisiti del s
 - Utilizzo di JDK 11+
 
 ## Opzionali:
+- Notifica della situazione di scacco al giocatore che lo ha subito.
 - Aggiunta di un'ulteriore modalità di gioco che consiste nella sfida contro un'intelligenza artificiale.
 - Aggiunta di un ulteriore vincolo temporale in cui ogni giocatore ha un tempo preimpostato relativo al totale delle 
   mosse compiute, al termine della quale il giocatore di turno perde.

@@ -25,7 +25,7 @@ Ogni pezzo è caratterizzato da un insieme di mosse (_Move_) che può eseguire:
 Quando un pezzo può catturare il re avversario nel turno successivo, la situazione prende il nome di scacco (_Check_). 
 Nel caso in cui il giocatore non può effettuare una mossa per uscire dalla situazione di scacco, allora si parla di 
 scacco matto (_CheckMate_). Quando invece un giocatore non si trova nella situazione di scacco ma non può muovere 
-nessun pezzo, allora si parla di stallo (_Stale_).
+nessun pezzo, allora si parla di stallo (_StaleMate_).
 
 Il gioco si svolge a _turni_ alternati tra i giocatori. Durante un turno, un giocatore può effettuare una mossa con uno
 dei suoi pezzi. Lo scopo del gioco è quello di dare lo scacco matto al proprio avversario.

@@ -189,7 +189,7 @@ given instance, ne modificano la configurazione e lo restituiscono in output. Qu
 - `x`, `r`, `n`, `b`, `q`, `k`, `p`: impostano il contenuto della prossima cella del `ChessBoardBuilder` a un pezzo 
   della squadra nera. Corrispondono rispettivamente ai pezzi: `PiecePlaceholder`, `Rook`, `Knight`, `Bishop`, `Queen`, 
   `King` e `Pawn`.
-- `*`: impostano il contenuto della prossima cella del `ChessBoardBuilder` a una cella vuota.
+- `*`: imposta il contenuto della prossima cella del `ChessBoardBuilder` a una cella vuota.
 - `**`: equivalente a `nextRow`.
 
 In questo modo, dovrebbe essere possibile configurare la scacchiera nel modo seguente.
@@ -261,3 +261,6 @@ Per evitare chiamate ricorsive cicliche, per cui la `findMoves` richiama la `che
 metterebbero il giocatore corrente in scacco, mentre la `check` richiama la `findMoves` per individuare le mosse
 dell'avversario che potrebbero catturare il re del giocatore corrente, è stato necessario aggiungere un controllo,
 per cui solo i pezzi del giocatore di turno sono soggetti a questa regola del gioco.
+
+[Back to index](../../index.md) |
+[Back to implementation](../../6-implementation/index.md)
