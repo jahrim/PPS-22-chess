@@ -18,8 +18,8 @@ esistenza è dovuta alla mancanza di terminazione dello Sprint precedente.
 
 # Sprint Review
 
-
+Il Team è riuscito a raggiungere lo _Sprint Goal_ esattamente come il _Product Owner_ aveva desiderato.
 
 # Sprint Retrospective
 
-
+Il Team è riuscito a coordinarsi adeguatamente e ha dimostrato buone capacità di comunicazione.
