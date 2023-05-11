@@ -2,7 +2,7 @@
 kotlin-version = "1.8.10"
 kotlin-qa-version = "0.34.1"
 kotlin-serialization-version = "1.8.10"
-kotlinx-version = "1.5.0-RC"
+kotlinx-version = "1.5.1"
 kotlin-hocon-serialization-version = "1.4.10"
 typesafe-config-version = "1.4.2"
 turtle-version = "0.8.0"
