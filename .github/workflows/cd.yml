@@ -33,7 +33,7 @@ jobs:
           cache: 'npm'
           node-version: '18.13'
       - name: Create Jar
-        uses: gradle/gradle-build-action@v2.3.3
+        uses: gradle/gradle-build-action@v2.12.0
         with:
           arguments: fatJar
       - name: Publish Release To Github
@@ -47,7 +47,7 @@ jobs:
           npm install
           npx semantic-release
       - name: Publish Release To Maven
-        uses: gradle/gradle-build-action@v2.3.3
+        uses: gradle/gradle-build-action@v2.12.0
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.GPG_PRIVATE_KEY }}
